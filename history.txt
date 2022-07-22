@@ -16,8 +16,13 @@ Election.Analytic.System - PPRP  #6
 Election.Analytic.System - PPRP  #5
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #4
-- 
+- Update projects
+  - Update PPRP.Domains project.
+    - Update references.
+  - Update PPRP.Models project.
+    - Update references.
 
 [commited]
 Election.Analytic.System - PPRP  #3
