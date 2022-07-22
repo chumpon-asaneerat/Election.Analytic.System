@@ -10,8 +10,13 @@ Election.Analytic.System - PPRP  #8
 Election.Analytic.System - PPRP  #7
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #6
-- 
+- Add projects
+  - Prepare PPRP.Analytic.App project.
+    - Update App.manifest
+  - Prepare PPRP.Manangement.App project.
+    - Update App.manifest
 
 [commited]
 Election.Analytic.System - PPRP  #5
