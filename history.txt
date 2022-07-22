@@ -7,12 +7,17 @@ Election.Analytic.System - PPRP  #9
 Election.Analytic.System - PPRP  #8
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #7
-- 
+- Update projects
+  - Prepare PPRP.Analytic.App project.
+    - Update App.xaml.cs
+  - Prepare PPRP.Manangement.App project.
+    - Update App.xaml.cs
 
 [commited]
 Election.Analytic.System - PPRP  #6
-- Add projects
+- Update projects
   - Prepare PPRP.Analytic.App project.
     - Update App.manifest
   - Prepare PPRP.Manangement.App project.
@@ -20,7 +25,7 @@ Election.Analytic.System - PPRP  #6
 
 [commited]
 Election.Analytic.System - PPRP  #5
-- Add projects
+- Update projects
   - Prepare PPRP.Analytic.App project.
     - Update App.Config
   - Prepare PPRP.Manangement.App project.

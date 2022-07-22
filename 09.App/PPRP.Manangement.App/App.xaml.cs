@@ -42,7 +42,7 @@ namespace PPRP
                 AppInfo = new NAppInformation()
                 {
                     /*  This property is required */
-                    CompanyName = "DMT",
+                    CompanyName = "PPRP",
                     /*  This property is required */
                     ProductName = AppConsts.Application.Management.ApplicationName,
                     /* For Application Version */
