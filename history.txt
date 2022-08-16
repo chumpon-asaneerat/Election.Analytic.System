@@ -4,8 +4,12 @@ Election.Analytic.System - PPRP  #10
 Election.Analytic.System - PPRP  #9
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #8
-- 
+- Update projects
+  - PPRP.Manangement.App project.
+    - Add required assemblies.
+    - Update code for MainWindow.
 
 [commited]
 Election.Analytic.System - PPRP  #7
