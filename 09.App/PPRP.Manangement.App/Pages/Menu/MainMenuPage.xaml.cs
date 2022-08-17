@@ -146,6 +146,7 @@ namespace PPRP.Pages
             items.Add(new Data() { Age = 45, Name = "Smith Iron" });
             items.Add(new Data() { Age = 57, Name = "Bla Bla Bla" });
             items.Add(new Data() { Age = 28, Name = "Bla Bla Bla Bla Bla Bla" });
+            items.Add(new Data() { Age = 19, Name = "END OF ITEMS" });
 
             lvItems.ItemsSource = items;
         }
