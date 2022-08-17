@@ -28,8 +28,11 @@ Election.Analytic.System - PPRP  #12
 Election.Analytic.System - PPRP  #11
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #10
-- 
+- Update projects
+  - PPRP.Manangement.App project.
+    - Add MainMenu Page (with zoom example).
 
 [commited]
 Election.Analytic.System - PPRP  #9
