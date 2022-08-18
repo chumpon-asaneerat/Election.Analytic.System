@@ -22,8 +22,12 @@ Election.Analytic.System - PPRP  #14
 Election.Analytic.System - PPRP  #13
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #12
-- 
+- Update projects
+  - Add Sample projects
+    - Add WizardProgressBarLibrary project.
+    - Add WizardProgressBarDemo project.
 
 [commited]
 Election.Analytic.System - PPRP  #11
