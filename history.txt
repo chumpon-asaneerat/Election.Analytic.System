@@ -1,8 +1,10 @@
 Election.Analytic.System - PPRP  #20
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #19
-- 
+- Update projects
+  - Add PPRP.Controls project.
 
 [commited]
 Election.Analytic.System - PPRP  #18
