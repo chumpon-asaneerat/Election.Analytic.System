@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #18
 Election.Analytic.System - PPRP  #17
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #16
-- 
+- Update projects
+  - Add Sample projects
+    - Add EPPlus.Wpf project.
 
 [commited]
 Election.Analytic.System - PPRP  #15

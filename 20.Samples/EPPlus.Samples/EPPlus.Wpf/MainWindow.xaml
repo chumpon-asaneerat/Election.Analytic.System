@@ -1,0 +1,46 @@
+﻿<Window x:Class="EPPlus.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="EP Plus Sample"
+        Height="450"
+        Width="800"
+        Loaded="Window_Loaded">
+    <DockPanel LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Left"
+                        Margin="5">
+                <TextBlock Text="File Name:" />
+                <TextBlock Text="" Width="5" />
+                <TextBox x:Name="txtFileName"
+                         Width="300"
+                         IsReadOnly="True" />
+                <TextBlock Text="" Width="5" />
+                <Button x:Name="cmdOpenFile"
+                        Width="100"
+                        Content="Open"
+                        Click="cmdOpenFile_Click" />
+                <TextBlock Text="" Width="5" />
+            </StackPanel>
+            <Grid />
+        </DockPanel>
+        <TabControl>
+            <TabItem Header="Preview">
+                <DockPanel LastChildFill="True">
+                    <ListView x:Name="lvSheets" SelectionChanged="lvSheets_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Worksheets" Width="175" DisplayMemberBinding="{Binding Name}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DataGrid x:Name="gridSheetData" ></DataGrid>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Header 2" />
+        </TabControl>
+    </DockPanel>
+</Window>
