@@ -16,8 +16,12 @@ Election.Analytic.System - PPRP  #16
 Election.Analytic.System - PPRP  #15
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #14
-- 
+- Update projects
+  - Add Sample projects
+    - Update ShapefileDemo project (Catfood demo).
+      - set build parameters
 
 [commited]
 Election.Analytic.System - PPRP  #13
