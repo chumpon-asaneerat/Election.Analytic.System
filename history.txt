@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #17
 Election.Analytic.System - PPRP  #16
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #15
-- 
+- Update projects
+  - Add Sample projects
+    - Add Dapper.Wpf project
 
 [commited]
 Election.Analytic.System - PPRP  #14
