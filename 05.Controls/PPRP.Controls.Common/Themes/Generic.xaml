@@ -3,6 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <!-- Imports Resource -->
-        <ResourceDictionary Source="/PPRP.Controls.Common;component/Themes/Generic.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

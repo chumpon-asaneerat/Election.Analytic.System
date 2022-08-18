@@ -7,19 +7,23 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PPRP.Controls")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PPRP Controls Library")]
+[assembly: AssemblyDescription("The PPRP Controls Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PPRP.Controls")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Softbase Co., Ltd.")]
+[assembly: AssemblyProduct("The PPRP Controls Library")]
+[assembly: AssemblyCopyright("Copyright ©Softbase Co., Ltd. 2022")]
+[assembly: AssemblyTrademark("The PPRP Controls Library")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("7f84de5c-8652-45a8-9571-de5545a3dde8")]
+
 
 //In order to begin building localizable applications, set
 //<UICulture>CultureYouAreCodingWith</UICulture> in your .csproj file
