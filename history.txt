@@ -4,8 +4,11 @@ Election.Analytic.System - PPRP  #20
 Election.Analytic.System - PPRP  #19
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #18
-- 
+- Update projects
+  - Update PPRP.Controls.Common project #1.
+    - change proejct setting.
 
 [commited]
 Election.Analytic.System - PPRP  #17
