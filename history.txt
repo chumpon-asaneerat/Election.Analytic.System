@@ -19,8 +19,13 @@ Election.Analytic.System - PPRP  #15
 Election.Analytic.System - PPRP  #14
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #13
-- 
+- Update projects
+  - Add Sample projects
+    - Add Catfood.Shapefile project (Catfood library).
+    - Add ShapefileDemo project (Catfood demo).
+    - Add TestShapeFile project (individual project).
 
 [commited]
 Election.Analytic.System - PPRP  #12
