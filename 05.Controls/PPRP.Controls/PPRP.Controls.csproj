@@ -77,5 +77,27 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
+      <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
+      <Name>NLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\01.Core\PPRP.Core\PPRP.Core.csproj">
+      <Project>{25f76701-c7d6-4cc4-beb9-db40d2bbbd9d}</Project>
+      <Name>PPRP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\02.Domains.and.Models\PPRP.Domains\PPRP.Domains.csproj">
+      <Project>{454a7013-4ffd-44cb-b589-1e4cd7369ded}</Project>
+      <Name>PPRP.Domains</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\02.Domains.and.Models\PPRP.Models\PPRP.Models.csproj">
+      <Project>{54f2904e-847c-44bc-bf54-26a19c49f9d5}</Project>
+      <Name>PPRP.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PPRP.Controls.Common\PPRP.Controls.Common.csproj">
+      <Project>{769114db-df24-45d8-80bc-56f741787a56}</Project>
+      <Name>PPRP.Controls.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

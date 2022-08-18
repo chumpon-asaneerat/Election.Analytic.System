@@ -22,8 +22,12 @@ Election.Analytic.System - PPRP  #24
 Election.Analytic.System - PPRP  #23
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #22
-- 
+- Update projects
+  - Update PPRP.Controls.Common project #2.
+    - update assembly information.
+    - update generic.xaml
 
 [commited]
 Election.Analytic.System - PPRP  #21
