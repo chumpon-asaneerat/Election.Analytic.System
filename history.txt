@@ -16,8 +16,13 @@ Election.Analytic.System - PPRP  #26
 Election.Analytic.System - PPRP  #25
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #24
-- 
+- Update projects
+  - Update PPRP.Analytic.App project.
+    - Add references to PPRP.Controls.Common, PPRP.Controls.
+  - Update PPRP.Manangement.App project.
+    - Add references to PPRP.Controls.Common, PPRP.Controls.
 
 [commited]
 Election.Analytic.System - PPRP  #23
