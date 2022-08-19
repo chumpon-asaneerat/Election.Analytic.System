@@ -16,8 +16,10 @@ Election.Analytic.System - PPRP  #36
 Election.Analytic.System - PPRP  #35
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #34
-- 
+- Add projects
+  - Add PPRP.Excel.Imports project.
 
 [commited]
 Election.Analytic.System - PPRP  #33
