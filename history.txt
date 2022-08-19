@@ -13,8 +13,10 @@ Election.Analytic.System - PPRP  #37
 Election.Analytic.System - PPRP  #36
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #35
-- 
+- Add projects
+  - Add PPRP.ShapeMap.Imports project.
 
 [commited]
 Election.Analytic.System - PPRP  #34
