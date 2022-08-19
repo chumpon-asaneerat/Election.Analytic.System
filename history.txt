@@ -4,8 +4,10 @@ Election.Analytic.System - PPRP  #40
 Election.Analytic.System - PPRP  #39
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #38
-- 
+- Update projects
+  - PPRP.Analytic.App project set to x86 (required because OleDb driver is in 32 bits mode by default).
 
 [commited]
 Election.Analytic.System - PPRP  #37
