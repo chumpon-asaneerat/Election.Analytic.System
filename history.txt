@@ -7,8 +7,13 @@ Election.Analytic.System - PPRP  #39
 Election.Analytic.System - PPRP  #38
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #37
-- 
+- Update projects
+  - Update PPRP.Excel.Imports project setting #2.
+  - Update PPRP.ShapeMap.Imports project setting #2.
+  - NLib, NLib.Reports projects set to x86 (required because OleDb driver is in 32 bits mode by default).
+  - All PPRP projects set to x86 (required because OleDb driver is in 32 bits mode by default).
 
 [commited]
 Election.Analytic.System - PPRP  #36

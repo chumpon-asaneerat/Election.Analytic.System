@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PPRP.Excel.Imports")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("PPRP Excel Imports Library")]
+[assembly: AssemblyDescription("The PPRP Excel Imports assembly for Election Analytic system.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PPRP.Excel.Imports")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Softbase Co., Ltd.")]
+[assembly: AssemblyProduct("The PPRP Excel Imports assembly for Election Analytic system.")]
+[assembly: AssemblyCopyright("Copyright ©Softbase Co., Ltd. 2022")]
+[assembly: AssemblyTrademark("The PPRP Excel Imports assembly for PPRP Election Analytic system.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
