@@ -10,8 +10,13 @@ Election.Analytic.System - PPRP  #28
 Election.Analytic.System - PPRP  #27
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #26
-- 
+- Update projects
+  - Update PPRP.Core project.
+    - Add RangeParser ExtensionMethod class.
+    - Add NJson ExtensionMethod class.
+    - Add DateTime ExtensionMethod class.
 
 [commited]
 Election.Analytic.System - PPRP  #25
