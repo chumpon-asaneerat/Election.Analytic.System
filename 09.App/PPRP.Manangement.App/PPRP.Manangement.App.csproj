@@ -147,10 +147,6 @@
       <Project>{54f2904e-847c-44bc-bf54-26a19c49f9d5}</Project>
       <Name>PPRP.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\05.Controls\PPRP.Controls.Common\PPRP.Controls.Common.csproj">
-      <Project>{769114db-df24-45d8-80bc-56f741787a56}</Project>
-      <Name>PPRP.Controls.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\05.Controls\PPRP.Controls\PPRP.Controls.csproj">
       <Project>{58f5c806-9373-4672-9a64-8ee1589004c8}</Project>
       <Name>PPRP.Controls</Name>

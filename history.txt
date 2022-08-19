@@ -4,8 +4,14 @@ Election.Analytic.System - PPRP  #30
 Election.Analytic.System - PPRP  #29
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #28
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Add Styles
+      - Add CommonStyle.xaml
+      - Add XceedToolKitStyle.xaml
+  - Remove PPRP.Controls.Commin project.
 
 [commited]
 Election.Analytic.System - PPRP  #27
