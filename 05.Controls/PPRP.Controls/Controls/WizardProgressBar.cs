@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 #endregion
 
-namespace WizardProgressBarLibrary
+namespace PPRP.Controls
 {
     public class WizardProgressBar : ItemsControl
     {

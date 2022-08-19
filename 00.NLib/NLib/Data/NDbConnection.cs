@@ -2599,7 +2599,7 @@ namespace NLib.Components
     {
         #region Internal Variables
 
-        private List<DbProviderDataType> _providerTypes = null;
+        private List<NDbProviderDataType> _providerTypes = null;
 
         #endregion
 
@@ -2641,12 +2641,12 @@ namespace NLib.Components
         /// Get Meta Data Collection.
         /// </summary>
         /// <returns>List of avaliable metadata information.</returns>
-        public List<DbMetaData> GetMetaDataCollection()
+        public List<NDbMetaData> GetMetaDataCollection()
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                List<DbMetaData> results = this.Factory.GetMetadata(this.DbConnection);
+                List<NDbMetaData> results = this.Factory.GetMetadata(this.DbConnection);
                 _onExecuting = false; // Mark executing flag
                 return results;
             }
@@ -2661,12 +2661,12 @@ namespace NLib.Components
         /// Get Provider DataTypes. This method is used for Get all DataTypes for the current data provider.
         /// </summary>
         /// <returns>List of Provider datatypes.</returns>
-        public List<DbProviderDataType> GetProviderDataTypes()
+        public List<NDbProviderDataType> GetProviderDataTypes()
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                List<DbProviderDataType> results = 
+                List<NDbProviderDataType> results = 
                     this.Factory.GetProviderDataTypes(this.DbConnection);
                 _onExecuting = false; // Mark executing flag
                 return results;
@@ -2678,16 +2678,16 @@ namespace NLib.Components
         /// </summary>
         /// <param name="providerTypeID">The Provider Type ID.</param>
         /// <returns>Return match DbProviderDataType instance if found otherwise return null.</returns>
-        public DbProviderDataType GetProviderTypeByID(int providerTypeID)
+        public NDbProviderDataType GetProviderTypeByID(int providerTypeID)
         {
-            DbProviderDataType result = null;
+            NDbProviderDataType result = null;
             if (_providerTypes == null)
             {
                 _providerTypes = this.GetProviderDataTypes();
             }
             if (_providerTypes != null)
             {
-                foreach (DbProviderDataType type in _providerTypes)
+                foreach (NDbProviderDataType type in _providerTypes)
                 {
                     if (type.ProviderDbType == providerTypeID)
                     {
@@ -2707,12 +2707,12 @@ namespace NLib.Components
         /// Get Reserved Words. This method is used for Get all reserved words for the current data provider.
         /// </summary>
         /// <returns>List of Reserved words.</returns>
-        public List<DbReservedword> GetReservedWords()
+        public List<NDbReservedword> GetReservedWords()
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                List<DbReservedword> results = 
+                List<NDbReservedword> results = 
                     this.Factory.GetReservedwords(this.DbConnection);
                 _onExecuting = false; // Mark executing flag
                 return results;
@@ -2729,12 +2729,12 @@ namespace NLib.Components
         /// </summary>
         /// <param name="value">MetaData object to find information.</param>
         /// <returns>List of Restriction that need to get information.</returns>
-        public List<DbRestriction> GetRestrictions(DbMetaData value)
+        public List<NDbRestriction> GetRestrictions(NDbMetaData value)
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                List<DbRestriction> results = 
+                List<NDbRestriction> results = 
                     this.Factory.GetRestrictions(this.DbConnection, value);
                 _onExecuting = false; // Mark executing flag
                 return results;
@@ -2751,7 +2751,7 @@ namespace NLib.Components
         /// </summary>
         /// <param name="value">specificed Metadata to find information.</param>
         /// <returns>Information about specificed metadata.</returns>
-        public DataTable GetSchema(DbMetaData value)
+        public DataTable GetSchema(NDbMetaData value)
         {
             return GetSchema(value, null);
         }
@@ -2761,7 +2761,7 @@ namespace NLib.Components
         /// <param name="value">specificed Metadata to find information.</param>
         /// <param name="restrictions">Restriction Array.</param>
         /// <returns>Information about specificed metadata.</returns>
-        public DataTable GetSchema(DbMetaData value, DbRestriction[] restrictions)
+        public DataTable GetSchema(NDbMetaData value, NDbRestriction[] restrictions)
         {
             if (null == value)
                 return null;
@@ -2942,7 +2942,7 @@ namespace NLib.Components
         /// Get Tables (and views).
         /// </summary>
         /// <returns>List of all avaliable Tables/Views from provider.</returns>
-        public List<DbTable> GetTables()
+        public List<NDbTable> GetTables()
         {
             if (null == this.Config)
                 return null;
@@ -2953,12 +2953,12 @@ namespace NLib.Components
         /// </summary>
         /// <param name="owner">Owner of Tables/Views.</param>
         /// <returns>List of all avaliable Tables/Views from provider.</returns>
-        public List<DbTable> GetTables(string owner)
+        public List<NDbTable> GetTables(string owner)
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                List<DbTable> results = this.Factory.GetTables(this.DbConnection, owner);
+                List<NDbTable> results = this.Factory.GetTables(this.DbConnection, owner);
                 _onExecuting = false; // Mark executing flag
                 return results;
             }
@@ -3007,7 +3007,7 @@ namespace NLib.Components
         /// </summary>
         /// <param name="procedureName">Stored Procedure Name.</param>
         /// <returns>Returns Stored procedure information.</returns>
-        public DbProcedureInfo GetProcedureInfo(string procedureName)
+        public NDbProcedureInfo GetProcedureInfo(string procedureName)
         {
             return GetProcedureInfo(this.Config.DefaultOwner, procedureName);
         }
@@ -3017,12 +3017,12 @@ namespace NLib.Components
         /// <param name="owner">Owner of Stored Procedure.</param>
         /// <param name="procedureName">Stored Procedure Name.</param>
         /// <returns>Returns Stored procedure information.</returns>
-        public DbProcedureInfo GetProcedureInfo(string owner, string procedureName)
+        public NDbProcedureInfo GetProcedureInfo(string owner, string procedureName)
         {
             if (null != this.Factory)
             {
                 _onExecuting = true; // Mark executing flag
-                DbProcedureInfo result = this.Factory.GetProcedureInfo(
+                NDbProcedureInfo result = this.Factory.GetProcedureInfo(
                     this.DbConnection, owner, procedureName);
                 _onExecuting = false; // Mark executing flag
                 return result;
@@ -3039,7 +3039,7 @@ namespace NLib.Components
         /// </summary>
         /// <param name="tableName">The table or view name.</param>
         /// <returns>Returns list of columns.</returns>
-        public List<DbColumn> GetTableColumns(string tableName)
+        public List<NDbColumn> GetTableColumns(string tableName)
         {
             return GetTableColumns(tableName, null);
         }
@@ -3049,7 +3049,7 @@ namespace NLib.Components
         /// <param name="tableName">The table or view name.</param>
         /// <param name="transaction">Transaction instance.</param>
         /// <returns>Returns list of columns.</returns>
-        public List<DbColumn> GetTableColumns(string tableName, DbTransaction transaction)
+        public List<NDbColumn> GetTableColumns(string tableName, DbTransaction transaction)
         {
             string queryText = string.Empty;
             string fmtTableName = FormatTableName(tableName);
@@ -3065,7 +3065,7 @@ namespace NLib.Components
         /// </summary>
         /// <param name="queryText">The query text.</param>
         /// <returns>Returns list of columns.</returns>
-        public List<DbColumn> GetQueryColumns(string queryText)
+        public List<NDbColumn> GetQueryColumns(string queryText)
         {
             return GetQueryColumns(queryText, null);
         }
@@ -3075,14 +3075,14 @@ namespace NLib.Components
         /// <param name="queryText">The query text.</param>
         /// <param name="transaction">Transaction instance.</param>
         /// <returns>Returns list of columns.</returns>
-        public List<DbColumn> GetQueryColumns(string queryText, DbTransaction transaction)
+        public List<NDbColumn> GetQueryColumns(string queryText, DbTransaction transaction)
         {
             DataTable table = GetSchemaTable(queryText, transaction);
             if (null == table) return null;
-            List<DbColumn> results = new List<DbColumn>();
+            List<NDbColumn> results = new List<NDbColumn>();
             foreach (DataRow row in table.Rows)
             {
-                DbColumn result = new DbColumn();
+                NDbColumn result = new NDbColumn();
 
                 #region Assigned Data
 

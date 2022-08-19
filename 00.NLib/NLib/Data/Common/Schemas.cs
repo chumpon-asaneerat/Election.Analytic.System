@@ -153,12 +153,12 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Schema Object (abstract)
+    #region NDbSchemaObject (abstract)
 
     /// <summary>
-    /// Db Schema Object (abstract)
+    /// NDbSchemaObject (abstract)
     /// </summary>
-    public abstract class DbSchemaObject
+    public abstract class NDbSchemaObject
     {
         private bool _lock = false;
         /// <summary>
@@ -177,13 +177,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Meta Data
+    #region NDbMetaData
 
     /// <summary>
-    /// Db Meta Data
+    /// NDbMetaData class.
     /// </summary>
     [Serializable]
-    public class DbMetaData : DbSchemaObject
+    public class NDbMetaData : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -198,13 +198,13 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbMetaData()
+        public NDbMetaData()
             : base() { }
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="collectionName"></param>
-        public DbMetaData(string collectionName)
+        public NDbMetaData(string collectionName)
             : this()
         {
             this._collectionName = collectionName;
@@ -215,7 +215,7 @@ namespace NLib.Data
         /// <param name="collectionName"></param>
         /// <param name="noOfRestriction"></param>
         /// <param name="noOfIdentifierParts"></param>
-        public DbMetaData(string collectionName, int noOfRestriction, int noOfIdentifierParts)
+        public NDbMetaData(string collectionName, int noOfRestriction, int noOfIdentifierParts)
             : this()
         {
             this._collectionName = collectionName;
@@ -225,7 +225,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbMetaData()
+        ~NDbMetaData()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -308,13 +308,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Restriction
+    #region NDbRestriction
 
     /// <summary>
-    /// Db Restriction
+    /// NDbRestriction class.
     /// </summary>
     [Serializable]
-    public class DbRestriction : DbSchemaObject
+    public class NDbRestriction : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -329,7 +329,7 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbRestriction()
+        public NDbRestriction()
             : base() { }
         /// <summary>
         /// Constructor
@@ -337,7 +337,7 @@ namespace NLib.Data
         /// <param name="ordinal">Ordinal</param>
         /// <param name="restrictionName">Restriction Name</param>
         /// <param name="value">Restriction Value</param>
-        public DbRestriction(int ordinal, string restrictionName, string value)
+        public NDbRestriction(int ordinal, string restrictionName, string value)
             : this()
         {
             _restrictionNumber = ordinal;
@@ -347,7 +347,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbRestriction()
+        ~NDbRestriction()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -419,14 +419,14 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Provider DataType
+    #region NDbProviderDataType
 
     /// <summary>
-    /// Db Provider DataType Class that contain DataType information that retrived from database's driver like ODBC and OLEDB Provider
+    /// NDbProviderDataType Class that contain DataType information that retrived from database's driver like ODBC and OLEDB Provider
     /// this class is support for structure of ODBC 2.0
     /// </summary>
     [Serializable]
-    public class DbProviderDataType : DbSchemaObject
+    public class NDbProviderDataType : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -467,11 +467,11 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbProviderDataType() : base() { }
+        public NDbProviderDataType() : base() { }
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbProviderDataType()
+        ~NDbProviderDataType()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -1449,13 +1449,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Reserved word
+    #region NDbReservedword
 
     /// <summary>
-    /// Db Reserved word Class
+    /// NDbReservedword Class
     /// </summary>
     [Serializable]
-    public class DbReservedword : DbSchemaObject
+    public class NDbReservedword : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -1468,11 +1468,11 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbReservedword() : base() { }
+        public NDbReservedword() : base() { }
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbReservedword()
+        ~NDbReservedword()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -1509,13 +1509,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Table
+    #region NDbTable
 
     /// <summary>
-    /// Db Table
+    /// NDbTable Class.
     /// </summary>
     [Serializable]
-    public class DbTable : DbSchemaObject
+    public class NDbTable : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -1529,14 +1529,14 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbTable()
+        public NDbTable()
             : base() { }
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="tableName">Table Name</param>
         /// <param name="providerTableType">Provider TableType</param>
-        public DbTable(string tableName, string providerTableType)
+        public NDbTable(string tableName, string providerTableType)
             : this()
         {
             this._tableName = tableName;
@@ -1545,7 +1545,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbTable()
+        ~NDbTable()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -1599,13 +1599,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region Db Column
+    #region NDbColumn
 
     /// <summary>
-    /// DbColumn Class. wrapper the result from GetSchemaTable()
+    /// NDbColumn Class. wrapper the result from GetSchemaTable()
     /// </summary>
     [Serializable]
-    public class DbColumn : DbSchemaObject
+    public class NDbColumn : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -1644,11 +1644,11 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbColumn() : base() { }
+        public NDbColumn() : base() { }
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbColumn()
+        ~NDbColumn()
         {
             // Free Memory
             //GarbageCollector.FreeGC(this);
@@ -2179,7 +2179,7 @@ namespace NLib.Data
 
     #endregion
 
-    #region SchemaInfo
+    #region NSchemaInfo
 
     /// <summary>
     /// Schema Info Convertor delegate.
@@ -2189,20 +2189,20 @@ namespace NLib.Data
     /// <param name="info">The schema info that own the convertor.</param>
     /// <param name="factory">The caller connection factory.</param>
     /// <returns>Returns new instance of object that convert from DataRow.</returns>
-    public delegate T SchemaInfoConvertor<T>(DataRow row, SchemaInfo<T> info, NDbFactory factory)
-        where T : DbSchemaObject;
+    public delegate T NSchemaInfoConvertor<T>(DataRow row, NSchemaInfo<T> info, NDbFactory factory)
+        where T : NDbSchemaObject;
     /// <summary>
     /// Schema Info
     /// </summary>
     /// <typeparam name="T">The target object type.</typeparam>
-    public class SchemaInfo<T>
-        where T : DbSchemaObject
+    public class NSchemaInfo<T>
+        where T : NDbSchemaObject
     {
         #region Internal Variable
 
-        private DbMetaData _metadata = null;
-        private DbRestriction[] _restrictions = null;
-        private SchemaInfoConvertor<T> _converter;
+        private NDbMetaData _metadata = null;
+        private NDbRestriction[] _restrictions = null;
+        private NSchemaInfoConvertor<T> _converter;
 
         #endregion
 
@@ -2211,14 +2211,14 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public SchemaInfo()
+        public NSchemaInfo()
             : base()
         {
         }
         /// <summary>
         /// Destructor
         /// </summary>
-        ~SchemaInfo()
+        ~NSchemaInfo()
         {
             _converter = null;
             _metadata = null;
@@ -2232,7 +2232,7 @@ namespace NLib.Data
         /// <summary>
         /// Gets or sets meta data.
         /// </summary>
-        public DbMetaData MetaData
+        public NDbMetaData MetaData
         {
             get { return _metadata; }
             set { _metadata = value; }
@@ -2240,7 +2240,7 @@ namespace NLib.Data
         /// <summary>
         /// Gets or sets restriction for the collection.
         /// </summary>
-        public DbRestriction[] Restrictions
+        public NDbRestriction[] Restrictions
         {
             get { return _restrictions; }
             set { _restrictions = value; }
@@ -2248,7 +2248,7 @@ namespace NLib.Data
         /// <summary>
         /// Gets or sets convert callback function to convert from DataRow to target object.
         /// </summary>
-        public SchemaInfoConvertor<T> Convert
+        public NSchemaInfoConvertor<T> Convert
         {
             get { return _converter; }
             set { _converter = value; }
@@ -2259,17 +2259,17 @@ namespace NLib.Data
 
     #endregion
 
-    #region ProcedureSchemaInfo
+    #region NProcedureSchemaInfo
 
     /// <summary>
-    /// ProcedureSchemaInfo.
+    /// NProcedureSchemaInfo class.
     /// </summary>
-    public class ProcedureSchemaInfo
+    public class NProcedureSchemaInfo
     {
         /// <summary>
         /// Gets or sets the Restrictions for Procedures Metadata collection.
         /// </summary>
-        public DbRestriction[] Restrictions { get; set; }
+        public NDbRestriction[] Restrictions { get; set; }
         /// <summary>
         /// Gets or sets the Column's Name in result table that used for identify the
         /// procedure's name.
@@ -2279,13 +2279,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region DbProcedureParameterInfo
+    #region NDbProcedureParameterInfo
 
     /// <summary>
-    /// DbProcedureParameterInfo.
+    /// NDbProcedureParameterInfo class.
     /// </summary>
     [Serializable]
-    public class DbProcedureParameterInfo : DbSchemaObject
+    public class NDbProcedureParameterInfo : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -2300,7 +2300,7 @@ namespace NLib.Data
         /// <summary>
         /// Constructor.
         /// </summary>
-        public DbProcedureParameterInfo()
+        public NDbProcedureParameterInfo()
             : base()
         {
         }
@@ -2310,7 +2310,7 @@ namespace NLib.Data
         /// <param name="parameterName">Parameter Name.</param>
         /// <param name="dataType">Parameter Type.</param>
         /// <param name="direction">Parameter Direction.</param>
-        public DbProcedureParameterInfo(string parameterName,
+        public NDbProcedureParameterInfo(string parameterName,
             Type dataType, ParameterDirection direction)
             : this()
         {
@@ -2321,7 +2321,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor.
         /// </summary>
-        ~DbProcedureParameterInfo()
+        ~NDbProcedureParameterInfo()
         {
             _dataType = null;
         }
@@ -2418,13 +2418,13 @@ namespace NLib.Data
 
     #endregion
 
-    #region DbProcedureResultInfo
+    #region NDbProcedureResultInfo 
 
     /// <summary>
-    /// DbProcedureResultInfo.
+    /// NDbProcedureResultInfo class.
     /// </summary>
     [Serializable]
-    public class DbProcedureResultInfo : DbSchemaObject
+    public class NDbProcedureResultInfo : NDbSchemaObject
     {
         #region Internal Variable
 
@@ -2438,7 +2438,7 @@ namespace NLib.Data
         /// <summary>
         /// Constructor.
         /// </summary>
-        public DbProcedureResultInfo()
+        public NDbProcedureResultInfo()
             : base()
         {
         }
@@ -2447,7 +2447,7 @@ namespace NLib.Data
         /// </summary>
         /// <param name="columnName">The Column Name.</param>
         /// <param name="dataType">The column DataType.</param>
-        public DbProcedureResultInfo(string columnName, Type dataType)
+        public NDbProcedureResultInfo(string columnName, Type dataType)
             : this()
         {
             this._columnName = columnName;
@@ -2456,7 +2456,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor.
         /// </summary>
-        ~DbProcedureResultInfo()
+        ~NDbProcedureResultInfo()
         {
             _dataType = null;
         }
@@ -2534,19 +2534,19 @@ namespace NLib.Data
 
     #endregion
 
-    #region DbProcedureInfo
+    #region NDbProcedureInfo
 
     /// <summary>
-    /// DbProcedureInfo.
+    /// NDbProcedureInfo class.
     /// </summary>
     [Serializable]
-    public class DbProcedureInfo : DbSchemaObject
+    public class NDbProcedureInfo : NDbSchemaObject
     {
         #region Internal Variable
 
         private string _procedureName;
-        private List<DbProcedureParameterInfo> _params = new List<DbProcedureParameterInfo>();
-        private List<DbProcedureResultInfo> _results = new List<DbProcedureResultInfo>();
+        private List<NDbProcedureParameterInfo> _params = new List<NDbProcedureParameterInfo>();
+        private List<NDbProcedureResultInfo> _results = new List<NDbProcedureResultInfo>();
 
         #endregion
 
@@ -2555,13 +2555,13 @@ namespace NLib.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public DbProcedureInfo()
+        public NDbProcedureInfo()
             : base() { }
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="procedureName">Stored Procedure Name</param>
-        public DbProcedureInfo(string procedureName)
+        public NDbProcedureInfo(string procedureName)
             : this()
         {
             this._procedureName = procedureName;
@@ -2569,7 +2569,7 @@ namespace NLib.Data
         /// <summary>
         /// Destructor
         /// </summary>
-        ~DbProcedureInfo()
+        ~NDbProcedureInfo()
         {
             if (null != _results)
             {
@@ -2615,7 +2615,7 @@ namespace NLib.Data
         [Description("Gets the parameter list.")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<DbProcedureParameterInfo> Parameters
+        public List<NDbProcedureParameterInfo> Parameters
         {
             get { return _params; }
         }
@@ -2626,7 +2626,7 @@ namespace NLib.Data
         [Description("Gets the result list.")]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<DbProcedureResultInfo> Results
+        public List<NDbProcedureResultInfo> Results
         {
             get { return _results; }
         }

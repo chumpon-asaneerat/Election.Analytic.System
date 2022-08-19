@@ -3,16 +3,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows.Markup;
 using System.Windows.Data;
 using System.Windows.Controls;
 using System.Windows;
 
 #endregion
 
-namespace WizardProgressBarLibrary.Converters
+namespace PPRP.Controls.Utils
 {
+    #region IsProgressedConverter
+
+    /// <summary>
+    /// IsProgressedConverter class.
+    /// </summary>
     public class IsProgressedConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -39,9 +42,12 @@ namespace WizardProgressBarLibrary.Converters
             }
             return Visibility.Collapsed;
         }
+
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotSupportedException();
         }
     }
+
+    #endregion
 }

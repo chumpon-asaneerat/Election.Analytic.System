@@ -101,24 +101,24 @@ namespace NLib.Data
         /// </summary>
         /// <param name="owner">The owner name.</param>
         /// <returns>Returns the Table SchemaInfo instance for DbTable.</returns>
-        protected override SchemaInfo<DbTable> GetTableSchemaInfo(string owner)
+        protected override NSchemaInfo<NDbTable> GetTableSchemaInfo(string owner)
         {
             // Odbc
-            SchemaInfo<DbTable> info = new SchemaInfo<DbTable>();
+            NSchemaInfo<NDbTable> info = new NSchemaInfo<NDbTable>();
 
-            info.MetaData = new DbMetaData("Tables");
-            info.Restrictions = new DbRestriction[] 
+            info.MetaData = new NDbMetaData("Tables");
+            info.Restrictions = new NDbRestriction[] 
             {                
-                new DbRestriction(1, "TABLE_CAT", ""),
-                new DbRestriction(2, "TABLE_SCHEM", ""),
-                new DbRestriction(3, "TABLE_NAME", "")
+                new NDbRestriction(1, "TABLE_CAT", ""),
+                new NDbRestriction(2, "TABLE_SCHEM", ""),
+                new NDbRestriction(3, "TABLE_NAME", "")
             };
-            info.Convert = delegate(DataRow row, SchemaInfo<DbTable> schema, NDbFactory factory)
+            info.Convert = delegate(DataRow row, NSchemaInfo<NDbTable> schema, NDbFactory factory)
             {
-                DbTable val = null;
+                NDbTable val = null;
                 if (row["TABLE_NAME"] != DBNull.Value)
                 {
-                    val = new DbTable();
+                    val = new NDbTable();
                     val.TableName = row["TABLE_NAME"].ToString();
                     val.ProviderTableType = row["TABLE_TYPE"].ToString();
                 }
@@ -132,24 +132,24 @@ namespace NLib.Data
         /// </summary>
         /// <param name="owner">The owner name.</param>
         /// <returns>Returns the Table SchemaInfo instance for DbTable.</returns>
-        protected override SchemaInfo<DbTable> GetViewSchemaInfo(string owner)
+        protected override NSchemaInfo<NDbTable> GetViewSchemaInfo(string owner)
         {
             // Odbc
-            SchemaInfo<DbTable> info = new SchemaInfo<DbTable>();
+            NSchemaInfo<NDbTable> info = new NSchemaInfo<NDbTable>();
 
-            info.MetaData = new DbMetaData("Views");
-            info.Restrictions = new DbRestriction[] 
+            info.MetaData = new NDbMetaData("Views");
+            info.Restrictions = new NDbRestriction[] 
             {                
-                new DbRestriction(1, "TABLE_CAT", ""),
-                new DbRestriction(2, "TABLE_SCHEM", ""),
-                new DbRestriction(3, "TABLE_NAME", "")
+                new NDbRestriction(1, "TABLE_CAT", ""),
+                new NDbRestriction(2, "TABLE_SCHEM", ""),
+                new NDbRestriction(3, "TABLE_NAME", "")
             };
-            info.Convert = delegate(DataRow row, SchemaInfo<DbTable> schema, NDbFactory factory)
+            info.Convert = delegate(DataRow row, NSchemaInfo<NDbTable> schema, NDbFactory factory)
             {
-                DbTable val = null;
+                NDbTable val = null;
                 if (row["VIEW_NAME"] != DBNull.Value)
                 {
-                    val = new DbTable();
+                    val = new NDbTable();
                     val.TableName = row["TABLE_NAME"].ToString();
                     val.ProviderTableType = row["TABLE_TYPE"].ToString();
                 }
@@ -163,15 +163,15 @@ namespace NLib.Data
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <returns>Returns ProcedureSchemaInfo instance.</returns>
-        protected override ProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
+        protected override NProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
         {
-            DbRestriction[] restrictions = new DbRestriction[3];
-            restrictions[0] = new DbRestriction(1, "PROCEDURE_CAT", string.Empty);
-            restrictions[1] = new DbRestriction(2, "PROCEDURE_SCHEM", owner);
-            restrictions[2] = new DbRestriction(3, "PROCEDURE_NAME", string.Empty);
+            NDbRestriction[] restrictions = new NDbRestriction[3];
+            restrictions[0] = new NDbRestriction(1, "PROCEDURE_CAT", string.Empty);
+            restrictions[1] = new NDbRestriction(2, "PROCEDURE_SCHEM", owner);
+            restrictions[2] = new NDbRestriction(3, "PROCEDURE_NAME", string.Empty);
             //restrictions[3] = new DbRestriction(4, "PROCEDURE_TYPE", string.Empty);
 
-            ProcedureSchemaInfo info = new ProcedureSchemaInfo();
+            NProcedureSchemaInfo info = new NProcedureSchemaInfo();
             info.Restrictions = restrictions;
             info.ProcedureNameColumn = "PROCEDURE_NAME";
 

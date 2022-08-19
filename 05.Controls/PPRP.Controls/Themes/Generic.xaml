@@ -6,5 +6,6 @@
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.xaml" />
 
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/XceedToolKitStyle.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/WizardProgressBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

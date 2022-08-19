@@ -60,12 +60,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Themes\WizardProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\XceedToolKitStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\WizardProgressBar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -80,6 +85,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Utils\AttachProperties.cs" />
+    <Compile Include="Utils\IsLastItemConverter.cs" />
+    <Compile Include="Utils\IsProgressedConverter.cs" />
     <Compile Include="Utils\StringToNumberConverter.cs" />
     <Compile Include="Utils\ThaiYearConverter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

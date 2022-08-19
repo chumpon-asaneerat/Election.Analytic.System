@@ -298,7 +298,7 @@ namespace NLib.Data
         /// </summary>
         /// <param name="connection">Connection instance</param>
         /// <returns>List of all avaliable metadata from provider.</returns>
-        public abstract List<DbMetaData> GetMetadata(DbConnection connection);
+        public abstract List<NDbMetaData> GetMetadata(DbConnection connection);
 
         #endregion
 
@@ -310,8 +310,8 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="value">specificed Metadata to find restriction information</param>
         /// <returns>List of restriction information related to specificed Metadata</returns>
-        public abstract List<DbRestriction> GetRestrictions(DbConnection connection,
-            DbMetaData value);
+        public abstract List<NDbRestriction> GetRestrictions(DbConnection connection,
+            NDbMetaData value);
 
         #endregion
 
@@ -325,7 +325,7 @@ namespace NLib.Data
         /// <param name="restrictions">Restriction Array</param>
         /// <returns>Information about specificed metadata</returns>
         public abstract DataTable GetSchema(DbConnection connection,
-            DbMetaData value, DbRestriction[] restrictions);
+            NDbMetaData value, NDbRestriction[] restrictions);
 
         #endregion
 
@@ -337,7 +337,7 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="owner">Owner of Tables/Views</param>
         /// <returns>List of all avaliable Tables/Views from provider.</returns>
-        public abstract List<DbTable> GetTables(DbConnection connection, string owner);
+        public abstract List<NDbTable> GetTables(DbConnection connection, string owner);
 
         #endregion
 
@@ -362,7 +362,7 @@ namespace NLib.Data
         /// <param name="owner">Owner of Stored Procedure</param>
         /// <param name="procedureName">The Stored Procedure Name.</param>
         /// <returns>Returns the Stored Procedure Information.</returns>
-        public abstract DbProcedureInfo GetProcedureInfo(DbConnection connection,
+        public abstract NDbProcedureInfo GetProcedureInfo(DbConnection connection,
             string owner, string procedureName);
 
         #endregion
@@ -680,18 +680,18 @@ namespace NLib.Data
         /// </summary>
         /// <param name="connection">Connection instance.</param>
         /// <returns>List of Provider's datatypes</returns>
-        public virtual List<DbProviderDataType> GetProviderDataTypes(DbConnection connection)
+        public virtual List<NDbProviderDataType> GetProviderDataTypes(DbConnection connection)
         {
-            DbMetaData meta = new DbMetaData("DataTypes");
-            DbRestriction[] restrictions = new DbRestriction[0];
+            NDbMetaData meta = new NDbMetaData("DataTypes");
+            NDbRestriction[] restrictions = new NDbRestriction[0];
             DataTable table = GetSchema(connection, meta, restrictions);
 
-            List<DbProviderDataType> results = new List<DbProviderDataType>();
+            List<NDbProviderDataType> results = new List<NDbProviderDataType>();
             if (table != null && table.Rows != null && table.Rows.Count > 0)
             {
                 foreach (DataRow row in table.Rows)
                 {
-                    DbProviderDataType val = new DbProviderDataType();
+                    NDbProviderDataType val = new NDbProviderDataType();
 
                     #region TypeName and Provider DbType ID
 
@@ -844,18 +844,18 @@ namespace NLib.Data
         /// </summary>
         /// <param name="connection">Connection instance.</param>
         /// <returns>List of Provider's Reserved words</returns>
-        public virtual List<DbReservedword> GetReservedwords(DbConnection connection)
+        public virtual List<NDbReservedword> GetReservedwords(DbConnection connection)
         {
-            DbMetaData meta = new DbMetaData("ReservedWords");
-            DbRestriction[] restrictions = new DbRestriction[0];
+            NDbMetaData meta = new NDbMetaData("ReservedWords");
+            NDbRestriction[] restrictions = new NDbRestriction[0];
             DataTable table = GetSchema(connection, meta, restrictions);
 
-            List<DbReservedword> results = new List<DbReservedword>();
+            List<NDbReservedword> results = new List<NDbReservedword>();
             if (table != null && table.Rows != null && table.Rows.Count > 0)
             {
                 foreach (DataRow row in table.Rows)
                 {
-                    DbReservedword val = new DbReservedword();
+                    NDbReservedword val = new NDbReservedword();
 
                     val.Reservedword = row["Reservedword"].ToString();
                     val.Lock();
@@ -1177,13 +1177,13 @@ namespace NLib.Data
         /// </summary>
         /// <param name="owner">The owner name.</param>
         /// <returns>Returns the Table SchemaInfo instance for DbTable.</returns>
-        protected virtual SchemaInfo<DbTable> GetTableSchemaInfo(string owner) { return null; }
+        protected virtual NSchemaInfo<NDbTable> GetTableSchemaInfo(string owner) { return null; }
         /// <summary>
         /// Get View Schema Info.
         /// </summary>
         /// <param name="owner">The owner name.</param>
         /// <returns>Returns the Table SchemaInfo instance for DbTable.</returns>
-        protected virtual SchemaInfo<DbTable> GetViewSchemaInfo(string owner) { return null; }
+        protected virtual NSchemaInfo<NDbTable> GetViewSchemaInfo(string owner) { return null; }
 
         #endregion
 
@@ -1524,7 +1524,7 @@ namespace NLib.Data
         /// </summary>
         /// <param name="connection">Connection instance</param>
         /// <returns>List of all avaliable metadata from provider.</returns>
-        protected List<DbMetaData> _GetDbMetadata(TConnection connection)
+        protected List<NDbMetaData> _GetDbMetadata(TConnection connection)
         {
             if (connection == null ||
                 connection.State != ConnectionState.Open)
@@ -1533,7 +1533,7 @@ namespace NLib.Data
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                List<DbMetaData> results = new List<DbMetaData>();
+                List<NDbMetaData> results = new List<NDbMetaData>();
 
                 DataTable table = connection.GetSchema("MetaDataCollections");
                 if (table != null && table.Rows != null && table.Rows.Count > 0)
@@ -1542,7 +1542,7 @@ namespace NLib.Data
                     {
                         if (row["CollectionName"] != DBNull.Value)
                         {
-                            DbMetaData val = new DbMetaData();
+                            NDbMetaData val = new NDbMetaData();
 
                             val.CollectionName = row["CollectionName"].ToString();
                             // Number Of Restriction
@@ -1589,8 +1589,8 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="value">specificed Metadata to find restriction information</param>
         /// <returns>List of restriction information related to specificed Metadata</returns>
-        protected List<DbRestriction> _GetDbRestrictions(TConnection connection,
-            DbMetaData value)
+        protected List<NDbRestriction> _GetDbRestrictions(TConnection connection,
+            NDbMetaData value)
         {
             if (value == null)
                 return null;
@@ -1601,7 +1601,7 @@ namespace NLib.Data
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                List<DbRestriction> results = new List<DbRestriction>();
+                List<NDbRestriction> results = new List<NDbRestriction>();
 
                 DataTable table = connection.GetSchema("Restrictions");
                 if (table != null && table.Rows != null && table.Rows.Count > 0)
@@ -1610,7 +1610,7 @@ namespace NLib.Data
                     {
                         if (row["RestrictionName"] != DBNull.Value)
                         {
-                            DbRestriction val = new DbRestriction();
+                            NDbRestriction val = new NDbRestriction();
 
                             val.RestrictionName = row["RestrictionName"].ToString();
                             // Ord
@@ -1661,7 +1661,7 @@ namespace NLib.Data
         /// <param name="restrictions">Restriction Array</param>
         /// <returns>Information about specificed metadata</returns>
         protected DataTable _GetDbSchema(TConnection connection,
-            DbMetaData value, DbRestriction[] restrictions)
+            NDbMetaData value, NDbRestriction[] restrictions)
         {
             if (value == null)
                 return null;
@@ -1705,19 +1705,19 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="owner">Owner of Tables/Views</param>
         /// <returns>List of all avaliable Tables/Views from provider.</returns>
-        protected List<DbTable> _GetDbTables(TConnection connection, string owner)
+        protected List<NDbTable> _GetDbTables(TConnection connection, string owner)
         {
             if (connection == null ||
                 connection.State != ConnectionState.Open)
                 return null;
 
             MethodBase med = MethodBase.GetCurrentMethod();
-            List<DbTable> results = null;
+            List<NDbTable> results = null;
             DataTable table;
-            SchemaInfo<DbTable> info;
+            NSchemaInfo<NDbTable> info;
             try
             {
-                results = new List<DbTable>();
+                results = new List<NDbTable>();
 
                 #region Table
 
@@ -1732,7 +1732,7 @@ namespace NLib.Data
                     {
                         foreach (DataRow row in table.Rows)
                         {
-                            DbTable val = info.Convert(row, info, this);
+                            NDbTable val = info.Convert(row, info, this);
                             if (null != val)
                             {
                                 val.Lock(); // lock object
@@ -1771,7 +1771,7 @@ namespace NLib.Data
                     {
                         foreach (DataRow row in table.Rows)
                         {
-                            DbTable val = info.Convert(row, info, this);
+                            NDbTable val = info.Convert(row, info, this);
                             if (null != val)
                             {
                                 val.Lock(); // lock object
@@ -1810,7 +1810,7 @@ namespace NLib.Data
         /// </summary>
         /// <param name="owner">The owner.</param>
         /// <returns>Returns ProcedureSchemaInfo instance.</returns>
-        protected virtual ProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
+        protected virtual NProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
         {
             return null;
         }
@@ -1829,12 +1829,12 @@ namespace NLib.Data
                 connection.State != ConnectionState.Open)
                 return null;
 
-            ProcedureSchemaInfo info = this.GetProcedureSchemaInfo(owner);
+            NProcedureSchemaInfo info = this.GetProcedureSchemaInfo(owner);
             if (null == info)
                 return null;
 
-            DbMetaData meta = new DbMetaData("Procedures");
-            DbRestriction[] restrictions = info.Restrictions;
+            NDbMetaData meta = new NDbMetaData("Procedures");
+            NDbRestriction[] restrictions = info.Restrictions;
 
             DataTable table = GetSchema(connection, meta, restrictions);
 
@@ -1866,10 +1866,10 @@ namespace NLib.Data
         /// <param name="owner">Owner of Stored Procedure</param>
         /// <param name="procedureName">The Stored Procedure Name.</param>
         /// <returns>Returns the Stored Procedure Information.</returns>
-        protected DbProcedureInfo _GetProcedureInfo(TConnection connection,
+        protected NDbProcedureInfo _GetProcedureInfo(TConnection connection,
             string owner, string procedureName)
         {
-            DbProcedureInfo result = null;
+            NDbProcedureInfo result = null;
             if (connection == null ||
                 connection.State != ConnectionState.Open)
                 return null;
@@ -1882,12 +1882,12 @@ namespace NLib.Data
                 if (this.DerivedParameters(command))
                 {
                     // Create result instance.
-                    result = new DbProcedureInfo(procedureName);
+                    result = new NDbProcedureInfo(procedureName);
 
                     #region Parameters
 
                     // Local var
-                    DbProcedureParameterInfo paraInfo;
+                    NDbProcedureParameterInfo paraInfo;
                     // Each parameters
                     foreach (DbParameter para in command.Parameters)
                     {
@@ -1896,7 +1896,7 @@ namespace NLib.Data
                         Type paraType = this.ChangeType(para.DbType);
                         ParameterDirection direction = para.Direction;
                         // create new instance.
-                        paraInfo = new DbProcedureParameterInfo(paraName,
+                        paraInfo = new NDbProcedureParameterInfo(paraName,
                             paraType, direction);
                         // keep to list
                         result.Parameters.Add(paraInfo);
@@ -1964,11 +1964,11 @@ namespace NLib.Data
                     if (null != table && table.Columns.Count > 0)
                     {
                         // Local var
-                        DbProcedureResultInfo resultInfo;
+                        NDbProcedureResultInfo resultInfo;
                         foreach (DataColumn col in table.Columns)
                         {
                             // Create result instance
-                            resultInfo = new DbProcedureResultInfo(col.ColumnName,
+                            resultInfo = new NDbProcedureResultInfo(col.ColumnName,
                                 col.DataType);
                             // Add to list.
                             result.Results.Add(resultInfo);
@@ -2129,7 +2129,7 @@ namespace NLib.Data
         /// </summary>
         /// <param name="connection">Connection instance</param>
         /// <returns>List of all avaliable metadata from provider.</returns>
-        public override List<DbMetaData> GetMetadata(DbConnection connection)
+        public override List<NDbMetaData> GetMetadata(DbConnection connection)
         {
             if (null == connection || !(connection is TConnection) ||
                 connection.State != ConnectionState.Open)
@@ -2147,8 +2147,8 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="value">specificed Metadata to find restriction information</param>
         /// <returns>List of restriction information related to specificed Metadata</returns>
-        public override List<DbRestriction> GetRestrictions(DbConnection connection,
-            DbMetaData value)
+        public override List<NDbRestriction> GetRestrictions(DbConnection connection,
+            NDbMetaData value)
         {
             if (null == connection || !(connection is TConnection) ||
                 connection.State != ConnectionState.Open)
@@ -2168,7 +2168,7 @@ namespace NLib.Data
         /// <param name="restrictions">Restriction Array</param>
         /// <returns>Information about specificed metadata</returns>
         public override DataTable GetSchema(DbConnection connection,
-            DbMetaData value, DbRestriction[] restrictions)
+            NDbMetaData value, NDbRestriction[] restrictions)
         {
             if (null == connection || !(connection is TConnection) ||
                 connection.State != ConnectionState.Open)
@@ -2186,7 +2186,7 @@ namespace NLib.Data
         /// <param name="connection">Connection instance</param>
         /// <param name="owner">Owner of Tables/Views</param>
         /// <returns>List of all avaliable Tables/Views from provider.</returns>
-        public override List<DbTable> GetTables(DbConnection connection, string owner)
+        public override List<NDbTable> GetTables(DbConnection connection, string owner)
         {
             if (null == connection || !(connection is TConnection) ||
                 connection.State != ConnectionState.Open)
@@ -2225,7 +2225,7 @@ namespace NLib.Data
         /// <param name="owner">Owner of Stored Procedure</param>
         /// <param name="procedureName">The Stored Procedure Name.</param>
         /// <returns>Returns the Stored Procedure Information.</returns>
-        public override DbProcedureInfo GetProcedureInfo(DbConnection connection,
+        public override NDbProcedureInfo GetProcedureInfo(DbConnection connection,
             string owner, string procedureName)
         {
             if (null == connection || !(connection is TConnection) ||

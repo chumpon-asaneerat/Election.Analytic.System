@@ -28,8 +28,22 @@ Election.Analytic.System - PPRP  #32
 Election.Analytic.System - PPRP  #31
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #30
-- 
+- Update projects
+  - NLib project.
+    - Change framework to 4.7.2
+    - fixed duplicate classes -> huge.
+  - NLib.Reports project.
+    - Change framework to 4.7.2
+  - Update PPRP.Controls project.
+    - Add Styles
+      - Add WizardProgressBar.xaml 
+    - Add Controls
+      - Add WizardProgressBar control
+      - Add WizardProgressBar converter classes.
+  - Update WizardProgressBarDemo project.
+    - Change references to PPRP.Controls.
 
 [commited]
 Election.Analytic.System - PPRP  #29

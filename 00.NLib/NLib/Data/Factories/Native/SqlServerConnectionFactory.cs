@@ -137,27 +137,27 @@ namespace NLib.Data
 		/// </summary>
 		/// <param name="owner">The owner name.</param>
 		/// <returns>Returns the Table SchemaInfo instance for DbTable.</returns>
-		protected override SchemaInfo<DbTable> GetTableSchemaInfo(string owner)
+		protected override NSchemaInfo<NDbTable> GetTableSchemaInfo(string owner)
 		{
 			string _owner = string.IsNullOrWhiteSpace(owner) ? string.Empty : owner.Trim();
 
 			// SqlServer
-			SchemaInfo<DbTable> info = new SchemaInfo<DbTable>();
+			NSchemaInfo<NDbTable> info = new NSchemaInfo<NDbTable>();
 
-			info.MetaData = new DbMetaData("Tables");
-			info.Restrictions = new DbRestriction[] 
+			info.MetaData = new NDbMetaData("Tables");
+			info.Restrictions = new NDbRestriction[] 
 			{                
-				new DbRestriction(1, "Catalog", ""),
-				new DbRestriction(2, "Owner", _owner),
-				new DbRestriction(3, "Table", ""),
-				new DbRestriction(4, "TableType", "")
+				new NDbRestriction(1, "Catalog", ""),
+				new NDbRestriction(2, "Owner", _owner),
+				new NDbRestriction(3, "Table", ""),
+				new NDbRestriction(4, "TableType", "")
 			};
-			info.Convert = delegate(DataRow row, SchemaInfo<DbTable> schema, NDbFactory factory)
+			info.Convert = delegate(DataRow row, NSchemaInfo<NDbTable> schema, NDbFactory factory)
 			{
-				DbTable val = null;
+				NDbTable val = null;
 				if (row["TABLE_NAME"] != DBNull.Value)
 				{
-					val = new DbTable();
+					val = new NDbTable();
 					val.TableName = row["TABLE_NAME"].ToString();
 					val.ProviderTableType = row["TABLE_TYPE"].ToString();
 				}
@@ -171,17 +171,17 @@ namespace NLib.Data
 		/// </summary>
 		/// <param name="owner">The owner.</param>
 		/// <returns>Returns ProcedureSchemaInfo instance.</returns>
-		protected override ProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
+		protected override NProcedureSchemaInfo GetProcedureSchemaInfo(string owner)
 		{
 			string _owner = string.IsNullOrWhiteSpace(owner) ? string.Empty : owner.Trim();
 
-			DbRestriction[] restrictions = new DbRestriction[4];
-			restrictions[0] = new DbRestriction(1, "CATALOG", string.Empty);
-			restrictions[1] = new DbRestriction(2, "OWNER", _owner);
-			restrictions[2] = new DbRestriction(3, "NAME", string.Empty);
-			restrictions[3] = new DbRestriction(4, "TYPE", string.Empty);
+			NDbRestriction[] restrictions = new NDbRestriction[4];
+			restrictions[0] = new NDbRestriction(1, "CATALOG", string.Empty);
+			restrictions[1] = new NDbRestriction(2, "OWNER", _owner);
+			restrictions[2] = new NDbRestriction(3, "NAME", string.Empty);
+			restrictions[3] = new NDbRestriction(4, "TYPE", string.Empty);
 
-			ProcedureSchemaInfo info = new ProcedureSchemaInfo();
+			NProcedureSchemaInfo info = new NProcedureSchemaInfo();
 			info.Restrictions = restrictions;
 			info.ProcedureNameColumn = "ROUTINE_NAME";
 
