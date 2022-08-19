@@ -13,8 +13,12 @@ Election.Analytic.System - PPRP  #27
 Election.Analytic.System - PPRP  #26
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #25
-- 
+- Update projects
+  - Update PPRP.Core project.
+    - Add NInpc class.
+    - Add NSingelton class.
 
 [commited]
 Election.Analytic.System - PPRP  #24
