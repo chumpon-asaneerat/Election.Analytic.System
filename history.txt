@@ -19,8 +19,11 @@ Election.Analytic.System - PPRP  #35
 Election.Analytic.System - PPRP  #34
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #33
-- 
+- Update projects
+  - PPRP.Domains project.
+    - Add Dapper reference assemblies.
 
 [commited]
 Election.Analytic.System - PPRP  #32
