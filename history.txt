@@ -7,8 +7,13 @@ Election.Analytic.System - PPRP  #29
 Election.Analytic.System - PPRP  #28
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #27
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Add AttachProperties class.
+    - Add StringToNumberConverter class.
+    - Add ThaiYearConverter class.
 
 [commited]
 Election.Analytic.System - PPRP  #26
