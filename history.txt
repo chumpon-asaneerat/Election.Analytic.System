@@ -22,8 +22,9 @@ Election.Analytic.System - PPRP  #34
 Election.Analytic.System - PPRP  #33
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #32
-- 
+- Remove WizardProgressBarLibrary project #2.
 
 [commited]
 Election.Analytic.System - PPRP  #31
