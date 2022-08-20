@@ -28,7 +28,7 @@
             <TextBlock Text="ทดสอบ Testing" FontFamily="/PPRP.Manangement.App;component/Fonts/#iamsudyod2006-2puanpian" />
             -->
             <TextBlock Text="ทดสอบ Testing" />
-            <TextBlock Text="ทดสอบ Testing" FontFamily="{StaticResource Puanpian}" FontSize="30" />
+            <TextBlock Text="ทดสอบ Testing" FontFamily="{DynamicResource Puanpian}" FontSize="30" />
             <TextBlock Text="ทดสอบ Testing" />
         </StackPanel>
         <ListView x:Name="lvItems"

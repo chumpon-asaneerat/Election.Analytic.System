@@ -19,9 +19,9 @@
     <FontFamily x:Key="THSarabunNew">./Fonts/#TH Sarabun New</FontFamily>
     <FontFamily x:Key="Puanpian">./Fonts/#iamsudyod2006-2puanpian</FontFamily>
     -->
-    <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#TH Sarabun</FontFamily>
-    <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#TH Sarabun New</FontFamily>
-    <FontFamily x:Key="Puanpian">pack://application:,,,/Fonts/#iamsudyod2006-2puanpian</FontFamily>
+    <FontFamily x:Key="THSarabun">pack://application:,,,/PPRP.Controls;Component/Fonts/#TH Sarabun</FontFamily>
+    <FontFamily x:Key="THSarabunNew">pack://application:,,,/PPRP.Controls;Component/Fonts/#TH Sarabun New</FontFamily>
+    <FontFamily x:Key="Puanpian">pack://application:,,,/PPRP.Controls;Component/Fonts/#iamsudyod2006-2puanpian</FontFamily>
 
     <!--  COMMON FONT SIZE  -->
     <sys:Double x:Key="FontSize18" PresentationOptions:Freeze="True">18</sys:Double>
@@ -29,22 +29,22 @@
 
     <!--  COMMON CONTROLS STYLE  -->
     <Style TargetType="{x:Type Window}">
-        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
         <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
     </Style>
 
     <Style TargetType="{x:Type Control}">
-        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
         <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
     </Style>
     
     <Style TargetType="{x:Type UserControl}">
-        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
         <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
     </Style>
 
     <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
         <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
     </Style>
 </ResourceDictionary>
