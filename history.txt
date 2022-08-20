@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #44
 Election.Analytic.System - PPRP  #43
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #42
-- 
+- Update projects
+  - Try to add fonts to resource #1.
 
 [commited]
 Election.Analytic.System - PPRP  #41

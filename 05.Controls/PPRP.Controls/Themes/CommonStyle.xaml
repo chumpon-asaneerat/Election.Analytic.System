@@ -8,10 +8,43 @@
     <Thickness x:Key="CommonMargin">5</Thickness>
     <GridLength x:Key="PageMargin">5</GridLength>
 
-    <!--  COMMON FONT FAMILY  -->
-    <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#THSarabun</FontFamily>
-    <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#THSarabunNew</FontFamily>
+    <!--  COMMON FONT FAMILY (NOTE actual font name required to right click on font to preview from explorer) -->
+    <!--
+    <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#TH Sarabun</FontFamily>
+    <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#TH Sarabun New</FontFamily>
+    <FontFamily x:Key="Puanpian">pack://application:,,,/Fonts/#iamsudyod2006-2puanpian</FontFamily>
+    -->
+    <!--
+    <FontFamily x:Key="THSarabun">./Fonts/#TH Sarabun</FontFamily>
+    <FontFamily x:Key="THSarabunNew">./Fonts/#TH Sarabun New</FontFamily>
+    <FontFamily x:Key="Puanpian">./Fonts/#iamsudyod2006-2puanpian</FontFamily>
+    -->
+    <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#TH Sarabun</FontFamily>
+    <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#TH Sarabun New</FontFamily>
+    <FontFamily x:Key="Puanpian">pack://application:,,,/Fonts/#iamsudyod2006-2puanpian</FontFamily>
 
-    <!--  COMMON INPUT FONT SIZE  -->
-    <sys:Double x:Key="InputFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
+    <!--  COMMON FONT SIZE  -->
+    <sys:Double x:Key="FontSize18" PresentationOptions:Freeze="True">18</sys:Double>
+
+
+    <!--  COMMON CONTROLS STYLE  -->
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+    </Style>
+
+    <Style TargetType="{x:Type Control}">
+        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+    </Style>
+    
+    <Style TargetType="{x:Type UserControl}">
+        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Puanpian}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+    </Style>
 </ResourceDictionary>
