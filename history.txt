@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #48
 Election.Analytic.System - PPRP  #47
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #46
-- 
+- Update projects
+  - Update WizardProgressBar.xaml
+    - Set Text's font family to THSarabunNew.
 
 [commited]
 Election.Analytic.System - PPRP  #45

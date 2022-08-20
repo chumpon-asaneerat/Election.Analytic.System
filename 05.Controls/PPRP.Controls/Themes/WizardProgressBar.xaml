@@ -142,6 +142,7 @@
                                         <TextBlock Grid.Row="1"
                                                    Grid.ColumnSpan="2"
                                                    Text="{Binding}"
+                                                   FontFamily="{DynamicResource THSarabunNew}"
                                                    HorizontalAlignment="Center"
                                                    Margin="0,5,0,0" />
                                     </DataTemplate>
