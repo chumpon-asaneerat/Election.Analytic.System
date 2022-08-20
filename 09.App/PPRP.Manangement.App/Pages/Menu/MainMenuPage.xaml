@@ -8,14 +8,6 @@
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded"
              mc:Ignorable="d">
-    <UserControl.Resources>
-        <!--  COMMON FONT FAMILY  -->
-        <!--
-        <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#THSarabun</FontFamily>
-        <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#THSarabunNew</FontFamily>
-        <FontFamily x:Key="Puanpian">pack://application:,,,/Fonts/#puanpian</FontFamily>
-        -->
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -23,10 +15,6 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Vertical">
-            <!--
-            <TextBlock Text="ทดสอบ Testing" FontFamily="/PPRP.Manangement.App;component/Fonts/#TH Sarabun New"/>
-            <TextBlock Text="ทดสอบ Testing" FontFamily="/PPRP.Manangement.App;component/Fonts/#iamsudyod2006-2puanpian" />
-            -->
             <TextBlock Text="ทดสอบ Testing" />
             <TextBlock Text="ทดสอบ Testing" FontFamily="{DynamicResource Puanpian}" FontSize="30" />
             <TextBlock Text="ทดสอบ Testing" />

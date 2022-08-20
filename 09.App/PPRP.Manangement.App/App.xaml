@@ -7,10 +7,7 @@
                 <!-- Attach default Theme -->
                 <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml" />
 
-                <!--
                 <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;Component/Themes/Generic.xaml" />
-                -->
-                <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;Component/Themes/CommonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
