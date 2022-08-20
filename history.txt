@@ -28,8 +28,12 @@ Election.Analytic.System - PPRP  #42
 Election.Analytic.System - PPRP  #41
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #40
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Add font THSarabun.ttf
+    - Add font THSarabunNew.ttf
 
 [commited]
 Election.Analytic.System - PPRP  #39
