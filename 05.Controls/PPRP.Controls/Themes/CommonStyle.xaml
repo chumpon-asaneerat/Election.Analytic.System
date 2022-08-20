@@ -8,6 +8,10 @@
     <Thickness x:Key="CommonMargin">5</Thickness>
     <GridLength x:Key="PageMargin">5</GridLength>
 
+    <!--  COMMON FONT FAMILY  -->
+    <FontFamily x:Key="THSarabun">pack://application:,,,/Fonts/#THSarabun</FontFamily>
+    <FontFamily x:Key="THSarabunNew">pack://application:,,,/Fonts/#THSarabunNew</FontFamily>
+
     <!--  COMMON INPUT FONT SIZE  -->
     <sys:Double x:Key="InputFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
 </ResourceDictionary>

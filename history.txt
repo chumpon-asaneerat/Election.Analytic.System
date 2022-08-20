@@ -25,8 +25,11 @@ Election.Analytic.System - PPRP  #43
 Election.Analytic.System - PPRP  #42
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #41
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Update CommonStyle.xaml - add Font Family THSarabun, THSarabunNew
 
 [commited]
 Election.Analytic.System - PPRP  #40
