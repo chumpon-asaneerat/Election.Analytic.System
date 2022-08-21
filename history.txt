@@ -1,5 +1,6 @@
+[commited]
 Election.Analytic.System - PPRP  #50
-- 
+- Prepare history.txt
 
 [commited]
 Election.Analytic.System - PPRP  #49
