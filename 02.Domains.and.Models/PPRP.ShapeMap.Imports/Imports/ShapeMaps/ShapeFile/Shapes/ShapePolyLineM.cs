@@ -3,19 +3,27 @@
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
 
+#region Using
+
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using System.Data;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ShapePolyLineM
+
     /// <summary>
     /// A Shapefile ShapePolyLineM Shape
     /// </summary>
     public class ShapePolyLineM : ShapePolyLine
     {
+        #region Constructor
+
         /// <summary>
         /// A Shapefile PolyLine Shape
         /// </summary>
@@ -28,33 +36,11 @@ namespace Catfood.Shapefile
         protected internal ShapePolyLineM(int recordNumber, StringDictionary metadata, IDataRecord dataRecord, byte[] shapeData)
             : base(recordNumber, metadata, dataRecord)
         {
-            _type = ShapeType.PolyLineM; 
+            Type = ShapeType.PolyLineM;
 
             M = new List<double>();
             ParsePolyLineM(shapeData, out _boundingBox, out _parts);
         }
-
-        /// <summary>
-        /// Minimum measure
-        /// </summary>
-        public double Mmin { get; protected set; }
-
-        /// <summary>
-        /// Maximum measure
-        /// </summary>
-        public double Mmax { get; protected set; }
-
-        /// <summary>
-        /// List of M values per point.
-        /// 
-        /// From the official documentation: The measures for each part in the 
-        /// PolyLineM are stored end to end. The measures for part 2 follow the 
-        /// measures for part 1, and so on. The parts array holds the array index 
-        /// of the starting point for each part. There is no delimiter in the 
-        /// measure array between parts.
-        /// </summary>
-        public List<double> M { get; protected set; }
-
         /// <summary>        
         /// Function is basically the same as Shape.ParsePolyLineOrPolygon, it is just
         /// extended to handle the M extreme values
@@ -84,11 +70,10 @@ namespace Catfood.Shapefile
             // Byte Y*      Mmin        Mmin        Double      1           Little
             // Byte Y + 8*  Mmax        Mmax        Double      1           Little
             // Byte Y + 16* Marray      Marray      Double      NumPoints   Little
-
             //
             // *optional
-
             // validation step 1 - must have at least 8 + 4 + (4*8) + 4 + 4 bytes = 52
+
             if (shapeData.Length < 44)
             {
                 throw new InvalidOperationException("Invalid shape data");
@@ -97,7 +82,7 @@ namespace Catfood.Shapefile
             // extract bounding box, number of parts and number of points
             boundingBox = ParseBoundingBox(shapeData, 12, ProvidedOrder.Little);
             int numParts = EndianBitConverter.ToInt32(shapeData, 44, ProvidedOrder.Little);
-            int numPoints = EndianBitConverter.ToInt32(shapeData, 48, ProvidedOrder.Little);            
+            int numPoints = EndianBitConverter.ToInt32(shapeData, 48, ProvidedOrder.Little);
 
             // validation step 2 - we're expecting 4 * numParts + (16 + 8 * numPoints for m extremes and values) + 16 * numPoints + 52 bytes total
             if (shapeData.Length != 52 + (4 * numParts) + 16 + 8 * numPoints + (16 * numPoints))
@@ -153,5 +138,28 @@ namespace Catfood.Shapefile
                 M.Add(_m);
             }
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>Minimum measure</summary>
+        public double Mmin { get; protected set; }
+        /// <summary>Maximum measure</summary>
+        public double Mmax { get; protected set; }
+        /// <summary>
+        /// List of M values per point.
+        /// 
+        /// From the official documentation: The measures for each part in the 
+        /// PolyLineM are stored end to end. The measures for part 2 follow the 
+        /// measures for part 1, and so on. The parts array holds the array index 
+        /// of the starting point for each part. There is no delimiter in the 
+        /// measure array between parts.
+        /// </summary>
+        public List<double> M { get; protected set; }
+
+        #endregion
     }
+
+    #endregion
 }

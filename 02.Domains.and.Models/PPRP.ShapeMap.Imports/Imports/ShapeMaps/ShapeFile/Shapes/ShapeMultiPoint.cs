@@ -1,7 +1,9 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
+
+#region Using
 
 using System;
 using System.Collections.Generic;
@@ -9,15 +11,18 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Data;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ShapeMultiPoint
+
     /// <summary>
     /// A Shapefile MultiPoint Shape
     /// </summary>
     public class ShapeMultiPoint : Shape
     {
-        private RectangleD _boundingBox;
-        private PointD[] _points;
+        #region Constructor
 
         /// <summary>
         /// A Shapefile MultiPoint Shape
@@ -28,7 +33,8 @@ namespace Catfood.Shapefile
         /// <param name="shapeData">The shape record as a byte array</param>
         /// <exception cref="ArgumentNullException">Thrown if shapeData is null</exception>
         /// <exception cref="InvalidOperationException">Thrown if an error occurs parsing shapeData</exception>
-        protected internal ShapeMultiPoint(int recordNumber, StringDictionary metadata, IDataRecord dataRecord, byte[] shapeData)
+        protected internal ShapeMultiPoint(int recordNumber, StringDictionary metadata
+            , IDataRecord dataRecord, byte[] shapeData)
             : base(ShapeType.MultiPoint, recordNumber, metadata, dataRecord)
         {
             // metadata is validated by the base class
@@ -51,7 +57,7 @@ namespace Catfood.Shapefile
             }
 
             // extract bounding box and points
-            _boundingBox = ParseBoundingBox(shapeData, 12, ProvidedOrder.Little);
+            BoundingBox = ParseBoundingBox(shapeData, 12, ProvidedOrder.Little);
             int numPoints = EndianBitConverter.ToInt32(shapeData, 44, ProvidedOrder.Little);
 
             // validation step 2 - we're expecting 16 * numPoints + 48 bytes total
@@ -61,29 +67,26 @@ namespace Catfood.Shapefile
             }
 
             // now extract the points
-            _points = new PointD[numPoints];
+            Points = new PointD[numPoints];
             for (int pointNum = 0; pointNum < numPoints; pointNum++)
             {
-                _points[pointNum] = new PointD(EndianBitConverter.ToDouble(shapeData, 48 + (16 * pointNum), ProvidedOrder.Little),
+                Points[pointNum] = new PointD(EndianBitConverter.ToDouble(shapeData, 48 + (16 * pointNum), ProvidedOrder.Little),
                     EndianBitConverter.ToDouble(shapeData, 56 + (16 * pointNum), ProvidedOrder.Little));
             }
 
         }
 
-        /// <summary>
-        /// Gets the bounding box
-        /// </summary>
-        public RectangleD BoundingBox
-        {
-            get { return _boundingBox; }
-        }
-        
-        /// <summary>
-        /// Gets the array of points
-        /// </summary>
-        public PointD[] Points
-        {
-            get { return _points; }
-        }
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>Gets the bounding box</summary>
+        public RectangleD BoundingBox { get; }
+        /// <summary>Gets the array of points</summary>
+        public PointD[] Points { get; }
+
+        #endregion
     }
+
+    #endregion
 }

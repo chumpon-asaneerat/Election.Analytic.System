@@ -1,29 +1,32 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+#region Using
 
-namespace Catfood.Shapefile
+using System;
+
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ProvidedOrder (Enum)
+
     /// <summary>
     /// The order of bytes provided to EndianBitConverter
     /// </summary>
     public enum ProvidedOrder
     {
-        /// <summary>
-        /// Value is stored as big-endian
-        /// </summary>
+        /// <summary>Value is stored as big-endian</summary>
         Big,
-
-        /// <summary>
-        /// Value is stored as little-endian
-        /// </summary>
+        /// <summary>Value is stored as little-endian</summary>
         Little
     }
+
+    #endregion
+
+    #region EndianBitConverter
 
     /// <summary>
     /// BitConverter methods that allow a different source byte order (only a subset of BitConverter)
@@ -96,4 +99,6 @@ namespace Catfood.Shapefile
             }
         }
     }
+
+    #endregion
 }

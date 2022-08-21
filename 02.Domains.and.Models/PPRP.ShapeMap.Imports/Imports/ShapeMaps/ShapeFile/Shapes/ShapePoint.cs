@@ -1,7 +1,9 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
+
+#region Using
 
 using System;
 using System.Collections.Generic;
@@ -9,14 +11,18 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Data;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ShapePoint
+
     /// <summary>
     /// A Shapefile Point Shape
     /// </summary>
     public class ShapePoint : Shape
     {
-        private PointD _point;
+        #region Constructor
 
         /// <summary>
         /// A Shapefile Point Shape
@@ -48,16 +54,19 @@ namespace Catfood.Shapefile
                 throw new InvalidOperationException("Invalid shape data");
             }
 
-            _point = new PointD(EndianBitConverter.ToDouble(shapeData, 12, ProvidedOrder.Little),
+            Point = new PointD(EndianBitConverter.ToDouble(shapeData, 12, ProvidedOrder.Little),
                 EndianBitConverter.ToDouble(shapeData, 20, ProvidedOrder.Little));
         }
 
-        /// <summary>
-        /// Gets the point
-        /// </summary>
-        public PointD Point
-        {
-            get { return _point; }
-        }
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>Gets the point</summary>
+        public PointD Point { get; }
+
+        #endregion
     }
+
+    #endregion
 }

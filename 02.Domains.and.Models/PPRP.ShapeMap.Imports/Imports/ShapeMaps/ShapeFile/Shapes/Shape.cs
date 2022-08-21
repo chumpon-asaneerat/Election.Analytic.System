@@ -1,7 +1,9 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
+
+#region Using
 
 using System;
 using System.Collections.Generic;
@@ -9,8 +11,12 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Data;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region Shape
+
     /// <summary>
     /// Base Shapefile shape - contains only the shape type and metadata plus helper methods.
     /// An instance of Shape is the Null ShapeType. If the Type field is not ShapeType.Null then
@@ -18,10 +24,13 @@ namespace Catfood.Shapefile
     /// </summary>
     public class Shape
     {
-        internal ShapeType _type;
-        private int _recordNumber;
+        #region Internal Variables
+
         private StringDictionary _metadata;
-        private IDataRecord _dataRecord;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Base Shapefile shape - contains only the shape type and metadata plus helper methods.
@@ -34,103 +43,15 @@ namespace Catfood.Shapefile
         /// <param name="dataRecord">IDataRecord associated with the shape</param>
         protected internal Shape(ShapeType shapeType, int recordNumber, StringDictionary metadata, IDataRecord dataRecord)
         {
-            _type = shapeType;
+            Type = shapeType;
             _metadata = metadata;
-            _recordNumber = recordNumber;
-            _dataRecord = dataRecord;
+            RecordNumber = recordNumber;
+            DataRecord = dataRecord;
         }
 
-        /// <summary>
-        /// Gets the metadata (as a string) for a given name (key). Valid names
-        /// for this shape can be retrieved by calling GetMetadataNames().
-        /// </summary>
-        /// <param name="name">The name to retreieve</param>
-        /// <returns>The metadata string, or null if the requested name does not exist</returns>
-        public string GetMetadata(string name)
-        {
-            if ((_metadata != null) && (_metadata.ContainsKey(name)))
-            {
-                /*
-                if (name == "adm0_th")
-                {
-                    string val = _metadata[name];
+        #endregion
 
-
-                    //byte[] A = Encoding.GetEncoding(Encoding.Default.CodePage).GetBytes(reader.GetString(0));
-                    //string p = Encoding.Unicode.GetString((Encoding.Convert(Encoding.GetEncoding(850), Encoding.Unicode, A)));
-
-                    //Encoding src = Encoding.GetEncoding("iso-8859-1");
-                    //Encoding src = Encoding.GetEncoding(1252);
-                    //Encoding src = Encoding.GetEncoding(850);
-                    //Encoding src = Encoding.GetEncoding(737);
-                    Encoding src = Encoding.GetEncoding(Encoding.Default.CodePage);
-                    //Encoding src = Encoding.GetEncoding(850);
-                    Encoding dst = Encoding.UTF8;
-                    //Encoding dst = Encoding.ASCII;
-                    byte[] srcBytes = src.GetBytes(val);
-                    byte[] dstBytes = Encoding.Convert(src, dst, srcBytes);
-                    string msg = dst.GetString(dstBytes);
-
-                    return msg;
-                }
-                else
-                {
-                    return _metadata[name];
-                }
-                */
-                return _metadata[name];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Gets an array of valid metadata names (keys) for this shape. Returns
-        /// null if not metadata exists.
-        /// </summary>
-        /// <returns>Array of metadata names, or null of no metadata exists</returns>
-        public string[] GetMetadataNames()
-        {
-            if ((_metadata != null) && (_metadata.Keys.Count > 0))
-            {
-                List<string> names = new List<string>(_metadata.Keys.Count);
-                foreach (string key in _metadata.Keys)
-                {
-                    names.Add(key);
-                }
-                return names.ToArray();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Returns the IDataRecord associated with the shape metadata
-        /// </summary>
-        public IDataRecord DataRecord
-        {
-            get { return _dataRecord; }
-        }
-
-        /// <summary>
-        /// Gets the record number associated with this shape
-        /// </summary>
-        public int RecordNumber
-        {
-            get { return _recordNumber; }
-        }
-
-        /// <summary>
-        /// Get the ShapeType of this shape
-        /// </summary>
-        public ShapeType Type
-        {
-            get { return _type; }
-        }
+        #region Protected Methods
 
         /// <summary>
         /// Extracts a double precision rectangle (RectangleD) from a byte array - assumes that
@@ -148,7 +69,6 @@ namespace Catfood.Shapefile
                 EndianBitConverter.ToDouble(value, startIndex + 16, order),
                 EndianBitConverter.ToDouble(value, startIndex + 24, order));
         }
-
         /// <summary>
         /// The PolyLine and Polygon shapes share the same structure, this method parses the bounding box
         /// and list of parts for both
@@ -229,5 +149,63 @@ namespace Catfood.Shapefile
                 parts.Add(points);
             }
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Gets the metadata (as a string) for a given name (key). Valid names
+        /// for this shape can be retrieved by calling GetMetadataNames().
+        /// </summary>
+        /// <param name="name">The name to retreieve</param>
+        /// <returns>The metadata string, or null if the requested name does not exist</returns>
+        public string GetMetadata(string name)
+        {
+            if ((_metadata != null) && (_metadata.ContainsKey(name)))
+            {
+                return _metadata[name];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets an array of valid metadata names (keys) for this shape. Returns
+        /// null if not metadata exists.
+        /// </summary>
+        /// <returns>Array of metadata names, or null of no metadata exists</returns>
+        public string[] GetMetadataNames()
+        {
+            if ((_metadata != null) && (_metadata.Keys.Count > 0))
+            {
+                List<string> names = new List<string>(_metadata.Keys.Count);
+                foreach (string key in _metadata.Keys)
+                {
+                    names.Add(key);
+                }
+                return names.ToArray();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>Returns the IDataRecord associated with the shape metadata</summary>
+        public IDataRecord DataRecord { get; }
+        /// <summary>Gets the record number associated with this shape</summary>
+        public int RecordNumber { get; }
+        /// <summary>Get the ShapeType of this shape</summary>
+        public ShapeType Type { get; protected set; }
+
+        #endregion
     }
+
+    #endregion
 }

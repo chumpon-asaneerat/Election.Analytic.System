@@ -3,6 +3,8 @@
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
 
+#region Using
+
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,10 +12,16 @@ using System.Data.OleDb;
 using System.IO;
 using System.Text;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ShapeFileEnumerator
+
     class ShapeFileEnumerator : IEnumerator<Shape>
     {
+        #region Internal Variables
+
         private OleDbCommand _dbCommand;
         private OleDbDataReader _dbReader;
         private int _currentIndex = -1;
@@ -22,10 +30,26 @@ namespace Catfood.Shapefile
         private FileStream _indexStream;
         private int _count;
 
-        public ShapeFileEnumerator(OleDbConnection dbConnection, string selectString, bool rawMetadataOnly, FileStream mainStream,
-                                   FileStream indexStream, int count)
-        {
+        #endregion
 
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="dbConnection">The connection string.</param>
+        /// <param name="selectString">The select string.</param>
+        /// <param name="rawMetadataOnly">True for read metada only.</param>
+        /// <param name="mainStream">The shp main file stream.</param>
+        /// <param name="indexStream">The shp index file stream.</param>
+        /// <param name="count"></param>
+        public ShapeFileEnumerator(OleDbConnection dbConnection
+            , string selectString
+            , bool rawMetadataOnly
+            , FileStream mainStream
+            , FileStream indexStream
+            , int count)
+        {
             _rawMetadataOnly = rawMetadataOnly;
             _mainStream = mainStream;
             _indexStream = indexStream;
@@ -34,6 +58,7 @@ namespace Catfood.Shapefile
             _dbReader = _dbCommand.ExecuteReader();
         }
 
+        #endregion
 
         #region IEnumerator<Shape> Members
 
@@ -80,14 +105,11 @@ namespace Catfood.Shapefile
         /// <summary>
         /// Gets the current item in the collection
         /// </summary>
-        object System.Collections.IEnumerator.Current
-        {
-            get
-            {
-                return this.Current;
-            }
-        }
+        object System.Collections.IEnumerator.Current { get { return this.Current; } }
 
+        /// <summary>
+        /// Dispose.
+        /// </summary>
         public void Dispose()
         {
             _dbReader.Close();
@@ -100,7 +122,6 @@ namespace Catfood.Shapefile
         /// <returns>false if there are no more items in the collection</returns>
         public bool MoveNext()
         {
-
             if (_currentIndex++ < (_count - 1))
             {
                 // try to read the next database record
@@ -108,7 +129,6 @@ namespace Catfood.Shapefile
                 {
                     throw new InvalidOperationException("Metadata database does not contain a record for the next shape");
                 }
-
                 return true;
             }
             else
@@ -117,7 +137,6 @@ namespace Catfood.Shapefile
                 return false;
             }
         }
-
         /// <summary>
         /// Reset the enumerator
         /// </summary>
@@ -130,4 +149,6 @@ namespace Catfood.Shapefile
 
         #endregion
     }
+
+    #endregion
 }

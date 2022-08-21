@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,8 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Converter\EndianBitConverter.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\FileFormat\Header.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Structs\PointD.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Structs\RectangleD.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\Shape.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\FileFormat\ShapeFactory.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapefile.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\FileFormat\ShapeFileEnumerator.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapeMultiPoint.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePoint.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePolygon.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePolyLine.cs" />
+    <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePolyLineM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
+      <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
+      <Name>NLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

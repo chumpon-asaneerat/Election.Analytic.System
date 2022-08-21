@@ -7,8 +7,13 @@ Election.Analytic.System - PPRP  #49
 Election.Analytic.System - PPRP  #48
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #47
-- 
+- Update projects
+  - Update PPRP.ShapeMap.Imports project.
+    - Remove unuse file(s).
+  - Update PPRP.Excel.Imports project.
+    - Remove unuse file(s).
 
 [commited]
 Election.Analytic.System - PPRP  #46

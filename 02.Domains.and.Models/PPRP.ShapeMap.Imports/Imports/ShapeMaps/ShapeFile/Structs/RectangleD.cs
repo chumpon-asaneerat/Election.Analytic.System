@@ -1,38 +1,37 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+#region Using
 
-namespace Catfood.Shapefile
+using System;
+
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region RectangleD Struct
+
     /// <summary>
     /// A simple double precision rectangle
     /// </summary>
     public struct RectangleD
     {
-        /// <summary>
-        /// Gets or sets the left value
-        /// </summary>
+        #region Public Fields
+
+        /// <summary>Gets or sets the left value</summary>
         public double Left;
-
-        /// <summary>
-        /// Gets or sets the top value
-        /// </summary>
+        /// <summary>Gets or sets the top value</summary>
         public double Top;
-
-        /// <summary>
-        /// Gets or sets the right value
-        /// </summary>
+        /// <summary>Gets or sets the right value</summary>
         public double Right;
-
-        /// <summary>
-        /// Gets or sets the bottom value
-        /// </summary>
+        /// <summary>Gets or sets the bottom value</summary>
         public double Bottom;
+
+        #endregion
+
+        #region Constructor
 
         /// <summary>
         /// A simple double precision rectangle
@@ -48,5 +47,9 @@ namespace Catfood.Shapefile
             Right = right;
             Bottom = bottom;
         }
+
+        #endregion
     }
+
+    #endregion
 }

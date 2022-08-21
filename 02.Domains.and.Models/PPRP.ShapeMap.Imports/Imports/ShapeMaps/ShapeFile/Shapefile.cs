@@ -1,7 +1,9 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
+
+#region Using
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +13,9 @@ using System.IO;
 using System.Drawing;
 using System.Data.OleDb;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
     /// <summary>
     /// Provides a readonly IEnumerable interface to an ERSI Shapefile.
@@ -22,16 +26,21 @@ namespace Catfood.Shapefile
     /// </remarks>
     public class Shapefile : IDisposable, IEnumerable<Shape>
     {
+        #region Static Fields
+
         /// <summary>
         /// Jet connection string template
         /// </summary>
         public const string ConnectionStringTemplateJet = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=dBase IV";
-
         /// <summary>
         /// ACE connection string template
         /// </summary>
         public const string ConnectionStringTemplateAce = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=dBase IV";
-        
+
+        #endregion
+
+        #region Internal Variables
+
         private const string DbSelectStringTemplate = "SELECT * FROM [{0}]";
         private const string MainPathExtension = "shp";
         private const string IndexPathExtension = "shx";
@@ -55,12 +64,15 @@ namespace Catfood.Shapefile
         private string _connectionStringTemplate;
         private string _selectString;
 
+        #endregion
+
+        #region Constructor and Destructor
+
         /// <summary>
         /// Create a new Shapefile object.
         /// </summary>
         public Shapefile()
-            : this(null, ConnectionStringTemplateJet) {}
-
+            : this(null, ConnectionStringTemplateJet) { }
         /// <summary>
         /// Create a new Shapefile object and open a Shapefile. Note that three files are required - 
         /// the main file (.shp), the index file (.shx) and the dBASE table (.dbf). The three files 
@@ -72,8 +84,7 @@ namespace Catfood.Shapefile
         /// <exception cref="ArgumentException">Thrown if the path parameter is empty</exception>
         /// <exception cref="FileNotFoundException">Thrown if one of the three required files is not found</exception>
         public Shapefile(string path)
-            : this(path, ConnectionStringTemplateJet) {}
-
+            : this(path, ConnectionStringTemplateJet) { }
         /// <summary>
         /// Create a new Shapefile object and open a Shapefile. Note that three files are required - 
         /// the main file (.shp), the index file (.shx) and the dBASE table (.dbf). The three files 
@@ -101,6 +112,134 @@ namespace Catfood.Shapefile
                 Open(path);
             }
         }
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~Shapefile()
+        {
+            Dispose(false);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void OpenDb()
+        {
+            // The drivers for DBF files throw an exception if the filename 
+            // is longer than 8 characters - in this case create a temp file
+            // for the DB
+            string safeDbasePath = _shapefileDbasePath;
+            if (Path.GetFileNameWithoutExtension(safeDbasePath).Length > 8)
+            {
+                // create/delete temp file (we just want a safe path)
+                string initialTempFile = Path.GetTempFileName();
+                try
+                {
+                    File.Delete(initialTempFile);
+                }
+                catch { }
+
+                // set the correct extension
+                _shapefileTempDbasePath = Path.ChangeExtension(initialTempFile, DbasePathExtension);
+
+                // copy over the DB
+                File.Copy(_shapefileDbasePath, _shapefileTempDbasePath, true);
+                safeDbasePath = _shapefileTempDbasePath;
+            }
+
+            string connectionString = string.Format(ConnectionStringTemplate,
+                Path.GetDirectoryName(safeDbasePath));
+            _selectString = string.Format(DbSelectStringTemplate,
+                Path.GetFileNameWithoutExtension(safeDbasePath));
+
+            _dbConnection = new OleDbConnection(connectionString);
+            _dbConnection.Open();
+
+        }
+        private void CloseDb()
+        {
+
+            if (_dbConnection != null)
+            {
+                _dbConnection.Close();
+                _dbConnection = null;
+            }
+
+            if (_shapefileTempDbasePath != null)
+            {
+                if (File.Exists(_shapefileTempDbasePath))
+                {
+                    try
+                    {
+                        File.Delete(_shapefileTempDbasePath);
+                    }
+                    catch { }
+                }
+
+                _shapefileTempDbasePath = null;
+            }
+        }
+
+        #endregion
+
+        #region IDisposable Members
+
+        /// <summary>
+        /// Dispose the Shapefile and free all resources.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        private void Dispose(bool canDisposeManagedResources)
+        {
+            if (!_disposed)
+            {
+                if (canDisposeManagedResources)
+                {
+                    if (_mainStream != null)
+                    {
+                        _mainStream.Close();
+                        _mainStream = null;
+                    }
+
+                    if (_indexStream != null)
+                    {
+                        _indexStream.Close();
+                        _indexStream = null;
+                    }
+
+                    CloseDb();
+                }
+
+                _disposed = true;
+                _opened = false;
+            }
+        }
+        /// <summary>
+        /// Get the IEnumerator for this Shapefile
+        /// </summary>
+        /// <returns>IEnumerator</returns>
+        public IEnumerator<Shape> GetEnumerator()
+        {
+            return new ShapeFileEnumerator(_dbConnection, _selectString, _rawMetadataOnly, _mainStream,
+                                          _indexStream, _count);
+        }
+
+        #endregion
+
+        #region IEnumerable Members
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         /// Create a new Shapefile object and open a Shapefile. Note that three files are required - 
@@ -180,7 +319,6 @@ namespace Catfood.Shapefile
 
             _opened = true;
         }
-
         /// <summary>
         /// Close the Shapefile. Equivalent to calling Dispose().
         /// </summary>
@@ -188,6 +326,10 @@ namespace Catfood.Shapefile
         {
             Dispose();
         }
+
+        #endregion
+
+        #region Public Properties
 
         /// <summary>
         /// Gets or sets the connection string template - use Shapefile.ConnectionStringTemplateJet
@@ -198,7 +340,6 @@ namespace Catfood.Shapefile
             get { return _connectionStringTemplate; }
             set { _connectionStringTemplate = value; }
         }
-
         /// <summary>
         /// If true then only the IDataRecord (DataRecord) property is available to access metadata for each shape.
         /// If flase (the default) then metadata is also parsed into a string dictionary (use GetMetadataNames() and
@@ -209,170 +350,38 @@ namespace Catfood.Shapefile
             get { return _rawMetadataOnly; }
             set { _rawMetadataOnly = value; }
         }
-
-        /// <summary>
-        /// Gets the number of shapes in the Shapefile
-        /// </summary>
+        /// <summary>Gets the number of shapes in the Shapefile</summary>
         public int Count
         {
-            get 
+            get
             {
                 if (_disposed) throw new ObjectDisposedException("Shapefile");
                 if (!_opened) throw new InvalidOperationException("Shapefile not open.");
 
-                return _count; 
+                return _count;
             }
         }
-
-        /// <summary>
-        /// Gets the bounding box for the Shapefile
-        /// </summary>
+        /// <summary>Gets the bounding box for the Shapefile</summary>
         public RectangleD BoundingBox
         {
-            get 
+            get
             {
                 if (_disposed) throw new ObjectDisposedException("Shapefile");
                 if (!_opened) throw new InvalidOperationException("Shapefile not open.");
 
-                return _boundingBox; 
+                return _boundingBox;
             }
-           
-        }
 
-        /// <summary>
-        /// Gets the ShapeType of the Shapefile
-        /// </summary>
+        }
+        /// <summary>Gets the ShapeType of the Shapefile</summary>
         public ShapeType Type
         {
-            get 
+            get
             {
                 if (_disposed) throw new ObjectDisposedException("Shapefile");
                 if (!_opened) throw new InvalidOperationException("Shapefile not open.");
-                
-                return _type; 
+                return _type;
             }
-        }
-
-        private void OpenDb()
-        {
-            // The drivers for DBF files throw an exception if the filename 
-            // is longer than 8 characters - in this case create a temp file
-            // for the DB
-            string safeDbasePath = _shapefileDbasePath;
-            if (Path.GetFileNameWithoutExtension(safeDbasePath).Length > 8)
-            {
-                // create/delete temp file (we just want a safe path)
-                string initialTempFile = Path.GetTempFileName();
-                try
-                {
-                    File.Delete(initialTempFile);
-                }
-                catch { }
-
-                // set the correct extension
-                _shapefileTempDbasePath = Path.ChangeExtension(initialTempFile, DbasePathExtension);
-
-                // copy over the DB
-                File.Copy(_shapefileDbasePath, _shapefileTempDbasePath, true);
-                safeDbasePath = _shapefileTempDbasePath;
-            }
-
-            string connectionString = string.Format(ConnectionStringTemplate,
-                Path.GetDirectoryName(safeDbasePath));
-            _selectString = string.Format(DbSelectStringTemplate,
-                Path.GetFileNameWithoutExtension(safeDbasePath));
-
-            _dbConnection = new OleDbConnection(connectionString);
-            _dbConnection.Open();
-            
-        }
-
-        private void CloseDb()
-        {
-
-            if (_dbConnection != null)
-            {
-                _dbConnection.Close();
-                _dbConnection = null;
-            }
-
-            if (_shapefileTempDbasePath != null)
-            {
-                if (File.Exists(_shapefileTempDbasePath))
-                {
-                    try
-                    {
-                        File.Delete(_shapefileTempDbasePath);
-                    }
-                    catch { }
-                }
-
-                _shapefileTempDbasePath = null;
-            }
-        }
-
-        #region IDisposable Members
-
-        /// <summary />
-        ~Shapefile()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>
-        /// Dispose the Shapefile and free all resources.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        private void Dispose(bool canDisposeManagedResources)
-        {
-            if (!_disposed)
-            {
-                if (canDisposeManagedResources)
-                {
-                    if (_mainStream != null)
-                    {
-                        _mainStream.Close();
-                        _mainStream = null;
-                    }
-
-                    if (_indexStream != null)
-                    {
-                        _indexStream.Close();
-                        _indexStream = null;
-                    }
-
-                    CloseDb();
-                }
-
-                _disposed = true;
-                _opened = false;
-            }
-        }
-
-
-        /// <summary>
-        /// Get the IEnumerator for this Shapefile
-        /// </summary>
-        /// <returns>IEnumerator</returns>
-        public IEnumerator<Shape> GetEnumerator()
-        {
-
-            return new ShapeFileEnumerator(_dbConnection, _selectString, _rawMetadataOnly, _mainStream,
-                                          _indexStream, _count);
-        }
-
-        #endregion
-
-        #region IEnumerable Members
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
 
         #endregion

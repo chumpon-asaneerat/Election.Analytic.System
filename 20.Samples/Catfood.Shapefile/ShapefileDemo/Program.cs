@@ -5,13 +5,104 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using Catfood.Shapefile;
-using System.Diagnostics;
+using PPRP;
+using PPRP.Imports.ShapeFiles;
+using Newtonsoft.Json;
 
 namespace ShapefileDemo
 {
+    #region ShapeType
+
+    /// <summary>
+    /// The ShapeType of a shape in a Shapefile
+    /// </summary>
+    public enum JsonShapeType
+    {
+        /// <summary>Null Shape</summary>
+        Null = 0,
+        /// <summary>Point Shape</summary>
+        Point = 1,
+        /// <summary>PolyLine Shape</summary>
+        PolyLine = 3,
+        /// <summary>Polygon Shape</summary>
+        Polygon = 5,
+        /// <summary>MultiPoint Shape</summary>
+        MultiPoint = 8,
+        /// <summary>PointZ Shape</summary>
+        PointZ = 11,
+        /// <summary>PolyLineZ Shape</summary>
+        PolyLineZ = 13,
+        /// <summary>PolygonZ Shape</summary>
+        PolygonZ = 15,
+        /// <summary>MultiPointZ Shape</summary>
+        MultiPointZ = 18,
+        /// <summary>PointM Shape</summary>
+        PointM = 21,
+        /// <summary>PolyLineM Shape</summary>
+        PolyLineM = 23,
+        /// <summary>PolygonM Shape</summary>
+        PolygonM = 25,
+        /// <summary>MultiPointM Shape</summary>
+        MultiPointM = 28,
+        /// <summary>MultiPatch Shape</summary>
+        MultiPatch = 31
+    }
+
+    #endregion
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class JsonRectangleD
+    {
+        public double Left { get; set; }
+        public double Top { get; set; }
+        public double Right { get; set; }
+        public double Bottom { get; set; }
+    }
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class JsonShapeFile
+    {
+        public JsonShapeFile() : base()
+        {
+            this.BoundingBox = new JsonRectangleD();
+            this.Shapes = new List<JsonShape>();
+        }
+
+        public JsonShapeType ShapeType { get; set; }
+        public int Count { get; set; }
+        public JsonRectangleD BoundingBox { get; set; }
+
+        /// <summary>
+        /// Gets or sets Plaza Groups.
+        /// </summary>
+        [JsonProperty(ObjectCreationHandling = ObjectCreationHandling.Replace)]
+        public List<JsonShape> Shapes { get; set; }
+    }
+
+    [JsonObject(MemberSerialization.OptOut)]
+    public class JsonShape
+    {
+        public int RecordNo { get; set; }
+        public JsonShapeType ShapeType { get; set; }
+
+        public string ADM0_EN { get; set; }
+        public string ADM0_PCODE { get; set; }
+
+        public string ADM1_EN { get; set; }
+        public string ADM1_PCODE { get; set; }
+
+        public string ADM2_EN { get; set; }
+        public string ADM2_PCODE { get; set; }
+
+        public string ADM3_EN { get; set; }
+        public string ADM3_PCODE { get; set; }
+
+        public double SHAPE_LENGTH { get; set; }
+
+        public double SHAPE_AREA { get; set; }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -23,58 +114,41 @@ namespace ShapefileDemo
                 return;
             }
 
-
-            FileStream ostrm;
-            StreamWriter writer;
-            TextWriter oldOut = Console.Out;
-            try
-            {
-                ostrm = new FileStream("./Redirect.txt", FileMode.OpenOrCreate, FileAccess.Write);
-                writer = new StreamWriter(ostrm);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Cannot open Redirect.txt for writing");
-                Console.WriteLine(e.Message);
-                return;
-            }
-            Console.SetOut(writer);
-
             // construct shapefile with the path to the .shp file
             using (Shapefile shapefile = new Shapefile(args[0]))
             {
                 Console.WriteLine("ShapefileDemo Dumping {0}", args[0]);
                 Console.WriteLine();
 
-                // a shapefile contains one type of shape (and possibly null shapes)
-                Console.WriteLine("Type: {0}, Shapes: {1:n0}", shapefile.Type, shapefile.Count);
-
-                // a shapefile also defines a bounding box for all shapes in the file
-                Console.WriteLine("Bounds: {0},{1} -> {2},{3}",
-                    shapefile.BoundingBox.Left,
-                    shapefile.BoundingBox.Top,
-                    shapefile.BoundingBox.Right,
-                    shapefile.BoundingBox.Bottom);
-                Console.WriteLine();
+                JsonShapeFile file = new JsonShapeFile();
+                file.ShapeType = (JsonShapeType)shapefile.Type;
+                file.Count = shapefile.Count;
+                file.BoundingBox.Left = shapefile.BoundingBox.Left;
+                file.BoundingBox.Top = shapefile.BoundingBox.Top;
+                file.BoundingBox.Right = shapefile.BoundingBox.Right;
+                file.BoundingBox.Bottom = shapefile.BoundingBox.Bottom;
 
                 // enumerate all shapes
                 foreach (Shape shape in shapefile)
                 {
-                    Console.WriteLine("----------------------------------------");
-                    Console.WriteLine("Shape {0:n0}, Type {1}", shape.RecordNumber, shape.Type);
+                    JsonShape jshape = new JsonShape();
+                    jshape.RecordNo = shape.RecordNumber;
+                    jshape.ShapeType = (JsonShapeType)shape.Type;
+                    jshape.SHAPE_AREA = Convert.ToDouble(shape.GetMetadata("SHAPE_AREA"));
+                    jshape.SHAPE_LENGTH = Convert.ToDouble(shape.GetMetadata("SHAPE_LENG"));
 
-                    // each shape may have associated metadata
-                    string[] metadataNames = shape.GetMetadataNames();
-                    if (metadataNames != null)
-                    {
-                        Console.WriteLine("Metadata:");
-                        foreach (string metadataName in metadataNames)
-                        {
-                            Console.WriteLine("{0}={1} ({2})", metadataName, shape.GetMetadata(metadataName), shape.DataRecord.GetDataTypeName(shape.DataRecord.GetOrdinal(metadataName)));
-                        }
-                        Console.WriteLine();
-                    }
+                    jshape.ADM0_EN = shape.GetMetadata("ADM0_EN");
+                    jshape.ADM0_PCODE = shape.GetMetadata("ADM0_PCODE");
+                    jshape.ADM1_EN = shape.GetMetadata("ADM1_EN");
+                    jshape.ADM1_PCODE = shape.GetMetadata("ADM1_PCODE");
+                    jshape.ADM2_EN = shape.GetMetadata("ADM2_EN");
+                    jshape.ADM2_PCODE = shape.GetMetadata("ADM2_PCODE");
+                    jshape.ADM3_EN = shape.GetMetadata("ADM3_EN");
+                    jshape.ADM3_PCODE = shape.GetMetadata("ADM3_PCODE");
 
+                    jshape.SaveToFile("./output.json");
+
+                    /*
                     // cast shape based on the type
                     switch (shape.Type)
                     {
@@ -83,7 +157,6 @@ namespace ShapefileDemo
                             ShapePoint shapePoint = shape as ShapePoint;
                             Console.WriteLine("Point={0},{1}", shapePoint.Point.X, shapePoint.Point.Y);
                             break;
-
                         case ShapeType.Polygon:
                             // a polygon contains one or more parts - each part is a list of points which
                             // are clockwise for boundaries and anti-clockwise for holes 
@@ -99,21 +172,14 @@ namespace ShapefileDemo
                                 Console.WriteLine();
                             }
                             break;
-
                         default:
                             // and so on for other types...
                             break;
                     }
-
-                    Console.WriteLine("----------------------------------------");
-                    Console.WriteLine();
+                    */
                 }
 
             }
-
-            Console.SetOut(oldOut);
-            writer.Close();
-            ostrm.Close();
 
             Console.WriteLine("Done");
             Console.WriteLine();

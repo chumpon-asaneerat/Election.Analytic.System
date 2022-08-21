@@ -1,7 +1,9 @@
-/* ------------------------------------------------------------------------
+﻿/* ------------------------------------------------------------------------
  * (c)copyright 2009-2019 Robert Ellison and contributors - https://github.com/abfo/shapefile
  * Provided under the ms-PL license, see LICENSE.txt
  * ------------------------------------------------------------------------ */
+
+#region Using
 
 using System;
 using System.Collections.Generic;
@@ -9,13 +11,19 @@ using System.Collections.Specialized;
 using System.Text;
 using System.Data;
 
-namespace Catfood.Shapefile
+#endregion
+
+namespace PPRP.Imports.ShapeFiles
 {
+    #region ShapeFactory
+
     /// <summary>
     /// Static factory class to create shape objects from a shape record
     /// </summary>
     static class ShapeFactory
     {
+        #region Static Methods
+
         /// <summary>
         /// Creates a Shape object (or derived object) from a shape record
         /// </summary>
@@ -41,12 +49,12 @@ namespace Catfood.Shapefile
             // shape data contains a header (shape number and content length)
             // the first field in each shape is the shape type
 
-            //Position  Field           Value                   Type        Order
-            //Byte 0    Record          Number Record Number    Integer     Big
-            //Byte 4    Content Length  Content Length          Integer     Big
-
-            //Position  Field       Value                   Type        Number      Order
-            //Byte 0    Shape Type  Shape Type              Integer     1           Little
+            // Position  Field           Value                   Type        Order
+            // Byte 0    Record          Number Record Number    Integer     Big
+            // Byte 4    Content Length  Content Length          Integer     Big
+               
+            // Position  Field       Value                   Type        Number      Order
+            // Byte 0    Shape Type  Shape Type              Integer     1           Little
 
             int recordNumber = EndianBitConverter.ToInt32(shapeData, 0, ProvidedOrder.Big);
             int contentLengthInWords = EndianBitConverter.ToInt32(shapeData, 4, ProvidedOrder.Big);
@@ -65,32 +73,30 @@ namespace Catfood.Shapefile
                 case ShapeType.Null:
                     shape = new Shape(shapeType, recordNumber, metadata, dataRecord);
                     break;
-
                 case ShapeType.Point:
                     shape = new ShapePoint(recordNumber, metadata, dataRecord, shapeData);
                     break;
-
                 case ShapeType.MultiPoint:
                     shape = new ShapeMultiPoint(recordNumber, metadata, dataRecord, shapeData);
                     break;
-
                 case ShapeType.PolyLine:
                     shape = new ShapePolyLine(recordNumber, metadata, dataRecord, shapeData);
                     break;
-
                 case ShapeType.PolyLineM:
                     shape = new ShapePolyLineM(recordNumber, metadata, dataRecord, shapeData);
                     break;
-
                 case ShapeType.Polygon:
                     shape = new ShapePolygon(recordNumber, metadata, dataRecord, shapeData);
                     break;
-
                 default:
                     throw new NotImplementedException(string.Format("Shapetype {0} is not implemented", shapeType));
             }
 
             return shape;
         }
+
+        #endregion
     }
+
+    #endregion
 }
