@@ -65,13 +65,13 @@ namespace ShapefileDemo
     {
         public JsonShapeFile() : base()
         {
-            this.BoundingBox = new JsonRectangleD();
+            this.Bound = new JsonRectangleD();
             this.Shapes = new List<JsonShape>();
         }
 
         public JsonShapeType ShapeType { get; set; }
         public int Count { get; set; }
-        public JsonRectangleD BoundingBox { get; set; }
+        public JsonRectangleD Bound { get; set; }
 
         /// <summary>
         /// Gets or sets Plaza Groups.
@@ -123,10 +123,10 @@ namespace ShapefileDemo
                 JsonShapeFile file = new JsonShapeFile();
                 file.ShapeType = (JsonShapeType)shapefile.Type;
                 file.Count = shapefile.Count;
-                file.BoundingBox.Left = shapefile.BoundingBox.Left;
-                file.BoundingBox.Top = shapefile.BoundingBox.Top;
-                file.BoundingBox.Right = shapefile.BoundingBox.Right;
-                file.BoundingBox.Bottom = shapefile.BoundingBox.Bottom;
+                file.Bound.Left = shapefile.BoundingBox.Left;
+                file.Bound.Top = shapefile.BoundingBox.Top;
+                file.Bound.Right = shapefile.BoundingBox.Right;
+                file.Bound.Bottom = shapefile.BoundingBox.Bottom;
 
                 // enumerate all shapes
                 foreach (Shape shape in shapefile)
@@ -145,8 +145,6 @@ namespace ShapefileDemo
                     jshape.ADM2_PCODE = shape.GetMetadata("ADM2_PCODE");
                     jshape.ADM3_EN = shape.GetMetadata("ADM3_EN");
                     jshape.ADM3_PCODE = shape.GetMetadata("ADM3_PCODE");
-
-                    jshape.SaveToFile("./output.json");
 
                     /*
                     // cast shape based on the type
@@ -179,6 +177,8 @@ namespace ShapefileDemo
                     */
                 }
 
+
+                file.SaveToFile("./output.json");
             }
 
             Console.WriteLine("Done");
