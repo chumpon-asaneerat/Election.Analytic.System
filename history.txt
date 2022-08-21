@@ -1,4 +1,10 @@
 [commited]
+Election.Analytic.System - PPRP  #51
+- Update projects
+  - Update PPRP.ShapeMap.Imports project.
+    - Implements Shape File classes #3.
+
+[commited]
 Election.Analytic.System - PPRP  #50
 - Prepare history.txt
 
