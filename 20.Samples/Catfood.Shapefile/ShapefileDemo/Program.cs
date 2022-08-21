@@ -175,6 +175,8 @@ namespace ShapefileDemo
                             break;
                     }
                     */
+
+                    file.Shapes.Add(jshape);
                 }
 
 
