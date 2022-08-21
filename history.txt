@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #58
 Election.Analytic.System - PPRP  #57
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #56
-- 
+- Update projects
+  - All code re commited.
 
 [commited]
 Election.Analytic.System - PPRP  #55
