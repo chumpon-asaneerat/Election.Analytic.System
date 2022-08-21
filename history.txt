@@ -1,4 +1,10 @@
 [commited]
+Election.Analytic.System - PPRP  #53
+- Update projects
+  - Update PPRP.ShapeMap.Imports project.
+    - Implements Shape File classes #5.
+
+[commited]
 Election.Analytic.System - PPRP  #52
 - Update projects
   - Update PPRP.ShapeMap.Imports project.
