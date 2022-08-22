@@ -16,6 +16,7 @@
     <FontFamily x:Key="Puanpian">pack://application:,,,/PPRP.Controls;Component/Fonts/#iamsudyod2006-2puanpian</FontFamily>
 
     <!--  COMMON FONT SIZE  -->
+    <sys:Double x:Key="FontSize14" PresentationOptions:Freeze="True">14</sys:Double>
     <sys:Double x:Key="FontSize16" PresentationOptions:Freeze="True">16</sys:Double>
     <sys:Double x:Key="FontSize18" PresentationOptions:Freeze="True">18</sys:Double>
     <sys:Double x:Key="FontSize30" PresentationOptions:Freeze="True">30</sys:Double>

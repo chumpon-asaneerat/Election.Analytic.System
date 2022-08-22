@@ -16,6 +16,8 @@
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.PasswordBox.xaml" />
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ComboBox.xaml" />
 
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ListBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ListView.xaml" />
         <!--
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/.xaml" />
         -->
