@@ -29,26 +29,4 @@
     <Thickness x:Key="CaptionBorderThickness">1</Thickness>
     <CornerRadius x:Key="CaptionBorderCornerRadius" PresentationOptions:Freeze="True">3</CornerRadius>
     <GridLength x:Key="CaptionHeight" PresentationOptions:Freeze="True">40</GridLength>
-
-
-    <!--  COMMON CONTROLS STYLE  -->
-    <Style TargetType="{x:Type Window}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
-    </Style>
-
-    <Style TargetType="{x:Type Control}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
-    </Style>
-
-    <Style TargetType="{x:Type UserControl}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
-    </Style>
-
-    <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
-    </Style>
 </ResourceDictionary>

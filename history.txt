@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #67
 Election.Analytic.System - PPRP  #66
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #65
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Update Common Styles #1.
 
 [commited]
 Election.Analytic.System - PPRP  #64

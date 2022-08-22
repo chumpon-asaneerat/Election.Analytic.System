@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <!--  Force Merge related resource dictionary  -->
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--  COMMON CONTROLS STYLES: UserControl  -->
+    <Style TargetType="{x:Type UserControl}">
+        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+    </Style>
+</ResourceDictionary>
