@@ -28,8 +28,10 @@ Election.Analytic.System - PPRP  #62
 Election.Analytic.System - PPRP  #61
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #60
-- 
+- Update projects
+  - Prepare folders and files #1.
 
 [commited]
 Election.Analytic.System - PPRP  #59

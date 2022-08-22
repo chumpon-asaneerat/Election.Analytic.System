@@ -169,5 +169,11 @@
   <ItemGroup>
     <Folder Include="Pages\SignIn\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MPD\Note ส.ส. แบบแบ่งเขต.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MPR\Note ส.ส. แบบบัญชีรายชื่อ.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
