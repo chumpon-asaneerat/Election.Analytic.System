@@ -6,7 +6,7 @@
                     mc:Ignorable="PresentationOptions">
     <ResourceDictionary.MergedDictionaries>
         <!--  Force Merge related resource dictionary  -->
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/CommonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--  COMBO BOX STYLE  -->

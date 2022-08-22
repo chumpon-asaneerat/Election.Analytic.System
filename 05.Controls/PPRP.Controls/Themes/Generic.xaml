@@ -3,26 +3,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <!-- Merge Local Resources -->
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/CommonStyle.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.Control.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.Window.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.UserControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.Control.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.Window.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.UserControl.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.TextBlock.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.RadioButton.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.CheckedBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.TextBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.PasswordBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.CheckedBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.PasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ComboBox.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListView.xaml" />
         <!--
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/.xaml" />
         -->
-        
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/XceedToolKitStyle.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/WizardProgressBar.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/XceedToolKitStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/WizardProgressBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
