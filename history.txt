@@ -22,8 +22,11 @@ Election.Analytic.System - PPRP  #64
 Election.Analytic.System - PPRP  #63
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #62
-- 
+- Update projects
+  - Prepare folders and files #3.
+  - Add Logo and Set MainWindow icon.
 
 [commited]
 Election.Analytic.System - PPRP  #61

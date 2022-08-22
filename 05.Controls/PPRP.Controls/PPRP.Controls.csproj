@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -128,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\MP\Note ทั้งสองแบบ.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo\PPRPLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
