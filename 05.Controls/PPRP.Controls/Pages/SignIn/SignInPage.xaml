@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PPRP.Pages.SignIn.SignInPage"
+﻿<UserControl x:Class="PPRP.Pages.SignInPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -46,7 +46,22 @@
                        Grid.RowSpan="1"
                        LastChildFill="True">
                 <!--  WORK AREA  -->
-                <Grid />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" MinWidth="400"  MaxWidth="500" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" MinHeight="200" MaxHeight="300" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="1" Grid.Row="1"
+                            Background="Silver">
+                        
+                    </Border>
+                </Grid>
             </DockPanel>
         </Grid>
     </Grid>

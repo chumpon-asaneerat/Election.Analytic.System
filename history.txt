@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #66
 Election.Analytic.System - PPRP  #65
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #64
-- 
+- Update projects
+  - Update PPRP Control and App projects.
+    - Implements SignInPage #2.
 
 [commited]
 Election.Analytic.System - PPRP  #63

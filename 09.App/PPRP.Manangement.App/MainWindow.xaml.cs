@@ -35,8 +35,8 @@ namespace PPRP
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.Start();
 
-            // Main Menu
-            var page = PPRPApp.Pages.MainMenu;
+            // Sign In.
+            var page = PPRPApp.Pages.SignIn;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

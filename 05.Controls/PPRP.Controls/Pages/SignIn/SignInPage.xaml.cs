@@ -1,28 +1,45 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
-namespace PPRP.Pages.SignIn
+using NLib.Services;
+
+#endregion
+
+namespace PPRP.Pages
 {
     /// <summary>
     /// Interaction logic for SignInPage.xaml
     /// </summary>
     public partial class SignInPage : UserControl
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public SignInPage()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Setup.
+        /// </summary>
+        public void Setup()
+        {
+
+        }
+
+        #endregion
     }
 }
