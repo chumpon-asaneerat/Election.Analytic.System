@@ -120,5 +120,14 @@
       <Name>PPRP.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MPD\Note แบบแบ่งเขต.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MPR\Note แบบบัญชีรายชื่อ.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MP\Note ทั้งสองแบบ.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
