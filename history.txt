@@ -19,8 +19,12 @@ Election.Analytic.System - PPRP  #65
 Election.Analytic.System - PPRP  #64
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #63
-- 
+- Update projects
+  - Update PPRP.Controls project.
+    - Add TemplatePage.xaml -> used for reference template all pages.
+    - Implements SignInPage #1.
 
 [commited]
 Election.Analytic.System - PPRP  #62
