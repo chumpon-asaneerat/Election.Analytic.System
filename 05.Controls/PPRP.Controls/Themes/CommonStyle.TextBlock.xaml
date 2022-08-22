@@ -11,7 +11,7 @@
     
     <!--  COMMON CONTROLS STYLES: TextBlock  -->
     <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
     </Style>
 </ResourceDictionary>

@@ -7,7 +7,7 @@
 
     <!--  COMMON CONTROLS STYLES: UserControl  -->
     <Style TargetType="{x:Type UserControl}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
     </Style>
 </ResourceDictionary>

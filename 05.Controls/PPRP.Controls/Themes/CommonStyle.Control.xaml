@@ -11,8 +11,8 @@
 
     <!--  COMMON CONTROLS STYLES: Control  -->
     <Style TargetType="{x:Type Control}">
-        <Setter Property="FontFamily" Value="{DynamicResource THSarabunNew}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
     </Style>
 
     <!--  TEXT BOX COLORS  -->

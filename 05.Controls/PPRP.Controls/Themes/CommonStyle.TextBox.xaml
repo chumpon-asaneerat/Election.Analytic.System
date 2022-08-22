@@ -11,7 +11,8 @@
 
     <!--  TEXT BOX STYLE  -->
     <Style x:Key="CommonTextBox" TargetType="TextBox">
-        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
         <Setter Property="TextAlignment" Value="Center" />
         <!--  FOR ROUND CONNER AND BORDER COLOR  -->
         <Setter Property="Margin" Value="0" />
