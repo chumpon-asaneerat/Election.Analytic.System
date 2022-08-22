@@ -5,19 +5,19 @@
         <!-- Merge Local Resources -->
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.Control.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.Window.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.UserControl.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.Control.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.Window.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.UserControl.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.TextBlock.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.RadioButton.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.CheckedBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.TextBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.PasswordBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ComboBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.TextBlock.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.RadioButton.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.CheckedBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.TextBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.PasswordBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ComboBox.xaml" />
 
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ListBox.xaml" />
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/CommonStyle.ListView.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
+        <ResourceDictionary Source="/PPRP.Controls;component/Themes/Common/CommonStyle.ListView.xaml" />
         <!--
         <ResourceDictionary Source="/PPRP.Controls;component/Themes/.xaml" />
         -->
