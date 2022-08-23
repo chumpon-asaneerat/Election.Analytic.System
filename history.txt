@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #78
 Election.Analytic.System - PPRP  #77
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #76
-- 
+- Update projects
+  - Remove all json map files.
 
 [commited]
 Election.Analytic.System - PPRP  #75
