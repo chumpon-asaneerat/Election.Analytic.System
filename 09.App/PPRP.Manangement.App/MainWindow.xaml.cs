@@ -36,7 +36,8 @@ namespace PPRP
             PageContentManager.Instance.Start();
 
             // Sign In.
-            var page = PPRPApp.Pages.SignIn;
+            //var page = PPRPApp.Pages.SignIn;
+            var page = PPRPApp.Pages.MainMenu;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

@@ -36,6 +36,7 @@
                     CornerRadius="{StaticResource CaptionBorderCornerRadius}">
                 <TextBlock Foreground="{StaticResource CaptionForeground}"
                            FontSize="{StaticResource FontSize30}"
+                           Margin="0, 2"
                            TextAlignment="Center"
                            Text="{StaticResource PageTitle}" />
             </Border>
