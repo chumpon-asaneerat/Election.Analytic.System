@@ -110,6 +110,7 @@
                                         HorizontalAlignment="Center"
                                         Cursor="Hand"
                                         Content="เข้าสู่ระบบ" 
+                                        Style="{DynamicResource InlineButton}"
                                         Click="txtSignIn_Click"/>
                             </Border>
                             <Grid />

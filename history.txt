@@ -4,8 +4,14 @@ Election.Analytic.System - PPRP  #90
 Election.Analytic.System - PPRP  #89
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #88
-- 
+- Update projects
+  - PPRP.Controls projects.
+    - Update InlineButton style.
+    - Update TextBlock style.
+    - Update Common style.
+    - Update SignIn Page.
 
 [commited]
 Election.Analytic.System - PPRP  #87

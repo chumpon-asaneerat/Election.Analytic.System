@@ -53,8 +53,6 @@
 
     <!--  COMMON INPUT FONT SIZE  -->
     <sys:Double x:Key="InputFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
-    <!--  RADIO BUTTON RELATED SIZE  -->
-    <CornerRadius x:Key="CommonRadioButtonCornerRadius" PresentationOptions:Freeze="True">9</CornerRadius>
 
     <!--  COMMON FOR TEXT BOX, PASSWORD BOX FONT SIZE  -->
     <sys:Double x:Key="TextBlockFontSize18" PresentationOptions:Freeze="True">18</sys:Double>

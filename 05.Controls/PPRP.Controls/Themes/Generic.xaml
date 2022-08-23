@@ -15,11 +15,12 @@
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.InlineButton.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListView.xaml" />
         <!--
-        <ResourceDictionary Source="/PPRP.Controls;component/Themes/.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.xxx.xaml" />
         -->
 
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/XceedToolKitStyle.xaml" />

@@ -13,12 +13,14 @@
     <Style x:Key="LabelText" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="Black" />
-        <Setter Property="FontSize" Value="{StaticResource TextBoxFontSize18}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource TextBlockFontSize18}" />
     </Style>
 
     <!--  ERROR MESSAGE STYLE  -->
     <Style x:Key="ErrorText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource TextBlockFontSize20}" />
         <Setter Property="FontWeight" Value="ExtraBold" />
         <Setter Property="TextAlignment" Value="Center" />

@@ -159,7 +159,8 @@
     <Style x:Key="InlineButton" TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{StaticResource InlineButtonForground}" />
-        <Setter Property="FontSize" Value="{StaticResource FontSize16}" />
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template" Value="{DynamicResource InlineButtonTemplate}" />
     </Style>
