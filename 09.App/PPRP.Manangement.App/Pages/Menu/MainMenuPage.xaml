@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             d:DesignHeight="450"
-             d:DesignWidth="800"
+             d:DesignHeight="800"
+             d:DesignWidth="1024"
              Loaded="UserControl_Loaded"
              Unloaded="UserControl_Unloaded"
              mc:Ignorable="d">
@@ -38,7 +38,7 @@
                     CornerRadius="{StaticResource CaptionBorderCornerRadius}">
                 <TextBlock Foreground="{StaticResource CaptionForeground}"
                            FontSize="{StaticResource FontSize30}"
-                           Margin="0, 2"
+                           Margin="0,2"
                            TextAlignment="Center"
                            Text="{StaticResource PageTitle}" />
             </Border>
@@ -49,335 +49,82 @@
                        Grid.RowSpan="1"
                        LastChildFill="True">
                 <!--  WORK AREA  -->
-                <DockPanel LastChildFill="True">
-                    <Expander IsExpanded="True"
-                              Margin="2"
-                              ExpandDirection="Right"
-                              DockPanel.Dock="Left"
-                              HorizontalAlignment="Center"
-                              Width="250">
-                        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                            <DockPanel LastChildFill="True">
-                                <Border DockPanel.Dock="Top">
-                                    <TextBlock Text="MENU" FontSize="20" 
-                                               Margin="5, 0"/>
-                                </Border>
-                                <!--  Main  -->
-                                <Expander Header="Main"
-                                          FontSize="16"
-                                          FontWeight="Bold"
-                                          Foreground="Navy"
-                                          Margin="3"
-                                          IsExpanded="True"
-                                          DockPanel.Dock="Top">
-                                    <StackPanel Orientation="Vertical"
-                                                Margin="3"
-                                                VirtualizingStackPanel.IsVirtualizing="True"
-                                                VirtualizingStackPanel.VirtualizationMode="Recycling"
-                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                                VerticalAlignment="Stretch"
-                                                HorizontalAlignment="Stretch">
-                                        <Button x:Name="cmdServiceManagement"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="CATS-PLM" />
-                                                    <LineBreak />
-                                                    <Run Text="Service" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                    </StackPanel>
-                                </Expander>
-                                <!--  Parser  -->
-                                <Expander Header="CATS Parser"
-                                          FontSize="16"
-                                          FontWeight="Bold"
-                                          Foreground="Brown"
-                                          Margin="3"
-                                          IsExpanded="False"
-                                          DockPanel.Dock="Top">
-                                    <StackPanel Orientation="Vertical"
-                                                Margin="3"
-                                                VirtualizingStackPanel.IsVirtualizing="True"
-                                                VirtualizingStackPanel.VirtualizationMode="Recycling"
-                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                                VerticalAlignment="Stretch"
-                                                HorizontalAlignment="Stretch">
-                                        <Button x:Name="cmdParserTrasform"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="Single line" />
-                                                    <LineBreak />
-                                                    <Run Text="Parser" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdMultilineTransform"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="Multi lines" />
-                                                    <LineBreak />
-                                                    <Run Text="Parser" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdFileView"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="File" />
-                                                    <LineBreak />
-                                                    <Run Text="Viewer" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdDbfView"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="DBF/DBX" />
-                                                    <LineBreak />
-                                                    <Run Text="Viewer" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdDataGenerator"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="Sample Data" />
-                                                    <LineBreak />
-                                                    <Run Text="Generator" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                    </StackPanel>
-                                </Expander>
-                                <!--  File/Config Utils  -->
-                                <Expander Header="Utilties"
-                                          FontSize="16"
-                                          FontWeight="Bold"
-                                          Foreground="DarkMagenta"
-                                          Margin="3"
-                                          IsExpanded="False"
-                                          DockPanel.Dock="Top">
-                                    <StackPanel Orientation="Vertical"
-                                                Margin="3"
-                                                VirtualizingStackPanel.IsVirtualizing="True"
-                                                VirtualizingStackPanel.VirtualizationMode="Recycling"
-                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                                VerticalAlignment="Stretch"
-                                                HorizontalAlignment="Stretch">
-                                        <Button x:Name="cmdFileUtils"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="File/Database" />
-                                                    <LineBreak />
-                                                    <Run Text="Utilities" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdConfig"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="Configuration" />
-                                                    <LineBreak />
-                                                    <Run Text="Editor" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                    </StackPanel>
-                                </Expander>
-                                <!--  Info/About/Tutorials  -->
-                                <Expander Header="Information"
-                                          FontSize="16"
-                                          FontWeight="Bold"
-                                          Foreground="Green"
-                                          Margin="3"
-                                          IsExpanded="False"
-                                          DockPanel.Dock="Top">
-                                    <StackPanel Orientation="Vertical"
-                                                Margin="3"
-                                                VirtualizingStackPanel.IsVirtualizing="True"
-                                                VirtualizingStackPanel.VirtualizationMode="Recycling"
-                                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                                VerticalAlignment="Stretch"
-                                                HorizontalAlignment="Stretch">
-                                        <Button x:Name="cmdCASFileFormat"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="CATS" />
-                                                    <LineBreak />
-                                                    <Run Text="File format" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdAbout"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="About" />
-                                                    <LineBreak />
-                                                    <Run Text="CATS-PLM" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                        <Button x:Name="cmdTutorials"
-                                                Visibility="Collapsed"
-                                                Margin="3"
-                                                Height="60"
-                                                VerticalContentAlignment="Stretch"
-                                                HorizontalContentAlignment="Stretch">
-                                            <DockPanel LastChildFill="True">
-                                                <Border DockPanel.Dock="Left" Margin="3">
-                                                    <Image Width="50"
-                                                           Height="50"
-                                                           Stretch="Fill" />
-                                                </Border>
-                                                <TextBlock FontSize="15"
-                                                           FontWeight="Bold"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center">
-                                                    <Run Text="CATS" />
-                                                    <LineBreak />
-                                                    <Run Text="Tutorials" />
-                                                </TextBlock>
-                                            </DockPanel>
-                                        </Button>
-                                    </StackPanel>
-                                </Expander>
-                                <Grid />
-                            </DockPanel>
-                        </ScrollViewer>
-                    </Expander>
-                    <Grid>
-                        <!--  CONTENT  -->
-                        <Border BorderBrush="Black" BorderThickness="1">
-                            <ContentPresenter x:Name="container" />
-                        </Border>
-                    </Grid>
-                </DockPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <DockPanel LastChildFill="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="500" />
+                                <ColumnDefinition Width="*" MinWidth="500" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Foreground="{StaticResource CaptionForeground}"
+                                               Background="{StaticResource CaptionBackgroundR}"
+                                               Margin="5"
+                                               Text="การจัดการข้อมูล" />
+                                    <TextBlock x:Name="mnu01"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand"
+                                               Text="ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562" />
+                                    <TextBlock x:Name="mnu02"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand"
+                                               Text="ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="5" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Foreground="{StaticResource CaptionForeground}"
+                                               Background="{StaticResource CaptionBackgroundR}"
+                                               Margin="5"
+                                               Text="ข้อมูลทางภูมิศาสตร์" />
+                                    <TextBlock x:Name="mnu21"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand"
+                                               Text="ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))" />
+                                    <TextBlock x:Name="mnu22"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand"
+                                               Text="ข้อมูลแผนที่" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Foreground="{StaticResource CaptionForeground}"
+                                               Background="{StaticResource CaptionBackgroundR}"
+                                               Margin="5"
+                                               Text="ข้อมูลหลัก" />
+                                    <TextBlock x:Name="mnu41"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink>ข้อมูลพรรคการเมือง</Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock x:Name="mnu42"
+                                               FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand"
+                                               Text="ข้อมูลอื่น ๆ" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DockPanel>
+                </ScrollViewer>
             </DockPanel>
         </Grid>
     </Grid>
