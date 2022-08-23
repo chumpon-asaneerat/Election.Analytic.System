@@ -3,26 +3,55 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="MainWindow" 
-        Height="450" 
+        Title="MainWindow"
+        Height="450"
         Width="800"
         mc:Ignorable="d">
     <DockPanel LastChildFill="True">
-        <DockPanel DockPanel.Dock="Top" Height="40" 
+        <DockPanel DockPanel.Dock="Top"
+                   Height="40"
                    Margin="10">
-            <TextBlock DockPanel.Dock="Left" Text="File Name:" VerticalAlignment="Center" 
-                       FontSize="16"/>
-            <TextBlock DockPanel.Dock="Left" Width="10" 
-                       FontSize="16"/>
-            <Button x:Name="cmdBrowse" DockPanel.Dock="Right" Width="100" Content="Browse"
+            <TextBlock DockPanel.Dock="Left"
+                       Text="File Name:"
+                       VerticalAlignment="Center"
+                       FontSize="16" />
+            <TextBlock DockPanel.Dock="Left"
+                       Width="10"
+                       FontSize="16" />
+            <Button x:Name="cmdBrowse"
+                    DockPanel.Dock="Right"
+                    Width="100"
+                    Content="Browse"
                     FontSize="16"
-                    Click="cmdBrowse_Click"/>
-            <TextBlock x:Name="txtFileName" Width="300"  VerticalAlignment="Center" HorizontalAlignment="Left" 
-                       FontSize="16"/>
+                    Click="cmdBrowse_Click" />
+            <TextBlock x:Name="txtFileName"
+                       MinWidth="300"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       FontSize="16" />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" Height="40">
+            <TextBlock DockPanel.Dock="Left"
+                       Text="Zoom:"
+                       VerticalAlignment="Center"
+                       FontSize="16" />
+            <TextBlock DockPanel.Dock="Left"
+                       Width="10"
+                       FontSize="16" />
+            <Slider x:Name="zoomSlider"
+                    Minimum="0.5"
+                    Maximum="32"
+                    Value="1"
+                    SmallChange="0.5"
+                    VerticalAlignment="Center"
+                    ValueChanged="zoomSlider_ValueChanged" />
         </DockPanel>
         <Grid Margin="5">
             <Border BorderBrush="Silver" BorderThickness="1">
-                <Canvas x:Name="map" />
+                <Canvas x:Name="map"
+                        ClipToBounds="True"
+                        RenderOptions.BitmapScalingMode="LowQuality"
+                        SizeChanged="map_SizeChanged" />
             </Border>
         </Grid>
     </DockPanel>

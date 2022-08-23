@@ -55,6 +55,33 @@ namespace WpfTestJsonMap
 
         #endregion
 
+        #region Slider Handlers
+        private void zoomSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (null == map) return;
+            map.Dispatcher.Invoke(() => 
+            { 
+                Zoom(map, e.NewValue); 
+            });
+        }
+
+        #endregion
+
+        #region Canvas Handlers
+
+        private void map_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (null != json)
+            {
+                ResetCanvas(map);
+                zoomSlider.Value = 1;
+                DisplayShapes(json);
+                //Zoom(map, zoomSlider.Value); // not work
+            }
+        }
+
+        #endregion
+
         private JsonShapeFile json = null;
 
         private void LoadJsonFile(string fileName)
@@ -94,8 +121,6 @@ namespace WpfTestJsonMap
             // Add the zoom and pan transforms to the view transform.
             this.viewTransform.Children.Add(this.zoomTransform);
             this.viewTransform.Children.Add(this.panTransform);
-
-            //Zoom(map, 8); // zoom 800%
 
             foreach (var jshape in jshapeFile.Shapes)
             {
@@ -181,6 +206,9 @@ namespace WpfTestJsonMap
         /// <param name="zoomFactor">Zoom multiplication factor (1, 2, 4, etc).</param>
         public void Zoom(Canvas canvas, double zoomFactor)
         {
+            if (null == canvas || canvas.ActualWidth <= 0 || canvas.ActualHeight <= 0)
+                return;
+
             // Compute the coordinates of the center of the canvas
             // in terms of pre-view transformation values. We do this
             // by applying the inverse of the view transform.
@@ -307,6 +335,21 @@ namespace WpfTestJsonMap
         }
 
         #endregion
+        /// <summary>
+        /// Reset the canvas.
+        /// </summary>
+        public void ResetCanvas(Canvas canvas)
+        {
+            // Clear the canvas.
+            canvas.Children.Clear();
+
+            // Reset transformations.
+            this.panTransform.X = 0;
+            this.panTransform.Y = 0;
+            this.zoomTransform.ScaleX = 1;
+            this.zoomTransform.ScaleY = 1;
+            this.shapeTransform = null;
+        }
 
         private Shape CreateWPFShape(string shapeName, JsonShape jshape)
         {

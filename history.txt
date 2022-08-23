@@ -19,8 +19,10 @@ Election.Analytic.System - PPRP  #75
 Election.Analytic.System - PPRP  #74
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #73
-- 
+- Update projects
+  - MAPS Re-implements #3. (Zoom not work when resize canvas)
 
 [commited]
 Election.Analytic.System - PPRP  #72
