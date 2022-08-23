@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:util="clr-namespace:PPRP.Controls.Utils"
              d:DesignHeight="450"
              d:DesignWidth="1024"
              mc:Ignorable="d">
@@ -87,31 +88,38 @@
                             Background="WhiteSmoke">
                         <DockPanel LastChildFill="True" Margin="15">
                             <TextBlock DockPanel.Dock="Top"
-                                           Style="{StaticResource LabelText}"
+                                       Style="{StaticResource LabelText}"
                                        Text="ขื่อผู้ใช้" />
-                            <TextBox DockPanel.Dock="Top"
-                                     Style="{StaticResource CommonTextBox}"
-                                     x:Name="txtUserName" />
+                            <TextBox x:Name="txtUserName"
+                                     DockPanel.Dock="Top"
+                                     util:FocusOptions.SelectAll="True"
+                                     util:KeyboardOptions.Enabled="True"
+                                     util:KeyboardOptions.EnterAsTab="True"
+                                     util:KeyboardOptions.LeftRightNavigation="False"
+                                     util:KeyboardOptions.UpDownNavigation="True"
+                                     Style="{StaticResource CommonTextBox}" />
+                            <TextBlock DockPanel.Dock="Top" Height="5" />
                             <TextBlock DockPanel.Dock="Top"
-                                       Height="5" />
-                            <TextBlock DockPanel.Dock="Top"
-                                           Style="{StaticResource LabelText}"
+                                       Style="{StaticResource LabelText}"
                                        Text="รหัสผ่าน" />
-                            <PasswordBox DockPanel.Dock="Top"
-                                     Style="{StaticResource CommonPwdBox}"
-                                         PasswordChar="*"
-                                         x:Name="txtPassword" />
-                            <TextBlock DockPanel.Dock="Top"
-                                       Height="20" />
+                            <PasswordBox x:Name="txtPassword"
+                                         DockPanel.Dock="Top"
+                                         util:FocusOptions.SelectAll="True"
+                                         util:KeyboardOptions.Enabled="True"
+                                         util:KeyboardOptions.EnterAsTab="True"
+                                         util:KeyboardOptions.LeftRightNavigation="False"
+                                         util:KeyboardOptions.UpDownNavigation="True"
+                                         Style="{StaticResource CommonPwdBox}" />
+                            <TextBlock DockPanel.Dock="Top" Height="20" />
                             <Border DockPanel.Dock="Top">
-                                <Button x:Name="txtSignIn" 
+                                <Button x:Name="txtSignIn"
                                         Height="30"
                                         Width="200"
                                         HorizontalAlignment="Center"
                                         Cursor="Hand"
-                                        Content="เข้าสู่ระบบ" 
+                                        Content="เข้าสู่ระบบ"
                                         Style="{DynamicResource InlineButton}"
-                                        Click="txtSignIn_Click"/>
+                                        Click="txtSignIn_Click" />
                             </Border>
                             <Grid />
                         </DockPanel>
