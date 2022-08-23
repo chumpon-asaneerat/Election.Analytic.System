@@ -8,10 +8,27 @@
         <!--  Force Merge related resource dictionary  -->
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/CommonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    <!--  COMMON CONTROLS STYLES: TextBlock  -->
-    <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
-        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
+
+    <!--  LABEL TEXTBLOCK STYLE  -->
+    <Style x:Key="LabelText" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="{StaticResource TextBoxFontSize18}" />
+    </Style>
+
+    <!--  ERROR MESSAGE STYLE  -->
+    <Style x:Key="ErrorText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="FontSize" Value="{StaticResource TextBlockFontSize20}" />
+        <Setter Property="FontWeight" Value="ExtraBold" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+        <!--
+        <Style.Triggers>
+            <Trigger Property ="IsFocused" Value="True">
+                <Setter Property= "Foreground" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+        -->
     </Style>
 </ResourceDictionary>

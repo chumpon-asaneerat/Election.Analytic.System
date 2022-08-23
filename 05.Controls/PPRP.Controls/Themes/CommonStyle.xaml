@@ -36,4 +36,33 @@
     <Thickness x:Key="CaptionBorderThickness">1</Thickness>
     <CornerRadius x:Key="CaptionBorderCornerRadius" PresentationOptions:Freeze="True">3</CornerRadius>
     <GridLength x:Key="CaptionHeight" PresentationOptions:Freeze="True">40</GridLength>
+
+    <!--  COMMON FOR TEXT BOX, PASSWORD BOX COLORS  -->
+    <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush"
+                     PresentationOptions:Freeze="True"
+                     Color="#7F2222FF" />
+    <SolidColorBrush x:Key="TextBoxFocusedBorderBrush"
+                     PresentationOptions:Freeze="True"
+                     Color="CornflowerBlue" />
+    <SolidColorBrush x:Key="TextBoxDisableForeground"
+                     PresentationOptions:Freeze="True"
+                     Color="Black" />
+    <SolidColorBrush x:Key="TextBoxDisableBackground"
+                     PresentationOptions:Freeze="True"
+                     Color="#7FFFFFFF" />
+
+    <!--  COMMON INPUT FONT SIZE  -->
+    <sys:Double x:Key="InputFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
+    <!--  RADIO BUTTON RELATED SIZE  -->
+    <CornerRadius x:Key="CommonRadioButtonCornerRadius" PresentationOptions:Freeze="True">9</CornerRadius>
+
+    <!--  COMMON FOR TEXT BOX, PASSWORD BOX FONT SIZE  -->
+    <sys:Double x:Key="TextBlockFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
+    <sys:Double x:Key="TextBlockFontSize20" PresentationOptions:Freeze="True">20</sys:Double>
+
+    <!--  COMMON CONTROLS STYLES: TextBlock  -->
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
+    </Style>
 </ResourceDictionary>

@@ -87,23 +87,21 @@
                             Background="WhiteSmoke">
                         <DockPanel LastChildFill="True" Margin="15">
                             <TextBlock DockPanel.Dock="Top"
-                                       FontSize="{StaticResource FontSize18}"
+                                           Style="{StaticResource LabelText}"
                                        Text="ขื่อผู้ใช้" />
                             <TextBox DockPanel.Dock="Top"
-                                     FontSize="{StaticResource FontSize18}"
+                                     Style="{StaticResource CommonTextBox}"
                                      x:Name="txtUserName" />
                             <TextBlock DockPanel.Dock="Top"
-                                       FontSize="{StaticResource FontSize18}"
                                        Height="5" />
                             <TextBlock DockPanel.Dock="Top"
-                                       FontSize="{StaticResource FontSize18}"
+                                           Style="{StaticResource LabelText}"
                                        Text="รหัสผ่าน" />
                             <PasswordBox DockPanel.Dock="Top"
-                                         FontSize="{StaticResource FontSize18}"
+                                     Style="{StaticResource CommonPwdBox}"
                                          PasswordChar="*"
                                          x:Name="txtPassword" />
                             <TextBlock DockPanel.Dock="Top"
-                                       FontSize="{StaticResource FontSize18}"
                                        Height="20" />
                             <Border DockPanel.Dock="Top">
                                 <Button x:Name="txtSignIn" 

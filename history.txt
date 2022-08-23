@@ -7,8 +7,13 @@ Election.Analytic.System - PPRP  #89
 Election.Analytic.System - PPRP  #88
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #87
-- 
+- Update projects
+  - PPRP.Controls projects.
+    - Update Common style.
+    - Update TextBox style.
+    - Update PasswordBox style.
 
 [commited]
 Election.Analytic.System - PPRP  #86
