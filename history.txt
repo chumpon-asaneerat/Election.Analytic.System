@@ -13,8 +13,10 @@ Election.Analytic.System - PPRP  #77
 Election.Analytic.System - PPRP  #76
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #75
-- 
+- Update projects
+  - Add Json map files #2.
 
 [commited]
 Election.Analytic.System - PPRP  #74
