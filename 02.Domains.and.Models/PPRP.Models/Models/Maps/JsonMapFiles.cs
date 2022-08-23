@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PPRP;
 
 #endregion
 
@@ -66,6 +67,9 @@ namespace PPRP.Models.Maps
 
     #region JsonShapeFile
 
+    /// <summary>
+    /// JsonShapeFile Class.
+    /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class JsonShapeFile
     {
