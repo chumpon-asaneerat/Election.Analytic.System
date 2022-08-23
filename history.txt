@@ -22,8 +22,11 @@ Election.Analytic.System - PPRP  #84
 Election.Analytic.System - PPRP  #83
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #82
-- 
+- Update projects
+  - NLib project.
+    - Add PageSubContentManager class.
 
 [commited]
 Election.Analytic.System - PPRP  #81
