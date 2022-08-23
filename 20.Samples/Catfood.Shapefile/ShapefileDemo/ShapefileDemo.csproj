@@ -93,6 +93,10 @@
       <Project>{25f76701-c7d6-4cc4-beb9-db40d2bbbd9d}</Project>
       <Name>PPRP.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\02.Domains.and.Models\PPRP.Models\PPRP.Models.csproj">
+      <Project>{54f2904e-847c-44bc-bf54-26a19c49f9d5}</Project>
+      <Name>PPRP.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\02.Domains.and.Models\PPRP.ShapeMap.Imports\PPRP.ShapeMap.Imports.csproj">
       <Project>{3af94133-365f-4da5-8ee5-0b2e0c959ac7}</Project>
       <Name>PPRP.ShapeMap.Imports</Name>

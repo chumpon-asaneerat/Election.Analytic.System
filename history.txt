@@ -4,8 +4,11 @@ Election.Analytic.System - PPRP  #80
 Election.Analytic.System - PPRP  #79
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #78
-- 
+- Update projects
+  - PPRP.Models project.
+    - Update Json Shape File related classes #2.
 
 [commited]
 Election.Analytic.System - PPRP  #77

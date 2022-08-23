@@ -9,12 +9,12 @@ namespace PPRP.Models.Maps
 {
     #region Json Shape classes
 
-    #region ShapeType
+    #region MapShapeType
 
     /// <summary>
-    /// The ShapeType of a shape in a Shapefile
+    /// The MapShapeType of a shape in a Shapefile
     /// </summary>
-    public enum ShapeType
+    public enum MapShapeType
     {
         /// <summary>Null Shape</summary>
         Null = 0,
@@ -87,7 +87,7 @@ namespace PPRP.Models.Maps
         /// <summary>
         /// Gets or sets Shape Type.
         /// </summary>
-        public ShapeType Type { get; set; }
+        public MapShapeType Type { get; set; }
         /// <summary>
         /// Gets or sets Number of shapes.
         /// </summary>
@@ -136,7 +136,7 @@ namespace PPRP.Models.Maps
         /// <summary>
         /// Gets or sets Shape Type.
         /// </summary>
-        public ShapeType ShapeType { get; set; }
+        public MapShapeType ShapeType { get; set; }
         /// <summary>
         /// Gets or sets ADM level 0 EN Name
         /// </summary>
@@ -213,7 +213,7 @@ namespace PPRP.Models.Maps
         /// <summary>
         /// Gets or sets shape type.
         /// </summary>
-        public ShapeType Type { get; set; }
+        public MapShapeType Type { get; set; }
         /// <summary>
         /// Gets or sets Number of geometry figure on current shape parts.
         /// </summary>
