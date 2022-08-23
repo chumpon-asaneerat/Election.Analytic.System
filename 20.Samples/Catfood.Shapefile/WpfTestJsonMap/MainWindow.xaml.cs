@@ -228,10 +228,45 @@ namespace WpfTestJsonMap
         private TransformGroup CreateShapeTransform(Canvas canvas, JsonShapeFile jshapeFile)
         {
             // Bounding box for the shapefile.
-            double xmin = jshapeFile.Bound.Left;
-            double xmax = jshapeFile.Bound.Right;
-            double ymin = jshapeFile.Bound.Top;
-            double ymax = jshapeFile.Bound.Bottom;
+
+            //double xmin = jshapeFile.Bound.Left;
+            //double xmax = jshapeFile.Bound.Right;
+            //double ymin = jshapeFile.Bound.Top;
+            //double ymax = jshapeFile.Bound.Bottom;
+
+            // Bounding box for the shapes.
+            double xmin = 0; 
+            double xmax = 0;
+            double ymin = 0;
+            double ymax = 0;
+
+            foreach (var jshape in jshapeFile.Shapes)
+            {
+                for (int i = 0; i < jshape.Parts.Count; ++i)
+                {
+                    var jpart = jshape.Parts[i];
+                    for (int j = 0; j < jpart.Count; ++j)
+                    {
+                        var x = jpart.Points[j, 0];
+                        var y = jpart.Points[j, 1];
+
+                        if (j == 0)
+                        {
+                            xmin = x;
+                            xmax = x;
+                            ymin = y;
+                            ymax = y;
+                        }
+                        else
+                        {
+                            xmin = Math.Min(xmin, x);
+                            xmax = Math.Max(xmax, x);
+                            ymin = Math.Min(ymin, y);
+                            ymax = Math.Max(ymax, y);
+                        }
+                    }
+                }
+            }
 
             // Width and height of the bounding box.
             double width = Math.Abs(xmax - xmin);

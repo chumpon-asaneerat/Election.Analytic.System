@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #74
 Election.Analytic.System - PPRP  #73
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #72
-- 
+- Update projects
+  - MAPS Re-implements #2.
 
 [commited]
 Election.Analytic.System - PPRP  #71
