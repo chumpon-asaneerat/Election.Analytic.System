@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 
 using NLib.Services;
+using PPRP.Services;
 
 #endregion
 
@@ -35,15 +36,21 @@ namespace PPRP
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.Start();
 
+            // Init SignIn Manager
+            SignInManager.Instance.UserChanged += Instance_UserChanged;
+
             // Sign In.
-            //var page = PPRPApp.Pages.SignIn;
-            var page = PPRPApp.Pages.MainMenu;
+            var page = PPRPApp.Pages.SignIn;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
+            // Release SignIn Manager
+            SignInManager.Instance.Signout();
+            SignInManager.Instance.UserChanged -= Instance_UserChanged;
+
             // Release Page Content Manager
             PageContentManager.Instance.Shutdown();
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
@@ -56,6 +63,27 @@ namespace PPRP
         void Instance_ContentChanged(object sender, EventArgs e)
         {
             this.container.Content = PageContentManager.Instance.Current;
+        }
+
+        #endregion
+
+        #region SignIn Manager Handlers
+        private void Instance_UserChanged(object sender, EventArgs e)
+        {
+            if (null == SignInManager.Instance.User)
+            {
+                // Signout - show Sign In page.
+                var page = PPRPApp.Pages.SignIn;
+                page.Setup();
+                PageContentManager.Instance.Current = page;
+            }
+            else
+            {
+                // SignIn OK - show main menu.
+                var page = PPRPApp.Pages.MainMenu;
+                page.Setup();
+                PageContentManager.Instance.Current = page;
+            }
         }
 
         #endregion
