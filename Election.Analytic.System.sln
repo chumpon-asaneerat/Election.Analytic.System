@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPRP.Excel.Imports", "02.Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPRP.ShapeMap.Imports", "02.Domains.and.Models\PPRP.ShapeMap.Imports\PPRP.ShapeMap.Imports.csproj", "{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestJsonMap", "20.Samples\Catfood.Shapefile\WpfTestJsonMap\WpfTestJsonMap.csproj", "{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,14 @@ Global
 		{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7}.Release|x86.ActiveCfg = Release|Any CPU
 		{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7}.Release|x86.Build.0 = Release|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Debug|x86.Build.0 = Debug|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|x86.ActiveCfg = Release|Any CPU
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,6 +209,7 @@ Global
 		{58F5C806-9373-4672-9A64-8EE1589004C8} = {C99DA8CB-0D11-4907-9ACF-0FCE2C8720AB}
 		{FC952ED6-0F73-4C65-A0E6-F516D94AD5DD} = {C19E9DD7-1D7D-451F-BC3D-DED0326CED15}
 		{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7} = {C19E9DD7-1D7D-451F-BC3D-DED0326CED15}
+		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B} = {525B8B26-FD1D-41BC-8FFD-77E7815F9AA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E08B5C6-85F0-4C52-8DFE-D55880DD5FC9}
