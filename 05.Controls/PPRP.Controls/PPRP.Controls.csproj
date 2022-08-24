@@ -207,5 +207,18 @@
     <Resource Include="Images\Logo\PPRPLogo.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Button\Button.png" />
+    <Resource Include="Images\Button\Button2.png" />
+    <Resource Include="Images\Button\Button3.png" />
+    <Resource Include="Images\Button\Button4.png" />
+    <Resource Include="Images\Button\Button5.png" />
+    <Resource Include="Images\Button\Cancel.png" />
+    <Resource Include="Images\Button\Cancel2.png" />
+    <Resource Include="Images\Button\OK.png" />
+    <Resource Include="Images\Button\OK2.png" />
+    <Resource Include="Images\Button\Save.png" />
+    <Resource Include="Images\Button\Save2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
