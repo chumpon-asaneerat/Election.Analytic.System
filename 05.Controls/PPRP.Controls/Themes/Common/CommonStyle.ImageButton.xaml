@@ -21,7 +21,7 @@
                      Color="DarkOrange" />
     <ImageBrush x:Key="ImageButtonBGImage"
                 PresentationOptions:Freeze="True"
-                ImageSource="/PPRP.Controls;component/Images/Button/Button5.png" />
+                ImageSource="/PPRP.Controls;component/Images/Button/Button6.png" />
 
     <!--  IMAGE BUTTON TEXTBLOCK STYLE  -->
     <Style x:Key="ImageButtonText" TargetType="TextBlock">

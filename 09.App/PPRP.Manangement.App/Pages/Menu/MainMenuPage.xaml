@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:button="clr-namespace:PPRP.Controls.Buttons;assembly=PPRP.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="800"
              d:DesignWidth="1024"
@@ -76,6 +77,15 @@
                                                Margin="15,5,5,5"
                                                Cursor="Hand"
                                                Text="ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562" />
+                                    <Grid Height="200">
+                                        <button:ImageButton x:Name="imgCmd1" 
+                                                            Width="220"
+                                                            ImageSource="/PPRP.Controls;component/Images/Button/OK2.png">
+                                            <TextBlock Style="{StaticResource ImageButtonText}" 
+                                                       Foreground="DarkBlue"
+                                                       Text="ตกลง" />
+                                        </button:ImageButton>
+                                    </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="5" />
                             </StackPanel>

@@ -210,7 +210,9 @@
   <ItemGroup>
     <Resource Include="Images\Logo\PPRPLogo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Button\Button6.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Button\Button.png" />
     <Resource Include="Images\Button\Button2.png" />
