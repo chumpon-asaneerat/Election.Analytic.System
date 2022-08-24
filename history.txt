@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #96
 Election.Analytic.System - PPRP  #95
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #94
-- 
+- Update projects
+  - PPRP.Controls projects.
+    - Implements ImageButton Controls #3.
 
 [commited]
 Election.Analytic.System - PPRP  #93
