@@ -21,7 +21,7 @@
                      Color="Black" />
     <SolidColorBrush x:Key="ImageButtonFG"
                      PresentationOptions:Freeze="True"
-                     Color="DarkOrange" />
+                     Color="RoyalBlue" />
     <ImageBrush x:Key="ImageButtonBGImage"
                 PresentationOptions:Freeze="True"
                 ImageSource="/PPRP.Controls;component/Images/Button/Button6.png" />
