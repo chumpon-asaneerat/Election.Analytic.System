@@ -9,7 +9,6 @@
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/CommonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
     <!--  CONST INLINE BUTTON BRUSHS AND COLORS  -->
     <SolidColorBrush x:Key="InlineButtonForground"
                      PresentationOptions:Freeze="True"

@@ -25,6 +25,7 @@
 
     <!--  IMAGE BUTTON TEXTBLOCK STYLE  -->
     <Style x:Key="ImageButtonText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource ImageButtonTFontSize20}" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -32,6 +33,7 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="ImageButtonTextMD" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource ImageButtonFontSize18}" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="HorizontalAlignment" Value="Center" />
