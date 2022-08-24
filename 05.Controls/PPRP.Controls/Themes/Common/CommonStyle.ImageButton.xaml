@@ -16,6 +16,9 @@
     <sys:Double x:Key="ImageButtonFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
     <sys:Double x:Key="ImageButtonTFontSize20" PresentationOptions:Freeze="True">20</sys:Double>
 
+    <SolidColorBrush x:Key="ImageButtonTextColor"
+                     PresentationOptions:Freeze="True"
+                     Color="Black" />
     <SolidColorBrush x:Key="ImageButtonFG"
                      PresentationOptions:Freeze="True"
                      Color="DarkOrange" />
@@ -25,6 +28,7 @@
 
     <!--  IMAGE BUTTON TEXTBLOCK STYLE  -->
     <Style x:Key="ImageButtonText" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource ImageButtonTextColor}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource ImageButtonTFontSize20}" />
         <Setter Property="FontWeight" Value="Bold" />
@@ -33,6 +37,7 @@
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="ImageButtonTextMD" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource ImageButtonTextColor}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource ImageButtonFontSize18}" />
         <Setter Property="FontWeight" Value="Bold" />

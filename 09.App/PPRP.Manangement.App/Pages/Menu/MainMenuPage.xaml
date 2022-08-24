@@ -82,7 +82,6 @@
                                                             Width="220"
                                                             ImageSource="/PPRP.Controls;component/Images/Button/OK2.png">
                                             <TextBlock Style="{StaticResource ImageButtonText}" 
-                                                       Foreground="DarkBlue"
                                                        Text="ตกลง" />
                                         </button:ImageButton>
                                     </Grid>
