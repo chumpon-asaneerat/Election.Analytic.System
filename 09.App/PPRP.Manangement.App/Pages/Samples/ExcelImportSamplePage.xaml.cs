@@ -60,7 +60,7 @@ namespace PPRP.Pages
             import.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
             import.Steps.Add("นำเข้าข้อมูล");
             import.Steps.Add("เสร็จสิ้น");
-            import.ResetStep();
+            import.ResetSteps();
 
             wzBar.DataContext = import;
             cmdNext.DataContext = wzBar.DataContext; // set data context same as Wizard ProgressBar

@@ -113,34 +113,6 @@ namespace PPRP.Imports.Excel
 
         #region Private Methods
 
-        public void ResetStep()
-        {
-            _progress = 0;
-            _maxStep = 0;
-            _maxStep = (null == _steps || _steps.Count <= 0) ? 0 : _steps.Count - 1;
-
-            // Raise ProeprtyChanged Events
-            this.RaiseProgressEvents();
-        }
-
-        public void PreviousStep()
-        {
-            --_progress;
-            if (_progress < 0) _progress = 0;
-
-            // Raise ProeprtyChanged Events
-            this.RaiseProgressEvents();
-        }
-
-        public void NextStep()
-        {
-            ++_progress;
-            if (_progress > _maxStep) _progress = _maxStep;
-
-            // Raise ProeprtyChanged Events
-            this.RaiseProgressEvents();
-        }
-
         private void RaiseProgressEvents()
         {
             // Raise ProeprtyChanged Events
@@ -208,6 +180,45 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
+        #region Wizard Steps and Progress methods
+
+        /// <summary>
+        /// Reset steps. Call after re-assigned wizard steps.
+        /// </summary>
+        public void ResetSteps()
+        {
+            _progress = 0;
+            _maxStep = 0;
+            _maxStep = (null == _steps || _steps.Count <= 0) ? 0 : _steps.Count - 1;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+        /// <summary>
+        /// Move to previous wizard step.
+        /// </summary>
+        public void PreviousStep()
+        {
+            --_progress;
+            if (_progress < 0) _progress = 0;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+        /// <summary>
+        /// Move to next wizard step.
+        /// </summary>
+        public void NextStep()
+        {
+            ++_progress;
+            if (_progress > _maxStep) _progress = _maxStep;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+
+        #endregion
+
         #region ShowDialog
 
         public bool ShowDialog(string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล", 
@@ -244,18 +255,26 @@ namespace PPRP.Imports.Excel
 
         #region For Wizard Process Bar
 
+        #region Wizard Steps and Progress
+
+        /// <summary>Gets steps collection.</summary>
         public ObservableCollection<string> Steps
         {
             get { return _steps; }
             set { }
         }
-
+        /// <summary>Gets current step.</summary>
         public int Progress
         {
             get { return _progress; }
             set { }
         }
 
+        #endregion
+
+        #region For Runtime IsEnabled, Visibility Bindings
+
+        /// <summary>Checks can go to previous step.</summary>
         public bool CanGoPrevious
         {
             get 
@@ -268,6 +287,7 @@ namespace PPRP.Imports.Excel
             set { }
         }
 
+        /// <summary>Gets or sets GoPrevious Visibility.</summary>
         public Visibility GoPreviousVisibility
         {
             get 
@@ -278,6 +298,7 @@ namespace PPRP.Imports.Excel
             set { }
         }
 
+        /// <summary>Checks can go to next step.</summary>
         public bool CanGoNext
         {
             get 
@@ -289,7 +310,7 @@ namespace PPRP.Imports.Excel
             }
             set { }
         }
-
+        /// <summary>Gets or sets GoNext Visibility.</summary>
         public Visibility GoNextVisibility
         {
             get 
@@ -299,6 +320,8 @@ namespace PPRP.Imports.Excel
             }
             set { }
         }
+
+        #endregion
 
         #endregion
 
