@@ -7,6 +7,10 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
+using NLib;
+using PPRP.Imports.Excel;
+//using PPRP.Imports.ShapeFiles;
+
 #endregion
 
 namespace PPRP.Pages
@@ -25,6 +29,12 @@ namespace PPRP.Pages
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Internal Variables
+
+        private NExcelImport import = new NExcelImport();
 
         #endregion
 
