@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 using PPRP.Pages;
 
@@ -12,9 +13,33 @@ using PPRP.Pages;
 
 namespace PPRP
 {
-    public class PPRPApp
+    /// <summary>
+    /// The PPRPApp class.
+    /// </summary>
+    public static class PPRPApp
     {
-        public class Pages
+        /// <summary>
+        /// Variables Static class.
+        /// </summary>
+        public static class Variables
+        {
+            /*
+            /// <summary>Chief Revenue Entry Prerender DateTime.</summary>
+            public static DateTime ChiefRevenueLastRenderTime = DateTime.MinValue;
+            /// <summary>Collector Revenue Entry Prerender DateTime.</summary>
+            public static DateTime CollectorRevenueLastRenderTime = DateTime.MinValue;
+            */
+        }
+        /// <summary>
+        /// Permissions Static class.
+        /// </summary>
+        public static class Permissions
+        {
+        }
+        /// <summary>
+        /// Pages Static class.
+        /// </summary>
+        public static class Pages
         {
             #region Main Menu
 
@@ -57,6 +82,18 @@ namespace PPRP
                     return _SignIn;
                 }
             }
+
+            #endregion
+        }
+        /// <summary>
+        /// Windows Static class.
+        /// </summary>
+        public static class Windows
+        {
+            #region Application Main Window
+
+            /// <summary>Gets Application Main Window.</summary>
+            public static Window MainWindow { get { return Application.Current.MainWindow; } }
 
             #endregion
         }

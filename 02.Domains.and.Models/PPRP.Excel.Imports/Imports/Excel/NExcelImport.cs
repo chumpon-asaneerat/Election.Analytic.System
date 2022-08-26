@@ -73,7 +73,7 @@ namespace PPRP.Imports.Excel
         #region Static Variables
 
         /// <summary>The DESKTOP path.</summary>
-        protected static string DESKTOP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static string DESKTOP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         #endregion
 
@@ -87,6 +87,7 @@ namespace PPRP.Imports.Excel
         private int _progress = 0;
 
         private string _fileName = string.Empty;
+        private List<NExcelWorksheet> _worksheets;
 
         #endregion
 
@@ -136,17 +137,18 @@ namespace PPRP.Imports.Excel
                 return;
             }
 
-            List<NExcelWorksheet> sheets;
+            if (null == _worksheets) _worksheets = new List<NExcelWorksheet>();
+            _worksheets.Clear(); // clear exists worksheets
 
             using (var package = new ExcelPackage(_fileName))
             {
                 try
                 {
-                    sheets = new List<NExcelWorksheet>();
+                    _worksheets = new List<NExcelWorksheet>();
                     var worksheets = package.Workbook.Worksheets;
                     foreach (var worksheet in worksheets)
                     {
-                        sheets.Add(new NExcelWorksheet() { SheetName = worksheet.Name });
+                        _worksheets.Add(new NExcelWorksheet() { SheetName = worksheet.Name });
                     }
                 }
                 catch (Exception ex)
@@ -252,24 +254,27 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
-        #region ShowDialog
+        #region Show Open Excel Dialog
 
-        public bool ShowDialog(string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล", 
-            string initDir = "")
+        public bool ShowDialog(string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล",
+            string initDir = null)
+        {
+            return ShowDialog(null, title, initDir);
+        }
+        public bool ShowDialog(Window owner,
+            string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล", 
+            string initDir = null)
         {
             bool ret = false;
 
+            // setup dialog options
             var od = new Microsoft.Win32.OpenFileDialog();
             od.Multiselect = false;
-            
-            od.InitialDirectory = (string.IsNullOrEmpty(initDir) || !Directory.Exists(initDir)) ?
-                DESKTOP_PATH : initDir;
-            
+            od.InitialDirectory = initDir;
             od.Title = string.IsNullOrEmpty(title) ? "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล" : title;
-            
-            od.Filter = "Excel Files(*.xls, *.xlsx)|*.xls,*.xlsx";
+            od.Filter = "Excel Files(*.xls, *.xlsx)|*.xls;*.xlsx";
 
-            ret = (od.ShowDialog().HasValue && od.ShowDialog().Value) ? true : false;
+            ret = od.ShowDialog(owner) == true;
             if (ret)
             {
                 // assigned to FileName

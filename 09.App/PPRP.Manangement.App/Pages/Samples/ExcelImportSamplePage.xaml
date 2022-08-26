@@ -51,20 +51,19 @@
                        LastChildFill="True">
                 <!--  WORK AREA  -->
                 <DockPanel LastChildFill="True">
+                    <!--  WIZARD PROGRESS  -->
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Top"
                                Height="50">
-                        <!--  WIZARD PROGRESS  -->
-                        <Grid>
-                            <ctrl:WizardProgressBar x:Name="wzBar"
-                                                    ItemsSource="{Binding Steps}"
-                                                    Progress="{Binding Progress}" />
-                        </Grid>
+                        <ctrl:WizardProgressBar x:Name="wzBar"
+                                                ItemsSource="{Binding Steps}"
+                                                Progress="{Binding Progress}" />
                     </DockPanel>
                     <!--  BUTTON PREVIOUS/NEXT  -->
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Bottom"
                                Height="40">
+                        <!--  PREVIOUS  -->
                         <Button x:Name="cmdPrev"
                                 DockPanel.Dock="Left"
                                 Style="{StaticResource InlineButton}"
@@ -74,6 +73,7 @@
                                 Visibility="{Binding GoPreviousVisibility}"
                                 Click="cmdPrev_Click" />
                         <TextBlock Width="20" DockPanel.Dock="Left" />
+                        <!--  CANCEL  -->
                         <Button x:Name="cmdCancel"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
@@ -82,6 +82,7 @@
                                 Content="ยกเลิก"
                                 Click="cmdCancel_Click" />
                         <TextBlock Width="20" DockPanel.Dock="Right" />
+                        <!--  NEXT  -->
                         <Button x:Name="cmdNext"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
@@ -90,9 +91,46 @@
                                 Content="ถัดไป &gt;"
                                 Visibility="{Binding GoNextVisibility}"
                                 Click="cmdNext_Click" />
+                        <TextBlock Width="20" DockPanel.Dock="Right" />
                         <Grid />
                     </DockPanel>
-                    <Grid />
+                    <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
+                    <TabControl x:Name="tabs" SelectedIndex="0">
+                        <TabItem Header="Select Excel File" Visibility="Collapsed">
+                            <DockPanel LastChildFill="True">
+                                <DockPanel LastChildFill="True"
+                                           DockPanel.Dock="Top"
+                                           Height="40">
+                                    <TextBlock DockPanel.Dock="Left"
+                                               VerticalAlignment="Center"
+                                               TextAlignment="Right"
+                                               Width="150"
+                                               Text="Excel ไฟล์: " />
+                                    <TextBlock DockPanel.Dock="Left" Width="5" />
+                                    <TextBox x:Name="txtFileName"
+                                             DockPanel.Dock="Left"
+                                             VerticalAlignment="Center"
+                                             TextAlignment="Left"
+                                             Width="Auto"
+                                             MinWidth="300"
+                                             MaxWidth="500" />
+                                    <TextBlock DockPanel.Dock="Left" Width="5" />
+                                    <Button x:Name="cmdChooseExcel"
+                                            Style="{StaticResource InlineButton}"
+                                            Width="150"
+                                            Height="30"
+                                            Content="เลือกไฟล์"
+                                            Click="cmdChooseExcel_Click" />
+                                    <TextBlock DockPanel.Dock="Left" Width="5" />
+                                    <Grid />
+                                </DockPanel>
+                                <Grid />
+                            </DockPanel>
+                        </TabItem>
+                        <TabItem Header="Analyze Excel Data" Visibility="Collapsed" />
+                        <TabItem Header="Upload to Database Server" Visibility="Collapsed" />
+                        <TabItem Header="Finished" Visibility="Collapsed" />
+                    </TabControl>
                 </DockPanel>
             </DockPanel>
         </Grid>

@@ -64,9 +64,12 @@ namespace PPRP.Pages
             import.Steps.Add("เสร็จสิ้น");
             import.ApplySteps();
 
+            this.DataContext = import;
+            /*
             wzBar.DataContext = import;
             cmdNext.DataContext = wzBar.DataContext; // set data context same as Wizard ProgressBar
             cmdPrev.DataContext = wzBar.DataContext; // set data context same as Wizard ProgressBar
+            */
         }
 
         #endregion
@@ -90,6 +93,11 @@ namespace PPRP.Pages
             import.NextStep();
         }
 
+        private void cmdChooseExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseExcelFile();
+        }
+
         #endregion
 
         #endregion
@@ -101,6 +109,14 @@ namespace PPRP.Pages
             var page = PPRPApp.Pages.MainMenu;
             page.Setup();
             PageContentManager.Instance.Current = page;
+        }
+
+        private void ChooseExcelFile()
+        {
+            if (import.ShowDialog(PPRPApp.Windows.MainWindow))
+            {
+
+            }
         }
 
         #endregion
