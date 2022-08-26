@@ -129,7 +129,39 @@ namespace PPRP.Imports.Excel
 
         private void LoadWorksheets()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
 
+            if (string.IsNullOrWhiteSpace(_fileName))
+            {
+                return;
+            }
+
+            List<NExcelWorksheet> sheets;
+
+            using (var package = new ExcelPackage(_fileName))
+            {
+                try
+                {
+                    sheets = new List<NExcelWorksheet>();
+                    var worksheets = package.Workbook.Worksheets;
+                    foreach (var worksheet in worksheets)
+                    {
+                        sheets.Add(new NExcelWorksheet() { SheetName = worksheet.Name });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    try
+                    {
+                        if (null != package) package.Dispose();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("package dispose error.");
+                    }
+                }
+            }
         }
 
         #endregion
