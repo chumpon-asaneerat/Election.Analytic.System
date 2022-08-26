@@ -20,7 +20,7 @@ namespace PPRP.Controls
 
         private static object CoerceProgress(DependencyObject target, object value)
         {
-            WizardProgressBar wizardProgressBar = (WizardProgressBar)target;
+            WizardProgressBar wiz = (WizardProgressBar)target;
             int progress = (int)value;
             if (progress < 0)
             {

@@ -70,13 +70,17 @@
                                 Style="{StaticResource InlineButton}"
                                 Width="150"
                                 Height="30"
-                                Content="&lt; ก่อนหน้า" />
+                                Content="&lt; ก่อนหน้า"
+                                Visibility="{Binding GoPreviousVisibility}"
+                                Click="cmdPrev_Click" />
                         <Button x:Name="cmdNext"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
                                 Width="150"
                                 Height="30"
-                                Content="ถัดไป &gt;" />
+                                Content="ถัดไป &gt;"
+                                Visibility="{Binding GoNextVisibility}"
+                                Click="cmdNext_Click" />
                         <Grid />
                     </DockPanel>
                     <Grid />

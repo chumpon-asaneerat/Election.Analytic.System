@@ -30,13 +30,17 @@ namespace PPRP.Controls.Utils
             int progress = (int)values[1];
             ItemsControl itemsControl = ItemsControl.ItemsControlFromItemContainer(contentPresenter);
             int index = itemsControl.ItemContainerGenerator.IndexFromContainer(contentPresenter);
-            if (checkNextItem == true)
+            if (checkNextItem)
             {
                 index++;
             }
-            WizardProgressBar wizardProgressBar = itemsControl.TemplatedParent as WizardProgressBar;
-            int percent = (int)(((double)index / wizardProgressBar.Items.Count) * 100);
-            if (percent < progress)
+            WizardProgressBar wiz = itemsControl.TemplatedParent as WizardProgressBar;
+
+            //int percent = (int)(((double)index / wiz.Items.Count) * 100);
+            //if (percent < progress)
+
+            int iMax = wiz.Items.Count;
+            if (index <= progress)
             {
                 return Visibility.Visible;
             }

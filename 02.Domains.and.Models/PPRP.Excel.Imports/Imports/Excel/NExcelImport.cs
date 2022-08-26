@@ -82,6 +82,8 @@ namespace PPRP.Imports.Excel
         private bool disposedValue; // flag for dispose
 
         private ObservableCollection<string> _steps = null;
+
+        private int _maxStep = 0;
         private int _progress = 0;
 
         private string _fileName = string.Empty;
@@ -110,6 +112,46 @@ namespace PPRP.Imports.Excel
         #endregion
 
         #region Private Methods
+
+        public void ResetStep()
+        {
+            _progress = 0;
+            _maxStep = 0;
+            _maxStep = (null == _steps || _steps.Count <= 0) ? 0 : _steps.Count - 1;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+
+        public void PreviousStep()
+        {
+            --_progress;
+            if (_progress < 0) _progress = 0;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+
+        public void NextStep()
+        {
+            ++_progress;
+            if (_progress > _maxStep) _progress = _maxStep;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+
+        private void RaiseProgressEvents()
+        {
+            // Raise ProeprtyChanged Events
+            this.Raise(() => this.Progress);
+
+            this.Raise(() => this.CanGoPrevious);
+            this.Raise(() => this.CanGoNext);
+
+            this.Raise(() => this.GoPreviousVisibility);
+            this.Raise(() => this.GoNextVisibility);
+        }
 
         private void LoadWorksheets()
         {
@@ -211,14 +253,51 @@ namespace PPRP.Imports.Excel
         public int Progress
         {
             get { return _progress; }
-            set 
-            { 
-                if (_progress != value)
-                {
-                    _progress = value;
-                    this.Raise(() => this.Progress); // Raise ProeprtyChanged Event
-                }
+            set { }
+        }
+
+        public bool CanGoPrevious
+        {
+            get 
+            {
+                if (_maxStep == 0) 
+                    return false;
+                bool isFirstStep = _progress <= 0;
+                return !isFirstStep;
             }
+            set { }
+        }
+
+        public Visibility GoPreviousVisibility
+        {
+            get 
+            {
+                var ret = (CanGoPrevious) ? Visibility.Visible : Visibility.Hidden;
+                return ret;
+            }
+            set { }
+        }
+
+        public bool CanGoNext
+        {
+            get 
+            {
+                if (_maxStep == 0) 
+                    return false;
+                bool isLastStep = _progress >= _maxStep;
+                return !isLastStep;
+            }
+            set { }
+        }
+
+        public Visibility GoNextVisibility
+        {
+            get 
+            { 
+                var ret = (CanGoNext) ? Visibility.Visible : Visibility.Hidden;
+                return ret;
+            }
+            set { }
         }
 
         #endregion
