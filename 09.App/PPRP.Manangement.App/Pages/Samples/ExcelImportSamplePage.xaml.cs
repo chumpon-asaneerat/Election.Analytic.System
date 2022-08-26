@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 using NLib;
+using NLib.Services;
 using PPRP.Imports.Excel;
 //using PPRP.Imports.ShapeFiles;
 
@@ -71,7 +72,12 @@ namespace PPRP.Pages
 
         #region Button Handlers
 
-        #region Prev/Next
+        #region Cancel/Prev/Next
+
+        private void cmdCancel_Click(object sender, RoutedEventArgs e)
+        {
+            GotoMainMenu();
+        }
 
         private void cmdPrev_Click(object sender, RoutedEventArgs e)
         {
@@ -84,6 +90,17 @@ namespace PPRP.Pages
         }
 
         #endregion
+
+        #endregion
+
+        #region Private Methods
+
+        private void GotoMainMenu()
+        {
+            var page = PPRPApp.Pages.MainMenu;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
 
         #endregion
     }
