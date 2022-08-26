@@ -1,7 +1,6 @@
 ﻿#region Using
 
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -16,38 +15,14 @@ namespace PPRP.Services
     /// <summary>
     /// SignInManager class.
     /// </summary>
-    public class SignInManager
+    public class SignInManager : NSingelton<SignInManager>
     {
-        #region Singelton
-
-        private static SignInManager _instance = null;
-        /// <summary>
-        /// Singelton Access instance of application manager.
-        /// </summary>
-        public static SignInManager Instance
-        {
-            get
-            {
-                if (null == _instance)
-                {
-                    lock (typeof(SignInManager))
-                    {
-                        _instance = new SignInManager();
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        #endregion
-
         #region Constructor and Destructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        private SignInManager()
-            : base()
+        protected SignInManager() : base()
         {
 
         }
