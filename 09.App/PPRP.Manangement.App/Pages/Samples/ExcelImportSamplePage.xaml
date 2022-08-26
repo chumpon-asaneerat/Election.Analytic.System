@@ -107,21 +107,25 @@
                                                Width="150"
                                                Text="Excel ไฟล์: " />
                                     <TextBlock DockPanel.Dock="Left" Width="5" />
-                                    <TextBox x:Name="txtFileName"
-                                             DockPanel.Dock="Left"
-                                             VerticalAlignment="Center"
-                                             TextAlignment="Left"
-                                             Width="Auto"
-                                             MinWidth="300"
-                                             MaxWidth="500" />
+                                    <TextBlock x:Name="txtFileName"
+                                               DockPanel.Dock="Left"
+                                               VerticalAlignment="Center"
+                                               TextAlignment="Left"
+                                               Text="{Binding FileName}"
+                                               TextWrapping="Wrap"
+                                               TextTrimming="WordEllipsis"
+                                               ClipToBounds="True"
+                                               Width="Auto"
+                                               MinWidth="300" />
                                     <TextBlock DockPanel.Dock="Left" Width="5" />
                                     <Button x:Name="cmdChooseExcel"
+                                            DockPanel.Dock="Right"
                                             Style="{StaticResource InlineButton}"
                                             Width="150"
                                             Height="30"
                                             Content="เลือกไฟล์"
                                             Click="cmdChooseExcel_Click" />
-                                    <TextBlock DockPanel.Dock="Left" Width="5" />
+                                    <TextBlock DockPanel.Dock="Right" Width="5" />
                                     <Grid />
                                 </DockPanel>
                                 <Grid />
