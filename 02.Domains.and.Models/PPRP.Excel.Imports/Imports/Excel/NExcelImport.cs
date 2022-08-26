@@ -16,6 +16,33 @@ using EPPlus.DataExtractor;
 
 namespace PPRP.Imports.Excel
 {
+    #region NExcelMapProperty
+
+    /// <summary>
+    /// The NExcelMapProperty class.
+    /// </summary>
+    public class NExcelMapProperty
+    {
+        #region Public Properties
+
+        /// <summary>Gets or sets Target property name.</summary>
+        public string PropertyName { get; set; }
+        /// <summary>Gets or sets Excel column'name like 'A', 'B', 'C', etc.</summary>
+        public string ColumnName { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region NExcelAnalyzeItem
+
+    #endregion
+
+    #region NExcelAnalyzeResult
+
+    #endregion
+
     #region NExcelImport
 
     /// <summary>
