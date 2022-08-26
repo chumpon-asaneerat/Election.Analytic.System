@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:button="clr-namespace:PPRP.Controls.Buttons;assembly=PPRP.Controls"
+             xmlns:ctrl="clr-namespace:PPRP.Controls;assembly=PPRP.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="800"
              d:DesignWidth="1024"
@@ -50,7 +50,35 @@
                        Grid.RowSpan="1"
                        LastChildFill="True">
                 <!--  WORK AREA  -->
-                <Grid />
+                <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="True"
+                               DockPanel.Dock="Top"
+                               Height="40">
+                        <!--  WIZARD PROGRESS  -->
+                        <Grid>
+                            <ctrl:WizardProgressBar x:Name="wzBar" Width="700"/>
+                        </Grid>
+                    </DockPanel>
+                    <!--  BUTTON PREVIOUS/NEXT  -->
+                    <DockPanel LastChildFill="True"
+                               DockPanel.Dock="Bottom"
+                               Height="40">
+                        <Button x:Name="cmdPrev"
+                                DockPanel.Dock="Left"
+                                Style="{StaticResource InlineButton}"
+                                Width="150"
+                                Height="30"
+                                Content="&lt; ก่อนหน้า" />
+                        <Button x:Name="cmdNext"
+                                DockPanel.Dock="Right"
+                                Style="{StaticResource InlineButton}"
+                                Width="150"
+                                Height="30"
+                                Content="ถัดไป &gt;" />
+                        <Grid />
+                    </DockPanel>
+                    <Grid />
+                </DockPanel>
             </DockPanel>
         </Grid>
     </Grid>

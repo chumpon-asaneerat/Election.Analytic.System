@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Linq;
+
 using System.Windows;
 using System.Windows.Forms;
+
+using Microsoft.Win32;
 
 using NLib;
 using OfficeOpenXml;
@@ -66,6 +69,13 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelImport : NInpc, IDisposable
     {
+        #region Static Variables
+
+        /// <summary>The DESKTOP path.</summary>
+        protected static string DESKTOP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+        #endregion
+
         #region Internal Variables
 
         private bool disposedValue; // flag for dispose
@@ -106,6 +116,8 @@ namespace PPRP.Imports.Excel
 
         #region protected Methods
 
+        #region Dispose
+
         /// <summary>
         /// Dispose.
         /// </summary>
@@ -127,7 +139,11 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
+        #endregion
+
         #region Public Methods
+
+        #region Dispose
 
         /// <summary>
         /// Dispose.
@@ -138,6 +154,38 @@ namespace PPRP.Imports.Excel
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+        #endregion
+
+        #region ShowDialog
+
+        public bool ShowDialog(string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล", 
+            string initDir = "")
+        {
+            bool ret = false;
+
+            var od = new Microsoft.Win32.OpenFileDialog();
+            od.Multiselect = false;
+            
+            od.InitialDirectory = (string.IsNullOrEmpty(initDir) || !Directory.Exists(initDir)) ?
+                DESKTOP_PATH : initDir;
+            
+            od.Title = string.IsNullOrEmpty(title) ? "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล" : title;
+            
+            od.Filter = "Excel Files(*.xls, *.xlsx)|*.xls,*.xlsx";
+
+            ret = (od.ShowDialog().HasValue && od.ShowDialog().Value) ? true : false;
+            if (ret)
+            {
+                // assigned to FileName
+                this.FileName = od.FileName;
+            }
+            od = null;
+
+            return ret;
+        }
+
+        #endregion
 
         #endregion
 
