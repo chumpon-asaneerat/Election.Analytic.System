@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #119
 Election.Analytic.System - PPRP  #118
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #117
-- 
+- Update projects
+  - PPRP.Excel.Imports, PPRP.Controls, PPRP.Manangement.App.
+    - Implements Excel import model and processes #15.
 
 [commited]
 Election.Analytic.System - PPRP  #116

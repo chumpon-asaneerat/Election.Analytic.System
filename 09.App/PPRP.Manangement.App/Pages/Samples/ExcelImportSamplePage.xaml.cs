@@ -57,11 +57,12 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            import.Steps.Clear(); // clear all steps.
             import.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
             import.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
             import.Steps.Add("นำเข้าข้อมูล");
             import.Steps.Add("เสร็จสิ้น");
-            import.ResetSteps();
+            import.ApplySteps();
 
             wzBar.DataContext = import;
             cmdNext.DataContext = wzBar.DataContext; // set data context same as Wizard ProgressBar
@@ -76,7 +77,7 @@ namespace PPRP.Pages
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
-            GotoMainMenu();
+            GotoMainMenuPage();
         }
 
         private void cmdPrev_Click(object sender, RoutedEventArgs e)
@@ -95,7 +96,7 @@ namespace PPRP.Pages
 
         #region Private Methods
 
-        private void GotoMainMenu()
+        private void GotoMainMenuPage()
         {
             var page = PPRPApp.Pages.MainMenu;
             page.Setup();

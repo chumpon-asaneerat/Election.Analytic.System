@@ -80,7 +80,8 @@
                                     <Grid Height="200">
                                         <button:ImageButton x:Name="imgCmd1" 
                                                             Width="220"
-                                                            ImageSource="/PPRP.Controls;component/Images/Button/OK2.png">
+                                                            ImageSource="/PPRP.Controls;component/Images/Button/OK2.png"
+                                                            Click="imgCmd1_Click">
                                             <TextBlock Style="{StaticResource ImageButtonText}" 
                                                        Text="ตกลง" />
                                         </button:ImageButton>

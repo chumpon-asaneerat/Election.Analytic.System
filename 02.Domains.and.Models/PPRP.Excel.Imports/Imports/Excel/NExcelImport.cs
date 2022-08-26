@@ -107,6 +107,8 @@ namespace PPRP.Imports.Excel
             // Do not change this code.
             // Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: false);
+
+            _steps = null;
         }
 
         #endregion
@@ -151,7 +153,6 @@ namespace PPRP.Imports.Excel
                     {
                         _steps.Clear();
                     }
-                    _steps = null;
                 }
                 // Free unmanaged resources (unmanaged objects) and override finalizer
 
@@ -183,9 +184,9 @@ namespace PPRP.Imports.Excel
         #region Wizard Steps and Progress methods
 
         /// <summary>
-        /// Reset steps. Call after re-assigned wizard steps.
+        /// Apply steps. Call after re-assigned wizard steps.
         /// </summary>
-        public void ResetSteps()
+        public void ApplySteps()
         {
             _progress = 0;
             _maxStep = 0;

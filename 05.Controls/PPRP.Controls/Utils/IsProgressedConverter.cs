@@ -29,15 +29,18 @@ namespace PPRP.Controls.Utils
             ContentPresenter contentPresenter = values[0] as ContentPresenter;
             int progress = (int)values[1];
             ItemsControl itemsControl = ItemsControl.ItemsControlFromItemContainer(contentPresenter);
-            int index = itemsControl.ItemContainerGenerator.IndexFromContainer(contentPresenter);
-            if (checkNextItem)
+            if (null != itemsControl)
             {
-                index++;
-            }
-            WizardProgressBar wiz = itemsControl.TemplatedParent as WizardProgressBar;
-            if (index <= progress)
-            {
-                return Visibility.Visible;
+                int index = itemsControl.ItemContainerGenerator.IndexFromContainer(contentPresenter);
+                if (checkNextItem)
+                {
+                    index++;
+                }
+                WizardProgressBar wiz = itemsControl.TemplatedParent as WizardProgressBar;
+                if (index <= progress)
+                {
+                    return Visibility.Visible;
+                }
             }
             return Visibility.Collapsed;
         }
