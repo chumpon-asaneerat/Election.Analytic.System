@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Linq;
@@ -80,6 +81,9 @@ namespace PPRP.Imports.Excel
 
         private bool disposedValue; // flag for dispose
 
+        private ObservableCollection<string> _steps = null;
+        private int _progress = 0;
+
         private string _fileName = string.Empty;
 
         #endregion
@@ -91,7 +95,7 @@ namespace PPRP.Imports.Excel
         /// </summary>
         public NExcelImport() : base()
         {
-
+            _steps = new ObservableCollection<string>();
         }
         /// <summary>
         /// Destructor.
@@ -129,6 +133,11 @@ namespace PPRP.Imports.Excel
                 if (disposing)
                 {
                     // Dispose managed state (managed objects)
+                    if (null != _steps)
+                    {
+                        _steps.Clear();
+                    }
+                    _steps = null;
                 }
                 // Free unmanaged resources (unmanaged objects) and override finalizer
 
@@ -191,6 +200,31 @@ namespace PPRP.Imports.Excel
 
         #region Public Properties
 
+        #region For Wizard Process Bar
+
+        public ObservableCollection<string> Steps
+        {
+            get { return _steps; }
+            set { }
+        }
+
+        public int Progress
+        {
+            get { return _progress; }
+            set 
+            { 
+                if (_progress != value)
+                {
+                    _progress = value;
+                    this.Raise(() => this.Progress); // Raise ProeprtyChanged Event
+                }
+            }
+        }
+
+        #endregion
+
+        #region For excel information
+
         /// <summary>
         /// Gets or sets Exel File Name (xls, xlsx).
         /// </summary>
@@ -207,6 +241,8 @@ namespace PPRP.Imports.Excel
                 }
             }
         }
+
+        #endregion
 
         #endregion
     }

@@ -56,7 +56,12 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-
+            import.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
+            import.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
+            import.Steps.Add("นำเข้าข้อมูล");
+            import.Steps.Add("เสร็จสิ้น");
+            import.Progress = 20;
+            wzBar.DataContext = import;
         }
 
         #endregion

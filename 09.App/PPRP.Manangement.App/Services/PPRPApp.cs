@@ -59,6 +59,28 @@ namespace PPRP
             }
 
             #endregion
+
+            #region ExcelImportSample
+
+            private static ExcelImportSamplePage _ExcelSample;
+
+            /// <summary>Gets Excel Import Sample Page.</summary>
+            public static ExcelImportSamplePage ExcelSample
+            {
+                get
+                {
+                    if (null == _ExcelSample)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _ExcelSample = new ExcelImportSamplePage();
+                        }
+                    }
+                    return _ExcelSample;
+                }
+            }
+
+            #endregion
         }
     }
 }

@@ -53,10 +53,12 @@
                 <DockPanel LastChildFill="True">
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Top"
-                               Height="40">
+                               Height="50">
                         <!--  WIZARD PROGRESS  -->
                         <Grid>
-                            <ctrl:WizardProgressBar x:Name="wzBar" Width="700"/>
+                            <ctrl:WizardProgressBar x:Name="wzBar"
+                                                    ItemsSource="{Binding Steps}"
+                                                    Progress="{Binding Progress}" />
                         </Grid>
                     </DockPanel>
                     <!--  BUTTON PREVIOUS/NEXT  -->

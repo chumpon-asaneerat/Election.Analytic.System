@@ -80,7 +80,8 @@ namespace PPRP
             else
             {
                 // SignIn OK - show main menu.
-                var page = PPRPApp.Pages.MainMenu;
+                //var page = PPRPApp.Pages.MainMenu;
+                var page = PPRPApp.Pages.ExcelSample;
                 page.Setup();
                 PageContentManager.Instance.Current = page;
             }
