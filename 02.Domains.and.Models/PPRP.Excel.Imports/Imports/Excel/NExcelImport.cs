@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 
+using NLib;
 using OfficeOpenXml;
 using EPPlus;
 using EPPlus.DataExtractor;
@@ -35,7 +36,22 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
-    #region NExcelAnalyzeItem
+    #region NExcelWorksheet
+
+    /// <summary>
+    /// The NExcelWorksheet class.
+    /// </summary>
+    public class NExcelWorksheet
+    {
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets excel worksheet name.
+        /// </summary>
+        public string SheetName { get; set; }
+
+        #endregion
+    }
 
     #endregion
 
@@ -48,11 +64,13 @@ namespace PPRP.Imports.Excel
     /// <summary>
     /// The NExcelImport class.
     /// </summary>
-    public class NExcelImport : IDisposable
+    public class NExcelImport : NInpc, IDisposable
     {
         #region Internal Variables
 
-        private bool disposedValue;
+        private bool disposedValue; // flag for dispose
+
+        private string _fileName = string.Empty;
 
         #endregion
 
@@ -78,6 +96,11 @@ namespace PPRP.Imports.Excel
         #endregion
 
         #region Private Methods
+
+        private void LoadWorksheets()
+        {
+
+        }
 
         #endregion
 
@@ -120,7 +143,22 @@ namespace PPRP.Imports.Excel
 
         #region Public Properties
 
-        public string FileName { get; set; }
+        /// <summary>
+        /// Gets or sets Exel File Name (xls, xlsx).
+        /// </summary>
+        public string FileName 
+        {
+            get { return _fileName; } 
+            set
+            {
+                if (_fileName != value)
+                {
+                    _fileName = value;
+                    LoadWorksheets();
+                    this.Raise(() => this.FileName); // Raise ProeprtyChanged Event
+                }
+            }
+        }
 
         #endregion
     }
