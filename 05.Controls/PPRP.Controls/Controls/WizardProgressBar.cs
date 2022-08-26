@@ -33,7 +33,7 @@ namespace PPRP.Controls
             return progress;
         }
 
-        #endregion // Dependency Properties
+        #endregion
 
         #region Static Constructor
 

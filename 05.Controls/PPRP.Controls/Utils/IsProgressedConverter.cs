@@ -35,11 +35,6 @@ namespace PPRP.Controls.Utils
                 index++;
             }
             WizardProgressBar wiz = itemsControl.TemplatedParent as WizardProgressBar;
-
-            //int percent = (int)(((double)index / wiz.Items.Count) * 100);
-            //if (percent < progress)
-
-            int iMax = wiz.Items.Count;
             if (index <= progress)
             {
                 return Visibility.Visible;
