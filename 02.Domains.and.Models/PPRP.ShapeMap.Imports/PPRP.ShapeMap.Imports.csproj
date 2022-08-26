@@ -62,6 +62,7 @@
     <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePolyLine.cs" />
     <Compile Include="Imports\ShapeMaps\ShapeFile\Shapes\ShapePolyLineM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="SingeltonSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\00.NLib\NLib\NLib.csproj">
