@@ -54,6 +54,9 @@ namespace PPRP.Imports.Excel
         /// <summary>Gets or sets excel worksheet's column index. This index is start with 1.</summary>
         public int ColumnIndex { get; set; }
 
+        /// <summary>Gets or sets excel worksheet's column letter like 'A', 'B', ..., 'AA', etc.</summary>
+        public string ColumnLetter { get; set; }
+
         #endregion
     }
 
@@ -67,10 +70,23 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelWorksheet
     {
+        #region Private Mehods
+
+        private List<NExcelColumn> _columns = new List<NExcelColumn>();
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>Gets or sets excel worksheet name.</summary>
         public string SheetName { get; set; }
+
+        /// <summary>Gets or sets excel worksheet columns.</summary>
+        public List<NExcelColumn> Columns 
+        { 
+            get { return _columns; }
+            set { } 
+        }
 
         #endregion
     }
@@ -174,7 +190,33 @@ namespace PPRP.Imports.Excel
                     var worksheets = package.Workbook.Worksheets;
                     foreach (var worksheet in worksheets)
                     {
-                        _worksheets.Add(new NExcelWorksheet() { SheetName = worksheet.Name });
+                        // Create new NExcelWorksheet.
+                        var nSheet = new NExcelWorksheet() { SheetName = worksheet.Name };
+                        // Extract columns into new NExcelWorksheet.
+                        if (null != worksheet &&
+                            null != worksheet.Dimension &&
+                            null != worksheet.Dimension.End &&
+                            worksheet.Dimension.End.Column > 0)
+                        {
+                            // row always 1
+                            int iRow = 1;
+                            for (int iCol = 1; iCol <= worksheet.Dimension.End.Column; iCol++)
+                            {
+                                // get column value
+                                var oVal = worksheet.Cells[iRow, iCol].Value;
+
+                                var nColumn = new NExcelColumn()
+                                {
+                                    ColumnName = oVal.ToString(),
+                                    ColumnIndex = iCol,
+                                    ColumnLetter = ExcelCellAddress.GetColumnLetter(iCol)
+                            };
+                                // Add to column list
+                                nSheet.Columns.Add(nColumn);
+                            }
+                        }
+                        // Append to list.
+                        _worksheets.Add(nSheet);
                     }
                 }
                 catch (Exception ex)
@@ -420,59 +462,6 @@ namespace PPRP.Imports.Excel
         #endregion
 
         #endregion
-
-        public List<NExcelColumn> GetColumns(string sheetName)
-        {
-            var results = new List<NExcelColumn>();
-
-            MethodBase med = MethodBase.GetCurrentMethod();
-
-            if (string.IsNullOrWhiteSpace(_fileName) ||
-                string.IsNullOrWhiteSpace(sheetName))
-            {
-                return results;
-            }
-
-            using (var package = new ExcelPackage(_fileName))
-            {
-                try
-                {
-                    _worksheets = new List<NExcelWorksheet>();
-                    var worksheets = package.Workbook.Worksheets;
-                    var worksheet = worksheets[sheetName];
-                    if (null != worksheet && 
-                        null != worksheet.Dimension && 
-                        null != worksheet.Dimension.End && 
-                        worksheet.Dimension.End.Column > 0)
-                    {
-                        // row always 1
-                        int iRow = 1;
-                        for (int iCol = 1; iCol <= worksheet.Dimension.End.Column; iCol++)
-                        {
-                            var oVal = worksheet.Cells[iRow, iCol].Value;
-
-                            var col = new NExcelColumn() { ColumnName = oVal.ToString(), ColumnIndex = iCol };
-                            results.Add(col);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    med.Err(ex);
-                    try
-                    {
-                        if (null != package) package.Dispose();
-                    }
-                    catch
-                    {
-                        Console.WriteLine("package dispose error.");
-                    }
-                }
-            }
-
-            return results;
-        }
-
     }
 
     #endregion

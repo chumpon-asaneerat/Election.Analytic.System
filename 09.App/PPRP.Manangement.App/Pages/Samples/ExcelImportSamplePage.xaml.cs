@@ -135,7 +135,7 @@ namespace PPRP.Pages
             lstColumns.ItemsSource = null;
             if (null == worksheet) return;
             // load all columns
-            lstColumns.ItemsSource = import.GetColumns(worksheet.SheetName);
+            lstColumns.ItemsSource = worksheet.Columns;
         }
 
         #endregion
