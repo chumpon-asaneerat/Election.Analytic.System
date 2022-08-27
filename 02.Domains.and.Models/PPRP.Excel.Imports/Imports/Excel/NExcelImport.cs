@@ -137,6 +137,191 @@ namespace PPRP.Imports.Excel
 
 namespace PPRP.Imports.Excel
 {
+    public class NExcelImportWizardStep : NInpc
+    {
+        #region Internal Variables
+
+        private ObservableCollection<string> _steps = null;
+
+        private int _maxStep = 0;
+        private int _progress = 0;
+
+        #endregion
+
+        #region Constructor and Destructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public NExcelImportWizardStep() : base() 
+        {
+            _steps = new ObservableCollection<string>();
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~NExcelImportWizardStep()
+        {
+            if (null != _steps)
+            {
+                _steps.Clear();
+            }
+            _steps = null;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void RaiseProgressEvents()
+        {
+            // Raise ProeprtyChanged Events
+            this.Raise(() => this.Progress);
+
+            this.Raise(() => this.CanGoPrevious);
+            this.Raise(() => this.CanGoNext);
+            this.Raise(() => this.IsFinished);
+
+            this.Raise(() => this.GoPreviousVisibility);
+            this.Raise(() => this.GoNextVisibility);
+            this.Raise(() => this.FinishedStepVisibility);
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Apply steps. Call after re-assigned wizard steps.
+        /// </summary>
+        public void ApplySteps()
+        {
+            _progress = 0;
+            _maxStep = 0;
+            _maxStep = (null == _steps || _steps.Count <= 0) ? 0 : _steps.Count - 1;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+        /// <summary>
+        /// Move to previous wizard step.
+        /// </summary>
+        public void PreviousStep()
+        {
+            --_progress;
+            if (_progress < 0) _progress = 0;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+        /// <summary>
+        /// Move to next wizard step.
+        /// </summary>
+        public void NextStep()
+        {
+            ++_progress;
+            if (_progress > _maxStep) _progress = _maxStep;
+
+            // Raise ProeprtyChanged Events
+            this.RaiseProgressEvents();
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        #region Wizard Steps and Progress
+
+        /// <summary>Gets steps collection.</summary>
+        public ObservableCollection<string> Steps
+        {
+            get { return _steps; }
+            set { }
+        }
+        /// <summary>Gets current step.</summary>
+        public int Progress
+        {
+            get { return _progress; }
+            set { }
+        }
+
+        #endregion
+
+        #region For Runtime IsEnabled, Visibility Bindings
+
+        /// <summary>Checks can go to previous step.</summary>
+        public bool CanGoPrevious
+        {
+            get
+            {
+                if (_maxStep == 0)
+                    return false;
+                bool isFirstStep = _progress <= 0;
+                return !isFirstStep;
+            }
+            set { }
+        }
+        /// <summary>Gets or sets GoPrevious Visibility.</summary>
+        public Visibility GoPreviousVisibility
+        {
+            get
+            {
+                var ret = (CanGoPrevious) ? Visibility.Visible : Visibility.Collapsed;
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>Checks can go to next step.</summary>
+        public bool CanGoNext
+        {
+            get
+            {
+                if (_maxStep == 0)
+                    return false;
+                bool isLastStep = _progress >= _maxStep;
+                return !isLastStep;
+            }
+            set { }
+        }
+        /// <summary>Gets or sets GoNext Visibility.</summary>
+        public Visibility GoNextVisibility
+        {
+            get
+            {
+                var ret = (CanGoNext) ? Visibility.Visible : Visibility.Collapsed;
+                return ret;
+            }
+            set { }
+        }
+        /// <summary>Checks is finished step.</summary>
+        public bool IsFinished
+        {
+            get
+            {
+                if (_maxStep == 0)
+                    return false;
+                bool isFinishedStep = _progress == _maxStep;
+                return isFinishedStep;
+            }
+            set { }
+        }
+        /// <summary>Gets or sets Finished Step Visibility.</summary>
+        public Visibility FinishedStepVisibility
+        {
+            get
+            {
+                var ret = (IsFinished) ? Visibility.Visible : Visibility.Collapsed;
+                return ret;
+            }
+            set { }
+        }
+
+        #endregion
+
+        #endregion
+    }
+
+
     #region NExcelImport
 
     /// <summary>
