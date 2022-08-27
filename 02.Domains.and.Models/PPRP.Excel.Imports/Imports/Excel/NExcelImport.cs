@@ -102,7 +102,10 @@ namespace PPRP.Imports.Excel
     }
 
     #endregion
+}
 
+namespace PPRP.Imports.Excel
+{
     #region NExcelWorksheet
 
     /// <summary>
@@ -116,16 +119,54 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
+        #region Override Methods
+
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj">The target object instance.</param>
+        /// <returns>Returns true if target instance is equal to current instance</returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            var curr = this.GetHashCode();
+            var target = obj.GetHashCode();
+            return curr.Equals(target);
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns>Returns hash code of object instance.</returns>
+        public override int GetHashCode()
+        {
+            string sVal = this.ToString();
+            return sVal.GetHashCode();
+        }
+        /// <summary>
+        /// ToString.
+        /// </summary>
+        /// <returns>Returns string that represents object instance.</returns>
+        public override string ToString()
+        {
+            //int colCnt = (null == this.Columns) ? -1 : this.Columns.Count;
+            //string code = string.Format("{0}_{1}", this.SheetName, colCnt);
+
+            string code = string.Format("{0}", this.SheetName);
+            return code.ToString();
+        }
+
+        #endregion
+
         #region Public Properties
 
         /// <summary>Gets or sets excel worksheet name.</summary>
         public string SheetName { get; set; }
 
         /// <summary>Gets or sets excel worksheet columns.</summary>
-        public List<NExcelColumn> Columns 
-        { 
+        public List<NExcelColumn> Columns
+        {
             get { return _columns; }
-            set { } 
+            set { }
         }
 
         #endregion
@@ -133,10 +174,6 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
-}
-
-namespace PPRP.Imports.Excel
-{
     #region NExcelImportWizard
 
     /// <summary>
