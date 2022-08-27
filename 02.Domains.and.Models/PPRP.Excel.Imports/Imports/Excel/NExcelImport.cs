@@ -70,6 +70,14 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelImport : NInpc, IDisposable
     {
+        /// <summary>
+        /// Register License.
+        /// </summary>
+        public static void RegisterLicense()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        }
+
         #region Static Variables
 
         /// <summary>The DESKTOP path.</summary>
@@ -381,10 +389,67 @@ namespace PPRP.Imports.Excel
                 }
             }
         }
+        /// <summary>
+        /// Gets all worksheets.
+        /// </summary>
+        public List<NExcelWorksheet> Worksheets 
+        { 
+            get { return _worksheets; }
+            set { }
+        }
+
 
         #endregion
 
         #endregion
+
+        public List<string> GetColumns(string sheetName)
+        {
+            List<string> results = new List<string>();
+
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            if (string.IsNullOrWhiteSpace(_fileName) ||
+                string.IsNullOrWhiteSpace(sheetName))
+            {
+                return results;
+            }
+
+            using (var package = new ExcelPackage(_fileName))
+            {
+                try
+                {
+                    _worksheets = new List<NExcelWorksheet>();
+                    var worksheets = package.Workbook.Worksheets;
+                    var worksheet = worksheets[sheetName];
+                    if (null != worksheet && 
+                        null != worksheet.Dimension && 
+                        null != worksheet.Dimension.End && 
+                        worksheet.Dimension.End.Column > 0)
+                    {
+                        for (int i = 1; i <= worksheet.Dimension.End.Column; i++)
+                        {
+                            results.Add(worksheet.Cells[1, i].Value.ToString());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    try
+                    {
+                        if (null != package) package.Dispose();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("package dispose error.");
+                    }
+                }
+            }
+
+            return results;
+        }
+
     }
 
     #endregion

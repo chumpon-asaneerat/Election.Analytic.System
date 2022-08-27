@@ -57,6 +57,8 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            NExcelImport.RegisterLicense();
+
             import.Steps.Clear(); // clear all steps.
             import.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
             import.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
@@ -100,6 +102,15 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region ListBox Handlers
+        private void lstSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = lstSheets.SelectedItem as NExcelWorksheet;
+            LoadSheetColumns(item);
+        }
+
+        #endregion
+
         #endregion
 
         #region Private Methods
@@ -115,8 +126,16 @@ namespace PPRP.Pages
         {
             if (import.ShowDialog(PPRPApp.Windows.MainWindow))
             {
-
+                lstSheets.ItemsSource = import.Worksheets;
             }
+        }
+
+        private void LoadSheetColumns(NExcelWorksheet worksheet)
+        {
+            lstColumns.ItemsSource = null;
+            if (null == worksheet) return;
+            // load all columns
+            lstColumns.ItemsSource = import.GetColumns(worksheet.SheetName);
         }
 
         #endregion

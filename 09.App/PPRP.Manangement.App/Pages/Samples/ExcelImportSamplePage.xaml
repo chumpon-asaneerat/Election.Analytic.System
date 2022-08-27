@@ -128,7 +128,21 @@
                                     <TextBlock DockPanel.Dock="Right" Width="5" />
                                     <Grid />
                                 </DockPanel>
-                                <Grid />
+                                <DockPanel LastChildFill="True">
+                                    <UniformGrid Rows="2" DockPanel.Dock="Left"
+                                                 Width="300">
+                                        <ListBox x:Name="lstSheets" Width="Auto" 
+                                                 Margin="3"
+                                                 DisplayMemberPath="SheetName"
+                                                 IsSynchronizedWithCurrentItem="true"
+                                                 SelectionMode="Single"
+                                                 SelectionChanged="lstSheets_SelectionChanged"/>
+                                        <ListBox x:Name="lstColumns" Width="Auto" 
+                                                 Margin="3"
+                                                 IsSynchronizedWithCurrentItem="true"/>
+                                    </UniformGrid>
+                                    <Grid />
+                                </DockPanel>
                             </DockPanel>
                         </TabItem>
                         <TabItem Header="Analyze Excel Data" Visibility="Collapsed" />
