@@ -95,6 +95,8 @@
                         <Grid />
                     </DockPanel>
                     <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
+                    <Grid />
+                    <!--
                     <TabControl x:Name="tabs" SelectedIndex="0">
                         <TabItem Header="Select Excel File" Visibility="Collapsed">
                             <DockPanel LastChildFill="True">
@@ -188,6 +190,7 @@
                         <TabItem Header="Upload to Database Server" Visibility="Collapsed" />
                         <TabItem Header="Finished" Visibility="Collapsed" />
                     </TabControl>
+                    -->
                 </DockPanel>
             </DockPanel>
         </Grid>
