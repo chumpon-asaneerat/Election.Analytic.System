@@ -129,19 +129,34 @@
                                     <Grid />
                                 </DockPanel>
                                 <DockPanel LastChildFill="True">
-                                    <UniformGrid Rows="2" DockPanel.Dock="Left"
-                                                 Width="300">
-                                        <ListBox x:Name="lstSheets" Width="Auto" 
+                                    <UniformGrid Rows="2"
+                                                 DockPanel.Dock="Left"
+                                                 Width="500">
+                                        <ListBox x:Name="lstSheets"
+                                                 Width="Auto"
                                                  Margin="3"
                                                  DisplayMemberPath="SheetName"
                                                  IsSynchronizedWithCurrentItem="true"
                                                  SelectionMode="Single"
-                                                 SelectionChanged="lstSheets_SelectionChanged"/>
-                                        <ListBox x:Name="lstColumns" Width="Auto" 
-                                                 Margin="3"
-                                                 DisplayMemberPath="ColumnName"
-                                                 SelectionMode="Single"
-                                                 IsSynchronizedWithCurrentItem="true"/>
+                                                 SelectionChanged="lstSheets_SelectionChanged" />
+                                        <ListView x:Name="lvColumns"
+                                                  Margin="3"
+                                                  SelectionMode="Single"
+                                                  IsSynchronizedWithCurrentItem="true">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn Header="ลำดับ"
+                                                                    Width="50"
+                                                                    DisplayMemberBinding="{Binding ColumnIndex}" />
+                                                    <GridViewColumn Header="Excel Name"
+                                                                    Width="150"
+                                                                    DisplayMemberBinding="{Binding ColumnLetter}" />
+                                                    <GridViewColumn Header="ชื่อ Column"
+                                                                    Width="250"
+                                                                    DisplayMemberBinding="{Binding ColumnName}" />
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
                                     </UniformGrid>
                                     <Grid />
                                 </DockPanel>

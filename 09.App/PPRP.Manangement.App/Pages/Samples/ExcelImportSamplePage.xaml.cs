@@ -132,10 +132,10 @@ namespace PPRP.Pages
 
         private void LoadSheetColumns(NExcelWorksheet worksheet)
         {
-            lstColumns.ItemsSource = null;
+            lvColumns.ItemsSource = null;
             if (null == worksheet) return;
             // load all columns
-            lstColumns.ItemsSource = worksheet.Columns;
+            lvColumns.ItemsSource = worksheet.Columns;
         }
 
         #endregion

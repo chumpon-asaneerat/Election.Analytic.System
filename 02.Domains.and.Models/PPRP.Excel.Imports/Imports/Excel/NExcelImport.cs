@@ -21,6 +21,10 @@ using EPPlus.DataExtractor;
 
 namespace PPRP.Imports.Excel
 {
+    #region NExcelAnalyzeResult
+
+    #endregion
+
     #region NExcelMapProperty
 
     /// <summary>
@@ -62,7 +66,6 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
-
     #region NExcelWorksheet
 
     /// <summary>
@@ -93,10 +96,6 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
-    #region NExcelAnalyzeResult
-
-    #endregion
-
     #region NExcelImport
 
     /// <summary>
@@ -104,6 +103,8 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelImport : NInpc, IDisposable
     {
+        #region Static Methods - Register License
+
         /// <summary>
         /// Register License.
         /// </summary>
@@ -111,6 +112,8 @@ namespace PPRP.Imports.Excel
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
+
+        #endregion
 
         #region Static Variables
 
@@ -152,6 +155,7 @@ namespace PPRP.Imports.Excel
             Dispose(disposing: false);
 
             _steps = null;
+            _worksheets = null;
         }
 
         #endregion
@@ -204,15 +208,17 @@ namespace PPRP.Imports.Excel
                             {
                                 // get column value
                                 var oVal = worksheet.Cells[iRow, iCol].Value;
-
-                                var nColumn = new NExcelColumn()
+                                if (null != oVal)
                                 {
-                                    ColumnName = oVal.ToString(),
-                                    ColumnIndex = iCol,
-                                    ColumnLetter = ExcelCellAddress.GetColumnLetter(iCol)
-                            };
-                                // Add to column list
-                                nSheet.Columns.Add(nColumn);
+                                    var nColumn = new NExcelColumn()
+                                    {
+                                        ColumnName = oVal.ToString(),
+                                        ColumnIndex = iCol,
+                                        ColumnLetter = ExcelCellAddress.GetColumnLetter(iCol)
+                                    };
+                                    // Add to column list
+                                    nSheet.Columns.Add(nColumn);
+                                }
                             }
                         }
                         // Append to list.
@@ -254,6 +260,10 @@ namespace PPRP.Imports.Excel
                     if (null != _steps)
                     {
                         _steps.Clear();
+                    }
+                    if (null != _worksheets)
+                    {
+                        _worksheets.Clear();
                     }
                 }
                 // Free unmanaged resources (unmanaged objects) and override finalizer
