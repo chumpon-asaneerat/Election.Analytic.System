@@ -158,7 +158,29 @@
                                             </ListView.View>
                                         </ListView>
                                     </UniformGrid>
-                                    <Grid />
+                                    <ListView x:Name="lvMap">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Property" 
+                                                                Width="250" 
+                                                                DisplayMemberBinding="{Binding PropertyName}"/>
+                                                <GridViewColumn Header="MapTo" Width="200">
+                                                    <GridViewColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <ComboBox x:Name="cbColumns" 
+                                                                      Width="Auto"
+                                                                      ItemsSource="{Binding Columns}"
+                                                                      DisplayMemberPath="ColumnName"
+                                                                      SelectedItem="{Binding SelectedColumn, Mode=OneWayToSource}"/>
+                                                        </DataTemplate>
+                                                    </GridViewColumn.CellTemplate>
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="Summary" 
+                                                                Width="150" 
+                                                                DisplayMemberBinding="{Binding Summary}"/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
                                 </DockPanel>
                             </DockPanel>
                         </TabItem>

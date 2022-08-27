@@ -37,6 +37,22 @@ namespace PPRP.Pages
 
         private NExcelImport import = new NExcelImport();
 
+        private List<NExcelMapProperty> maps = new List<NExcelMapProperty>();
+
+        class Target
+        {
+            /// <summary>จังหวัด</summary>
+            public string ProvinceName { get; set; }
+
+            /// <summary>หน่วยเลือกตั้งที่</summary>
+            public string UnitNo { get; set; }
+        }
+
+        /// <summary>
+        /// For Binding combobox within listview columns
+        /// </summary>
+        public List<NExcelColumn> ExcelColumns { get; set; }
+
         #endregion
 
         #region Loaded/Unloaded
@@ -103,10 +119,33 @@ namespace PPRP.Pages
         #endregion
 
         #region ListBox Handlers
+
         private void lstSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = lstSheets.SelectedItem as NExcelWorksheet;
             LoadSheetColumns(item);
+        }
+
+        #endregion
+
+        #region ListView's Combobox Handlers
+
+        private void cbColumns_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*
+            var mapItem = lvColumns.SelectedItem as NExcelMapProperty;
+            var combo = e.Source as ComboBox;
+            var cbItem = (null != combo) ? combo.SelectedItem as NExcelColumn : null;
+            if (null != cbItem && null != mapItem)
+            {
+                mapItem.ColumnLetter = cbItem.ColumnLetter;
+                e.Handled = true;
+            }
+            else
+            {
+                Console.WriteLine("No match.");
+            }
+            */
         }
 
         #endregion
@@ -136,6 +175,16 @@ namespace PPRP.Pages
             if (null == worksheet) return;
             // load all columns
             lvColumns.ItemsSource = worksheet.Columns;
+            // Set current ViewModel 
+            this.ExcelColumns = worksheet.Columns;
+
+            // Create map properties
+
+            if (null == maps) maps = new List<NExcelMapProperty>();
+            maps.Clear();
+            maps.Add(new NExcelMapProperty() { PropertyName = "ProvinceName", ColumnLetter = "", Columns = this.ExcelColumns });
+            maps.Add(new NExcelMapProperty() { PropertyName = "UnitNo", ColumnLetter = "", Columns = this.ExcelColumns });
+            lvMap.ItemsSource = maps;
         }
 
         #endregion

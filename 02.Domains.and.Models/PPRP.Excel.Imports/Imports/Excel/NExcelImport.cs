@@ -30,14 +30,51 @@ namespace PPRP.Imports.Excel
     /// <summary>
     /// The NExcelMapProperty class.
     /// </summary>
-    public class NExcelMapProperty
+    public class NExcelMapProperty : NInpc
     {
+        private string _ColumnLetter = string.Empty;
+
         #region Public Properties
 
         /// <summary>Gets or sets Target property name.</summary>
         public string PropertyName { get; set; }
         /// <summary>Gets or sets Excel column'name like 'A', 'B', 'C', etc.</summary>
-        public string ColumnName { get; set; }
+        public string ColumnLetter 
+        { 
+            get { return _ColumnLetter; }
+            set
+            {
+                if (_ColumnLetter != value)
+                {
+                    _ColumnLetter = value;
+                    this.Raise(() => this.ColumnLetter);
+                    this.Raise(() => this.Summary);
+                }
+            }
+        }
+
+        public string Summary 
+        {
+            get { return string.Format("'{0}' => '{1}'", PropertyName, _ColumnLetter); }
+            set { }
+        }
+
+
+        private NExcelColumn _SelectedColumn;
+        public NExcelColumn SelectedColumn
+        {
+            get { return _SelectedColumn; }
+            set
+            {
+                _SelectedColumn = value;
+                this.ColumnLetter = (null != _SelectedColumn) ? _SelectedColumn.ColumnLetter : string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// For lookup bindings.
+        /// </summary>
+        public List<NExcelColumn> Columns { get; set; }
 
         #endregion
     }
