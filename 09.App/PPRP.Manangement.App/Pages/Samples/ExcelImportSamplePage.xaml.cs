@@ -35,6 +35,8 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
+        private NExcelImportWizard wizard = new NExcelImportWizard();
+
         private NExcelImport import = new NExcelImport();
 
         private List<NExcelMapProperty> maps = new List<NExcelMapProperty>();
@@ -73,15 +75,21 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            // Setup wizard steps.
+            wizard.Steps.Clear(); // clear all steps.
+            wizard.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
+            wizard.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
+            wizard.Steps.Add("นำเข้าข้อมูล");
+            wizard.Steps.Add("เสร็จสิ้น");
+            wizard.FirstStep(); // set to first step.
+            // setup wizard DataContext
+            wzBar.DataContext = wizard;
+            cmdPrev.DataContext = wzBar.DataContext;
+            cmdNext.DataContext = wzBar.DataContext;
+            cmdFinish.DataContext = wzBar.DataContext;
+
+            // Setup excel importer
             NExcelImport.RegisterLicense();
-
-            import.Steps.Clear(); // clear all steps.
-            import.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
-            import.Steps.Add("ตรวจสอบความถูกต้องก่อนนำเข้าข้อมูล");
-            import.Steps.Add("นำเข้าข้อมูล");
-            import.Steps.Add("เสร็จสิ้น");
-            import.ApplySteps();
-
             this.DataContext = import;
         }
 
@@ -98,12 +106,17 @@ namespace PPRP.Pages
 
         private void cmdPrev_Click(object sender, RoutedEventArgs e)
         {
-            import.PreviousStep();
+            wizard.PreviousStep();
         }
 
         private void cmdNext_Click(object sender, RoutedEventArgs e)
         {
-            import.NextStep();
+            wizard.NextStep();
+        }
+
+        private void cmdFinish_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void cmdChooseExcel_Click(object sender, RoutedEventArgs e)

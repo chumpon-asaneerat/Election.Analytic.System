@@ -67,31 +67,41 @@
                         <Button x:Name="cmdPrev"
                                 DockPanel.Dock="Left"
                                 Style="{StaticResource InlineButton}"
+                                Margin="5,0,20,0"
                                 Width="150"
                                 Height="30"
                                 Content="&lt; ก่อนหน้า"
                                 Visibility="{Binding GoPreviousVisibility}"
                                 Click="cmdPrev_Click" />
-                        <TextBlock Width="20" DockPanel.Dock="Left" />
                         <!--  CANCEL  -->
                         <Button x:Name="cmdCancel"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
+                                Margin="20,0,5,0"
                                 Width="150"
                                 Height="30"
                                 Content="ยกเลิก"
                                 Click="cmdCancel_Click" />
-                        <TextBlock Width="20" DockPanel.Dock="Right" />
+                        <!--  FINISH  -->
+                        <Button x:Name="cmdFinish"
+                                DockPanel.Dock="Right"
+                                Style="{StaticResource InlineButton}"
+                                Margin="20,0,0,0"
+                                Width="150"
+                                Height="30"
+                                Content="เสร็จสิ้น"
+                                Visibility="{Binding FinishedStepVisibility}"
+                                Click="cmdFinish_Click" />
                         <!--  NEXT  -->
                         <Button x:Name="cmdNext"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
+                                Margin="20,0,0,0"
                                 Width="150"
                                 Height="30"
                                 Content="ถัดไป &gt;"
                                 Visibility="{Binding GoNextVisibility}"
                                 Click="cmdNext_Click" />
-                        <TextBlock Width="20" DockPanel.Dock="Right" />
                         <Grid />
                     </DockPanel>
                     <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
@@ -163,13 +173,13 @@
                                     <ListView x:Name="lvMap">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Property" 
-                                                                Width="250" 
+                                                <GridViewColumn Header="Property"
+                                                                Width="250"
                                                                 DisplayMemberBinding="{Binding PropertyName}"/>
                                                 <GridViewColumn Header="MapTo" Width="200">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
-                                                            <ComboBox x:Name="cbColumns" 
+                                                            <ComboBox x:Name="cbColumns"
                                                                       Width="Auto"
                                                                       ItemsSource="{Binding Columns}"
                                                                       DisplayMemberPath="ColumnName"
@@ -177,8 +187,8 @@
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
-                                                <GridViewColumn Header="Summary" 
-                                                                Width="150" 
+                                                <GridViewColumn Header="Summary"
+                                                                Width="150"
                                                                 DisplayMemberBinding="{Binding Summary}"/>
                                             </GridView>
                                         </ListView.View>
