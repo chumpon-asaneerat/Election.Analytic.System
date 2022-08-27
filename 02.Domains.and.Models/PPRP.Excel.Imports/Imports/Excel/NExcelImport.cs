@@ -80,7 +80,10 @@ namespace PPRP.Imports.Excel
     }
 
     #endregion
+}
 
+namespace PPRP.Imports.Excel
+{
     #region NExcelColumn
 
     /// <summary>
@@ -88,34 +91,34 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelColumn
     {
-        #region Public Properties
+        #region Constructor and Destructor
 
-        /// <summary>Gets or sets excel worksheet's column name.</summary>
-        public string ColumnName { get; set; }
-        /// <summary>Gets or sets excel worksheet's column index. This index is start with 1.</summary>
-        public int ColumnIndex { get; set; }
-
-        /// <summary>Gets or sets excel worksheet's column letter like 'A', 'B', ..., 'AA', etc.</summary>
-        public string ColumnLetter { get; set; }
-
-        #endregion
-    }
-
-    #endregion
-}
-
-namespace PPRP.Imports.Excel
-{
-    #region NExcelWorksheet
-
-    /// <summary>
-    /// The NExcelWorksheet class.
-    /// </summary>
-    public class NExcelWorksheet
-    {
-        #region Private Mehods
-
-        private List<NExcelColumn> _columns = new List<NExcelColumn>();
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public NExcelColumn() : this(-1, string.Empty, string.Empty) { }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="columnIndex">The Column Index. index start with 1.</param>
+        /// <param name="columnLetter">The Column Letter like 'A', 'B'.</param>
+        public NExcelColumn(int columnIndex, string columnLetter) : this(columnIndex, columnLetter, string.Empty) { }
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="columnIndex">The Column Index. index start with 1.</param>
+        /// <param name="columnLetter">The Column Letter like 'A', 'B'.</param>
+        /// <param name="columnName">The Column Name (normally is from first row in excel).</param>
+        public NExcelColumn(int columnIndex, string columnLetter, string columnName) : base()
+        {
+            this.ColumnIndex = columnIndex;
+            this.ColumnLetter = columnLetter;
+            this.ColumnName = columnName;
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~NExcelColumn() { }
 
         #endregion
 
@@ -148,10 +151,101 @@ namespace PPRP.Imports.Excel
         /// <returns>Returns string that represents object instance.</returns>
         public override string ToString()
         {
-            //int colCnt = (null == this.Columns) ? -1 : this.Columns.Count;
-            //string code = string.Format("{0}_{1}", this.SheetName, colCnt);
+            string code;
+            //code = string.Format("{0}_{1}",
+            //    string.IsNullOrWhiteSpace(this.ColumnLetter) ? string.Empty : this.ColumnLetter.Trim(),
+            //    string.IsNullOrWhiteSpace(this.ColumnName) ? string.Empty : this.ColumnName.Trim());
 
-            string code = string.Format("{0}", this.SheetName);
+            code = string.Format("{0}",
+                string.IsNullOrWhiteSpace(this.ColumnLetter) ? string.Empty : this.ColumnLetter.Trim());
+            return code.ToString();
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>Gets or sets excel worksheet's column name.</summary>
+        public string ColumnName { get; set; }
+        /// <summary>Gets or sets excel worksheet's column index. This index is start with 1.</summary>
+        public int ColumnIndex { get; set; }
+
+        /// <summary>Gets or sets excel worksheet's column letter like 'A', 'B', ..., 'AA', etc.</summary>
+        public string ColumnLetter { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+    #region NExcelWorksheet
+
+    /// <summary>
+    /// The NExcelWorksheet class.
+    /// </summary>
+    public class NExcelWorksheet
+    {
+        #region Constructor and Destructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public NExcelWorksheet() : base() 
+        {
+            this.Columns = new List<NExcelColumn>();
+        }
+        /// <summary>
+        /// Destructor.
+        /// </summary>
+        ~NExcelWorksheet()
+        {
+            if (null != this.Columns)
+            {
+                this.Columns.Clear();
+            }
+            this.Columns = null;
+        }
+
+        #endregion
+
+        #region Override Methods
+
+        /// <summary>
+        /// Equals.
+        /// </summary>
+        /// <param name="obj">The target object instance.</param>
+        /// <returns>Returns true if target instance is equal to current instance</returns>
+        public override bool Equals(object obj)
+        {
+            if (null == obj) return false;
+            var curr = this.GetHashCode();
+            var target = obj.GetHashCode();
+            return curr.Equals(target);
+        }
+        /// <summary>
+        /// GetHashCode.
+        /// </summary>
+        /// <returns>Returns hash code of object instance.</returns>
+        public override int GetHashCode()
+        {
+            string sVal = this.ToString();
+            return sVal.GetHashCode();
+        }
+        /// <summary>
+        /// ToString.
+        /// </summary>
+        /// <returns>Returns string that represents object instance.</returns>
+        public override string ToString()
+        {
+            string code;
+            //int colCnt = (null == this.Columns) ? -1 : this.Columns.Count;
+            //code = string.Format("{0}_{1}",
+            //  string.IsNullOrWhiteSpace(this.SheetName) ? null : this.SheetName.Trim(), 
+            //  colCnt);
+
+            code = string.Format("{0}", 
+                string.IsNullOrWhiteSpace(this.SheetName) ? string.Empty : this.SheetName.Trim());
+
             return code.ToString();
         }
 
@@ -163,11 +257,7 @@ namespace PPRP.Imports.Excel
         public string SheetName { get; set; }
 
         /// <summary>Gets or sets excel worksheet columns.</summary>
-        public List<NExcelColumn> Columns
-        {
-            get { return _columns; }
-            set { }
-        }
+        public List<NExcelColumn> Columns { get; private set; }
 
         #endregion
     }
