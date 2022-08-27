@@ -133,6 +133,10 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
+}
+
+namespace PPRP.Imports.Excel
+{
     #region NExcelImport
 
     /// <summary>
@@ -377,7 +381,7 @@ namespace PPRP.Imports.Excel
             return ShowDialog(null, title, initDir);
         }
         public bool ShowDialog(Window owner,
-            string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล", 
+            string title = "กรุณาเลือก excel file ที่ต้องการนำเข้าข้อมูล",
             string initDir = null)
         {
             bool ret = false;
@@ -430,9 +434,9 @@ namespace PPRP.Imports.Excel
         /// <summary>Checks can go to previous step.</summary>
         public bool CanGoPrevious
         {
-            get 
+            get
             {
-                if (_maxStep == 0) 
+                if (_maxStep == 0)
                     return false;
                 bool isFirstStep = _progress <= 0;
                 return !isFirstStep;
@@ -443,7 +447,7 @@ namespace PPRP.Imports.Excel
         /// <summary>Gets or sets GoPrevious Visibility.</summary>
         public Visibility GoPreviousVisibility
         {
-            get 
+            get
             {
                 var ret = (CanGoPrevious) ? Visibility.Visible : Visibility.Hidden;
                 return ret;
@@ -454,9 +458,9 @@ namespace PPRP.Imports.Excel
         /// <summary>Checks can go to next step.</summary>
         public bool CanGoNext
         {
-            get 
+            get
             {
-                if (_maxStep == 0) 
+                if (_maxStep == 0)
                     return false;
                 bool isLastStep = _progress >= _maxStep;
                 return !isLastStep;
@@ -466,8 +470,8 @@ namespace PPRP.Imports.Excel
         /// <summary>Gets or sets GoNext Visibility.</summary>
         public Visibility GoNextVisibility
         {
-            get 
-            { 
+            get
+            {
                 var ret = (CanGoNext) ? Visibility.Visible : Visibility.Hidden;
                 return ret;
             }
@@ -483,9 +487,9 @@ namespace PPRP.Imports.Excel
         /// <summary>
         /// Gets or sets Exel File Name (xls, xlsx).
         /// </summary>
-        public string FileName 
+        public string FileName
         {
-            get { return _fileName; } 
+            get { return _fileName; }
             set
             {
                 if (_fileName != value)
@@ -499,8 +503,8 @@ namespace PPRP.Imports.Excel
         /// <summary>
         /// Gets all worksheets.
         /// </summary>
-        public List<NExcelWorksheet> Worksheets 
-        { 
+        public List<NExcelWorksheet> Worksheets
+        {
             get { return _worksheets; }
             set { }
         }
