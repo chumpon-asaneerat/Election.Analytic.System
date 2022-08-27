@@ -40,6 +40,26 @@ namespace PPRP.Imports.Excel
 
     #endregion
 
+    #region NExcelColumn
+
+    /// <summary>
+    /// The NExcelColumn class.
+    /// </summary>
+    public class NExcelColumn
+    {
+        #region Public Properties
+
+        /// <summary>Gets or sets excel worksheet's column name.</summary>
+        public string ColumnName { get; set; }
+        /// <summary>Gets or sets excel worksheet's column index. This index is start with 1.</summary>
+        public int ColumnIndex { get; set; }
+
+        #endregion
+    }
+
+    #endregion
+
+
     #region NExcelWorksheet
 
     /// <summary>
@@ -49,9 +69,7 @@ namespace PPRP.Imports.Excel
     {
         #region Public Properties
 
-        /// <summary>
-        /// Gets or sets excel worksheet name.
-        /// </summary>
+        /// <summary>Gets or sets excel worksheet name.</summary>
         public string SheetName { get; set; }
 
         #endregion
@@ -403,9 +421,9 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
-        public List<string> GetColumns(string sheetName)
+        public List<NExcelColumn> GetColumns(string sheetName)
         {
-            List<string> results = new List<string>();
+            var results = new List<NExcelColumn>();
 
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -427,9 +445,14 @@ namespace PPRP.Imports.Excel
                         null != worksheet.Dimension.End && 
                         worksheet.Dimension.End.Column > 0)
                     {
-                        for (int i = 1; i <= worksheet.Dimension.End.Column; i++)
+                        // row always 1
+                        int iRow = 1;
+                        for (int iCol = 1; iCol <= worksheet.Dimension.End.Column; iCol++)
                         {
-                            results.Add(worksheet.Cells[1, i].Value.ToString());
+                            var oVal = worksheet.Cells[iRow, iCol].Value;
+
+                            var col = new NExcelColumn() { ColumnName = oVal.ToString(), ColumnIndex = iCol };
+                            results.Add(col);
                         }
                     }
                 }

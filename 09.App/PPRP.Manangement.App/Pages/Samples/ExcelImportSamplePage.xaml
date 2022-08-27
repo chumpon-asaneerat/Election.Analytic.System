@@ -139,6 +139,8 @@
                                                  SelectionChanged="lstSheets_SelectionChanged"/>
                                         <ListBox x:Name="lstColumns" Width="Auto" 
                                                  Margin="3"
+                                                 DisplayMemberPath="ColumnName"
+                                                 SelectionMode="Single"
                                                  IsSynchronizedWithCurrentItem="true"/>
                                     </UniformGrid>
                                     <Grid />
