@@ -105,8 +105,6 @@
                         <Grid />
                     </DockPanel>
                     <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
-                    <Grid />
-                    <!--
                     <TabControl x:Name="tabs" SelectedIndex="0">
                         <TabItem Header="Select Excel File" Visibility="Collapsed">
                             <DockPanel LastChildFill="True">
@@ -170,26 +168,27 @@
                                             </ListView.View>
                                         </ListView>
                                     </UniformGrid>
-                                    <ListView x:Name="lvMap">
+                                    <ListView x:Name="lvMap" Margin="3">
                                         <ListView.View>
                                             <GridView>
                                                 <GridViewColumn Header="Property"
                                                                 Width="250"
-                                                                DisplayMemberBinding="{Binding PropertyName}"/>
-                                                <GridViewColumn Header="MapTo" Width="200">
+                                                                DisplayMemberBinding="{Binding PropertyName}" />
+                                                <GridViewColumn Header="MapTo" Width="Auto">
                                                     <GridViewColumn.CellTemplate>
                                                         <DataTemplate>
                                                             <ComboBox x:Name="cbColumns"
-                                                                      Width="Auto"
+                                                                      Width="200"
+                                                                      HorizontalAlignment="Stretch"
                                                                       ItemsSource="{Binding Columns}"
                                                                       DisplayMemberPath="ColumnName"
-                                                                      SelectedItem="{Binding SelectedColumn, Mode=OneWayToSource}"/>
+                                                                      SelectedItem="{Binding SelectedColumn}" />
                                                         </DataTemplate>
                                                     </GridViewColumn.CellTemplate>
                                                 </GridViewColumn>
                                                 <GridViewColumn Header="Summary"
-                                                                Width="150"
-                                                                DisplayMemberBinding="{Binding Summary}"/>
+                                                                Width="300"
+                                                                DisplayMemberBinding="{Binding Summary}" />
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
@@ -200,7 +199,6 @@
                         <TabItem Header="Upload to Database Server" Visibility="Collapsed" />
                         <TabItem Header="Finished" Visibility="Collapsed" />
                     </TabControl>
-                    -->
                 </DockPanel>
             </DockPanel>
         </Grid>

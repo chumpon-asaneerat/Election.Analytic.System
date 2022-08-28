@@ -215,9 +215,33 @@ namespace PPRP.Imports.Excel
     /// </summary>
     public class NExcelMapProperty : NInpc
     {
+        #region Internal Variables
+
         private string _ColumnLetter = string.Empty;
 
+        private NExcelColumn _SelectedColumn;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="model"></param>
+        public NExcelMapProperty(NExcelSheetImportModel model)
+        {
+            this.Model = model;
+            // assigned columns.
+            this.Columns = (null != this.Model && null != this.Model.Worksheet) ? 
+                this.Model.Worksheet.Columns : null;
+        }
+
+        #endregion
+
         #region Public Properties
+
+        #region Instance Properties
 
         /// <summary>Gets or sets Target property name.</summary>
         public string PropertyName { get; set; }
@@ -236,29 +260,49 @@ namespace PPRP.Imports.Excel
             }
         }
 
+        #endregion
+
+        #region Binding Properties
+
+        /// <summary>
+        /// For NExcelSheetImportModel access.
+        /// </summary>
+        public NExcelSheetImportModel Model { get; set; }
+        /// <summary>
+        /// The list of columns for lookup bindings (like ComboBox.ItemSource).
+        /// </summary>
+        public List<NExcelColumn> Columns { get; set; }
+        /// <summary>
+        /// The selected column for lookup bindings (like ComboBox.SelectedItem).
+        /// </summary>
+        public NExcelColumn SelectedColumn
+        {
+            get { return _SelectedColumn; }
+            set
+            {
+                if (_SelectedColumn != value)
+                {
+                    _SelectedColumn = value;
+                    this.ColumnLetter = (null != _SelectedColumn) ? _SelectedColumn.ColumnLetter : string.Empty;
+                    // Raise Event
+                    this.Raise(() => this.SelectedColumn);
+                }
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Public Properties
+
+
         public string Summary
         {
             get { return string.Format("'{0}' => '{1}'", PropertyName, _ColumnLetter); }
             set { }
         }
 
-        /*
-        private NExcelColumn _SelectedColumn;
-        public NExcelColumn SelectedColumn
-        {
-            get { return _SelectedColumn; }
-            set
-            {
-                _SelectedColumn = value;
-                this.ColumnLetter = (null != _SelectedColumn) ? _SelectedColumn.ColumnLetter : string.Empty;
-            }
-        }
-
-        /// <summary>
-        /// For lookup bindings.
-        /// </summary>
-        public List<NExcelColumn> Columns { get; set; }
-        */
 
         #endregion
     }
@@ -269,55 +313,13 @@ namespace PPRP.Imports.Excel
 
     public class NExcelColumnMapModel : NInpc
     {
-
         public NExcelColumnMapModel(NExcelSheetImportModel importModel) : base()
         {
             this.ImportModel = importModel;
         }
 
+        /// <summary>Gets NExcelSheetImportModel instance.</summary>
         public NExcelSheetImportModel ImportModel { get; private set; }
-
-
-        private NExcelMapProperty _SelectedMapItem;
-        public NExcelMapProperty SelectedMapItem
-        {
-            get { return _SelectedMapItem; }
-            set
-            {
-                if (_SelectedMapItem != value)
-                {
-                    _SelectedMapItem = value;
-                    if (null != ImportModel)
-                    {
-                        //this.ColumnLetter = (null != _SelectedColumn) ? _SelectedColumn.ColumnLetter : string.Empty;
-                    }
-                    // Raise Event
-                    this.Raise(() => this.SelectedMapItem);
-                }
-            }
-        }
-
-        private NExcelColumn _SelectedColumn;
-        public NExcelColumn SelectedColumn
-        {
-            get { return _SelectedColumn; }
-            set
-            {
-                if (_SelectedColumn != value)
-                {
-                    _SelectedColumn = value;
-                    if (null != ImportModel && null != SelectedMapItem)
-                    {
-                        if (null != _SelectedColumn)
-                        {
-                            SelectedMapItem.ColumnLetter = _SelectedColumn.ColumnLetter;
-                        }
-                    }
-                    // Raise Event
-                    this.Raise(() => this.SelectedColumn);
-                }
-            }
-        }
     }
 
     #endregion
@@ -339,19 +341,14 @@ namespace PPRP.Imports.Excel
         {
             // Assigned worksheet and parse worksheet's columns
             this.Worksheet = worksheet;
-            ParseColumns();
             // Create Map Property List.
             this.Maps = new List<NExcelMapProperty>();
-            // Create Map Model instance.
-            this.MapModel = new NExcelColumnMapModel(this);
         }
         /// <summary>
         /// Destructor.
         /// </summary>
         ~NExcelSheetImportModel() 
         {
-            this.MapModel = null;
-
             if (null != this.Maps)
             {
                 this.Maps.Clear();
@@ -363,23 +360,13 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
-        #region Private Methods
-
-        private void ParseColumns()
-        {
-            if (null == this.Worksheet) return;
-        }
-
-
-        #endregion
-
         #region Public Properties
 
+        /// <summary>Gets NExcelWorksheet instance.</summary>
         public NExcelWorksheet Worksheet { get; private set; }
 
+        /// <summary>Gets Excel Map Property List.</summary>
         public List<NExcelMapProperty> Maps { get; private set; }
-
-        public NExcelColumnMapModel MapModel { get; private set; }
 
         #endregion
     }

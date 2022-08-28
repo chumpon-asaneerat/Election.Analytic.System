@@ -36,10 +36,7 @@ namespace PPRP.Pages
         #region Internal Variables
 
         private NExcelImportWizard wizard = new NExcelImportWizard();
-
         private NExcelImport import = new NExcelImport();
-
-        private List<NExcelMapProperty> maps = new List<NExcelMapProperty>();
 
         class Target
         {
@@ -53,7 +50,7 @@ namespace PPRP.Pages
         /// <summary>
         /// For Binding combobox within listview columns
         /// </summary>
-        public List<NExcelColumn> ExcelColumns { get; set; }
+        private NExcelSheetImportModel importModel { get; set; }
 
         #endregion
 
@@ -90,7 +87,6 @@ namespace PPRP.Pages
 
             // Setup excel importer
             NExcelImport.RegisterLicense();
-            this.DataContext = import;
         }
 
         #endregion
@@ -130,10 +126,8 @@ namespace PPRP.Pages
 
         private void lstSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
             var item = lstSheets.SelectedItem as NExcelWorksheet;
             LoadSheetColumns(item);
-            */
         }
 
         #endregion
@@ -160,32 +154,26 @@ namespace PPRP.Pages
 
         private void ChooseExcelFile()
         {
-            /*
             if (import.ShowDialog(PPRPApp.Windows.MainWindow))
             {
                 lstSheets.ItemsSource = import.Worksheets;
             }
-            */
         }
 
         private void LoadSheetColumns(NExcelWorksheet worksheet)
         {
-            /*
             lvColumns.ItemsSource = null;
             if (null == worksheet) return;
-            // load all columns
-            lvColumns.ItemsSource = worksheet.Columns;
-            // Set current ViewModel 
-            this.ExcelColumns = worksheet.Columns;
 
-            // Create map properties
+            this.importModel = new NExcelSheetImportModel(worksheet);
+            this.importModel.Maps.Clear();
+            this.importModel.Maps.Add(new NExcelMapProperty(this.importModel) { PropertyName = "ProvinceName" });
+            this.importModel.Maps.Add(new NExcelMapProperty(this.importModel) { PropertyName = "UnitNo" });
 
-            if (null == maps) maps = new List<NExcelMapProperty>();
-            maps.Clear();
-            maps.Add(new NExcelMapProperty() { PropertyName = "ProvinceName", ColumnLetter = "", Columns = this.ExcelColumns });
-            maps.Add(new NExcelMapProperty() { PropertyName = "UnitNo", ColumnLetter = "", Columns = this.ExcelColumns });
-            lvMap.ItemsSource = maps;
-            */
+            // set column items source.
+            lvColumns.ItemsSource = this.importModel.Worksheet.Columns;
+            // set map items source and data context for combobox columns.
+            lvMap.ItemsSource = this.importModel.Maps;
         }
 
         #endregion
