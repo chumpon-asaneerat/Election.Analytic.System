@@ -40,7 +40,22 @@ namespace PPRP.Controls
 
         #endregion
 
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
         #region ListBox Handlers
+
         private void cbSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = cbSheets.SelectedItem as NExcelWorksheet;
@@ -50,6 +65,7 @@ namespace PPRP.Controls
         #endregion
 
         #region Button Handlers
+
         private void cmdResetMapProperty_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -77,27 +93,30 @@ namespace PPRP.Controls
             _worksheet = worksheet;
 
             ResetMaps();
-
         }
 
         private void ResetMaps()
         {
             if (null == _worksheet) return;
 
-            var importModel = new NExcelSheetImportModel(_worksheet);
-            importModel.Maps.Clear();
+            ImportModel = new NExcelSheetImportModel(_worksheet);
+            ImportModel.Maps.Clear();
             if (null != _properties && _properties.Length > 0)
             {
                 foreach (var prop in _properties)
                 {
                     var pName = prop[0];
                     var pText = prop[1];
-                    importModel.Maps.Add(new NExcelMapProperty(importModel) { PropertyName = pName, DisplayText = pText }); ;
+                    ImportModel.Maps.Add(new NExcelMapProperty(ImportModel) 
+                    { 
+                        PropertyName = pName, 
+                        DisplayText = pText 
+                    }); ;
                 }
             }
 
             // set map items source and data context for combobox columns.
-            lvMaps.ItemsSource = importModel.Maps;
+            lvMaps.ItemsSource = ImportModel.Maps;
         }
 
         #endregion
@@ -113,6 +132,7 @@ namespace PPRP.Controls
         {
             _import = import;
             _properties = properties;
+            ImportModel = null; // reset
 
             cbSheets.ItemsSource = null;
             if (null != _import)
@@ -125,6 +145,15 @@ namespace PPRP.Controls
                 }
             }
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets or sets NExcelSheetImportModel.
+        /// </summary>
+        public NExcelSheetImportModel ImportModel { get; set; }
 
         #endregion
     }

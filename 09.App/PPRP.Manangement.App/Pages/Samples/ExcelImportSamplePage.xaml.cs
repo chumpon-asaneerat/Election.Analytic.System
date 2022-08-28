@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 using NLib;
+using NLib.Reflection;
 using NLib.Services;
 using PPRP.Imports.Excel;
 //using PPRP.Imports.ShapeFiles;
@@ -41,16 +42,13 @@ namespace PPRP.Pages
         class Target
         {
             /// <summary>จังหวัด</summary>
+            [PropertyMapName("ProvinceName")]
             public string ProvinceName { get; set; }
 
             /// <summary>หน่วยเลือกตั้งที่</summary>
+            [PropertyMapName("UnitNo")]
             public string UnitNo { get; set; }
         }
-
-        /// <summary>
-        /// For Binding combobox within listview columns
-        /// </summary>
-        private NExcelSheetImportModel importModel { get; set; }
 
         #endregion
 
@@ -58,12 +56,25 @@ namespace PPRP.Pages
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            import.OnSampleDataChanged += Import_OnSampleDataChanged;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            import.OnSampleDataChanged -= Import_OnSampleDataChanged;
+        }
 
+        #endregion
+
+        #region NExcelImport Handlers
+
+        private void Import_OnSampleDataChanged(object sender, EventArgs e)
+        {
+            if (null != wsMap && null != wsMap.ImportModel)
+            {
+                var model = wsMap.ImportModel;
+                lvMapPreview.Setup(import, model);
+            }
         }
 
         #endregion

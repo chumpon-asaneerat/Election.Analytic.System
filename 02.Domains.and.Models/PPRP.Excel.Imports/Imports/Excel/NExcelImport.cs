@@ -8,11 +8,10 @@ using System.Reflection;
 using System.Linq;
 
 using System.Windows;
-using System.Windows.Forms;
-
-using Microsoft.Win32;
 
 using NLib;
+using NLib.Reflection;
+
 using OfficeOpenXml;
 using EPPlus;
 using EPPlus.DataExtractor;
@@ -217,6 +216,7 @@ namespace PPRP.Imports.Excel
     {
         #region Internal Variables
 
+        private int _ColumnIndex = -1;
         private string _ColumnLetter = string.Empty;
 
         private NExcelColumn _SelectedColumn;
@@ -262,6 +262,19 @@ namespace PPRP.Imports.Excel
                 }
             }
         }
+        public int ColumnIndex
+        {
+            get { return _ColumnIndex; }
+            set
+            {
+                if (_ColumnIndex != value)
+                {
+                    _ColumnIndex = value;
+                    this.Raise(() => this.ColumnIndex);
+                    this.Raise(() => this.DebugInfo);
+                }
+            }
+        }
         /// <summary>Gets Instance degug data.</summary>
         public string DebugInfo
         {
@@ -293,6 +306,7 @@ namespace PPRP.Imports.Excel
                 {
                     _SelectedColumn = value;
                     this.ColumnLetter = (null != _SelectedColumn) ? _SelectedColumn.ColumnLetter : string.Empty;
+                    this.ColumnIndex = (null != _SelectedColumn) ? _SelectedColumn.ColumnIndex : -1;
                     // Raise Event
                     this.Raise(() => this.SelectedColumn);
                 }
@@ -777,6 +791,110 @@ namespace PPRP.Imports.Excel
 
         #endregion
 
+        #region Load Data
+
+        public List<T> LoadSheetData<T>(string sheetName, List<NExcelMapProperty> mapProperties)
+            where T: class, new()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            var results = new List<T>();
+            if (string.IsNullOrWhiteSpace(_fileName))
+                return results;
+            if (null == mapProperties || mapProperties.Count <= 0)
+                return results;
+
+            using (var package = new ExcelPackage(_fileName))
+            {
+                try
+                {
+                    var sheet = package.Workbook.Worksheets[sheetName];
+                    if (null != sheet)
+                    {
+                        /*
+                        int colCount = sheet.Dimension.End.Column;  //get Column Count
+                        int rowCount = sheet.Dimension.End.Row;     //get row count
+
+
+                        for (int row = 1; row <= rowCount; row++)
+                        {
+                            foreach (var mapProp in mapProperties)
+                            {
+                                if (string.IsNullOrWhiteSpace(mapProp.PropertyName))
+                                    continue;
+                                if (string.IsNullOrWhiteSpace(mapProp.ColumnLetter))
+                                    continue;
+                                if (mapProp.ColumnIndex < 1)
+                                    continue;
+
+                                var sVal = sheet.Cells[row, mapProp.ColumnIndex].Value?.ToString().Trim();
+                            }
+                        }
+
+                        for (int row = 1; row <= rowCount; row++)
+                        {
+                            for (int col = 1; col <= colCount; col++)
+                            {
+                                var sVal = sheet.Cells[row, col].Value?.ToString().Trim();
+                            }
+                        }
+                        */
+
+
+                        /*
+                        var accessor = sheet.Extract<T>();
+                        foreach (var mapProp in mapProperties)
+                        {
+                            if (string.IsNullOrWhiteSpace(mapProp.ColumnLetter))
+                                continue;
+                            accessor.WithProperty(p => , mapProp.ColumnLetter)
+                        }
+                        var outputs = accessor.GetData(3,
+                            row => null != sheet.Cells[row, 1].Value).ToList();
+                        */
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                }
+
+
+                /*
+                var sheet = package.Workbook.Worksheets[sheetName];
+                if (null != sheet)
+                {
+                    var accessor = sheet.Extract<GeoLocation>()
+                        // Here we can chain multiple definition for the columns
+                        .WithProperty(p => p.ProvinceCode, "A")
+                        .WithProperty(p => p.AmphurCode, "B")
+                        .WithProperty(p => p.TumbonCode, "C")
+                        .WithProperty(p => p.ProvinceName, "E")
+                        .WithProperty(p => p.AmphurName, "F")
+                        .WithProperty(p => p.TumbonName, "G");
+                    var results = accessor
+                        .GetData(3, row => null != sheet.Cells[row, 1].Value).ToList();
+                    gridSheetData.ItemsSource = results;
+                }
+            }
+            */
+            }
+
+            return results;
+        }
+
+        #endregion
+
+        #region Event Raise
+
+        public void RaiseSampleDataChanged()
+        {
+
+            OnSampleDataChanged.Call(this, EventArgs.Empty);
+        }
+
+        #endregion
+
         #endregion
 
         #region Public Properties
@@ -812,7 +930,117 @@ namespace PPRP.Imports.Excel
         #endregion
 
         #endregion
+
+        #region Public Events
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler OnSampleDataChanged;
+
+        #endregion
     }
 
     #endregion
+
+    /*
+    public static class ExpressionHelper
+    {
+        private static readonly MethodInfo LambdaMethod = typeof(Expression)
+            .GetMethods()
+            .First(x => x.Name == "Lambda" && x.ContainsGenericParameters && x.GetParameters().Length == 2);
+
+        private static MethodInfo GetLambdaFuncBuilder(Type source, Type dest)
+        {
+            var predicateType = typeof(Func<,>).MakeGenericType(source, dest);
+            return LambdaMethod.MakeGenericMethod(predicateType);
+        }
+
+        public static PropertyInfo GetPropertyInfo<T>(string name)
+            => typeof(T).GetProperties()
+            .Single(p => p.Name == name);
+
+        public static System.Linq.Expressions.ParameterExpression Parameter<T>()
+            => System.Linq.Expressions.Expression.Parameter(typeof(T));
+
+        public static System.Linq.Expressions.MemberExpression GetPropertyExpression(
+            System.Linq.Expressions.ParameterExpression obj, PropertyInfo property)
+            => System.Linq.Expressions.Expression.Property(obj, property);
+
+        public static System.Linq.Expressions.LambdaExpression GetLambda<TSource, TDest>(
+            System.Linq.Expressions.ParameterExpression obj, Expression arg)
+            => GetLambda(typeof(TSource), typeof(TDest), obj, arg);
+
+        public static System.Linq.Expressions.LambdaExpression GetLambda(Type source, Type dest,
+            System.Linq.Expressions.ParameterExpression obj, Expression arg)
+        {
+            var lambdaBuilder = GetLambdaFuncBuilder(source, dest);
+            return (System.Linq.Expressions.LambdaExpression)lambdaBuilder.Invoke(null, new object[] { arg, new[] { obj } });
+        }
+    }
+    */
+
+    /*
+    public static class ReflectionExtensions
+    {
+        public static ICollectionPropertyConfiguration<T> WithAllProperties<T>(
+            this IDataExtractor<T> extractor) where T : class, new() =>
+            typeof(T)
+            .GetProperties()
+            .Aggregate(extractor, ExtractProperty) as ICollectionPropertyConfiguration<T>;
+
+        private static string ToProperty(this PropertyInfo property) =>
+            ((PropertyMapNameAttribute)property.GetCustomAttributes(typeof(PropertyMapNameAttribute), true)
+                .First()).Name;
+        private static IDataExtractor<T> ExtractProperty<T>(IDataExtractor<T> extractor,
+            PropertyInfo property) where T : class, new()
+        {
+            if (property.PropertyType == typeof(string))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetStringProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(int))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetIntProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(int?))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetNullableIntProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(DateTime))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetDateTimeProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(DateTime?))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetNullableDateTimeProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(bool))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetBooleanProperty(property), property.ToProperty());
+
+            if (property.PropertyType == typeof(bool?))
+                return extractor.WithProperty(ExpressionGenerator<T>.GetNullableBooleanProperty(property), property.ToProperty());
+
+            throw new ArgumentException($"Unknown type {property.PropertyType}");
+        }
+        private static class ExpressionGenerator<T>
+        {
+            public static System.Linq.Expressions.Expression<Func<T, string>> GetStringProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, string>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, int>> GetIntProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, int>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, int?>> GetNullableIntProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, int?>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, DateTime>> GetDateTimeProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, DateTime>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, DateTime?>> GetNullableDateTimeProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, DateTime?>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, bool>> GetBooleanProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, bool>>(GetMember(property), Parameter);
+            public static System.Linq.Expressions.Expression<Func<T, bool?>> GetNullableBooleanProperty(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Lambda<Func<T, bool?>>(GetMember(property), Parameter);
+
+            private static readonly System.Linq.Expressions.ParameterExpression Parameter =
+                System.Linq.Expressions.Expression.Parameter(typeof(T), "p");
+            private static System.Linq.Expressions.MemberExpression GetMember(PropertyInfo property) =>
+                System.Linq.Expressions.Expression.Property(Parameter, property.Name);
+
+        }
+    }
+    */
 }
