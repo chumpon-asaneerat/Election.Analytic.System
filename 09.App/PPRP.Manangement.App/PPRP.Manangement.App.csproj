@@ -84,12 +84,19 @@
     <Compile Include="Controls\WorksheetMapControl.xaml.cs">
       <DependentUpon>WorksheetMapControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
+      <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Samples\ExcelImportSamplePage.xaml.cs">
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PPRPApp.cs" />
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WorksheetMapListViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

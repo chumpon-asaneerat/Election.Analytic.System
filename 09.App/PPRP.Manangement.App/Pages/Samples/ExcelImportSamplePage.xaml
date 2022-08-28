@@ -110,7 +110,7 @@
                         <!--  TAB 0: CHOOSE EXCEL FILES  -->
                         <TabItem Header="Select Excel File" Visibility="Collapsed">
                             <DockPanel LastChildFill="True">
-                                <!--  EXCEL FILES INFO / CHOOSE -->
+                                <!--  EXCEL FILES INFO / CHOOSE  -->
                                 <DockPanel LastChildFill="True"
                                            DockPanel.Dock="Top"
                                            Height="40">
@@ -141,20 +141,14 @@
                                     <TextBlock DockPanel.Dock="Right" Width="5" />
                                     <Grid />
                                 </DockPanel>
-                                <!--  EXCEL SHEETS, MAP COLUMNS, PREVIEW DATA -->
+                                <!--  EXCEL SHEETS, MAP COLUMNS, PREVIEW DATA  -->
                                 <DockPanel LastChildFill="True">
-                                    <!--  EXCEL SHEETS, MAP COLUMNS -->
-                                    <xlsCtrl:WorksheetMapControl x:Name="wsMap" 
-                                                                 DockPanel.Dock="Left" 
+                                    <!--  EXCEL SHEETS, MAP COLUMNS  -->
+                                    <xlsCtrl:WorksheetMapControl x:Name="wsMap"
+                                                                 DockPanel.Dock="Left"
                                                                  Width="500" />
-                                    <!--  PREVIEW DATA -->
-                                    <ListView x:Name="lvMapPreview" Margin="3">
-                                        <ListView.View>
-                                            <GridView x:Name="lvMapGridView">
-
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
+                                    <!--  PREVIEW DATA  -->
+                                    <xlsCtrl:WorksheetMapListViewControl x:Name="lvMapPreview" Margin="3" />
                                 </DockPanel>
                             </DockPanel>
                         </TabItem>
