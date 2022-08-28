@@ -34,8 +34,11 @@ Election.Analytic.System - PPRP  #150
 Election.Analytic.System - PPRP  #149
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #148
-- 
+- Update projects
+  - Update NLib project.
+    - NLib.Reflections.Cache -> update SetProperty code.
 
 [commited]
 Election.Analytic.System - PPRP  #147

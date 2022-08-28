@@ -186,11 +186,6 @@ namespace PPRP.Pages
                 null == mapProperties || mapProperties.Count <= 0)
                 return results;
 
-            string iCol = mapProperties.First(
-                (prop) => prop.PropertyName == "ProvinceName").ColumnLetter;
-            string cUnitNo = mapProperties.First(
-                (prop) => prop.PropertyName == "UnitNo").ColumnLetter;
-
             Dictionary<string, int> columns = new Dictionary<string, int>();
             foreach (var prop in mapProperties)
             {
@@ -217,13 +212,13 @@ namespace PPRP.Pages
                         {
                             var inst = new Target();
 
-                            if (columns.ContainsKey("ProvinceName"))
+                            foreach (var key in columns.Keys)
                             {
-                                inst.ProvinceName = sheet.Cells[row, columns["ProvinceName"]].Value.ToString();
-                            }
-                            if (columns.ContainsKey("UnitNo"))
-                            {
-                                inst.UnitNo = sheet.Cells[row, columns["UnitNo"]].Value.ToString();
+                                int colIdx = columns[key];
+                                if (colIdx < 1)
+                                    continue;
+                                object oVal = sheet.Cells[row, columns[key]].Value;
+                                DynamicAccess<Target>.Set(inst, key, oVal);
                             }
 
                             results.Add(inst);
