@@ -35,7 +35,6 @@ namespace PPRP.Controls
         #region Internal Variables
 
         private NExcelImport _import = null;
-        private NExcelWorksheet _worksheet = null;
         private string[][] _properties = null;
 
         #endregion
@@ -81,6 +80,7 @@ namespace PPRP.Controls
         {
             if (null == _import)
                 return;
+            _import.RaiseSampleDataChanged();
         }
 
         #endregion
@@ -90,16 +90,15 @@ namespace PPRP.Controls
         private void LoadSheetColumns(NExcelWorksheet worksheet)
         {
             lvMaps.ItemsSource = null;
-            _worksheet = worksheet;
 
-            ResetMaps();
+            ResetMaps(worksheet);
         }
 
-        private void ResetMaps()
+        private void ResetMaps(NExcelWorksheet worksheet)
         {
-            if (null == _worksheet) return;
+            if (null == worksheet) return;
 
-            ImportModel = new NExcelSheetImportModel(_worksheet);
+            ImportModel = new NExcelSheetImportModel(worksheet);
             ImportModel.Maps.Clear();
             if (null != _properties && _properties.Length > 0)
             {

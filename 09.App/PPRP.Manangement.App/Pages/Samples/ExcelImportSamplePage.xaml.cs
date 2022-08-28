@@ -2,6 +2,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -12,6 +14,10 @@ using NLib.Reflection;
 using NLib.Services;
 using PPRP.Imports.Excel;
 //using PPRP.Imports.ShapeFiles;
+
+using OfficeOpenXml;
+using EPPlus;
+using EPPlus.DataExtractor;
 
 #endregion
 
@@ -62,7 +68,14 @@ namespace PPRP.Pages
             if (null != wsMap && null != wsMap.ImportModel)
             {
                 var model = wsMap.ImportModel;
-                lvMapPreview.Setup(import, model);
+                lvMapPreview.Setup(import);
+
+                var items = Target.LoadWorksheetTable(import, model.Worksheet.SheetName,  model.Maps);
+                if (null != items)
+                {
+
+                }
+                lvMapPreview.UpdateItems(model.Maps, items);
             }
         }
 
@@ -161,26 +174,77 @@ namespace PPRP.Pages
 
         /// <summary>หน่วยเลือกตั้งที่</summary>
         public string UnitNo { get; set; }
-    }
 
-    public class Target2
-    {
-        /// <summary>จังหวัด</summary>
-        public string ProvinceName { get; set; }
-    }
 
-    public static class TargetExtensionMethods
-    {
-        public static void ToTarget(this NExcelImport obj,
+        public static List<Target> LoadWorksheetTable(NExcelImport import,
             string sheetName, List<NExcelMapProperty> mapProperties)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
 
-        }
-        public static void ToTarget2(this NExcelImport obj,
-            string sheetName, List<NExcelMapProperty> mapProperties)
-        {
+            var results = new List<Target>();
+            if (null == import || string.IsNullOrWhiteSpace(sheetName) || 
+                null == mapProperties || mapProperties.Count <= 0)
+                return results;
 
+            string iCol = mapProperties.First(
+                (prop) => prop.PropertyName == "ProvinceName").ColumnLetter;
+            string cUnitNo = mapProperties.First(
+                (prop) => prop.PropertyName == "UnitNo").ColumnLetter;
+
+            Dictionary<string, int> columns = new Dictionary<string, int>();
+            foreach (var prop in mapProperties)
+            {
+                if (prop.ColumnIndex < 1)
+                    continue; // ignore if column < 1
+
+                if (!columns.ContainsKey(prop.PropertyName))
+                    columns.Add(prop.PropertyName, prop.ColumnIndex);
+                else columns[prop.PropertyName] = prop.ColumnIndex;
+            }
+
+            using (var package = new ExcelPackage(import.FileName))
+            {
+                try
+                {
+                    var sheet = package.Workbook.Worksheets[sheetName];
+                    if (null != sheet)
+                    {
+                        int colCount = sheet.Dimension.End.Column;  //get Column Count
+                        int rowCount = sheet.Dimension.End.Row;     //get row count
+
+                        // start row at position 2.
+                        for (int row = 2; row <= rowCount; row++)
+                        {
+                            var inst = new Target();
+
+                            if (columns.ContainsKey("ProvinceName"))
+                            {
+                                inst.ProvinceName = sheet.Cells[row, columns["ProvinceName"]].Value.ToString();
+                            }
+                            if (columns.ContainsKey("UnitNo"))
+                            {
+                                inst.UnitNo = sheet.Cells[row, columns["UnitNo"]].Value.ToString();
+                            }
+
+                            results.Add(inst);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                    try
+                    {
+                        if (null != package) package.Dispose();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("package dispose error.");
+                    }
+                }
+            }
+
+            return results;
         }
     }
-
 }

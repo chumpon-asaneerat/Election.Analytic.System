@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
@@ -58,16 +59,36 @@ namespace PPRP.Controls
 
         #region Public Methods
 
-        public void Setup(NExcelImport import, NExcelSheetImportModel model)
+        public void Setup(NExcelImport import)
         {
             _import = import;
         }
 
-        public void LoadData(NExcelSheetImportModel model)
+        public void UpdateItems(List<NExcelMapProperty> mapProperties,
+            System.Collections.IEnumerable items)
         {
-            if (null != _import)
+            // Do work while the dispatcher processing is disabled.
+            using (Dispatcher.DisableProcessing())
             {
+                // Clear exist data
+                this.lvMapPreview.ItemsSource = null;
+                // Clear exist columns
+                this.lvMapGridView.Columns.Clear();
 
+                // Build new columns
+                GridViewColumn col;
+                foreach (var prop in mapProperties)
+                {
+                    col = new GridViewColumn();
+                    col.Header = prop.DisplayText;
+                    col.Width = 120;
+                    col.DisplayMemberBinding = new Binding(prop.PropertyName);
+
+                    this.lvMapGridView.Columns.Add(col);
+                }
+
+                // set new ItemsSource
+                this.lvMapPreview.ItemsSource = items;
             }
         }
 
