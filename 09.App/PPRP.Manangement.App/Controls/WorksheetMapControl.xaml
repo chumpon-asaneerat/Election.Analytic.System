@@ -17,7 +17,15 @@
         <TextBlock DockPanel.Dock="Top"
                    Text="รายละเอียดข้อมูลนำเข้า:"
                    Margin="2,5" />
-        <ListView x:Name="lvMaps" SelectionMode="Single">
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="True" Height="Auto">
+            <Button x:Name="cmdLoadExcelData" DockPanel.Dock="Right" 
+                    Margin="3"
+                    Width="150"
+                    Content="อ่านข้อมูลตัวอย่าง"
+                    Click="cmdLoadExcelData_Click"/>
+            <Grid />
+        </DockPanel>
+        <ListView x:Name="lvMaps" Style="{StaticResource SingleSelectListView}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ชื่อข้อมูล"
@@ -32,6 +40,18 @@
                                           ItemsSource="{Binding Columns}"
                                           DisplayMemberPath="ColumnName"
                                           SelectedItem="{Binding SelectedColumn}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="65">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="cmdResetMapProperty" 
+                                        Style="{StaticResource InlineButton}"
+                                        Width="50"
+                                        Foreground="Red"
+                                        Content="X" 
+                                        Click="cmdResetMapProperty_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

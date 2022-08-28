@@ -49,6 +49,26 @@ namespace PPRP.Controls
 
         #endregion
 
+        #region Button Handlers
+        private void cmdResetMapProperty_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var ctx = (null != button) ? button.DataContext : null;
+            var map = (null != ctx) ? ctx as NExcelMapProperty : null;
+            if (null != map)
+            {
+                map.SelectedColumn = null; // reset
+            }
+        }
+
+        private void cmdLoadExcelData_Click(object sender, RoutedEventArgs e)
+        {
+            if (null == _import)
+                return;
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void LoadSheetColumns(NExcelWorksheet worksheet)
