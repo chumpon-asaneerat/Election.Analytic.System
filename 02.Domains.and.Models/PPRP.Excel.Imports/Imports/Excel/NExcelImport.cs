@@ -255,9 +255,15 @@ namespace PPRP.Imports.Excel
                 {
                     _ColumnLetter = value;
                     this.Raise(() => this.ColumnLetter);
-                    this.Raise(() => this.Summary);
+                    this.Raise(() => this.DebugInfo);
                 }
             }
+        }
+        /// <summary>Gets Instance degug data.</summary>
+        public string DebugInfo
+        {
+            get { return string.Format("'{0}' => '{1}'", PropertyName, _ColumnLetter); }
+            set { }
         }
 
         #endregion
@@ -291,18 +297,6 @@ namespace PPRP.Imports.Excel
         }
 
         #endregion
-
-        #endregion
-
-        #region Public Properties
-
-
-        public string Summary
-        {
-            get { return string.Format("'{0}' => '{1}'", PropertyName, _ColumnLetter); }
-            set { }
-        }
-
 
         #endregion
     }

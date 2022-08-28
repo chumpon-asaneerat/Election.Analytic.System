@@ -81,11 +81,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\WorksheetMapControl.xaml.cs">
+      <DependentUpon>WorksheetMapControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Samples\ExcelImportSamplePage.xaml.cs">
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PPRPApp.cs" />
     <None Include="SingeltonSample.cs" />
+    <Page Include="Controls\WorksheetMapControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

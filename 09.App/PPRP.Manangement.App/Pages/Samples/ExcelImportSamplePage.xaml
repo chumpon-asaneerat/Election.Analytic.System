@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ctrl="clr-namespace:PPRP.Controls;assembly=PPRP.Controls"
+             xmlns:xlsCtrl="clr-namespace:PPRP.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="800"
              d:DesignWidth="1024"
@@ -106,8 +107,10 @@
                     </DockPanel>
                     <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
                     <TabControl x:Name="tabs" SelectedIndex="0">
+                        <!--  TAB 0: CHOOSE EXCEL FILES  -->
                         <TabItem Header="Select Excel File" Visibility="Collapsed">
                             <DockPanel LastChildFill="True">
+                                <!--  EXCEL FILES INFO / CHOOSE -->
                                 <DockPanel LastChildFill="True"
                                            DockPanel.Dock="Top"
                                            Height="40">
@@ -138,57 +141,17 @@
                                     <TextBlock DockPanel.Dock="Right" Width="5" />
                                     <Grid />
                                 </DockPanel>
+                                <!--  EXCEL SHEETS, MAP COLUMNS, PREVIEW DATA -->
                                 <DockPanel LastChildFill="True">
-                                    <UniformGrid Rows="2"
-                                                 DockPanel.Dock="Left"
-                                                 Width="500">
-                                        <ListBox x:Name="lstSheets"
-                                                 Width="Auto"
-                                                 Margin="3"
-                                                 DisplayMemberPath="SheetName"
-                                                 IsSynchronizedWithCurrentItem="true"
-                                                 SelectionMode="Single"
-                                                 SelectionChanged="lstSheets_SelectionChanged" />
-                                        <ListView x:Name="lvColumns"
-                                                  Margin="3"
-                                                  SelectionMode="Single"
-                                                  IsSynchronizedWithCurrentItem="true">
-                                            <ListView.View>
-                                                <GridView>
-                                                    <GridViewColumn Header="ลำดับ"
-                                                                    Width="50"
-                                                                    DisplayMemberBinding="{Binding ColumnIndex}" />
-                                                    <GridViewColumn Header="Excel Name"
-                                                                    Width="150"
-                                                                    DisplayMemberBinding="{Binding ColumnLetter}" />
-                                                    <GridViewColumn Header="ชื่อ Column"
-                                                                    Width="250"
-                                                                    DisplayMemberBinding="{Binding ColumnName}" />
-                                                </GridView>
-                                            </ListView.View>
-                                        </ListView>
-                                    </UniformGrid>
-                                    <ListView x:Name="lvMap" Margin="3">
+                                    <!--  EXCEL SHEETS, MAP COLUMNS -->
+                                    <xlsCtrl:WorksheetMapControl x:Name="wsMap" 
+                                                                 DockPanel.Dock="Left" 
+                                                                 Width="500" />
+                                    <!--  PREVIEW DATA -->
+                                    <ListView x:Name="lvMapPreview" Margin="3">
                                         <ListView.View>
-                                            <GridView>
-                                                <GridViewColumn Header="Property"
-                                                                Width="250"
-                                                                DisplayMemberBinding="{Binding PropertyName}" />
-                                                <GridViewColumn Header="MapTo" Width="Auto">
-                                                    <GridViewColumn.CellTemplate>
-                                                        <DataTemplate>
-                                                            <ComboBox x:Name="cbColumns"
-                                                                      Width="200"
-                                                                      HorizontalAlignment="Stretch"
-                                                                      ItemsSource="{Binding Columns}"
-                                                                      DisplayMemberPath="ColumnName"
-                                                                      SelectedItem="{Binding SelectedColumn}" />
-                                                        </DataTemplate>
-                                                    </GridViewColumn.CellTemplate>
-                                                </GridViewColumn>
-                                                <GridViewColumn Header="Summary"
-                                                                Width="300"
-                                                                DisplayMemberBinding="{Binding Summary}" />
+                                            <GridView x:Name="lvMapGridView">
+
                                             </GridView>
                                         </ListView.View>
                                     </ListView>

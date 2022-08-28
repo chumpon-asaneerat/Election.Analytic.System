@@ -79,6 +79,10 @@ namespace PPRP.Pages
             wizard.Steps.Add("นำเข้าข้อมูล");
             wizard.Steps.Add("เสร็จสิ้น");
             wizard.FirstStep(); // set to first step.
+
+            // setup data context
+            this.DataContext = import;
+
             // setup wizard DataContext
             wzBar.DataContext = wizard;
             cmdPrev.DataContext = wzBar.DataContext;
@@ -122,25 +126,6 @@ namespace PPRP.Pages
 
         #endregion
 
-        #region ListBox Handlers
-
-        private void lstSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = lstSheets.SelectedItem as NExcelWorksheet;
-            LoadSheetColumns(item);
-        }
-
-        #endregion
-
-        #region ListView's Combobox Handlers
-
-        private void cbColumns_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        #endregion
-
         #endregion
 
         #region Private Methods
@@ -156,24 +141,14 @@ namespace PPRP.Pages
         {
             if (import.ShowDialog(PPRPApp.Windows.MainWindow))
             {
-                lstSheets.ItemsSource = import.Worksheets;
+                //lstSheets.ItemsSource = import.Worksheets;
+                var mapProperties = new string[]
+                {
+                    "ProvinceName",
+                    "UnitNo"
+                };
+                wsMap.Setup(import, mapProperties);
             }
-        }
-
-        private void LoadSheetColumns(NExcelWorksheet worksheet)
-        {
-            lvColumns.ItemsSource = null;
-            if (null == worksheet) return;
-
-            this.importModel = new NExcelSheetImportModel(worksheet);
-            this.importModel.Maps.Clear();
-            this.importModel.Maps.Add(new NExcelMapProperty(this.importModel) { PropertyName = "ProvinceName" });
-            this.importModel.Maps.Add(new NExcelMapProperty(this.importModel) { PropertyName = "UnitNo" });
-
-            // set column items source.
-            lvColumns.ItemsSource = this.importModel.Worksheet.Columns;
-            // set map items source and data context for combobox columns.
-            lvMap.ItemsSource = this.importModel.Maps;
         }
 
         #endregion
