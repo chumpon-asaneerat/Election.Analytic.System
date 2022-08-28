@@ -35,7 +35,8 @@ namespace PPRP.Controls
         #region Internal Variables
 
         private NExcelImport _import = null;
-        private string[] _properties = null;
+        private NExcelWorksheet _worksheet = null;
+        private string[][] _properties = null;
 
         #endregion
 
@@ -53,16 +54,25 @@ namespace PPRP.Controls
         private void LoadSheetColumns(NExcelWorksheet worksheet)
         {
             lvMaps.ItemsSource = null;
+            _worksheet = worksheet;
 
-            if (null == worksheet) return;
+            ResetMaps();
 
-            var importModel = new NExcelSheetImportModel(worksheet);
+        }
+
+        private void ResetMaps()
+        {
+            if (null == _worksheet) return;
+
+            var importModel = new NExcelSheetImportModel(_worksheet);
             importModel.Maps.Clear();
             if (null != _properties && _properties.Length > 0)
             {
-                foreach (string prop in _properties)
+                foreach (var prop in _properties)
                 {
-                    importModel.Maps.Add(new NExcelMapProperty(importModel) { PropertyName = prop });
+                    var pName = prop[0];
+                    var pText = prop[1];
+                    importModel.Maps.Add(new NExcelMapProperty(importModel) { PropertyName = pName, DisplayText = pText }); ;
                 }
             }
 
@@ -74,7 +84,12 @@ namespace PPRP.Controls
 
         #region Public Methods
 
-        public void Setup(NExcelImport import, string[] properties)
+        /// <summary>
+        /// Setup.
+        /// </summary>
+        /// <param name="import">The NExcelImport instance.</param>
+        /// <param name="properties">The ProperyName, DisplayText pair array.</param>
+        public void Setup(NExcelImport import, string[][] properties)
         {
             _import = import;
             _properties = properties;
@@ -83,6 +98,11 @@ namespace PPRP.Controls
             if (null != _import)
             {
                 cbSheets.ItemsSource = _import.Worksheets;
+                if (null != _import.Worksheets && _import.Worksheets.Count > 0)
+                {
+                    // auto select first index.
+                    cbSheets.SelectedIndex = 0;
+                }
             }
         }
 

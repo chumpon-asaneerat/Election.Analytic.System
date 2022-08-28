@@ -245,6 +245,9 @@ namespace PPRP.Imports.Excel
 
         /// <summary>Gets or sets Target property name.</summary>
         public string PropertyName { get; set; }
+
+        /// <summary>Gets or sets Target Display Text.</summary>
+        public string DisplayText { get; set; }
         /// <summary>Gets or sets Excel column'name like 'A', 'B', 'C', etc.</summary>
         public string ColumnLetter
         {

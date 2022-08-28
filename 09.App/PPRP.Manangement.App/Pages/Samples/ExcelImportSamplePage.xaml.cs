@@ -142,10 +142,10 @@ namespace PPRP.Pages
             if (import.ShowDialog(PPRPApp.Windows.MainWindow))
             {
                 //lstSheets.ItemsSource = import.Worksheets;
-                var mapProperties = new string[]
+                var mapProperties = new string[][]
                 {
-                    "ProvinceName",
-                    "UnitNo"
+                    new string[] { "ProvinceName", "ข้อมูลจังหวัด" },
+                    new string[] { "UnitNo", "ข้อมูลเขต" }
                 };
                 wsMap.Setup(import, mapProperties);
             }
