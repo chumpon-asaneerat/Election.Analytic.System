@@ -40,9 +40,9 @@ namespace PPRP.Controls
         #endregion
 
         #region ListBox Handlers
-        private void lbSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void cbSheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = lbSheets.SelectedItem as NExcelWorksheet;
+            var item = cbSheets.SelectedItem as NExcelWorksheet;
             LoadSheetColumns(item);
         }
 
@@ -79,10 +79,10 @@ namespace PPRP.Controls
             _import = import;
             _properties = properties;
 
-            lbSheets.ItemsSource = null;
+            cbSheets.ItemsSource = null;
             if (null != _import)
             {
-                lbSheets.ItemsSource = _import.Worksheets;
+                cbSheets.ItemsSource = _import.Worksheets;
             }
         }
 

@@ -80,8 +80,8 @@ namespace PPRP.Pages
             wizard.Steps.Add("เสร็จสิ้น");
             wizard.FirstStep(); // set to first step.
 
-            // setup data context
-            this.DataContext = import;
+            // setup data context for excel file name.
+            this.txtFileName.DataContext = import;
 
             // setup wizard DataContext
             wzBar.DataContext = wizard;

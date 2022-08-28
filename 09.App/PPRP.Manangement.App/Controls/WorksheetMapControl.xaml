@@ -6,19 +6,18 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="500">
-    <DockPanel LastChildFill="True">
-        <ListBox x:Name="lbSheets"
-                 DockPanel.Dock="Top"
-                 Height="200"
-                 Width="Auto"
-                 Margin="3"
-                 DisplayMemberPath="SheetName"
-                 IsSynchronizedWithCurrentItem="true"
-                 SelectionMode="Single"
-                 SelectionChanged="lbSheets_SelectionChanged" />
-        <ListView x:Name="lvMaps"
-                  Margin="3"
-                  SelectionMode="Single">
+    <DockPanel LastChildFill="True" Margin="3">
+        <TextBlock DockPanel.Dock="Top"
+                   Text="กรุณาเลือก worksheet:"
+                   Margin="2,5" />
+        <ComboBox x:Name="cbSheets"
+                  DockPanel.Dock="Top"
+                  DisplayMemberPath="SheetName"
+                  SelectionChanged="cbSheets_SelectionChanged" />
+        <TextBlock DockPanel.Dock="Top"
+                   Text="รายละเอียดข้อมูลนำเข้า:"
+                   Margin="2,5" />
+        <ListView x:Name="lvMaps" SelectionMode="Single">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ชื่อข้อมูล"
@@ -36,9 +35,11 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <!--
                     <GridViewColumn Header="Debug"
                                     Width="300"
                                     DisplayMemberBinding="{Binding DebugInfo}" />
+                    -->
                 </GridView>
             </ListView.View>
         </ListView>
