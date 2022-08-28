@@ -39,17 +39,6 @@ namespace PPRP.Pages
         private NExcelImportWizard wizard = new NExcelImportWizard();
         private NExcelImport import = new NExcelImport();
 
-        class Target
-        {
-            /// <summary>จังหวัด</summary>
-            [PropertyMapName("ProvinceName")]
-            public string ProvinceName { get; set; }
-
-            /// <summary>หน่วยเลือกตั้งที่</summary>
-            [PropertyMapName("UnitNo")]
-            public string UnitNo { get; set; }
-        }
-
         #endregion
 
         #region Loaded/Unloaded
@@ -164,4 +153,34 @@ namespace PPRP.Pages
 
         #endregion
     }
+
+    public class Target
+    {
+        /// <summary>จังหวัด</summary>
+        public string ProvinceName { get; set; }
+
+        /// <summary>หน่วยเลือกตั้งที่</summary>
+        public string UnitNo { get; set; }
+    }
+
+    public class Target2
+    {
+        /// <summary>จังหวัด</summary>
+        public string ProvinceName { get; set; }
+    }
+
+    public static class TargetExtensionMethods
+    {
+        public static void ToTarget(this NExcelImport obj,
+            string sheetName, List<NExcelMapProperty> mapProperties)
+        {
+
+        }
+        public static void ToTarget2(this NExcelImport obj,
+            string sheetName, List<NExcelMapProperty> mapProperties)
+        {
+
+        }
+    }
+
 }
