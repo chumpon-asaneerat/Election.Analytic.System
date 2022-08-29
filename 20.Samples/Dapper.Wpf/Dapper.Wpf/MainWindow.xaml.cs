@@ -2,10 +2,12 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.IO;
 using System.Data;
 
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 using NLib.Data;
 using NLib.Components;
@@ -13,6 +15,7 @@ using NLib.Components;
 using Dapper;
 using Dapper.FluentMap;
 using Dapper.FluentMap.Mapping;
+using System.Windows.Media.Imaging;
 
 #endregion
 
@@ -54,6 +57,7 @@ namespace Dapper.Wpf
             //config.DataSource.DatabaseName = "SFDB4";
 
             #endregion
+
             // PPRPDemo
             config.DataSource.DatabaseName = "PPRPDemo";
 
@@ -80,6 +84,8 @@ namespace Dapper.Wpf
         #endregion
 
         #region Button Handlers
+
+        #region Tab - General
 
         private void cmdExecute1_Click(object sender, RoutedEventArgs e)
         {
@@ -128,6 +134,130 @@ namespace Dapper.Wpf
         }
 
         #endregion
+
+        #region Tab - Image
+
+        private void cmdChooseImage_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = ShowImageDialog(this);
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                return;
+            }
+
+            lbImageFileName.Text = fileName;
+
+            byte[] buffers = GetFileBuffer(fileName);
+            ImageSource imgSrc = GetImageSource(buffers);
+            img.Source = imgSrc;
+        }
+
+        private void cmdChooseJson_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = ShowJsonDialog(this);
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                return;
+            }
+
+            lbJsonFileName.Text = fileName;
+
+            byte[] buffers = GetFileBuffer(fileName);
+
+        }
+
+        #endregion
+
+        public string ShowImageDialog(Window owner,
+            string title = "กรุณาเลือก image file ที่ต้องการนำเข้าข้อมูล",
+            string initDir = null)
+        {
+            string filename = string.Empty;
+
+            // setup dialog options
+            var od = new Microsoft.Win32.OpenFileDialog();
+            od.Multiselect = false;
+            od.InitialDirectory = initDir;
+            od.Title = string.IsNullOrEmpty(title) ? "กรุณาเลือก image file ที่ต้องการนำเข้าข้อมูล" : title;
+            od.Filter = "Images Files(*.jpg, *.png)|*.jpg;*.png";
+
+            bool ret = od.ShowDialog(owner) == true;
+            if (ret)
+            {
+                // assigned to FileName
+                filename = od.FileName;
+            }
+            od = null;
+
+            return filename;
+        }
+
+        public string ShowJsonDialog(Window owner,
+            string title = "กรุณาเลือก json file ที่ต้องการนำเข้าข้อมูล",
+            string initDir = null)
+        {
+            string filename = string.Empty;
+
+            // setup dialog options
+            var od = new Microsoft.Win32.OpenFileDialog();
+            od.Multiselect = false;
+            od.InitialDirectory = initDir;
+            od.Title = string.IsNullOrEmpty(title) ? "กรุณาเลือก json file ที่ต้องการนำเข้าข้อมูล" : title;
+            od.Filter = "Json Files(*.json)|*.json";
+
+            bool ret = od.ShowDialog(owner) == true;
+            if (ret)
+            {
+                // assigned to FileName
+                filename = od.FileName;
+            }
+            od = null;
+
+            return filename;
+        }
+
+
+        public byte[] GetFileBuffer(string fileName)
+        {
+            byte[] buffers;
+            using (var stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    buffers = reader.ReadBytes((int)stream.Length);
+                }
+            }
+            return buffers;
+        }
+
+        public ImageSource GetImageSource(byte[] buffers)
+        {
+            try
+            {
+                using (Stream stream = new MemoryStream(buffers))
+                {
+                    BitmapImage image = new BitmapImage();
+                    stream.Position = 0;
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = stream;
+                    image.EndInit();
+                    image.Freeze();
+                    return image;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        private void cmdSaveImageToDb_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 

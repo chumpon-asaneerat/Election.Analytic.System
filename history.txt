@@ -25,8 +25,12 @@ Election.Analytic.System - PPRP  #153
 Election.Analytic.System - PPRP  #152
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #151
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Implements load byte array from image file.
+    - Implements create image brush from byte[].
 
 [commited]
 Election.Analytic.System - PPRP  #150

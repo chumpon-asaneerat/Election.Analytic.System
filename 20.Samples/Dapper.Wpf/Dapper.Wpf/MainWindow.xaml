@@ -9,57 +9,163 @@
         Width="800"
         Loaded="Window_Loaded"
         Unloaded="Window_Unloaded">
-    <DockPanel LastChildFill="True">
-        <DockPanel DockPanel.Dock="Top"
-                   Height="35"
-                   LastChildFill="True">
-            <Button x:Name="cmdExecute1"
-                    Width="120"
-                    Margin="2"
-                    DockPanel.Dock="Left"
-                    Content="Orgs (SFDB4)"
-                    Click="cmdExecute1_Click" />
-            <Button x:Name="cmdGetMTitles"
-                    Width="120"
-                    Margin="2"
-                    DockPanel.Dock="Left"
-                    Content="Gets Title"
-                    Click="cmdGetMTitles_Click" />
-            <Button x:Name="cmdSaveMTitle"
-                    Width="120"
-                    Margin="2"
-                    DockPanel.Dock="Left"
-                    Content="Save Title"
-                    Click="cmdSaveMTitle_Click" />
-            <Grid />
-        </DockPanel>
-        <DockPanel DockPanel.Dock="Top" Margin="2">
-            <TextBlock Text="Parameter 1:"
-                       DockPanel.Dock="Left"
-                       Margin="2"
-                       Width="75" />
-            <TextBox x:Name="txtParam1"
-                     DockPanel.Dock="Left"
-                     Margin="2"
-                     Width="150" />
-            <TextBlock Text="Parameter 2:"
-                       DockPanel.Dock="Left"
-                       Margin="2"
-                       Width="75" />
-            <TextBox x:Name="txtParam2"
-                     DockPanel.Dock="Left"
-                     Margin="2"
-                     Width="150" />
-            <TextBlock Text="Parameter 3:"
-                       DockPanel.Dock="Left"
-                       Margin="2"
-                       Width="75" />
-            <TextBox x:Name="txtParam3"
-                     DockPanel.Dock="Left"
-                     Margin="2"
-                     Width="150" />
-            <Grid />
-        </DockPanel>
-        <DataGrid x:Name="dbgrid" />
-    </DockPanel>
+    <TabControl>
+        <TabItem Header="General">
+            <DockPanel LastChildFill="True">
+                <DockPanel DockPanel.Dock="Top"
+                           Height="35"
+                           LastChildFill="True">
+                    <Button x:Name="cmdExecute1"
+                            Width="120"
+                            Margin="2"
+                            DockPanel.Dock="Left"
+                            Content="Orgs (SFDB4)"
+                            Click="cmdExecute1_Click" />
+                    <Button x:Name="cmdGetMTitles"
+                            Width="120"
+                            Margin="2"
+                            DockPanel.Dock="Left"
+                            Content="Gets Title"
+                            Click="cmdGetMTitles_Click" />
+                    <Button x:Name="cmdSaveMTitle"
+                            Width="120"
+                            Margin="2"
+                            DockPanel.Dock="Left"
+                            Content="Save Title"
+                            Click="cmdSaveMTitle_Click" />
+                    <Grid />
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Top" Margin="2">
+                    <TextBlock Text="Parameter 1:"
+                               DockPanel.Dock="Left"
+                               Margin="2"
+                               Width="75" />
+                    <TextBox x:Name="txtParam1"
+                             DockPanel.Dock="Left"
+                             Margin="2"
+                             Width="150" />
+                    <TextBlock Text="Parameter 2:"
+                               DockPanel.Dock="Left"
+                               Margin="2"
+                               Width="75" />
+                    <TextBox x:Name="txtParam2"
+                             DockPanel.Dock="Left"
+                             Margin="2"
+                             Width="150" />
+                    <TextBlock Text="Parameter 3:"
+                               DockPanel.Dock="Left"
+                               Margin="2"
+                               Width="75" />
+                    <TextBox x:Name="txtParam3"
+                             DockPanel.Dock="Left"
+                             Margin="2"
+                             Width="150" />
+                    <Grid />
+                </DockPanel>
+                <DataGrid x:Name="dbgrid" />
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Image and Json">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Top"
+                            Orientation="Horizontal"
+                            Height="40">
+                    <Button x:Name="cmdChooseImage"
+                            Margin="5"
+                            Width="100"
+                            Content="Choose Image"
+                            Click="cmdChooseImage_Click" />
+                    <TextBlock Text="File Name:"
+                               Margin="5"
+                               Width="80"
+                               VerticalAlignment="Center"
+                               TextAlignment="Right" />
+                    <TextBlock x:Name="lbImageFileName" Margin="5" />
+                </StackPanel>
+                <StackPanel DockPanel.Dock="Top"
+                            Orientation="Horizontal"
+                            Height="40">
+                    <Button x:Name="cmdChooseJson"
+                            Margin="5"
+                            Width="100"
+                            Content="Choose Image"
+                            Click="cmdChooseJson_Click" />
+                    <TextBlock Text="File Name:"
+                               Margin="5"
+                               Width="80"
+                               VerticalAlignment="Center"
+                               TextAlignment="Right" />
+                    <TextBlock x:Name="lbJsonFileName" Margin="5" />
+                </StackPanel>
+                <DockPanel LastChildFill="True">
+                    <DockPanel LastChildFill="True"
+                               DockPanel.Dock="Left"
+                               Width="400">
+                        <TextBlock Text="Image:"
+                                   Margin="5"
+                                   DockPanel.Dock="Top" />
+                        <DockPanel LastChildFill="True"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="5">
+                            <Button x:Name="cmdSaveImageToDb"
+                                    DockPanel.Dock="Left"
+                                    Margin="5"
+                                    Content="Save"
+                                    Width="100"
+                                    Click="cmdSaveImageToDb_Click" />
+                            <TextBlock Margin="5"
+                                       DockPanel.Dock="Left"
+                                       Width="60"
+                                       VerticalAlignment="Center"
+                                       Text="ContentId: " />
+                            <TextBox x:Name="txtImageContentId"
+                                     DockPanel.Dock="Left"
+                                     VerticalAlignment="Center"
+                                     Width="200" />
+                            <Grid />
+                        </DockPanel>
+                        <Border BorderBrush="DimGray"
+                                BorderThickness="1"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                            <Image x:Name="img"
+                                   Margin="5"
+                                   Width="250"
+                                   Height="250" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock Text="Json:"
+                                   Margin="5"
+                                   DockPanel.Dock="Top" />
+                        <DockPanel LastChildFill="True"
+                                   DockPanel.Dock="Bottom"
+                                   Margin="5">
+                            <Button x:Name="cmdSaveJsonToDb"
+                                    DockPanel.Dock="Left"
+                                    Content="Save"
+                                    Width="100"
+                                    Click="cmdSaveImageToDb_Click" />
+                            <TextBlock Margin="5"
+                                       DockPanel.Dock="Left"
+                                       Width="60"
+                                       VerticalAlignment="Center"
+                                       Text="ContentId: " />
+                            <TextBox x:Name="txtJsonContentId"
+                                     DockPanel.Dock="Left"
+                                     VerticalAlignment="Center"
+                                     Width="200" />
+                            <Grid />
+                        </DockPanel>
+                        <Border BorderBrush="DimGray" BorderThickness="1">
+                            <TextBox x:Name="txtJson"
+                                     Margin="5"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap" />
+                        </Border>
+                    </DockPanel>
+                </DockPanel>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
 </Window>
