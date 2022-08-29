@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #158
 Election.Analytic.System - PPRP  #157
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #156
-- 
+- Update projects
+  - Update PPRP.Domains project
+    - Add Connection config and DbServer class.
 
 [commited]
 Election.Analytic.System - PPRP  #155

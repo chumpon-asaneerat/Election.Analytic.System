@@ -32,6 +32,19 @@ namespace PPRP
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Start Server
+            DbServer.Instance.Start();
+
+            #region Test Connection
+            /*
+            var rets = Domains.MTitle.Gets(DbServer.Instance.Db);
+            if (null != rets)
+            {
+                Console.WriteLine("Count: {0}", rets.Value.Count);
+            }
+            */
+            #endregion
+
             // Initial Page Content Manager
             PageContentManager.Instance.ContentChanged += new EventHandler(Instance_ContentChanged);
             PageContentManager.Instance.Start();
@@ -54,6 +67,9 @@ namespace PPRP
             // Release Page Content Manager
             PageContentManager.Instance.Shutdown();
             PageContentManager.Instance.ContentChanged -= new EventHandler(Instance_ContentChanged);
+
+            // Shutdown Server
+            DbServer.Instance.Shutdown();
         }
 
         #endregion

@@ -62,6 +62,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbServer.cs" />
     <Compile Include="Domains\Common.cs" />
     <Compile Include="Domains\Enums.cs" />
     <Compile Include="Domains\MAge.cs" />
