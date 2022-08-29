@@ -104,6 +104,9 @@
     <Compile Include="Windows\Excels\ImportPollingStationWindow.xaml.cs">
       <DependentUpon>ImportPollingStationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Images\ImportPartyImageWindow.xaml.cs">
+      <DependentUpon>ImportPartyImageWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Excels\ImportPollingStationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Images\ImportPartyImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

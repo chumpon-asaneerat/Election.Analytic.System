@@ -81,7 +81,7 @@ namespace PPRP.Windows
 
         #region Button Handlers
 
-        #region Cancel/Prev/Next
+        #region Cancel/Finish
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {

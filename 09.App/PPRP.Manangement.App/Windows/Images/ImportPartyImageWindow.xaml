@@ -1,11 +1,11 @@
-﻿<Window x:Class="PPRP.Windows.ImportPollingStationWindow"
+﻿<Window x:Class="PPRP.Windows.ImportPartyImageWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:xlsCtrl="clr-namespace:PPRP.Controls"
+        xmlns:ctrl="clr-namespace:PPRP.Controls"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="นำเข้าข้อมูลการแบ่งเขตเลือกตั้ง ปี 2562"
+        Title="นำเข้ารูปโลโก้พรรคการเมือง"
         Height="450"
         Width="900"
         HorizontalAlignment="Center"
@@ -16,7 +16,7 @@
         mc:Ignorable="d">
     <Window.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">นำเข้าข้อมูลการแบ่งเขตเลือกตั้ง ปี 2562</sys:String>
+        <sys:String x:Key="PageTitle">นำเข้ารูปโลโก้พรรคการเมือง</sys:String>
     </Window.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -81,46 +81,7 @@
                     </DockPanel>
                     <!--  WIZARD PAGES (ACTUAL CONTENT AREA)  -->
                     <DockPanel LastChildFill="True">
-                        <!--  EXCEL FILES INFO / CHOOSE  -->
-                        <DockPanel LastChildFill="True"
-                                   DockPanel.Dock="Top"
-                                   Height="40">
-                            <TextBlock DockPanel.Dock="Left"
-                                       VerticalAlignment="Center"
-                                       TextAlignment="Right"
-                                       Width="150"
-                                       Text="Excel ไฟล์: " />
-                            <TextBlock DockPanel.Dock="Left" Width="5" />
-                            <TextBlock x:Name="txtFileName"
-                                       DockPanel.Dock="Left"
-                                       VerticalAlignment="Center"
-                                       TextAlignment="Left"
-                                       Text="{Binding FileName}"
-                                       TextWrapping="Wrap"
-                                       TextTrimming="WordEllipsis"
-                                       ClipToBounds="True"
-                                       Width="Auto"
-                                       MinWidth="300" />
-                            <TextBlock DockPanel.Dock="Left" Width="5" />
-                            <Button x:Name="cmdChooseExcel"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource InlineButton}"
-                                    Width="150"
-                                    Height="30"
-                                    Content="เลือกไฟล์"
-                                    Click="cmdChooseExcel_Click" />
-                            <TextBlock DockPanel.Dock="Right" Width="5" />
-                            <Grid />
-                        </DockPanel>
-                        <!--  EXCEL SHEETS, MAP COLUMNS, PREVIEW DATA  -->
-                        <DockPanel LastChildFill="True">
-                            <!--  EXCEL SHEETS, MAP COLUMNS  -->
-                            <xlsCtrl:WorksheetMapControl x:Name="wsMap"
-                                                         DockPanel.Dock="Left"
-                                                         Width="400" />
-                            <!--  PREVIEW DATA  -->
-                            <xlsCtrl:WorksheetMapListViewControl x:Name="lvMapPreview" Margin="3" />
-                        </DockPanel>
+                        <Grid />
                     </DockPanel>
                 </DockPanel>
             </DockPanel>

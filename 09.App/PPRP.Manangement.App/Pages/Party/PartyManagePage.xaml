@@ -53,10 +53,19 @@
                                DockPanel.Dock="Bottom"
                                Height="40">
                         <!--  BACK  -->
+                        <Button x:Name="cmdImport"
+                                DockPanel.Dock="Left"
+                                Style="{StaticResource InlineButton}"
+                                Margin="5,0"
+                                Width="150"
+                                Height="30"
+                                Content="นำเข้าข้อมูล" 
+                                Click="cmdImport_Click"/>
+                        <!--  BACK  -->
                         <Button x:Name="cmdHome"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"
-                                Margin="20,0,5,0"
+                                Margin="5,0"
                                 Width="150"
                                 Height="30"
                                 Content="กลับสู่หน้าจอหลัก" 

@@ -38,6 +38,11 @@ namespace PPRP.Pages
             GotoMainMenuPage();
         }
 
+        private void cmdImport_Click(object sender, RoutedEventArgs e)
+        {
+            Import();
+        }
+
         #endregion
 
         #region Private Methods
@@ -47,6 +52,11 @@ namespace PPRP.Pages
             var page = PPRPApp.Pages.MainMenu;
             page.Setup();
             PageContentManager.Instance.Current = page;
+        }
+
+        private void Import()
+        {
+
         }
 
         #endregion
