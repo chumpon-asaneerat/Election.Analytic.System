@@ -39,7 +39,6 @@ namespace PPRP.Windows
 
         private int thaiYear = 2562;
 
-        private NExcelImportWizard wizard = new NExcelImportWizard();
         private NExcelImport import = new NExcelImport();
 
         #endregion
@@ -89,16 +88,6 @@ namespace PPRP.Windows
             DialogResult = false;
         }
 
-        private void cmdPrev_Click(object sender, RoutedEventArgs e)
-        {
-            wizard.PreviousStep();
-        }
-
-        private void cmdNext_Click(object sender, RoutedEventArgs e)
-        {
-            wizard.NextStep();
-        }
-
         private void cmdFinish_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
@@ -135,24 +124,11 @@ namespace PPRP.Windows
 
         public void Setup()
         {
-            // Setup wizard steps.
-            wizard.Steps.Clear(); // clear all steps.
-            wizard.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
-            wizard.Steps.Add("นำเข้าข้อมูล");
-            wizard.Steps.Add("เสร็จสิ้น");
-            wizard.FirstStep(); // set to first step.
+            // Setup excel importer
+            NExcelImport.RegisterLicense();
 
             // setup data context for excel file name.
             this.txtFileName.DataContext = import;
-
-            // setup wizard DataContext
-            wzBar.DataContext = wizard;
-            cmdPrev.DataContext = wzBar.DataContext;
-            cmdNext.DataContext = wzBar.DataContext;
-            cmdFinish.DataContext = wzBar.DataContext;
-
-            // Setup excel importer
-            NExcelImport.RegisterLicense();
         }
 
         #endregion
