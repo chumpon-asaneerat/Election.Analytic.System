@@ -37,7 +37,7 @@ namespace PPRP.Windows
 
         #region Internal Variables
 
-        private int thaiYear = 2562;
+        //private int thaiYear = 2562;
 
         private NExcelImport import = new NExcelImport();
 

@@ -162,6 +162,36 @@ namespace PPRP
             public static Window MainWindow { get { return Application.Current.MainWindow; } }
 
             #endregion
+
+            #region ImportPartyImage
+
+            /// <summary>Gets Import Party Image Window.</summary>
+            public static PPRP.Windows.ImportPartyImageWindow ImportPartyImage
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportPartyImageWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region ImportPartyImage
+
+            /// <summary>Gets Import Polling Station Window.</summary>
+            public static PPRP.Windows.ImportPollingStationWindow ImportPollingStation
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportPollingStationWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
         }
     }
 }

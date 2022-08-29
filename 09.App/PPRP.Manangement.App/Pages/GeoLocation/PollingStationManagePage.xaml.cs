@@ -56,7 +56,12 @@ namespace PPRP.Pages
 
         private void Import()
         {
-
+            var win = PPRPApp.Windows.ImportPollingStation;
+            win.Setup();
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
         }
 
         #endregion

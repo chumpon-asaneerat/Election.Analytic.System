@@ -81,6 +81,7 @@ namespace PPRP.Pages
         private void mnu21_Click(object sender, RoutedEventArgs e)
         {
             // ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))
+            GotoPullingStation();
         }
 
         private void mnu22_Click(object sender, RoutedEventArgs e)
@@ -119,6 +120,13 @@ namespace PPRP.Pages
         private void GotoPartyManagePage()
         {
             var page = PPRPApp.Pages.PartyManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoPullingStation()
+        {
+            var page = PPRPApp.Pages.PollingStationManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

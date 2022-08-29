@@ -52,7 +52,7 @@
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Bottom"
                                Height="40">
-                        <!--  BACK  -->
+                        <!--  IMPORT  -->
                         <Button x:Name="cmdImport"
                                 DockPanel.Dock="Left"
                                 Style="{StaticResource InlineButton}"
