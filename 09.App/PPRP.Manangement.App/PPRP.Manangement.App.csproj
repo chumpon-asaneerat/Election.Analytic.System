@@ -267,7 +267,7 @@
     <Folder Include="Pages\SignIn\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pages\MPD\Note แบบแบ่งเขต.txt" />
+    <Resource Include="Pages\MPDC\Note ว่าที่ แบบแบ่งเขต.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\MPR\Note แบบบัญชีรายชื่อ.txt" />
@@ -280,6 +280,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\MPD\Note แบบแบ่งเขต.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
