@@ -16,8 +16,13 @@ Election.Analytic.System - PPRP  #156
 Election.Analytic.System - PPRP  #155
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #154
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Implements load image file from database.
+    - Implements save json file to database.
+    - Implements load json file from database.
 
 [commited]
 Election.Analytic.System - PPRP  #153

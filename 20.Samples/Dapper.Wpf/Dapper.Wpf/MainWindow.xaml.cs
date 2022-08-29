@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Data;
+using System.Linq;
 
 using System.Windows;
 using System.Windows.Controls;
@@ -201,6 +202,8 @@ namespace Dapper.Wpf
 
             MContent.Save(conn, inst);
             txtImageContentId.Text = inst.ContentId.ToString();
+
+            img.Source = null;
         }
 
         private void cmdLoadImageFromDb_Click(object sender, RoutedEventArgs e)
@@ -208,6 +211,18 @@ namespace Dapper.Wpf
             string contentId = txtImageContentId.Text;
             if (string.IsNullOrWhiteSpace(contentId))
                 return;
+
+            var conn = connection.DbConnection;
+
+            var oContent = MContent.Get(conn, Guid.Parse(contentId));
+
+            img.Source = null;
+            if (null == oContent)
+                return;
+
+            byte[] buffers = oContent.Data;
+            ImageSource imgSrc = GetImageSource(buffers);
+            img.Source = imgSrc;
         }
 
         private void cmdSaveJsonToDb_Click(object sender, RoutedEventArgs e)
@@ -231,6 +246,8 @@ namespace Dapper.Wpf
             MContent.Save(conn, inst);
 
             txtJsonContentId.Text = inst.ContentId.ToString();
+
+            txtJson.Clear();
         }
 
         private void cmdLoadJsonFromDb_Click(object sender, RoutedEventArgs e)
@@ -238,6 +255,33 @@ namespace Dapper.Wpf
             string contentId = txtJsonContentId.Text;
             if (string.IsNullOrWhiteSpace(contentId))
                 return;
+
+            if (null == connection || !connection.IsConnected)
+                return;
+
+            var conn = connection.DbConnection;
+
+            var oContent = MContent.Get(conn, Guid.Parse(contentId));
+
+            img.Source = null;
+            if (null == oContent)
+                return;
+
+            byte[] buffers = oContent.Data;
+            string json = System.Text.Encoding.UTF8.GetString(buffers);
+
+            // formatting json
+            dynamic dJson = JsonConvert.DeserializeObject(json);
+            string fJson = JsonConvert.SerializeObject(dJson, Formatting.Indented);
+
+            if (MessageBox.Show("Show in Textbox?", "Confirm show large file?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                txtJson.Clear();
+                using (txtJson.Dispatcher.DisableProcessing())
+                {
+                    txtJson.AppendText(fJson);
+                }
+            }
         }
 
         #endregion
@@ -293,7 +337,7 @@ namespace Dapper.Wpf
 
         public byte[] GetFileBuffer(string fileName)
         {
-            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+            //GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
 
             byte[] buffers;
 
@@ -311,7 +355,7 @@ namespace Dapper.Wpf
         {
             try
             {
-                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+                //GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
 
                 using (Stream stream = new MemoryStream(buffers))
                 {
@@ -472,10 +516,23 @@ namespace Dapper.Wpf
 
         #region Static Methods
 
+        public static MContent Get(IDbConnection cnn, Guid contentId)
+        {
+            var p = new DynamicParameters();
+            p.Add("@ContentId", contentId, dbType: DbType.Guid, direction: ParameterDirection.Input);
+            p.Add("@FileTypeId", null, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("@FileSubTypeId", null, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            var inst = cnn.Query<MContent>("GetMContents", p,
+                commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+            return inst;
+        }
+
         public static void Save(IDbConnection cnn, MContent value)
         {
             var p = new DynamicParameters();
-            p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input);
+            p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
             p.Add("@FileTypeId", value.FileTypeId, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("@FileSubTypeId", value.FileSubTypeId, dbType: DbType.Int32, direction: ParameterDirection.Input);
 
