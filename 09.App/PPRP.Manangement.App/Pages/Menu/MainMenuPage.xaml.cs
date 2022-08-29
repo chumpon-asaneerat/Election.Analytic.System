@@ -57,6 +57,7 @@ namespace PPRP.Pages
         private void mnu01_Click(object sender, RoutedEventArgs e)
         {
             // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562 - MPD (summary)
+            GotoMPD2562VoteSummary();
         }
 
         private void mnu02_Click(object sender, RoutedEventArgs e)
@@ -127,6 +128,13 @@ namespace PPRP.Pages
         private void GotoPullingStation()
         {
             var page = PPRPApp.Pages.PollingStationManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoMPD2562VoteSummary()
+        {
+            var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

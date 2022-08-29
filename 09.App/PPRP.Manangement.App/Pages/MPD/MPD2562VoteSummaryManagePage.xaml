@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PPRP.Pages.PollingStationManagePage"
+﻿<UserControl x:Class="PPRP.Pages.MPD2562VoteSummaryManagePage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">ข้อมูลการเขตเลือกตั้งปี 2562</sys:String>
+        <sys:String x:Key="PageTitle">ข้อมูลผลการเลือกตั้งทั่วไป ปี 2562</sys:String>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -72,21 +72,27 @@
                                 Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <ListView x:Name="lvGeoLocations" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvMPD2562Summaries" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ภาค"
+                                <GridViewColumn Header="จังหวัด"
+                                                Width="150"
+                                                DisplayMemberBinding="{Binding ProvinceName}" />
+                                <GridViewColumn Header="เขต"
+                                                Width="50"
+                                                DisplayMemberBinding="{Binding PollingUnitNo}" />
+                                <GridViewColumn Header="ชื่อผู้สมัคร"
+                                                Width="200"
+                                                DisplayMemberBinding="{Binding FullName}" />
+                                <GridViewColumn Header="หมายเลข"
+                                                Width="50"
+                                                DisplayMemberBinding="{Binding VoteNo}" />
+                                <GridViewColumn Header="พรรค"
                                                 Width="150"
                                                 DisplayMemberBinding="{Binding PartyName}" />
-                                <GridViewColumn Header="จังหวัด"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
-                                <GridViewColumn Header="อำเภอ"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
-                                <GridViewColumn Header="ตำบล"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
+                                <GridViewColumn Header="ผลคะแนน"
+                                                Width="150"
+                                                DisplayMemberBinding="{Binding VoteCount}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -196,17 +196,12 @@ namespace PPRP.Windows
                 //lstSheets.ItemsSource = import.Worksheets;
                 var mapProperties = new string[][]
                 {
-                    new string[] { "RegionName", "ข้อมูลภาค" },
-                    new string[] { "GeoSubGroup", "ข้อมูลภาคทางภูมิศาสตร์" },
-                    new string[] { "ProvinceId", "ข้อมูลรหัสจังหวัด" },
-                    new string[] { "ProvinceNameTH", "ข้อมูลชื่อจังหวัด" },
-                    new string[] { "DistrictId", "ข้อมูลรหัสอำเภอ" },
-                    new string[] { "DistrictNameTH", "ข้อมูลชื่ออำเภอ" },
-                    new string[] { "SubdistrictId", "ข้อมูลรหัสตำบล" },
-                    new string[] { "SubdistrictNameTH", "ข้อมูลชื่อตำบล" },
+                    new string[] { "ProvinceName", "ข้อมูลชื่อจังหวัด" },
                     new string[] { "PollingUnitNo", "ข้อมูลเขตเลือกตั้งที่" },
-                    new string[] { "PollingSubUnitNo", "ข้อมูลรหัสหน่วยเลือกตั้งย่อย" },
-                    new string[] { "VillageCount", "ข้อมูลจำนวนหมู่บ้าน" }
+                    new string[] { "FullName", "ข้อมูลชื่อผู้สมัคร" },
+                    new string[] { "VoteNo", "ข้อมูลหมายเลขผู้สมัคร" },
+                    new string[] { "PartyName", "ข้อมูลชื่อพรรค" },
+                    new string[] { "VoteCount", "ข้อมูลผลคะแนน" }
                 };
 
                 wsMap.Setup(import, mapProperties);

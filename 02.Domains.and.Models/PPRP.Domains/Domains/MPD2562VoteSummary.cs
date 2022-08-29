@@ -7,7 +7,10 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 
+using System.Windows.Media;
+
 using NLib;
+
 using Dapper;
 using Newtonsoft.Json;
 
@@ -24,6 +27,49 @@ namespace PPRP.Domains
         public string PartyName { get; set; }
         public int VoteCount { get; set; }
         public int RevoteNo { get; set; }
+
+        public static NDbResult<List<MPD2562VoteSummary>>  Gets()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MPD2562VoteSummary>> rets = new NDbResult<List<MPD2562VoteSummary>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += "SELECT * ";
+                query += " FROM MPD2562VoteSummary ";
+
+                rets.Value = cnn.Query<MPD2562VoteSummary>(query).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPD2562VoteSummary>();
+            }
+
+            return rets;
+        }
 
         public static void Save(MPD2562VoteSummary value)
         {
