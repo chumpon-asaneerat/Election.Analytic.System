@@ -16,8 +16,12 @@ Election.Analytic.System - PPRP  #166
 Election.Analytic.System - PPRP  #165
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #164
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - Implements PakListBox control #2.
+    - Implements ProvinceListBox control #1.
 
 [commited]
 Election.Analytic.System - PPRP  #163
