@@ -116,6 +116,15 @@ namespace Dapper.Wpf
 
             var conn = connection.DbConnection;
 
+            var inst = new MTitle();
+            inst.Description = "TTTTTT3";
+            inst.ShortName = "T.T.T.3";
+            inst.GenderId = 0;
+            MTitle.Save(conn, inst);
+
+            var items = new List<MTitle>();
+            items.Add(inst);
+            dbgrid.ItemsSource = items;
         }
 
         #endregion
@@ -181,6 +190,9 @@ namespace Dapper.Wpf
         public int DLen { get; set; }
         public int SLen { get; set; }
 
+        public int ErrNum { get; set; }
+        public string ErrMsg { get; set; }
+
 
         public static List<MTitle> Gets(IDbConnection cnn, 
             string desc = "", string shortName = "", int? genderId = new int?())
@@ -199,22 +211,24 @@ namespace Dapper.Wpf
         {
             var p = new DynamicParameters();
             p.Add("@Description", value.Description);
-            p.Add("@ShortName", value.TitleId);
+            p.Add("@ShortName", value.ShortName);
             p.Add("@GenderId", value.GenderId);
             
             p.Add("@TitleId", dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: int.MaxValue);
             //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
 
 
-            cnn.Execute("spMagicProc", p, commandType: CommandType.StoredProcedure);
+            cnn.Execute("SaveMTitle", p, commandType: CommandType.StoredProcedure);
 
             value.TitleId = p.Get<int>("@TitleId");
             int errNum = p.Get<int>("@errNum");
             string errMsg = p.Get<string>("@errMsg");
             //int ret = p.Get<int>("@RET");
+            value.ErrNum = errNum;
+            value.ErrMsg = errMsg;
         }
     }
 

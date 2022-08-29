@@ -50,6 +50,14 @@
                      DockPanel.Dock="Left"
                      Margin="2"
                      Width="150" />
+            <TextBlock Text="Parameter 3:"
+                       DockPanel.Dock="Left"
+                       Margin="2"
+                       Width="75" />
+            <TextBox x:Name="txtParam3"
+                     DockPanel.Dock="Left"
+                     Margin="2"
+                     Width="150" />
             <Grid />
         </DockPanel>
         <DataGrid x:Name="dbgrid" />

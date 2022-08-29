@@ -28,8 +28,11 @@ Election.Analytic.System - PPRP  #152
 Election.Analytic.System - PPRP  #151
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #150
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Add Test Call SP SaveMTitle.
 
 [commited]
 Election.Analytic.System - PPRP  #149
