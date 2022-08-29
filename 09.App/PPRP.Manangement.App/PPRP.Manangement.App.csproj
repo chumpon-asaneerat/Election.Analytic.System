@@ -118,6 +118,9 @@
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PPRPApp.cs" />
+    <Compile Include="Windows\Excels\ImportMPD2562VoteSummaryWindow.xaml.cs">
+      <DependentUpon>ImportMPD2562VoteSummaryWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Excels\ImportPollingStationWindow.xaml.cs">
       <DependentUpon>ImportPollingStationWindow.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Samples\ExcelImportSamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Excels\ImportMPD2562VoteSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

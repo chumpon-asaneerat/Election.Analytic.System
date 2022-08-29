@@ -26,16 +26,16 @@ using EPPlus.DataExtractor;
 namespace PPRP.Windows
 {
     /// <summary>
-    /// Interaction logic for ImportPollingStationWindow.xaml
+    /// Interaction logic for ImportMPD2562VoteSummaryWindow.xaml
     /// </summary>
-    public partial class ImportPollingStationWindow : Window
+    public partial class ImportMPD2562VoteSummaryWindow : Window
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public ImportPollingStationWindow()
+        public ImportMPD2562VoteSummaryWindow()
         {
             InitializeComponent();
         }
@@ -44,16 +44,14 @@ namespace PPRP.Windows
 
         #region Internal Class
 
-        public class XlsPullingStation : PullingStation
+        public class XlsMPD2562VoteSummary : MPD2562VoteSummary
         {
-            public static int ThaiYear = 2562;
-
-            public static List<XlsPullingStation> LoadWorksheetTable(NExcelImport import,
+            public static List<XlsMPD2562VoteSummary> LoadWorksheetTable(NExcelImport import,
                 string sheetName, List<NExcelMapProperty> mapProperties)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
 
-                var results = new List<XlsPullingStation>();
+                var results = new List<XlsMPD2562VoteSummary>();
                 if (null == import || string.IsNullOrWhiteSpace(sheetName) ||
                     null == mapProperties || mapProperties.Count <= 0)
                     return results;
@@ -82,8 +80,7 @@ namespace PPRP.Windows
                             // start row at position 2.
                             for (int row = 2; row <= rowCount; row++)
                             {
-                                var inst = new XlsPullingStation();
-                                inst.YearThai = XlsPullingStation.ThaiYear;
+                                var inst = new XlsMPD2562VoteSummary();
 
                                 foreach (var key in columns.Keys)
                                 {
@@ -93,7 +90,7 @@ namespace PPRP.Windows
                                     try
                                     {
                                         object oVal = sheet.Cells[row, columns[key]].Value;
-                                        DynamicAccess<XlsPullingStation>.Set(inst, key, oVal);
+                                        DynamicAccess<XlsMPD2562VoteSummary>.Set(inst, key, oVal);
                                     }
                                     catch (Exception ex)
                                     {
@@ -128,7 +125,7 @@ namespace PPRP.Windows
         #region Internal Variables
 
         private NExcelImport import = new NExcelImport();
-        private List<XlsPullingStation> items = null;
+        private List<XlsMPD2562VoteSummary> items = null;
 
         #endregion
 
@@ -155,7 +152,7 @@ namespace PPRP.Windows
                 var model = wsMap.ImportModel;
                 lvMapPreview.Setup(import);
 
-                items = XlsPullingStation.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
+                items = XlsMPD2562VoteSummary.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
                 if (null != items)
                 {
 
@@ -222,7 +219,7 @@ namespace PPRP.Windows
             {
                 foreach (var item in items)
                 {
-                    PullingStation.ImportPullingStation(item);
+                    MPD2562VoteSummary.Save(item);
                 }
             }
         }

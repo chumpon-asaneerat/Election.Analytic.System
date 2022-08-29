@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #178
 Election.Analytic.System - PPRP  #177
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #176
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements ImportMPD2562VoteSummaryWindow #1.
 
 [commited]
 Election.Analytic.System - PPRP  #175
