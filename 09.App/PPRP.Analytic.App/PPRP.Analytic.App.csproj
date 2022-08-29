@@ -155,5 +155,18 @@
   <ItemGroup>
     <Resource Include="app.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Maps\Pak1.png" />
+    <Resource Include="Images\Maps\Pak10.png" />
+    <Resource Include="Images\Maps\Pak2.png" />
+    <Resource Include="Images\Maps\Pak3.png" />
+    <Resource Include="Images\Maps\Pak4.png" />
+    <Resource Include="Images\Maps\Pak5.png" />
+    <Resource Include="Images\Maps\Pak6.png" />
+    <Resource Include="Images\Maps\Pak7.png" />
+    <Resource Include="Images\Maps\Pak8.png" />
+    <Resource Include="Images\Maps\Pak9.png" />
+    <Resource Include="Images\Maps\Thailand.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
