@@ -107,6 +107,28 @@ namespace PPRP
 
             #endregion
 
+            #region Party
+
+            private static PollingStationManagePage _PollingStationManage;
+
+            /// <summary>Gets Polling Station Manage Page.</summary>
+            public static PollingStationManagePage PollingStationManage
+            {
+                get
+                {
+                    if (null == _PollingStationManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _PollingStationManage = new PollingStationManagePage();
+                        }
+                    }
+                    return _PollingStationManage;
+                }
+            }
+
+            #endregion
+
             #region ExcelImportSample
 
             private static ExcelImportSamplePage _ExcelSample;

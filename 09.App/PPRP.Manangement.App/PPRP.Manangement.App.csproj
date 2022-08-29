@@ -49,21 +49,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\References\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=6.0.6.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\EPPlus.dll</HintPath>
-    </Reference>
-    <Reference Include="EPPlus.DataExtractor">
-      <HintPath>..\..\References\EPPlus.DataExtractor.dll</HintPath>
-    </Reference>
-    <Reference Include="EPPlus.Interfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\EPPlus.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="EPPlus.System.Drawing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\EPPlus.System.Drawing.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\References\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
@@ -109,6 +94,9 @@
     <Compile Include="Pages\Party\PartyManagePage.xaml.cs">
       <DependentUpon>PartyManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GeoLocation\PollingStationManagePage.xaml.cs">
+      <DependentUpon>PollingStationManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Samples\ExcelImportSamplePage.xaml.cs">
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
@@ -142,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Party\PartyManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GeoLocation\PollingStationManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
