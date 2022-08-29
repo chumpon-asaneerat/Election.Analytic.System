@@ -17,8 +17,39 @@
                     Width="120"
                     Margin="2"
                     DockPanel.Dock="Left"
-                    Content="Execute 1"
+                    Content="Orgs (SFDB4)"
                     Click="cmdExecute1_Click" />
+            <Button x:Name="cmdGetMTitles"
+                    Width="120"
+                    Margin="2"
+                    DockPanel.Dock="Left"
+                    Content="Gets Title"
+                    Click="cmdGetMTitles_Click" />
+            <Button x:Name="cmdSaveMTitle"
+                    Width="120"
+                    Margin="2"
+                    DockPanel.Dock="Left"
+                    Content="Save Title"
+                    Click="cmdSaveMTitle_Click" />
+            <Grid />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top" Margin="2">
+            <TextBlock Text="Parameter 1:"
+                       DockPanel.Dock="Left"
+                       Margin="2"
+                       Width="75" />
+            <TextBox x:Name="txtParam1"
+                     DockPanel.Dock="Left"
+                     Margin="2"
+                     Width="150" />
+            <TextBlock Text="Parameter 2:"
+                       DockPanel.Dock="Left"
+                       Margin="2"
+                       Width="75" />
+            <TextBox x:Name="txtParam2"
+                     DockPanel.Dock="Left"
+                     Margin="2"
+                     Width="150" />
             <Grid />
         </DockPanel>
         <DataGrid x:Name="dbgrid" />

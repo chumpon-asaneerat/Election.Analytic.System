@@ -2,6 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+
+using System.Data;
+
 using System.Windows;
 
 using NLib.Data;
@@ -45,7 +48,15 @@ namespace Dapper.Wpf
         {
             config = new SqlServerConfig();
             config.DataSource.ServerName = "localhost";
-            config.DataSource.DatabaseName = "SFDB4";
+
+            #region For SFDB4
+
+            //config.DataSource.DatabaseName = "SFDB4";
+
+            #endregion
+            // PPRPDemo
+            config.DataSource.DatabaseName = "PPRPDemo";
+
             config.Security.Authentication = AuthenticationMode.Server;
             config.Security.PersistSecurity = PersistSecurityMode.Default;
             config.Security.UserName = "sa";
@@ -77,9 +88,34 @@ namespace Dapper.Wpf
                 return;
 
             var conn = connection.DbConnection;
-            var orgs = conn.Query<Org>("SELECT * FROM ORG").AsList();
 
-            dbgrid.ItemsSource = orgs;
+            #region For SFDB4
+
+            //var orgs = conn.Query<Org>("SELECT * FROM ORG").AsList();
+            //dbgrid.ItemsSource = orgs;
+
+            #endregion
+        }
+
+        private void cmdGetMTitles_Click(object sender, RoutedEventArgs e)
+        {
+            dbgrid.ItemsSource = null;
+            if (null == connection || !connection.IsConnected)
+                return;
+
+            var conn = connection.DbConnection;
+
+            dbgrid.ItemsSource = MTitle.Gets(conn, txtParam1.Text, txtParam2.Text);
+        }
+
+        private void cmdSaveMTitle_Click(object sender, RoutedEventArgs e)
+        {
+            dbgrid.ItemsSource = null;
+            if (null == connection || !connection.IsConnected)
+                return;
+
+            var conn = connection.DbConnection;
+
         }
 
         #endregion
@@ -91,9 +127,17 @@ namespace Dapper.Wpf
         public static void Map()
         {
             // setup mapper
-            FluentMapper.Initialize(config => { config.AddMap(new Org.OrgMap()); });
+
+            #region For SFDB4
+
+            // FluentMapper.Initialize(config => { config.AddMap(new Org.OrgMap()); });
+
+            #endregion
         }
     }
+
+    #region For SFDB4
+    /*
 
     public class Org
     {
@@ -123,4 +167,55 @@ namespace Dapper.Wpf
 
         #endregion
     }
+
+    */
+    #endregion
+
+    public class MTitle
+    {
+        public int TitleId { get; set; }
+        public string Description { get; set; }
+        public string ShortName { get; set; }
+        public string GenderName { get; set; }
+        public int GenderId { get; set; }
+        public int DLen { get; set; }
+        public int SLen { get; set; }
+
+
+        public static List<MTitle> Gets(IDbConnection cnn, 
+            string desc = "", string shortName = "", int? genderId = new int?())
+        {
+            var p = new DynamicParameters();
+            p.Add("@description", desc);
+            p.Add("@shortname", shortName);
+            p.Add("@genderid", genderId);
+
+            var titles = cnn.Query<MTitle>("GetMTitles", p,
+                commandType: CommandType.StoredProcedure).AsList();
+            return titles;
+        }
+
+        public static void Save(IDbConnection cnn, MTitle value)
+        {
+            var p = new DynamicParameters();
+            p.Add("@Description", value.Description);
+            p.Add("@ShortName", value.TitleId);
+            p.Add("@GenderId", value.GenderId);
+            
+            p.Add("@TitleId", dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output);
+            //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
+
+
+            cnn.Execute("spMagicProc", p, commandType: CommandType.StoredProcedure);
+
+            value.TitleId = p.Get<int>("@TitleId");
+            int errNum = p.Get<int>("@errNum");
+            string errMsg = p.Get<string>("@errMsg");
+            //int ret = p.Get<int>("@RET");
+        }
+    }
+
 }
