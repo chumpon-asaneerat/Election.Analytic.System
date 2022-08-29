@@ -84,6 +84,7 @@ namespace PPRP
         #endregion
 
         #region SignIn Manager Handlers
+
         private void Instance_UserChanged(object sender, EventArgs e)
         {
             if (null == SignInManager.Instance.User)

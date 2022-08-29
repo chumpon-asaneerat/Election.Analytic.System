@@ -25,8 +25,13 @@ Election.Analytic.System - PPRP  #163
 Election.Analytic.System - PPRP  #162
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #161
-- 
+- Update projects
+  - Update PPRP.Analytic.App project
+    - Add page Pak01Page - Pak10Page + ThailandPage
+    - Add Background to Pak01Page - Pak10Page + ThailandPage
+    - Update Link page code.
 
 [commited]
 Election.Analytic.System - PPRP  #160

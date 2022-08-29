@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="PPRP.Pages.Pak05Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak5.png" Stretch="Uniform" />
+        </Grid.Background>
+        <DockPanel LastChildFill="True" Opacity="0.7">
+            <DockPanel DockPanel.Dock="Bottom" Margin="5">
+                <Button x:Name="cmdGotoThailandPage"
+                        DockPanel.Dock="Right"
+                        Margin="5"
+                        Style="{StaticResource InlineButton}"
+                        Width="250"
+                        Content="กลับสู่หน้าจอแผนที่ 10 ภาค"
+                        Click="cmdGotoThailandPage_Click" />
+                <TextBlock DockPanel.Dock="Right" Width="10" />
+                <Grid />
+            </DockPanel>
+            <Grid />
+        </DockPanel>
+    </Grid>
+</UserControl>
