@@ -1,16 +1,20 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+
+using NLib;
+using NLib.Reflection;
+using NLib.Services;
+using PPRP.Imports.Excel;
+
+#endregion
 
 namespace PPRP.Windows
 {
@@ -19,9 +23,138 @@ namespace PPRP.Windows
     /// </summary>
     public partial class ImportPollingStationWindow : Window
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public ImportPollingStationWindow()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Internal Variables
+
+        private int thaiYear = 2562;
+
+        private NExcelImportWizard wizard = new NExcelImportWizard();
+        private NExcelImport import = new NExcelImport();
+
+        #endregion
+
+        #region Loaded/Unloaded
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            import.OnSampleDataChanged += Import_OnSampleDataChanged;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            import.OnSampleDataChanged -= Import_OnSampleDataChanged;
+        }
+
+        #endregion
+
+        #region NExcelImport Handlers
+
+        private void Import_OnSampleDataChanged(object sender, EventArgs e)
+        {
+            /*
+            if (null != wsMap && null != wsMap.ImportModel)
+            {
+                var model = wsMap.ImportModel;
+                lvMapPreview.Setup(import);
+
+                var items = Target.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
+                if (null != items)
+                {
+
+                }
+                lvMapPreview.UpdateItems(model.Maps, items);
+            }
+            */
+        }
+
+        #endregion
+
+        #region Button Handlers
+
+        #region Cancel/Prev/Next
+
+        private void cmdCancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+
+        private void cmdPrev_Click(object sender, RoutedEventArgs e)
+        {
+            wizard.PreviousStep();
+        }
+
+        private void cmdNext_Click(object sender, RoutedEventArgs e)
+        {
+            wizard.NextStep();
+        }
+
+        private void cmdFinish_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
+
+        private void cmdChooseExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseExcelFile();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Private Methods
+
+        private void ChooseExcelFile()
+        {
+            if (import.ShowDialog(PPRPApp.Windows.MainWindow))
+            {
+                //lstSheets.ItemsSource = import.Worksheets;
+                var mapProperties = new string[][]
+                {
+                    new string[] { "ProvinceName", "ข้อมูลจังหวัด" },
+                    new string[] { "UnitNo", "ข้อมูลเขต" }
+                };
+                wsMap.Setup(import, mapProperties);
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Setup()
+        {
+            // Setup wizard steps.
+            wizard.Steps.Clear(); // clear all steps.
+            wizard.Steps.Add("เลือกไฟล์ที่ต้องการนำเข้า");
+            wizard.Steps.Add("นำเข้าข้อมูล");
+            wizard.Steps.Add("เสร็จสิ้น");
+            wizard.FirstStep(); // set to first step.
+
+            // setup data context for excel file name.
+            this.txtFileName.DataContext = import;
+
+            // setup wizard DataContext
+            wzBar.DataContext = wizard;
+            cmdPrev.DataContext = wzBar.DataContext;
+            cmdNext.DataContext = wzBar.DataContext;
+            cmdFinish.DataContext = wzBar.DataContext;
+
+            // Setup excel importer
+            NExcelImport.RegisterLicense();
+        }
+
+        #endregion
     }
 }

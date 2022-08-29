@@ -15,9 +15,9 @@ using NLib.Services;
 using PPRP.Imports.Excel;
 //using PPRP.Imports.ShapeFiles;
 
-using OfficeOpenXml;
-using EPPlus;
-using EPPlus.DataExtractor;
+//using OfficeOpenXml;
+//using EPPlus;
+//using EPPlus.DataExtractor;
 
 #endregion
 
@@ -179,6 +179,8 @@ namespace PPRP.Pages
         public static List<Target> LoadWorksheetTable(NExcelImport import,
             string sheetName, List<NExcelMapProperty> mapProperties)
         {
+            return null;
+            /*
             MethodBase med = MethodBase.GetCurrentMethod();
 
             var results = new List<Target>();
@@ -240,6 +242,7 @@ namespace PPRP.Pages
             }
 
             return results;
+            */
         }
     }
 }
