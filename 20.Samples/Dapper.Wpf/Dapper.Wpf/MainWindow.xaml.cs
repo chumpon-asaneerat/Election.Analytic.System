@@ -337,7 +337,7 @@ namespace Dapper.Wpf
 
         public byte[] GetFileBuffer(string fileName)
         {
-            //GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
 
             byte[] buffers;
 
@@ -355,7 +355,7 @@ namespace Dapper.Wpf
         {
             try
             {
-                //GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
 
                 using (Stream stream = new MemoryStream(buffers))
                 {
@@ -470,7 +470,7 @@ namespace Dapper.Wpf
             p.Add("@TitleId", dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: int.MaxValue);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
             //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
 
 
@@ -539,7 +539,7 @@ namespace Dapper.Wpf
             p.Add("@ContentId", dbType: DbType.Guid, direction: ParameterDirection.InputOutput);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: int.MaxValue);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
             //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
 
 

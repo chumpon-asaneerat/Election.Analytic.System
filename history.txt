@@ -13,8 +13,13 @@ Election.Analytic.System - PPRP  #157
 Election.Analytic.System - PPRP  #156
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #155
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Enable auto call GC to release memory.
+  - Update PPRP.Domains project
+    - Add domain classes #1.
 
 [commited]
 Election.Analytic.System - PPRP  #154
