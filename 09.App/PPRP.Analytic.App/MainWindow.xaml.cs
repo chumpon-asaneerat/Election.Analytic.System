@@ -37,7 +37,7 @@ namespace PPRP
 
             #region Test Connection
             /*
-            var rets = Domains.MTitle.Gets(DbServer.Instance.Db);
+            var rets = Domains.MTitle.Gets();
             if (null != rets)
             {
                 Console.WriteLine("Count: {0}", rets.Value.Count);

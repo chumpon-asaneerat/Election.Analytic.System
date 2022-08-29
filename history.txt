@@ -22,8 +22,14 @@ Election.Analytic.System - PPRP  #164
 Election.Analytic.System - PPRP  #163
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #162
-- 
+- Update projects
+  - Update PPRP.Domains project
+    - Update all static methods to auto access to IDbConnection from DbServer instance.
+    - Add MRegion class.
+  - Update PPRP.Analytic.App project
+    - Add test code (MRegion).
 
 [commited]
 Election.Analytic.System - PPRP  #161

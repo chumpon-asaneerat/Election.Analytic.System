@@ -10,6 +10,8 @@ using System.Windows.Media.Animation;
 using NLib;
 using NLib.Services;
 
+using PPRP.Domains;
+
 #endregion
 
 namespace PPRP.Pages
@@ -31,6 +33,12 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        private List<MRegion> _regions = null;
+
+        #endregion
+
         #region Private Methods
 
         private void GotoMainMenuPage()
@@ -46,7 +54,11 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-
+            _regions = MRegion.Gets().Value;
+            if (null != _regions)
+            {
+                Console.WriteLine("No of region : {0}", _regions.Count);
+            }
         }
 
         #endregion

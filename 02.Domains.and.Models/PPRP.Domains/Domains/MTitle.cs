@@ -43,17 +43,30 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MTitle>> Gets(IDbConnection cnn,
-            string desc = "", string shortName = "", int? genderId = new int?())
+        public static NDbResult<List<MTitle>> Gets(string desc = "", 
+            string shortName = "", int? genderId = new int?())
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MTitle>> rets = new NDbResult<List<MTitle>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
 
             var p = new DynamicParameters();
             p.Add("@description", desc);
             p.Add("@shortname", shortName);
             p.Add("@genderid", genderId);
 
-            NDbResult<List<MTitle>> rets = new NDbResult<List<MTitle>>();
             try
             {
                 rets.Value = cnn.Query<MTitle>("GetMTitles", p,
@@ -76,9 +89,24 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static NDbResult<MTitle> Save(IDbConnection cnn, MTitle value)
+        public static NDbResult<MTitle> Save(MTitle value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<MTitle> ret = new NDbResult<MTitle>();
+            ret.Value = value;
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
 
             var p = new DynamicParameters();
             p.Add("@Description", value.Description);
@@ -90,8 +118,6 @@ namespace PPRP.Domains
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
 
-            NDbResult<MTitle> ret = new NDbResult<MTitle>();
-            ret.Value = value;
             try
             {
                 cnn.Execute("SaveMTitle", p, commandType: CommandType.StoredProcedure);

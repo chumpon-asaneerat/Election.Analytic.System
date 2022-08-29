@@ -40,16 +40,29 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<MContent> Get(IDbConnection cnn, Guid contentId)
+        public static NDbResult<MContent> Get(Guid contentId)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<MContent> ret = new NDbResult<MContent>();
+            ret.Value = null;
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
 
             var p = new DynamicParameters();
             p.Add("@ContentId", contentId, dbType: DbType.Guid, direction: ParameterDirection.Input);
             p.Add("@FileTypeId", null, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("@FileSubTypeId", null, dbType: DbType.Int32, direction: ParameterDirection.Input);
-
-            NDbResult<MContent> ret = new NDbResult<MContent>();
 
             try
             {
@@ -68,9 +81,24 @@ namespace PPRP.Domains
             return ret;
         }
 
-        public static NDbResult<MContent> Save(IDbConnection cnn, MContent value)
+        public static NDbResult<MContent> Save(MContent value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<MContent> ret = new NDbResult<MContent>();
+            ret.Value = value;
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
 
             var p = new DynamicParameters();
             p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
@@ -81,9 +109,6 @@ namespace PPRP.Domains
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
-
-            NDbResult<MContent> ret = new NDbResult<MContent>();
-            ret.Value = value;
             try
             {
                 cnn.Execute("SaveMContent", p, commandType: CommandType.StoredProcedure);
