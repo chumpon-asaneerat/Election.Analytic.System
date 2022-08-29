@@ -22,8 +22,12 @@ Election.Analytic.System - PPRP  #154
 Election.Analytic.System - PPRP  #153
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #152
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Implements load byte array from json file.
+    - Implements create json string from byte[].
 
 [commited]
 Election.Analytic.System - PPRP  #151

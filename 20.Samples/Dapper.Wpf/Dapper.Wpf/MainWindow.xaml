@@ -88,7 +88,7 @@
                     <Button x:Name="cmdChooseJson"
                             Margin="5"
                             Width="100"
-                            Content="Choose Image"
+                            Content="Choose Json"
                             Click="cmdChooseJson_Click" />
                     <TextBlock Text="File Name:"
                                Margin="5"
@@ -121,7 +121,13 @@
                             <TextBox x:Name="txtImageContentId"
                                      DockPanel.Dock="Left"
                                      VerticalAlignment="Center"
-                                     Width="200" />
+                                     Width="100" />
+                            <Button x:Name="cmdLoadImageFromDb"
+                                    DockPanel.Dock="Left"
+                                    Margin="5"
+                                    Content="Load"
+                                    Width="100"
+                                    Click="cmdLoadImageFromDb_Click" />
                             <Grid />
                         </DockPanel>
                         <Border BorderBrush="DimGray"
@@ -145,7 +151,7 @@
                                     DockPanel.Dock="Left"
                                     Content="Save"
                                     Width="100"
-                                    Click="cmdSaveImageToDb_Click" />
+                                    Click="cmdSaveJsonToDb_Click" />
                             <TextBlock Margin="5"
                                        DockPanel.Dock="Left"
                                        Width="60"
@@ -154,14 +160,22 @@
                             <TextBox x:Name="txtJsonContentId"
                                      DockPanel.Dock="Left"
                                      VerticalAlignment="Center"
-                                     Width="200" />
+                                     Width="100" />
+                            <Button x:Name="cmdLoadJsonFromDb"
+                                    DockPanel.Dock="Left"
+                                    Margin="5"
+                                    Content="Load"
+                                    Width="100"
+                                    Click="cmdLoadJsonFromDb_Click" />
                             <Grid />
                         </DockPanel>
                         <Border BorderBrush="DimGray" BorderThickness="1">
                             <TextBox x:Name="txtJson"
                                      Margin="5"
                                      AcceptsReturn="True"
-                                     TextWrapping="Wrap" />
+                                     TextWrapping="Wrap" 
+                                     HorizontalScrollBarVisibility="Auto"
+                                     VerticalScrollBarVisibility="Auto" />
                         </Border>
                     </DockPanel>
                 </DockPanel>

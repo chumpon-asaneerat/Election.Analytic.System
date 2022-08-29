@@ -17,6 +17,8 @@ using Dapper.FluentMap;
 using Dapper.FluentMap.Mapping;
 using System.Windows.Media.Imaging;
 
+using Newtonsoft.Json;
+
 #endregion
 
 namespace Dapper.Wpf
@@ -163,7 +165,50 @@ namespace Dapper.Wpf
             lbJsonFileName.Text = fileName;
 
             byte[] buffers = GetFileBuffer(fileName);
+            string json = System.Text.Encoding.UTF8.GetString(buffers);
 
+            // formatting json
+            dynamic dJson = JsonConvert.DeserializeObject(json);
+            string fJson = JsonConvert.SerializeObject(dJson, Formatting.Indented);
+
+            if (MessageBox.Show("Show in Textbox?", "Confirm show large file?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                txtJson.Clear();
+                using (txtJson.Dispatcher.DisableProcessing())
+                {
+                    txtJson.AppendText(fJson);
+                }
+            }
+        }
+
+        private void cmdSaveImageToDb_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = lbImageFileName.Text;
+            if (string.IsNullOrWhiteSpace(fileName))
+                return;
+            byte[] buffers = GetFileBuffer(fileName);
+        }
+
+        private void cmdLoadImageFromDb_Click(object sender, RoutedEventArgs e)
+        {
+            string contentId = txtImageContentId.Text;
+            if (string.IsNullOrWhiteSpace(contentId))
+                return;
+        }
+
+        private void cmdSaveJsonToDb_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = lbJsonFileName.Text;
+            if (string.IsNullOrWhiteSpace(fileName))
+                return;
+            byte[] buffers = GetFileBuffer(fileName);
+        }
+
+        private void cmdLoadJsonFromDb_Click(object sender, RoutedEventArgs e)
+        {
+            string contentId = txtJsonContentId.Text;
+            if (string.IsNullOrWhiteSpace(contentId))
+                return;
         }
 
         #endregion
@@ -253,11 +298,6 @@ namespace Dapper.Wpf
         }
 
         #endregion
-
-        private void cmdSaveImageToDb_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 
 
@@ -312,6 +352,8 @@ namespace Dapper.Wpf
 
     public class MTitle
     {
+        #region Public Properties
+
         public int TitleId { get; set; }
         public string Description { get; set; }
         public string ShortName { get; set; }
@@ -323,6 +365,9 @@ namespace Dapper.Wpf
         public int ErrNum { get; set; }
         public string ErrMsg { get; set; }
 
+        #endregion
+
+        #region Static Methods
 
         public static List<MTitle> Gets(IDbConnection cnn, 
             string desc = "", string shortName = "", int? genderId = new int?())
@@ -360,6 +405,51 @@ namespace Dapper.Wpf
             value.ErrNum = errNum;
             value.ErrMsg = errMsg;
         }
+
+        #endregion
     }
 
+    public class MContent
+    {
+        #region Public Properties
+
+        public Guid ContentId { get; set; }
+        public int FileTypeId { get; set; }
+        public int FileSubTypeId { get; set; }
+
+        public byte[] Data { get; set; }
+
+        public int ErrNum { get; set; }
+        public string ErrMsg { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static void Save(IDbConnection cnn, MContent value)
+        {
+            var p = new DynamicParameters();
+            p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input);
+            p.Add("@FileTypeId", value.FileTypeId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("@FileSubTypeId", value.FileSubTypeId, dbType: DbType.Int32, direction: ParameterDirection.Input);
+
+            p.Add("@ContentId", dbType: DbType.Guid, direction: ParameterDirection.InputOutput);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: int.MaxValue);
+            //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
+
+
+            cnn.Execute("SaveMTitle", p, commandType: CommandType.StoredProcedure);
+
+            value.ContentId = p.Get<Guid>("@TitleId");
+            int errNum = p.Get<int>("@errNum");
+            string errMsg = p.Get<string>("@errMsg");
+            //int ret = p.Get<int>("@RET");
+            value.ErrNum = errNum;
+            value.ErrMsg = errMsg;
+        }
+
+        #endregion
+    }
 }
