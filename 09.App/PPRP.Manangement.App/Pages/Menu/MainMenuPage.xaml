@@ -58,7 +58,7 @@
                                 <ColumnDefinition Width="*" MinWidth="520" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <!--  การจัดการข้อมูล  -->
+                                <!--  การจัดการข้อมูลการเลือกตั้ง  -->
                                 <StackPanel Orientation="Vertical" Margin="5">
                                     <!--  MENU GROUP 0  -->
                                     <Border CornerRadius="3"
@@ -68,7 +68,7 @@
                                                    FontSize="{StaticResource FontSize24}"
                                                    Foreground="{StaticResource CaptionForeground}"
                                                    Margin="5"
-                                                   Text="การจัดการข้อมูล" />
+                                                   Text="การจัดการข้อมูลการเลือกตั้ง" />
                                     </Border>
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"

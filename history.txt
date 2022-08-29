@@ -28,8 +28,14 @@ Election.Analytic.System - PPRP  #162
 Election.Analytic.System - PPRP  #161
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #160
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - Update TemplatePage.
+  - Update PPRP.Manangement.App project
+    - Redesign MainMenu Page #2
+    - Implements PartyManagePage #1
 
 [commited]
 Election.Analytic.System - PPRP  #159
@@ -40,7 +46,7 @@ Election.Analytic.System - PPRP  #158
 - Update projects
   - Update PPRP.Analytic.App project
     - Add Pak1 - Pak10 + Thailand images.
-  - Update PPRP.Domains project
+  - Update PPRP.Manangement.App project
     - Redesign MainMenu Page
 
 [commited]

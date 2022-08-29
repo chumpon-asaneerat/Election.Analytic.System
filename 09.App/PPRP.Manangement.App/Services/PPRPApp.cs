@@ -85,6 +85,28 @@ namespace PPRP
 
             #endregion
 
+            #region Party
+
+            private static PartyManagePage _PartyManage;
+
+            /// <summary>Gets Party Manage Page.</summary>
+            public static PartyManagePage PartyManage
+            {
+                get
+                {
+                    if (null == _PartyManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _PartyManage = new PartyManagePage();
+                        }
+                    }
+                    return _PartyManage;
+                }
+            }
+
+            #endregion
+
             #region ExcelImportSample
 
             private static ExcelImportSamplePage _ExcelSample;

@@ -52,25 +52,31 @@ namespace PPRP.Pages
             GotoExcelImportPage();
         }
 
+        #region Group 0 - การจัดการข้อมูลการเลือกตั้ง
+
         private void mnu01_Click(object sender, RoutedEventArgs e)
         {
-            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562
+            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562 - MPD (summary)
         }
 
         private void mnu02_Click(object sender, RoutedEventArgs e)
         {
-            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562
+            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562 - MPR (summary)
         }
 
         private void mnu03_Click(object sender, RoutedEventArgs e)
         {
-            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566
+            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566 - MPD (candidate)
         }
 
         private void mnu04_Click(object sender, RoutedEventArgs e)
         {
-            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566
+            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566 - MPR (candidate)
         }
+
+        #endregion
+
+        #region Group 2 - ข้อมูลทางภูมิศาสตร์
 
         private void mnu21_Click(object sender, RoutedEventArgs e)
         {
@@ -82,15 +88,22 @@ namespace PPRP.Pages
             // ข้อมูลแผนที่
         }
 
-        private void mnu42_Click(object sender, RoutedEventArgs e)
-        {
-            // ข้อมูลพรรคการเมือง
-        }
+        #endregion
+
+        #region Group 4 - ข้อมูลหลัก
 
         private void mnu41_Click(object sender, RoutedEventArgs e)
         {
+            // ข้อมูลพรรคการเมือง
+            GotoPartyManagePage();
+        }
+
+        private void mnu42_Click(object sender, RoutedEventArgs e)
+        {
             // ข้อมูลอื่น ๆ
         }
+
+        #endregion
 
         #endregion
 
@@ -99,6 +112,13 @@ namespace PPRP.Pages
         private void GotoExcelImportPage()
         {
             var page = PPRPApp.Pages.ExcelSample;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoPartyManagePage()
+        {
+            var page = PPRPApp.Pages.PartyManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

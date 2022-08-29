@@ -106,6 +106,9 @@
     <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
       <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Party\PartyManagePage.xaml.cs">
+      <DependentUpon>PartyManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Samples\ExcelImportSamplePage.xaml.cs">
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Party\PartyManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
