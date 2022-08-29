@@ -36,7 +36,7 @@
                     CornerRadius="{StaticResource CaptionBorderCornerRadius}">
                 <TextBlock Foreground="{StaticResource CaptionForeground}"
                            FontSize="{StaticResource FontSize30}"
-                           Margin="0, 2"
+                           Margin="0,2"
                            TextAlignment="Center"
                            Text="{StaticResource PageTitle}" />
             </Border>
@@ -59,8 +59,8 @@
                                 Margin="5,0"
                                 Width="150"
                                 Height="30"
-                                Content="นำเข้าข้อมูล" 
-                                Click="cmdImport_Click"/>
+                                Content="นำเข้าข้อมูล"
+                                Click="cmdImport_Click" />
                         <!--  BACK  -->
                         <Button x:Name="cmdHome"
                                 DockPanel.Dock="Right"
@@ -68,11 +68,33 @@
                                 Margin="5,0"
                                 Width="150"
                                 Height="30"
-                                Content="กลับสู่หน้าจอหลัก" 
-                                Click="cmdHome_Click"/>
+                                Content="กลับสู่หน้าจอหลัก"
+                                Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <Grid />
+                    <ListView x:Name="lvParties" Style="{StaticResource SingleSelectListView}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="รูปโลโก้" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="Silver"
+                                                    BorderThickness="1"
+                                                    Margin="5"
+                                                    ClipToBounds="True">
+                                                <Image Source="{Binding Image}"
+                                                       Width="75"
+                                                       Height=" 75" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ชื่อพรรค"
+                                                Width="200"
+                                                DisplayMemberBinding="{Binding PartyName}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </DockPanel>
             </DockPanel>
         </Grid>

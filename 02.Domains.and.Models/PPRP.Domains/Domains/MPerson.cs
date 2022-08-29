@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    class MPerson
+    public class MPerson
     {
     }
 }

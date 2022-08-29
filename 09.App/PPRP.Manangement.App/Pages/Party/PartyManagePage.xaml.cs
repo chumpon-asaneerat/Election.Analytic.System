@@ -10,6 +10,8 @@ using System.Windows.Media.Animation;
 using NLib;
 using NLib.Services;
 
+using PPRP.Domains;
+
 #endregion
 
 namespace PPRP.Pages
@@ -62,6 +64,14 @@ namespace PPRP.Pages
             {
                 return;
             }
+            RefreshList();
+        }
+
+        private void RefreshList()
+        {
+            lvParties.ItemsSource = null;
+            var parties = MParty.Gets();
+            lvParties.ItemsSource = (null != parties) ? parties.Value : new List<MParty>();
         }
 
         #endregion
@@ -70,7 +80,7 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-
+            RefreshList();
         }
 
         #endregion

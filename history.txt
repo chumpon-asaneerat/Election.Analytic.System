@@ -19,8 +19,11 @@ Election.Analytic.System - PPRP  #175
 Election.Analytic.System - PPRP  #174
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #173
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements ImportPollingStationWindow #8.
 
 [commited]
 Election.Analytic.System - PPRP  #172

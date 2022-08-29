@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using NLib;
 using NLib.Reflection;
 using NLib.Services;
+
+using PPRP.Domains;
 using PPRP.Imports.Excel;
 
 #endregion
@@ -95,6 +97,8 @@ namespace PPRP.Windows
 
         private void cmdFinish_Click(object sender, RoutedEventArgs e)
         {
+            Imports();
+
             DialogResult = true;
         }
 
@@ -162,6 +166,17 @@ namespace PPRP.Windows
             {
                 med.Err(ex);
                 System.Windows.MessageBox.Show("Error access file in folder: " + targetPath, "PPRP");
+            }
+        }
+
+        private void Imports()
+        {
+            if (null != _parties)
+            {
+                foreach(var party in _parties)
+                {
+                    MParty.ImportPartyImage(party.PartyName, party.Data);
+                }
             }
         }
 
