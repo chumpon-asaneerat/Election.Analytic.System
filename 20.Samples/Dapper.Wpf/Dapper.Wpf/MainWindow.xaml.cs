@@ -186,7 +186,21 @@ namespace Dapper.Wpf
             string fileName = lbImageFileName.Text;
             if (string.IsNullOrWhiteSpace(fileName))
                 return;
+
+            if (null == connection || !connection.IsConnected)
+                return;
+
+            var conn = connection.DbConnection;
+
             byte[] buffers = GetFileBuffer(fileName);
+
+            var inst = new MContent();
+            inst.Data = buffers;
+            inst.FileTypeId = MContent.FileTypes.Image;
+            inst.FileSubTypeId = MContent.FileSubTypes.PersonOrJson;
+
+            MContent.Save(conn, inst);
+            txtImageContentId.Text = inst.ContentId.ToString();
         }
 
         private void cmdLoadImageFromDb_Click(object sender, RoutedEventArgs e)
@@ -201,7 +215,22 @@ namespace Dapper.Wpf
             string fileName = lbJsonFileName.Text;
             if (string.IsNullOrWhiteSpace(fileName))
                 return;
+
+            if (null == connection || !connection.IsConnected)
+                return;
+
+            var conn = connection.DbConnection;
+
             byte[] buffers = GetFileBuffer(fileName);
+
+            var inst = new MContent();
+            inst.Data = buffers;
+            inst.FileTypeId = MContent.FileTypes.Data;
+            inst.FileSubTypeId = MContent.FileSubTypes.PersonOrJson;
+
+            MContent.Save(conn, inst);
+
+            txtJsonContentId.Text = inst.ContentId.ToString();
         }
 
         private void cmdLoadJsonFromDb_Click(object sender, RoutedEventArgs e)
@@ -264,7 +293,10 @@ namespace Dapper.Wpf
 
         public byte[] GetFileBuffer(string fileName)
         {
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+
             byte[] buffers;
+
             using (var stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = new BinaryReader(stream))
@@ -279,6 +311,8 @@ namespace Dapper.Wpf
         {
             try
             {
+                GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced, true);
+
                 using (Stream stream = new MemoryStream(buffers))
                 {
                     BitmapImage image = new BitmapImage();
@@ -411,11 +445,23 @@ namespace Dapper.Wpf
 
     public class MContent
     {
+        public enum FileTypes : int 
+        { 
+            Image = 1,
+            Data = 2
+        }
+
+        public enum FileSubTypes : int
+        {
+            PersonOrJson = 1,
+            Logo = 2
+        }
+
         #region Public Properties
 
-        public Guid ContentId { get; set; }
-        public int FileTypeId { get; set; }
-        public int FileSubTypeId { get; set; }
+        public Guid? ContentId { get; set; }
+        public FileTypes FileTypeId { get; set; }
+        public FileSubTypes FileSubTypeId { get; set; }
 
         public byte[] Data { get; set; }
 
@@ -440,9 +486,9 @@ namespace Dapper.Wpf
             //p.Add("@RET", dbType: DbType.String, direction: ParameterDirection.ReturnValue);
 
 
-            cnn.Execute("SaveMTitle", p, commandType: CommandType.StoredProcedure);
+            cnn.Execute("SaveMContent", p, commandType: CommandType.StoredProcedure);
 
-            value.ContentId = p.Get<Guid>("@TitleId");
+            value.ContentId = p.Get<Guid>("@ContentId");
             int errNum = p.Get<int>("@errNum");
             string errMsg = p.Get<string>("@errMsg");
             //int ret = p.Get<int>("@RET");

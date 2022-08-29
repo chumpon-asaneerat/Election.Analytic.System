@@ -19,8 +19,11 @@ Election.Analytic.System - PPRP  #155
 Election.Analytic.System - PPRP  #154
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #153
-- 
+- Update projects
+  - Update Dapper.Wpf project
+    - Implements save image file to database.
 
 [commited]
 Election.Analytic.System - PPRP  #152
