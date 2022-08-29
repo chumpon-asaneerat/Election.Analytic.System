@@ -45,11 +45,51 @@ namespace PPRP.Pages
 
         #endregion
 
-        #region Button Handlers
+        #region Menu Handlers
 
         private void imgCmd1_Click(object sender, RoutedEventArgs e)
         {
             GotoExcelImportPage();
+        }
+
+        private void mnu01_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562
+        }
+
+        private void mnu02_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562
+        }
+
+        private void mnu03_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566
+        }
+
+        private void mnu04_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566
+        }
+
+        private void mnu21_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))
+        }
+
+        private void mnu22_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลแผนที่
+        }
+
+        private void mnu42_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลพรรคการเมือง
+        }
+
+        private void mnu41_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลอื่น ๆ
         }
 
         #endregion

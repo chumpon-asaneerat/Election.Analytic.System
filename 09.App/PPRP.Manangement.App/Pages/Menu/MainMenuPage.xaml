@@ -54,82 +54,123 @@
                     <DockPanel LastChildFill="True">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" MinWidth="500" />
-                                <ColumnDefinition Width="*" MinWidth="500" />
+                                <ColumnDefinition Width="*" MinWidth="520" />
+                                <ColumnDefinition Width="*" MinWidth="520" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <!--  การจัดการข้อมูล  -->
                                 <StackPanel Orientation="Vertical" Margin="5">
+                                    <!--  MENU GROUP 0  -->
+                                    <Border CornerRadius="3"
+                                            Background="{StaticResource CaptionBackgroundR}"
+                                            Margin="3">
+                                        <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                                   FontSize="{StaticResource FontSize24}"
+                                                   Foreground="{StaticResource CaptionForeground}"
+                                                   Margin="5"
+                                                   Text="การจัดการข้อมูล" />
+                                    </Border>
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
-                                               Foreground="{StaticResource CaptionForeground}"
-                                               Background="{StaticResource CaptionBackgroundR}"
-                                               Margin="5"
-                                               Text="การจัดการข้อมูล" />
-                                    <TextBlock x:Name="mnu01"
-                                               FontFamily="{DynamicResource THSarabun}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu01" Click="mnu01_Click">
+                                            ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
-                                               Cursor="Hand"
-                                               Text="ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562" />
-                                    <TextBlock x:Name="mnu02"
-                                               FontFamily="{DynamicResource THSarabun}"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu02" Click="mnu02_Click">
+                                            ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
-                                               Cursor="Hand"
-                                               Text="ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2562" />
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu03" Click="mnu03_Click">
+                                            ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu04" Click="mnu04_Click">
+                                            ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566
+                                        </Hyperlink>
+                                    </TextBlock>
                                     <Grid Height="200">
-                                        <button:ImageButton x:Name="imgCmd1" 
+                                        <button:ImageButton x:Name="imgCmd1"
                                                             Width="220"
                                                             ImageSource="/PPRP.Controls;component/Images/Button/OK2.png"
                                                             Click="imgCmd1_Click">
-                                            <TextBlock Style="{StaticResource ImageButtonText}" 
-                                                       Text="ตกลง" />
+                                            <TextBlock Style="{StaticResource ImageButtonText}" Text="ตกลง" />
                                         </button:ImageButton>
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Margin="5" />
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Vertical">
+                                <!--  ข้อมูลทางภูมิศาสตร์  -->
                                 <StackPanel Orientation="Vertical" Margin="5">
+                                    <!--  MENU GROUP 2  -->
+                                    <Border CornerRadius="3"
+                                            Background="{StaticResource CaptionBackgroundR}"
+                                            Margin="3">
+                                        <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                                   FontSize="{StaticResource FontSize24}"
+                                                   Foreground="{StaticResource CaptionForeground}"
+                                                   Margin="5"
+                                                   Text="ข้อมูลทางภูมิศาสตร์" />
+                                    </Border>
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
-                                               FontSize="{StaticResource FontSize18}"
-                                               Foreground="{StaticResource CaptionForeground}"
-                                               Background="{StaticResource CaptionBackgroundR}"
-                                               Margin="5"
-                                               Text="ข้อมูลทางภูมิศาสตร์" />
-                                    <TextBlock x:Name="mnu21"
-                                               FontFamily="{DynamicResource THSarabun}"
-                                               FontSize="{StaticResource FontSize18}"
-                                               Margin="15,5,5,5"
-                                               Cursor="Hand"
-                                               Text="ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))" />
-                                    <TextBlock x:Name="mnu22"
-                                               FontFamily="{DynamicResource THSarabun}"
-                                               FontSize="{StaticResource FontSize18}"
-                                               Margin="15,5,5,5"
-                                               Cursor="Hand"
-                                               Text="ข้อมูลแผนที่" />
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical" Margin="5">
-                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
-                                               FontSize="{StaticResource FontSize18}"
-                                               Foreground="{StaticResource CaptionForeground}"
-                                               Background="{StaticResource CaptionBackgroundR}"
-                                               Margin="5"
-                                               Text="ข้อมูลหลัก" />
-                                    <TextBlock x:Name="mnu41"
-                                               FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
                                                Cursor="Hand">
-                                        <Hyperlink>ข้อมูลพรรคการเมือง</Hyperlink>
+                                        <Hyperlink x:Name="mnu21" Click="mnu21_Click">
+                                            ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))
+                                        </Hyperlink>
                                     </TextBlock>
-                                    <TextBlock x:Name="mnu42"
-                                               FontFamily="{DynamicResource THSarabun}"
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
-                                               Cursor="Hand"
-                                               Text="ข้อมูลอื่น ๆ" />
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu22" Click="mnu22_Click">
+                                            ข้อมูลแผนที่
+                                        </Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                                <!--  ข้อมูลหลัก  -->
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <!--  MENU GROUP 4  -->
+                                    <Border CornerRadius="3"
+                                            Background="{StaticResource CaptionBackgroundR}"
+                                            Margin="3">
+                                        <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                                   FontSize="{StaticResource FontSize24}"
+                                                   Foreground="{StaticResource CaptionForeground}"
+                                                   Margin="5"
+                                                   Text="ข้อมูลหลัก" />
+                                    </Border>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu41" Click="mnu41_Click">
+                                            ข้อมูลพรรคการเมือง
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu42" Click="mnu42_Click">
+                                            ข้อมูลอื่น ๆ
+                                        </Hyperlink>
+                                    </TextBlock>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
