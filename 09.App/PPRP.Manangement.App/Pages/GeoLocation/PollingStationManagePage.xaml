@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">ข้อมูลการแบ่งเขตเลือกตั้งปี 2562</sys:String>
+        <sys:String x:Key="PageTitle">ข้อมูลการเขตเลือกตั้งปี 2562</sys:String>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

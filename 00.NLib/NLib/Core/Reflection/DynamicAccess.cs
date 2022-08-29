@@ -670,8 +670,41 @@ namespace NLib.Reflection
             Set obj = code.PropertySetInvoker(info);
 
             //if (obj != null) obj(instance, Value); // old code.
-            object tVal = Convert.ChangeType(Value, info.PropertyType);
-            if (obj != null) obj(instance, tVal);
+
+            if (info.PropertyType.IsValueType && null == Value)
+            {
+                try
+                {
+                    object tVal = Activator.CreateInstance(info.PropertyType);
+                    if (obj != null) obj(instance, tVal);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            else
+            {
+                object tVal;
+                try
+                {
+                    tVal = Convert.ChangeType(Value, info.PropertyType);
+                }
+                catch (Exception ex1)
+                {
+                    Console.WriteLine(ex1);
+                    tVal = Activator.CreateInstance(info.PropertyType);
+                }
+
+                try
+                {
+                    if (obj != null) obj(instance, tVal);
+                }
+                catch (Exception ex2)
+                {
+                    Console.WriteLine(ex2);
+                }
+            }
         }
 
         #endregion

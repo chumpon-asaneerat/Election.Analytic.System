@@ -82,7 +82,6 @@ namespace PPRP.Domains
             return rets;
         }
 
-
         public static void ImportPartyImage(string partyName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();

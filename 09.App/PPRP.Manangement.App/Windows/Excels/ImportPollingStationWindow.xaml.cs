@@ -12,7 +12,14 @@ using System.Windows.Media.Animation;
 using NLib;
 using NLib.Reflection;
 using NLib.Services;
+
+using PPRP.Domains;
 using PPRP.Imports.Excel;
+
+using OfficeOpenXml;
+using EPPlus;
+using EPPlus.DataExtractor;
+
 
 #endregion
 
@@ -35,11 +42,93 @@ namespace PPRP.Windows
 
         #endregion
 
+        #region Internal Class
+
+        public class XlsPullingStation : PullingStation
+        {
+            public static int ThaiYear = 2562;
+
+            public static List<XlsPullingStation> LoadWorksheetTable(NExcelImport import,
+                string sheetName, List<NExcelMapProperty> mapProperties)
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+
+                var results = new List<XlsPullingStation>();
+                if (null == import || string.IsNullOrWhiteSpace(sheetName) ||
+                    null == mapProperties || mapProperties.Count <= 0)
+                    return results;
+
+                Dictionary<string, int> columns = new Dictionary<string, int>();
+                foreach (var prop in mapProperties)
+                {
+                    if (prop.ColumnIndex < 1)
+                        continue; // ignore if column < 1
+
+                    if (!columns.ContainsKey(prop.PropertyName))
+                        columns.Add(prop.PropertyName, prop.ColumnIndex);
+                    else columns[prop.PropertyName] = prop.ColumnIndex;
+                }
+
+                using (var package = new ExcelPackage(import.FileName))
+                {
+                    try
+                    {
+                        var sheet = package.Workbook.Worksheets[sheetName];
+                        if (null != sheet)
+                        {
+                            int colCount = sheet.Dimension.End.Column;  //get Column Count
+                            int rowCount = sheet.Dimension.End.Row;     //get row count
+
+                            // start row at position 2.
+                            for (int row = 2; row <= rowCount; row++)
+                            {
+                                var inst = new XlsPullingStation();
+                                inst.YearThai = XlsPullingStation.ThaiYear;
+
+                                foreach (var key in columns.Keys)
+                                {
+                                    int colIdx = columns[key];
+                                    if (colIdx < 1)
+                                        continue;
+                                    try
+                                    {
+                                        object oVal = sheet.Cells[row, columns[key]].Value;
+                                        DynamicAccess<XlsPullingStation>.Set(inst, key, oVal);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex);
+                                    }
+                                }
+
+                                results.Add(inst);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        med.Err(ex);
+                        try
+                        {
+                            if (null != package) package.Dispose();
+                        }
+                        catch
+                        {
+                            Console.WriteLine("package dispose error.");
+                        }
+                    }
+                }
+
+                return results;
+            }
+        }
+
+        #endregion
+
         #region Internal Variables
 
-        //private int thaiYear = 2562;
-
         private NExcelImport import = new NExcelImport();
+        private List<XlsPullingStation> items = null;
 
         #endregion
 
@@ -61,23 +150,22 @@ namespace PPRP.Windows
 
         private void Import_OnSampleDataChanged(object sender, EventArgs e)
         {
-            /*
             if (null != wsMap && null != wsMap.ImportModel)
             {
                 var model = wsMap.ImportModel;
                 lvMapPreview.Setup(import);
 
-                var items = Target.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
+                items = XlsPullingStation.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
                 if (null != items)
                 {
 
                 }
                 lvMapPreview.UpdateItems(model.Maps, items);
             }
-            */
         }
 
         #endregion
+
 
         #region Button Handlers
 
@@ -90,6 +178,7 @@ namespace PPRP.Windows
 
         private void cmdFinish_Click(object sender, RoutedEventArgs e)
         {
+            Imports();
             DialogResult = true;
         }
 
@@ -111,10 +200,31 @@ namespace PPRP.Windows
                 //lstSheets.ItemsSource = import.Worksheets;
                 var mapProperties = new string[][]
                 {
-                    new string[] { "ProvinceName", "ข้อมูลจังหวัด" },
-                    new string[] { "UnitNo", "ข้อมูลเขต" }
+                    new string[] { "RegionName", "ข้อมูลภาค" },
+                    new string[] { "GeoSubGroup", "ข้อมูลภาคทางภูมิศาสตร์" },
+                    new string[] { "ProvinceId", "ข้อมูลรหัสจังหวัด" },
+                    new string[] { "ProvinceNameTH", "ข้อมูลชื่อจังหวัด" },
+                    new string[] { "DistrictId", "ข้อมูลรหัสอำเภอ" },
+                    new string[] { "DistrictNameTH", "ข้อมูลชื่ออำเภอ" },
+                    new string[] { "SubdistrictId", "ข้อมูลรหัสตำบล" },
+                    new string[] { "SubdistrictNameTH", "ข้อมูลชื่อตำบล" },
+                    new string[] { "PollingUnitNo", "ข้อมูลเขตเลือกตั้งที่" },
+                    new string[] { "PollingSubUnitNo", "ข้อมูลรหัสหน่วยเลือกตั้งย่อย" },
+                    new string[] { "VillageCount", "ข้อมูลจำนวนหมู่บ้าน" }
                 };
+
                 wsMap.Setup(import, mapProperties);
+            }
+        }
+
+        private void Imports()
+        {
+            if (null != items)
+            {
+                foreach (var item in items)
+                {
+                    PullingStation.ImportPullingStation(item);
+                }
             }
         }
 
