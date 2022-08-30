@@ -59,7 +59,7 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT A.*, B.Data ";
+                query += "SELECT TOP 100 A.*, B.Data ";
                 query += " FROM MParty A, MContent B ";
                 query += "WHERE A.ContentId = B.ContentId";
 

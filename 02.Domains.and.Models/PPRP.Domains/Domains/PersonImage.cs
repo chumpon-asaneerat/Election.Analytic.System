@@ -57,7 +57,7 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT * ";
+                query += "SELECT TOP 100 * ";
                 query += " FROM PersonImage ";
 
                 rets.Value = cnn.Query<PersonImage>(query).ToList();
