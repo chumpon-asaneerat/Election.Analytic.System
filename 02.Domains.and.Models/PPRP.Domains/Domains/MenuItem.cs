@@ -69,6 +69,7 @@ namespace PPRP.Domains
 
     public class ProvinceMenuItem
     {
+        public string RegionId { get; set; }
         public string ProvinceId { get; set; }
         public string ProvinceNameTH { get; set; }
 
@@ -93,7 +94,7 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT DISTINCT ProvinceId, ProvinceNameTH ";
+                query += "SELECT DISTINCT RegionId, ProvinceId, ProvinceNameTH ";
                 query += "  FROM MSubdistrictView ";
                 query += " WHERE RegionId = @RegionId ";
 

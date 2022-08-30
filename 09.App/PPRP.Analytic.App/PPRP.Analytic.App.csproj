@@ -101,6 +101,9 @@
     <Compile Include="Pages\Menu\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPD\MPD2562VoteSummaryPage.xaml.cs">
+      <DependentUpon>MPD2562VoteSummaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\PPRPApp.cs" />
     <None Include="SingeltonSample.cs" />
     <Page Include="MainWindow.xaml">
@@ -162,6 +165,10 @@
     <Page Include="Pages\Menu\MainMenuPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MPD\MPD2562VoteSummaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

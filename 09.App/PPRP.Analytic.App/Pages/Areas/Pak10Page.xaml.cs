@@ -48,7 +48,13 @@ namespace PPRP.Pages
 
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
-
+            var province = (sender as Button).DataContext as ProvinceMenuItem;
+            if (null != province)
+            {
+                var page = PPRPApp.Pages.MPD2562VoteSummary;
+                page.Setup(province.RegionId, province.ProvinceId);
+                PageContentManager.Instance.Current = page;
+            }
         }
 
         #endregion
