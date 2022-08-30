@@ -41,9 +41,19 @@
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Bottom"
                            Height="200">
-                    <Border BorderThickness="1" BorderBrush="Silver" />
+                    <Border BorderThickness="1" BorderBrush="Silver"
+                            DockPanel.Dock="Right">
+                        <DockPanel LastChildFill="True" Width="300">
+                            <Grid />
+                        </DockPanel>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Silver">
+                        <Grid />
+                    </Border>
                 </DockPanel>
-                <Border BorderThickness="1" BorderBrush="Silver" />
+                <Border BorderThickness="1" BorderBrush="Silver">
+                    <Grid />
+                </Border>
             </DockPanel>
         </DockPanel>
     </Grid>
