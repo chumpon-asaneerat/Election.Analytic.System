@@ -69,6 +69,7 @@
     <Compile Include="Domains\MContent.cs" />
     <Compile Include="Domains\MDistrict.cs" />
     <Compile Include="Domains\MEducation.cs" />
+    <Compile Include="Domains\MenuItem.cs" />
     <Compile Include="Domains\MOccupation.cs" />
     <Compile Include="Domains\MParty.cs" />
     <Compile Include="Domains\MPD2562VoteSummary.cs" />

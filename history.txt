@@ -22,8 +22,11 @@ Election.Analytic.System - PPRP  #184
 Election.Analytic.System - PPRP  #183
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #182
-- 
+- Update projects
+  - Update PPRP.Analytic.App project
+    - Implements Navigate Manu Image #1.
 
 [commited]
 Election.Analytic.System - PPRP  #181
