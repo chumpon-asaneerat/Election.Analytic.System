@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignHeight="900"
+             d:DesignWidth="1000">
     <Grid>
         <DockPanel LastChildFill="True" Opacity="0.7">
             <DockPanel DockPanel.Dock="Bottom" Margin="5">
@@ -28,7 +28,22 @@
                 <Grid />
             </DockPanel>
             <DockPanel LastChildFill="True">
-                <Grid />
+                <DockPanel LastChildFill="True"
+                           DockPanel.Dock="Left"
+                           Width="300">
+                    <Border BorderThickness="1" BorderBrush="Silver">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="จังหวัด" DockPanel.Dock="Top" />
+                            <ListBox x:Name="lstPollingStation" />
+                        </DockPanel>
+                    </Border>
+                </DockPanel>
+                <DockPanel LastChildFill="True"
+                           DockPanel.Dock="Bottom"
+                           Height="200">
+                    <Border BorderThickness="1" BorderBrush="Silver" />
+                </DockPanel>
+                <Border BorderThickness="1" BorderBrush="Silver" />
             </DockPanel>
         </DockPanel>
     </Grid>
