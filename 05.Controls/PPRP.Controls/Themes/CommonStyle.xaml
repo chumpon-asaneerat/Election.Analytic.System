@@ -27,7 +27,7 @@
     <sys:Double x:Key="DefaultFontSize" PresentationOptions:Freeze="True">18</sys:Double>
 
     <!--  COMMON PAGE COLORS  -->
-    <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True">WhiteSmoke</SolidColorBrush>
+    <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True">#9DC3E6</SolidColorBrush>
 
     <!--  COMMON CAPTION COLORS/SIZE  -->
     <SolidColorBrush x:Key="CaptionBackgroundR" PresentationOptions:Freeze="True">DarkRed</SolidColorBrush>

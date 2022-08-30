@@ -66,7 +66,7 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Column="1"
                             Grid.Row="1"
-                            Background="WhiteSmoke">
+                            Background="#9DC3E6">
                         <DockPanel LastChildFill="True" Margin="5">
                             <TextBlock Width="5" DockPanel.Dock="Left" />
                             <Image DockPanel.Dock="Left"
@@ -85,7 +85,7 @@
                     </Border>
                     <Border Grid.Column="1"
                             Grid.Row="2"
-                            Background="WhiteSmoke">
+                            Background="#9DC3E6">
                         <DockPanel LastChildFill="True" Margin="15">
                             <TextBlock DockPanel.Dock="Top"
                                        Style="{StaticResource LabelText}"

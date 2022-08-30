@@ -7,8 +7,10 @@ Election.Analytic.System - PPRP  #189
 Election.Analytic.System - PPRP  #188
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #187
-- 
+- Update projects
+  - Fixed background colors.
 
 [commited]
 Election.Analytic.System - PPRP  #186
