@@ -102,6 +102,12 @@ namespace PPRP.Pages
 
         private void mnu42_Click(object sender, RoutedEventArgs e)
         {
+            // ข้อมูลรูปผู้สมัคร-ว่าที่ผู้สมัคร
+            GotoPersonImagePage();
+        }
+
+        private void mnu43_Click(object sender, RoutedEventArgs e)
+        {
             // ข้อมูลอื่น ๆ
         }
 
@@ -135,6 +141,13 @@ namespace PPRP.Pages
         private void GotoMPD2562VoteSummary()
         {
             var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoPersonImagePage()
+        {
+            var page = PPRPApp.Pages.PersonImageManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

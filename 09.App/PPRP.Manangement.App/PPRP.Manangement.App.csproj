@@ -118,6 +118,9 @@
     <Compile Include="Pages\GeoLocation\PollingStationManagePage.xaml.cs">
       <DependentUpon>PollingStationManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Person\PersonImageManagePage.xaml.cs">
+      <DependentUpon>PersonImageManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Samples\ExcelImportSamplePage.xaml.cs">
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,9 @@
     </Compile>
     <Compile Include="Windows\Images\ImportPartyImageWindow.xaml.cs">
       <DependentUpon>ImportPartyImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Images\ImportPersonImageWindow.xaml.cs">
+      <DependentUpon>ImportPersonImageWindow.xaml</DependentUpon>
     </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
@@ -168,6 +174,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Person\PersonImageManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Samples\ExcelImportSamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Images\ImportPartyImageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Images\ImportPersonImageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

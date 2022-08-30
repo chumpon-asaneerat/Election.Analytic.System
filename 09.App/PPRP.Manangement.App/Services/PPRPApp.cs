@@ -151,6 +151,28 @@ namespace PPRP
 
             #endregion
 
+            #region PersonImage
+
+            private static PersonImageManagePage _PersonImageManage;
+
+            /// <summary>Gets Party Manage Page.</summary>
+            public static PersonImageManagePage PersonImageManage
+            {
+                get
+                {
+                    if (null == _PersonImageManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _PersonImageManage = new PersonImageManagePage();
+                        }
+                    }
+                    return _PersonImageManage;
+                }
+            }
+
+            #endregion
+
             #region ExcelImportSample
 
             private static ExcelImportSamplePage _ExcelSample;
@@ -215,7 +237,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportPartyImage
+            #region ImportMPD2562VoteSummary
 
             /// <summary>Gets MPD 2562 Vote Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562VoteSummaryWindow ImportMPD2562VoteSummary
@@ -223,6 +245,21 @@ namespace PPRP
                 get
                 {
                     var ret = new PPRP.Windows.ImportMPD2562VoteSummaryWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region ImportPersonImage
+
+            /// <summary>Gets Person Image Import Window.</summary>
+            public static PPRP.Windows.ImportPersonImageWindow ImportPersonImage
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportPersonImageWindow();
                     ret.Owner = Application.Current.MainWindow;
                     return ret;
                 }

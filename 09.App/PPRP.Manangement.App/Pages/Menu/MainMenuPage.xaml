@@ -102,7 +102,7 @@
                                             ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566
                                         </Hyperlink>
                                     </TextBlock>
-                                    <Grid Height="200">
+                                    <Grid Height="200" Visibility="Hidden">
                                         <button:ImageButton x:Name="imgCmd1"
                                                             Width="220"
                                                             ImageSource="/PPRP.Controls;component/Images/Button/OK2.png"
@@ -168,6 +168,14 @@
                                                Margin="15,5,5,5"
                                                Cursor="Hand">
                                         <Hyperlink x:Name="mnu42" Click="mnu42_Click">
+                                            ข้อมูลรูปผู้สมัคร/ว่าที่ผู้สมัคร
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu43" Click="mnu43_Click">
                                             ข้อมูลอื่น ๆ
                                         </Hyperlink>
                                     </TextBlock>

@@ -28,8 +28,11 @@ Election.Analytic.System - PPRP  #182
 Election.Analytic.System - PPRP  #181
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #180
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements Import Person Image #1.
 
 [commited]
 Election.Analytic.System - PPRP  #179

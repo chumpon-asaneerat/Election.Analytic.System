@@ -24,16 +24,16 @@ using PPRP.Imports.Excel;
 namespace PPRP.Windows
 {
     /// <summary>
-    /// Interaction logic for ImportPartyImageWindow.xaml
+    /// Interaction logic for ImportPersonImageWindow.xaml
     /// </summary>
-    public partial class ImportPartyImageWindow : Window
+    public partial class ImportPersonImageWindow : Window
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public ImportPartyImageWindow()
+        public ImportPersonImageWindow()
         {
             InitializeComponent();
         }
@@ -42,20 +42,20 @@ namespace PPRP.Windows
 
         #region PartyImageFile Class
 
-        public class PartyImageFile : NInpc
+        public class PersonImageFile : NInpc
         {
             private byte[] _data = null;
             private ImageSource _imgSrc = null;
 
-            public string FullFileName 
-            { 
-                get; 
-                set; 
+            public string FullFileName
+            {
+                get;
+                set;
             }
-            public string PartyName { get; set; }
+            public string PersonName { get; set; }
 
-            public byte[] Data 
-            { 
+            public byte[] Data
+            {
                 get { return _data; }
                 set
                 {
@@ -82,7 +82,7 @@ namespace PPRP.Windows
 
         #region Internal Variables
 
-        private List<PartyImageFile> _parties = null;
+        private List<PersonImageFile> _persons = null;
 
         #endregion
 
@@ -145,25 +145,25 @@ namespace PPRP.Windows
 
                 lvFiles.ItemsSource = null;
 
-                _parties = new List<PartyImageFile>();
+                _persons = new List<PersonImageFile>();
                 if (null != files && files.Count > 0)
                 {
                     foreach (var file in files)
                     {
+                        var inst = new PersonImageFile();
+
                         try
                         {
-                            var inst = new PartyImageFile();
-
                             inst.FullFileName = file;
-                            inst.PartyName = Path.GetFileNameWithoutExtension(file);
+                            inst.PersonName = Path.GetFileNameWithoutExtension(file);
                             inst.Data = ByteUtils.GetFileBuffer(file);
 
-                            _parties.Add(inst);
+                            _persons.Add(inst);
                         }
                         catch { }
                     }
 
-                    lvFiles.ItemsSource = _parties;
+                    lvFiles.ItemsSource = _persons;
                 }
             }
             catch (Exception ex)
@@ -175,11 +175,11 @@ namespace PPRP.Windows
 
         private void Imports()
         {
-            if (null != _parties)
+            if (null != _persons)
             {
-                foreach(var party in _parties)
+                foreach (var person in _persons)
                 {
-                    MParty.ImportPartyImage(party.PartyName, party.Data);
+                    PersonImage.ImportPersonImage(person.PersonName, person.Data);
                 }
             }
         }
