@@ -45,7 +45,7 @@
     <!--  NORMAL LISTBOX STYLES  -->
     <Style x:Key="SingleSelectListBox"
            BasedOn="{StaticResource BASEListBox}"
-           TargetType="ListView">
+           TargetType="ListBox">
         <Setter Property="SelectionMode" Value="Single" />
     </Style>
 

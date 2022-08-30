@@ -35,7 +35,7 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        private List<MRegion> _regions = null;
+        private List<PakMenuItem> _regions = null;
 
         #endregion
 
@@ -50,15 +50,88 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Button Handlers
+
+        private void cmdPak_Click(object sender, RoutedEventArgs e)
+        {
+            var pak = (sender as Button).DataContext as PakMenuItem;
+            if (null != pak)
+            {
+                if (pak.RegionId == "01")
+                {
+                    var page = PPRPApp.Pages.Pak01;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "02")
+                {
+                    var page = PPRPApp.Pages.Pak02;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "03")
+                {
+                    var page = PPRPApp.Pages.Pak03;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "04")
+                {
+                    var page = PPRPApp.Pages.Pak04;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "05")
+                {
+                    var page = PPRPApp.Pages.Pak05;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "06")
+                {
+                    var page = PPRPApp.Pages.Pak06;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "07")
+                {
+                    var page = PPRPApp.Pages.Pak07;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "08")
+                {
+                    var page = PPRPApp.Pages.Pak08;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "09")
+                {
+                    var page = PPRPApp.Pages.Pak09;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+                else if (pak.RegionId == "10")
+                {
+                    var page = PPRPApp.Pages.Pak10;
+                    page.Setup(pak.RegionId);
+                    PageContentManager.Instance.Current = page;
+                }
+            }
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void Setup()
         {
-            _regions = MRegion.Gets().Value;
+            _regions = PakMenuItem.Gets().Value;
             if (null != _regions)
             {
                 Console.WriteLine("No of region : {0}", _regions.Count);
             }
+            lstPaks.ItemsSource = _regions;
         }
 
         #endregion

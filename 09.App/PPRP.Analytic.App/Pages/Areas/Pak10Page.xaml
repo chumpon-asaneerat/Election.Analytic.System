@@ -22,7 +22,36 @@
                 <TextBlock DockPanel.Dock="Right" Width="10" />
                 <Grid />
             </DockPanel>
-            <Grid />
+            <DockPanel LastChildFill="True">
+                <TextBlock Width="20" DockPanel.Dock="Right" />
+                <Grid DockPanel.Dock="Right">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="lstProvinces"
+                             Grid.Row="1"
+                             Width="200"
+                             Height="Auto"
+                             Opacity="0.7"
+                             BorderThickness="0"
+                             HorizontalContentAlignment="Stretch"
+                             Style="{StaticResource SingleSelectListBox}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button x:Name="cmdProvince"
+                                        Content="{Binding ProvinceNameTH}"
+                                        Margin="5"
+                                        Width="Auto"
+                                        Style="{StaticResource InlineButton}"
+                                        Click="cmdProvince_Click" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+                <Grid />
+            </DockPanel>
         </DockPanel>
     </Grid>
 </UserControl>

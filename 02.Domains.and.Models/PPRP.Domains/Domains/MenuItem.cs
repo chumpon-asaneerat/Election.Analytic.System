@@ -93,7 +93,7 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT DISTINCT ProvinceId, ProvinceIdNameTH ";
+                query += "SELECT DISTINCT ProvinceId, ProvinceNameTH ";
                 query += "  FROM MSubdistrictView ";
                 query += " WHERE RegionId = @RegionId ";
 

@@ -10,6 +10,8 @@ using System.Windows.Media.Animation;
 using NLib;
 using NLib.Services;
 
+using PPRP.Domains;
+
 #endregion
 
 namespace PPRP.Pages
@@ -31,11 +33,22 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        private List<ProvinceMenuItem> _provinces = null;
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdGotoThailandPage_Click(object sender, RoutedEventArgs e)
         {
             GotoThailandPage();
+        }
+
+        private void cmdProvince_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         #endregion
@@ -53,9 +66,14 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup()
+        public void Setup(string regiondId)
         {
-
+            _provinces = ProvinceMenuItem.Gets(regiondId).Value;
+            if (null != _provinces)
+            {
+                Console.WriteLine("No of region : {0}", _provinces.Count);
+            }
+            lstProvinces.ItemsSource = _provinces;
         }
 
         #endregion
