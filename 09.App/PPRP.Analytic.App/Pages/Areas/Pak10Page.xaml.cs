@@ -63,12 +63,7 @@ namespace PPRP.Pages
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
             var province = (sender as Button).DataContext as ProvinceMenuItem;
-            if (null != province)
-            {
-                var page = PPRPApp.Pages.MPD2562VoteSummary;
-                page.Setup(province.RegionId, province.ProvinceId);
-                PageContentManager.Instance.Current = page;
-            }
+            GotoVoteSummaryPage(province);
         }
 
         #endregion
@@ -79,6 +74,15 @@ namespace PPRP.Pages
         {
             var page = PPRPApp.Pages.Thailand;
             page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoVoteSummaryPage(ProvinceMenuItem province)
+        {
+            if (null == province)
+                return;
+            var page = PPRPApp.Pages.MPD2562VoteSummary;
+            page.Setup(province.RegionId, province.ProvinceId);
             PageContentManager.Instance.Current = page;
         }
 

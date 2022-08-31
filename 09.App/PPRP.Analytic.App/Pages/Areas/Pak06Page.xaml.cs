@@ -63,12 +63,7 @@ namespace PPRP.Pages
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
             var province = (sender as Button).DataContext as ProvinceMenuItem;
-            if (null != province)
-            {
-                var page = PPRPApp.Pages.MPD2562VoteSummary;
-                page.Setup(province.RegionId, province.ProvinceId);
-                PageContentManager.Instance.Current = page;
-            }
+            GotoVoteSummaryPage(province);
         }
 
         #endregion
@@ -82,18 +77,29 @@ namespace PPRP.Pages
             PageContentManager.Instance.Current = page;
         }
 
+        private void GotoVoteSummaryPage(ProvinceMenuItem province)
+        {
+            if (null == province)
+                return;
+            var page = PPRPApp.Pages.MPD2562VoteSummary;
+            page.Setup(province.RegionId, province.ProvinceId);
+            PageContentManager.Instance.Current = page;
+        }
+
         #endregion
 
         #region Public Methods
 
-        public void Setup(PakMenuItem pak)
+        public void Setup()
         {
-            _provinces = ProvinceMenuItem.Gets(regiondId).Value;
-            if (null != _provinces)
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            if (null == Provinces || Provinces.Count <= 0)
             {
-                Console.WriteLine("No of region : {0}", _provinces.Count);
+                med.Info("No of Provinces : {0}", Provinces.Count);
             }
-            lstProvinces.ItemsSource = _provinces;
+
+            lstProvinces.ItemsSource = Provinces;
         }
 
         #endregion
