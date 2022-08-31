@@ -30,7 +30,7 @@
                     Grid.ColumnSpan="1"
                     Grid.Row="1"
                     Grid.RowSpan="1"
-                    Background="{StaticResource CaptionBackgroundB}"
+                    Background="{StaticResource CaptionBackground}"
                     BorderBrush="{StaticResource CaptionBorderColor}"
                     BorderThickness="{StaticResource CaptionBorderThickness}"
                     CornerRadius="{StaticResource CaptionBorderCornerRadius}">

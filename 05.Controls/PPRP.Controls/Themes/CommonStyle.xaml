@@ -33,9 +33,11 @@
     <Color x:Key="BlueHeavyColor" PresentationOptions:Freeze="True">#2E75B6</Color>
     <Color x:Key="BlueHeavyColor2" PresentationOptions:Freeze="True">#1F4E79</Color>
 
+    <Color x:Key="BlackColor" PresentationOptions:Freeze="True">#000000</Color>
     <Color x:Key="WhiteColor" PresentationOptions:Freeze="True">#FFFFFF</Color>
     <Color x:Key="GrayColor" PresentationOptions:Freeze="True">#7F7F7F</Color>
-    
+    <Color x:Key="TransparentColor" PresentationOptions:Freeze="True">Transparent</Color>
+
     <!--  COMMON PAGE COLORS  -->
     <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
 
@@ -55,6 +57,12 @@
     <!-- COMMON MENU COLORS THEMES -->
     <SolidColorBrush x:Key="MenuButtonForeground" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor2}" />
     <SolidColorBrush x:Key="MenuPanelBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor2}" />
+
+    <SolidColorBrush x:Key="MainMenuCaptionForeground" PresentationOptions:Freeze="True" Color="{StaticResource BlackColor}" />
+    <SolidColorBrush x:Key="MainMenuCaptionBackground" PresentationOptions:Freeze="True" Color="{StaticResource TransparentColor}" />
+
+    <SolidColorBrush x:Key="MainMenuItemForeground" PresentationOptions:Freeze="True" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="MainMenuPanelBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor}" />
 
     <SolidColorBrush x:Key="WorkPanelBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor}" />
 

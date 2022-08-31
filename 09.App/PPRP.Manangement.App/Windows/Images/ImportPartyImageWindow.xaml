@@ -37,7 +37,7 @@
                     Grid.ColumnSpan="1"
                     Grid.Row="1"
                     Grid.RowSpan="1"
-                    Background="{StaticResource CaptionBackgroundB}"
+                    Background="{StaticResource CaptionBackground}"
                     BorderBrush="{StaticResource CaptionBorderColor}"
                     BorderThickness="{StaticResource CaptionBorderThickness}"
                     CornerRadius="{StaticResource CaptionBorderCornerRadius}">
@@ -112,8 +112,7 @@
                             <TextBlock DockPanel.Dock="Right" Width="5" />
                             <Grid />
                         </DockPanel>
-                        <ListView x:Name="lvFiles"
-                                  Style="{StaticResource SingleSelectListView}">
+                        <ListView x:Name="lvFiles" Style="{StaticResource SingleSelectListView}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="รูปโลโก้" Width="150">
@@ -123,16 +122,19 @@
                                                         BorderThickness="1"
                                                         Margin="5"
                                                         ClipToBounds="True">
-                                                    <Image Source="{Binding Image}" 
-                                                           Width="75" Height=" 75"/>
+                                                    <Image Source="{Binding Image}"
+                                                           Width="75"
+                                                           Height=" 75" />
                                                 </Border>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                    <GridViewColumn Header="ชื่อพรรค" Width="200" 
-                                                    DisplayMemberBinding="{Binding PartyName}"/>
-                                    <GridViewColumn Header="ชื่อไฟล์" Width="400" 
-                                                    DisplayMemberBinding="{Binding FullFileName}"/>
+                                    <GridViewColumn Header="ชื่อพรรค"
+                                                    Width="200"
+                                                    DisplayMemberBinding="{Binding PartyName}" />
+                                    <GridViewColumn Header="ชื่อไฟล์"
+                                                    Width="400"
+                                                    DisplayMemberBinding="{Binding FullFileName}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>

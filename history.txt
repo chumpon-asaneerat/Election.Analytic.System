@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #196
 Election.Analytic.System - PPRP  #195
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #194
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - Update Color Themes #3.
 
 [commited]
 Election.Analytic.System - PPRP  #193
