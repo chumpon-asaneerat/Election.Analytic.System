@@ -19,8 +19,12 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
+	#region MPD2562VoteSummary
+
 	public class MPD2562VoteSummary
 	{
+		#region Public Properties
+
 		public string ProvinceName { get; set; }
 		public int PollingUnitNo { get; set; }
 		public string FullName { get; set; }
@@ -28,6 +32,10 @@ namespace PPRP.Domains
 		public string PartyName { get; set; }
 		public int VoteCount { get; set; }
 		public int RevoteNo { get; set; }
+
+		#endregion
+
+		#region Static Methods
 
 		public static NDbResult<List<MPD2562VoteSummary>>  Gets()
 		{
@@ -118,17 +126,37 @@ namespace PPRP.Domains
 
 			return;
 		}
+
+		#endregion
 	}
+
+	#endregion
+
+	#region MPD2562PersonalVoteSummary
 
 	public class MPD2562PersonalVoteSummary : NInpc
 	{
+		#region Internal Variables
+
+		// for party logo
+		private byte[] _LogoData = null;
+		private bool _PartyLogoLoading = false;
+		private ImageSource _PartyLogo = null;
+		// for person image
+		private byte[] _PersonImageData = null;
+		private bool _PersonImageLoading = false;
+		private ImageSource _PersonImage = null;
+
+		#endregion
+
+		#region Public Properties
+
 		public string ProvinceId { get; set; }
 		public string ProvinceName { get; set; }
 		public int PollingUnitNo { get; set; }
 
 		public string FullName { get; set; }
 
-		private byte[] _PersonImageData = null;
 		public byte[] PersonImageData
 		{
 			get { return _PersonImageData; }
@@ -142,8 +170,6 @@ namespace PPRP.Domains
 			}
 		}
 
-		private bool _PersonImageLoading = false;
-		private ImageSource _PersonImage = null;
 		public ImageSource PersonImage 
 		{ 
 			get 
@@ -164,7 +190,6 @@ namespace PPRP.Domains
 		public string PartyId { get; set; }
 		public string PartyName { get; set; }
 
-		private byte[] _LogoData = null;
 		public byte[] LogoData 
 		{ 
 			get { return _LogoData; }
@@ -177,9 +202,6 @@ namespace PPRP.Domains
 				}
 			}
 		}
-
-		private bool _PartyLogoLoading = false;
-		private ImageSource _PartyLogo = null;
 		public ImageSource PartyLogo 
 		{ 
 			get 
@@ -198,6 +220,10 @@ namespace PPRP.Domains
 
 		public int VoteNo { get; set; }
 		public int VoteCount { get; set; }
+
+		#endregion
+
+		#region Static Methods
 
 		public static NDbResult<List<MPD2562PersonalVoteSummary>> Gets(string provinceId, int pollingUnitNo)
 		{
@@ -275,5 +301,9 @@ namespace PPRP.Domains
 
 			return rets;
 		}
+
+		#endregion
 	}
+
+	#endregion
 }

@@ -73,6 +73,7 @@
     <Compile Include="Domains\MOccupation.cs" />
     <Compile Include="Domains\MParty.cs" />
     <Compile Include="Domains\MPD2562VoteSummary.cs" />
+    <Compile Include="Domains\MPDC2566.cs" />
     <Compile Include="Domains\MPerson.cs" />
     <Compile Include="Domains\MProvince.cs" />
     <Compile Include="Domains\MRegion.cs" />
