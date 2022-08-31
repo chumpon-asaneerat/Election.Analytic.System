@@ -10,6 +10,7 @@
              Unloaded="UserControl_Unloaded">
     <DockPanel LastChildFill="True" Margin="3">
         <TextBlock DockPanel.Dock="Top"
+                   Foreground="{StaticResource TextBlockForegroundWhite}"
                    Text="กรุณาเลือก worksheet:"
                    Margin="2,5" />
         <ComboBox x:Name="cbSheets"
@@ -17,6 +18,7 @@
                   DisplayMemberPath="SheetName"
                   SelectionChanged="cbSheets_SelectionChanged" />
         <TextBlock DockPanel.Dock="Top"
+                   Foreground="{StaticResource TextBlockForegroundWhite}"
                    Text="รายละเอียดข้อมูลนำเข้า:"
                    Margin="2,5" />
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="True" Height="Auto">

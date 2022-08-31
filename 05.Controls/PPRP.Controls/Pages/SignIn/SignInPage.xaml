@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:util="clr-namespace:PPRP.Controls.Utils"
-             d:DesignHeight="450"
+             d:DesignHeight="600"
              d:DesignWidth="1024"
              mc:Ignorable="d">
     <UserControl.Resources>
@@ -46,13 +46,14 @@
                        Grid.ColumnSpan="1"
                        Grid.Row="3"
                        Grid.RowSpan="1"
+                       Background="{StaticResource BlueMediumBrush}"
                        LastChildFill="True">
                 <!--  WORK AREA  -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*"
-                                          MinWidth="350"
+                                          MinWidth="400"
                                           MaxWidth="450" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
@@ -62,22 +63,25 @@
                         <RowDefinition Height="*"
                                        MinHeight="250"
                                        MaxHeight="300" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="4*" />
                     </Grid.RowDefinitions>
                     <Border Grid.Column="1"
                             Grid.Row="1"
-                            Background="#9DC3E6">
+                            Background="{StaticResource BlueHeavyBrush}">
                         <DockPanel LastChildFill="True" Margin="5">
                             <TextBlock Width="5" DockPanel.Dock="Left" />
-                            <Image DockPanel.Dock="Left"
-                                   Height="50"
-                                   Width="50"
-                                   Stretch="Uniform"
-                                   Source="/PPRP.Controls;component/Images/Logo/PPRPLogo.png" />
+                            <Border DockPanel.Dock="Left"
+                                    Background="{StaticResource WhiteBrush}"
+                                    Width="50"
+                                    Height="50">
+                                <Image Margin="2"
+                                       Stretch="Uniform"
+                                       Source="/PPRP.Controls;component/Images/Logo/PPRPLogo.png" />
+                            </Border>
                             <TextBlock Width="5" DockPanel.Dock="Left" />
                             <TextBlock FontSize="36"
                                        FontWeight="Bold"
-                                       Foreground="Navy"
+                                       Foreground="{StaticResource WhiteBrush}"
                                        Text="พรรคพลังประชารัฐ"
                                        VerticalAlignment="Center"
                                        TextAlignment="Center" />
@@ -85,10 +89,11 @@
                     </Border>
                     <Border Grid.Column="1"
                             Grid.Row="2"
-                            Background="#9DC3E6">
-                        <DockPanel LastChildFill="True" Margin="15">
+                            Background="{StaticResource BlueLightBrush3}">
+                        <DockPanel LastChildFill="True" Margin="75, 15">
                             <TextBlock DockPanel.Dock="Top"
                                        Style="{StaticResource LabelText}"
+                                       Foreground="{StaticResource TextBlockForegroundWhite}"
                                        Text="ขื่อผู้ใช้" />
                             <TextBox x:Name="txtUserName"
                                      DockPanel.Dock="Top"
@@ -101,6 +106,7 @@
                             <TextBlock DockPanel.Dock="Top" Height="5" />
                             <TextBlock DockPanel.Dock="Top"
                                        Style="{StaticResource LabelText}"
+                                       Foreground="{StaticResource TextBlockForegroundWhite}"
                                        Text="รหัสผ่าน" />
                             <PasswordBox x:Name="txtPassword"
                                          DockPanel.Dock="Top"

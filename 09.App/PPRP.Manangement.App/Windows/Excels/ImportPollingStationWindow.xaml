@@ -90,10 +90,12 @@
                             <TextBlock DockPanel.Dock="Left"
                                        VerticalAlignment="Center"
                                        TextAlignment="Right"
+                                       Foreground="{StaticResource TextBlockForegroundWhite}"
                                        Width="150"
                                        Text="Excel ไฟล์: " />
                             <TextBlock DockPanel.Dock="Left" Width="5" />
                             <TextBlock x:Name="txtFileName"
+                                       Foreground="{StaticResource TextBlockForegroundWhite}"
                                        DockPanel.Dock="Left"
                                        VerticalAlignment="Center"
                                        TextAlignment="Left"
@@ -102,6 +104,7 @@
                                        TextTrimming="WordEllipsis"
                                        ClipToBounds="True"
                                        Width="Auto"
+                                       MaxWidth="550"
                                        MinWidth="300" />
                             <TextBlock DockPanel.Dock="Left" Width="5" />
                             <Button x:Name="cmdChooseExcel"

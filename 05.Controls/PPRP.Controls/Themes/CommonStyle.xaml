@@ -29,6 +29,7 @@
     <!--  CUSTOM COLORS  -->
     <Color x:Key="BlueLightColor" PresentationOptions:Freeze="True">#9DC3E6</Color>
     <Color x:Key="BlueLightColor2" PresentationOptions:Freeze="True">#79ADDD</Color>
+    <Color x:Key="BlueLightColor3" PresentationOptions:Freeze="True">#7DB0DF</Color>
     <Color x:Key="BlueMediumColor" PresentationOptions:Freeze="True">#599AD5</Color>
     <Color x:Key="BlueHeavyColor" PresentationOptions:Freeze="True">#2E75B6</Color>
     <Color x:Key="BlueHeavyColor2" PresentationOptions:Freeze="True">#1F4E79</Color>
@@ -38,6 +39,19 @@
     <Color x:Key="GrayColor" PresentationOptions:Freeze="True">#7F7F7F</Color>
     <Color x:Key="TransparentColor" PresentationOptions:Freeze="True">Transparent</Color>
 
+    <!--  CUSTOM BRUSHS  -->
+    <SolidColorBrush x:Key="BlueLightBrush" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor}"/>
+    <SolidColorBrush x:Key="BlueLightBrush2" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor2}"/>
+    <SolidColorBrush x:Key="BlueLightBrush3" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor3}"/>
+    <SolidColorBrush x:Key="BlueMediumBrush" PresentationOptions:Freeze="True" Color="{StaticResource BlueMediumColor}"/>
+    <SolidColorBrush x:Key="BlueHeavyBrush" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
+    <SolidColorBrush x:Key="BlueHeavyBrush2" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor2}"/>
+
+    <SolidColorBrush x:Key="BlackBlush" PresentationOptions:Freeze="True" Color="{StaticResource BlackColor}"/>
+    <SolidColorBrush x:Key="WhiteBrush" PresentationOptions:Freeze="True" Color="{StaticResource WhiteColor}"/>
+    <SolidColorBrush x:Key="GrayBrush" PresentationOptions:Freeze="True" Color="{StaticResource GrayColor}"/>
+    <SolidColorBrush x:Key="TransparentBrush" PresentationOptions:Freeze="True" Color="{StaticResource TransparentColor}"/>
+    
     <!--  COMMON PAGE COLORS  -->
     <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
 
@@ -87,10 +101,13 @@
     <!--  COMMON FOR TEXT BOX, PASSWORD BOX FONT SIZE  -->
     <sys:Double x:Key="TextBlockFontSize18" PresentationOptions:Freeze="True">18</sys:Double>
     <sys:Double x:Key="TextBlockFontSize20" PresentationOptions:Freeze="True">20</sys:Double>
+    <SolidColorBrush x:Key="TextBlockForegroundWhite" PresentationOptions:Freeze="True" Color="{StaticResource WhiteColor}" />
+    <SolidColorBrush x:Key="TextBlockForegroundBlack" PresentationOptions:Freeze="True" Color="{StaticResource BlackColor}" />
 
     <!--  COMMON CONTROLS STYLES: TextBlock  -->
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
+        <Setter Property="Foreground" Value="{StaticResource TextBlockForegroundBlack}"/>
     </Style>
 </ResourceDictionary>
