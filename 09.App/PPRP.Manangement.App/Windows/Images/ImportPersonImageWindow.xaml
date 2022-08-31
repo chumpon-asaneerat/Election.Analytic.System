@@ -134,7 +134,7 @@
                                     </GridViewColumn>
                                     <GridViewColumn Header="ชื่อผู้สมัคร/ว่าที่ผู้สมัคร"
                                                     Width="400"
-                                                    DisplayMemberBinding="{Binding FullName}" />
+                                                    DisplayMemberBinding="{Binding PersonName}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>

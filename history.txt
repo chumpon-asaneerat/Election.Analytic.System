@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #208
 Election.Analytic.System - PPRP  #207
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #206
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Fixed ImportPersonImageWindow not show file name in GridView.
 
 [commited]
 Election.Analytic.System - PPRP  #205
