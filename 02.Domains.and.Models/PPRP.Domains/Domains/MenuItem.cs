@@ -31,7 +31,7 @@ namespace PPRP.Domains
             {
                 lock (typeof(PakMenuItem))
                 {
-                    if (null != _Items)
+                    if (null == _Items)
                     {
                         _Items = ProvinceMenuItem.Gets(RegionId).Value;
                     }

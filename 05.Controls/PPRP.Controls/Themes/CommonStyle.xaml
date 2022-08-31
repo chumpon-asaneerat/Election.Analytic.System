@@ -30,14 +30,23 @@
     <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True">#9DC3E6</SolidColorBrush>
 
     <!--  COMMON CAPTION COLORS/SIZE  -->
-    <SolidColorBrush x:Key="CaptionBackgroundR" PresentationOptions:Freeze="True">DarkRed</SolidColorBrush>
-    <SolidColorBrush x:Key="CaptionBackgroundB" PresentationOptions:Freeze="True">RoyalBlue</SolidColorBrush>
-    <SolidColorBrush x:Key="CaptionForeground" PresentationOptions:Freeze="True">WhiteSmoke</SolidColorBrush>
-    <SolidColorBrush x:Key="CaptionBorderColor" PresentationOptions:Freeze="True">WhiteSmoke</SolidColorBrush>
+    <SolidColorBrush x:Key="CaptionBackground" PresentationOptions:Freeze="True">#2E75B6</SolidColorBrush>
+    <SolidColorBrush x:Key="CaptionBorderColor" PresentationOptions:Freeze="True">#2E75B6</SolidColorBrush>
+    <SolidColorBrush x:Key="CaptionForeground" PresentationOptions:Freeze="True">#FFFFFF</SolidColorBrush>
     <Thickness x:Key="CaptionBorderThickness">1</Thickness>
     <CornerRadius x:Key="CaptionBorderCornerRadius" PresentationOptions:Freeze="True">3</CornerRadius>
     <GridLength x:Key="CaptionHeight" PresentationOptions:Freeze="True">40</GridLength>
 
+    <!-- COMMON DIALOGS COLORS THEMES -->
+    <SolidColorBrush x:Key="DialogForeground" PresentationOptions:Freeze="True">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="DialogBackground" PresentationOptions:Freeze="True">#7BD0BF</SolidColorBrush>
+
+    <!-- COMMON MENU COLORS THEMES -->
+    <SolidColorBrush x:Key="MenuButtonForeground" PresentationOptions:Freeze="True">#1F4E79</SolidColorBrush>
+    <SolidColorBrush x:Key="MenuPanelBackground" PresentationOptions:Freeze="True">#79ADDD</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="WorkPanelBackground" PresentationOptions:Freeze="True">#9DC3E6</SolidColorBrush>
+    
     <!--  COMMON FOR TEXT BOX, PASSWORD BOX COLORS  -->
     <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush"
                      PresentationOptions:Freeze="True"
