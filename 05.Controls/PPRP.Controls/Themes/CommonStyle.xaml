@@ -26,27 +26,39 @@
     <FontFamily x:Key="DefaultFontFamily">pack://application:,,,/PPRP.Controls;Component/Fonts/#TH Sarabun</FontFamily>
     <sys:Double x:Key="DefaultFontSize" PresentationOptions:Freeze="True">18</sys:Double>
 
+    <!--  CUSTOM COLORS  -->
+    <Color x:Key="BlueLightColor" PresentationOptions:Freeze="True">#9DC3E6</Color>
+    <Color x:Key="BlueLightColor2" PresentationOptions:Freeze="True">#79ADDD</Color>
+    <Color x:Key="BlueMediumColor" PresentationOptions:Freeze="True">#599AD5</Color>
+    <Color x:Key="BlueHeavyColor" PresentationOptions:Freeze="True">#2E75B6</Color>
+    <Color x:Key="BlueHeavyColor2" PresentationOptions:Freeze="True">#1F4E79</Color>
+
+    <Color x:Key="WhiteColor" PresentationOptions:Freeze="True">#FFFFFF</Color>
+    <Color x:Key="GrayColor" PresentationOptions:Freeze="True">#7F7F7F</Color>
+    
     <!--  COMMON PAGE COLORS  -->
-    <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True">#9DC3E6</SolidColorBrush>
+    <SolidColorBrush x:Key="PageBG" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
 
     <!--  COMMON CAPTION COLORS/SIZE  -->
-    <SolidColorBrush x:Key="CaptionBackground" PresentationOptions:Freeze="True">#2E75B6</SolidColorBrush>
-    <SolidColorBrush x:Key="CaptionBorderColor" PresentationOptions:Freeze="True">#2E75B6</SolidColorBrush>
-    <SolidColorBrush x:Key="CaptionForeground" PresentationOptions:Freeze="True">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="CaptionBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
+    <SolidColorBrush x:Key="CaptionBorderColor" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor}"/>
+    <SolidColorBrush x:Key="CaptionForeground" PresentationOptions:Freeze="True" Color="{StaticResource WhiteColor}" />
+    
     <Thickness x:Key="CaptionBorderThickness">1</Thickness>
     <CornerRadius x:Key="CaptionBorderCornerRadius" PresentationOptions:Freeze="True">3</CornerRadius>
     <GridLength x:Key="CaptionHeight" PresentationOptions:Freeze="True">40</GridLength>
 
     <!-- COMMON DIALOGS COLORS THEMES -->
-    <SolidColorBrush x:Key="DialogForeground" PresentationOptions:Freeze="True">#FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="DialogForeground" PresentationOptions:Freeze="True" Color="{StaticResource WhiteColor}" />
     <SolidColorBrush x:Key="DialogBackground" PresentationOptions:Freeze="True">#7BD0BF</SolidColorBrush>
 
     <!-- COMMON MENU COLORS THEMES -->
-    <SolidColorBrush x:Key="MenuButtonForeground" PresentationOptions:Freeze="True">#1F4E79</SolidColorBrush>
-    <SolidColorBrush x:Key="MenuPanelBackground" PresentationOptions:Freeze="True">#79ADDD</SolidColorBrush>
-    
-    <SolidColorBrush x:Key="WorkPanelBackground" PresentationOptions:Freeze="True">#9DC3E6</SolidColorBrush>
-    
+    <SolidColorBrush x:Key="MenuButtonForeground" PresentationOptions:Freeze="True" Color="{StaticResource BlueHeavyColor2}" />
+    <SolidColorBrush x:Key="MenuPanelBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor2}" />
+
+    <SolidColorBrush x:Key="WorkPanelBackground" PresentationOptions:Freeze="True" Color="{StaticResource BlueLightColor}" />
+
+
     <!--  COMMON FOR TEXT BOX, PASSWORD BOX COLORS  -->
     <SolidColorBrush x:Key="TextBoxMouseOverBorderBrush"
                      PresentationOptions:Freeze="True"
