@@ -4,42 +4,59 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    <DockPanel LastChildFill="True">
-        <Grid DockPanel.Dock="Left" Width="300">
-            <Grid.Background>
-                <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Thailand.png" Stretch="Uniform" />
-            </Grid.Background>
-        </Grid>
-        <DockPanel LastChildFill="True">
-            <TextBlock Width="20" DockPanel.Dock="Right"/>
-            <Grid DockPanel.Dock="Right">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <ListBox x:Name="lstPaks"
-                         Grid.Row="1"
-                         Width="200"
-                         Height="Auto"
-                         Opacity="0.7"
-                         BorderThickness="0"
-                         HorizontalContentAlignment="Stretch"
-                         Style="{StaticResource SingleSelectListBox}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Button x:Name="cmdPak"
-                                    Content="{Binding RegionName}"
-                                    Margin="5"
-                                    Width="Auto"
-                                    Style="{StaticResource InlineButton}" 
-                                    Click="cmdPak_Click"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+             d:DesignHeight="800"
+             d:DesignWidth="1200">
+    <DockPanel LastChildFill="True" Background="{StaticResource BlueLightBrush}">
+        <!--  MAPS  -->
+        <Border DockPanel.Dock="Left"
+                Width="500"
+                Background="{StaticResource BlueHeavyBrush}">
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Thailand.png" Stretch="Uniform" />
+                </Grid.Background>
             </Grid>
+        </Border>
+        <!--  NAVIAGE MENU AREAS  -->
+        <DockPanel LastChildFill="True" Margin="20">
+            <!--  LINE 1  -->
+            <TextBlock DockPanel.Dock="Top"
+                       FontSize="40"
+                       FontWeight="DemiBold"
+                       Foreground="{StaticResource BlueHeavyBrush}"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       TextTrimming="None"
+                       Text="สถิติผลคะแนนเลือกตั้งปี 2562" />
+            <!--  LINE 2  -->
+            <TextBlock DockPanel.Dock="Top"
+                       FontSize="40"
+                       Foreground="{StaticResource BlackBlush}"
+                       TextAlignment="Center">
+                <Run Text="การแบ่งภาคตามการบริหารพรรค" FontWeight="Normal" />
+                <LineBreak />
+                <Run Text="10 ภาค ตามเขตตำรวจ ดังนี้" FontWeight="Light" />
+            </TextBlock>
+            <!--  PAK LISTS  -->
+            <ListBox x:Name="lstPaks"
+                     DockPanel.Dock="Top"
+                     Width="Auto"
+                     Height="Auto"
+                     Opacity="0.7"
+                     BorderThickness="0"
+                     HorizontalContentAlignment="Stretch"
+                     Style="{StaticResource SingleSelectListBox}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button x:Name="cmdPak"
+                                Content="{Binding RegionName}"
+                                Margin="5"
+                                Width="Auto"
+                                Style="{StaticResource InlineButton}"
+                                Click="cmdPak_Click" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <Grid />
         </DockPanel>
     </DockPanel>
