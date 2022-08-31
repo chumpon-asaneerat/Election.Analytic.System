@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 using NLib;
 using NLib.Services;
@@ -33,13 +34,24 @@ namespace PPRP.Pages
 
         #endregion
 
-        #region Internal Variables
+        #region Helper Peroperties
 
-        private string _regionId = string.Empty;
-        private string _provinceId = string.Empty;
+        private PakMenuItem Current
+        {
+            get { return AreaNavi.Instance.Current; }
+        }
+
+        private List<ProvinceMenuItem> Provinces
+        {
+            get
+            {
+                var provinces = (null != AreaNavi.Instance.Current && null != AreaNavi.Instance.Current.Provinces) ?
+                    AreaNavi.Instance.Current.Provinces : null;
+                return provinces;
+            }
+        }
 
         #endregion
-
 
         #region Button Handlers
 
@@ -66,66 +78,69 @@ namespace PPRP.Pages
 
         private void GotoPrevPage()
         {
-            if (!string.IsNullOrWhiteSpace(_regionId))
+            AreaNavi.Instance.GoPrev();
+            string regionId = (null != Current) ? Current.RegionId : string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(regionId))
             {
-                if (_regionId == "01")
+                if (regionId == "01")
                 {
                     var page = PPRPApp.Pages.Pak01;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "02")
+                else if (regionId == "02")
                 {
                     var page = PPRPApp.Pages.Pak02;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "03")
+                else if (regionId == "03")
                 {
                     var page = PPRPApp.Pages.Pak03;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "04")
+                else if (regionId == "04")
                 {
                     var page = PPRPApp.Pages.Pak04;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "05")
+                else if (regionId == "05")
                 {
                     var page = PPRPApp.Pages.Pak05;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "06")
+                else if (regionId == "06")
                 {
                     var page = PPRPApp.Pages.Pak06;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "07")
+                else if (regionId == "07")
                 {
                     var page = PPRPApp.Pages.Pak07;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "08")
+                else if (regionId == "08")
                 {
                     var page = PPRPApp.Pages.Pak08;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "09")
+                else if (regionId == "09")
                 {
                     var page = PPRPApp.Pages.Pak09;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
-                else if (_regionId == "10")
+                else if (regionId == "10")
                 {
                     var page = PPRPApp.Pages.Pak10;
-                    page.Setup(_regionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
             }
@@ -137,8 +152,7 @@ namespace PPRP.Pages
 
         public void Setup(string regionId, string provinceId)
         {
-            _regionId = regionId;
-            _provinceId = provinceId;
+
         }
 
         #endregion

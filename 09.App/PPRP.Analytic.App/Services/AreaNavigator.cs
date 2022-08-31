@@ -38,38 +38,13 @@ namespace PPRP
         /// </summary>
         ~AreaNavi()
         {
-
+            Current = null;
+            _regions = null;
         }
 
         #endregion
 
-        #region Public Properties
-
-        /// <summary>
-        /// Gets Pak Menu items.
-        /// </summary>
-        public List<PakMenuItem> Regions
-        {
-            get 
-            {
-                if (null == _regions)
-                {
-                    lock (typeof(AreaNavi))
-                    {
-                        _regions = PakMenuItem.Gets().Value;
-                    }
-                }
-                return _regions;
-            }
-            set { }
-        }
-
-        public bool HasRegions
-        {
-            get { return (null == Regions || Regions.Count <= 0); }
-        }
-
-        public PakMenuItem Current { get; set; }
+        #region Public Methods
 
         public int GetPakByMenuItem(PakMenuItem item)
         {
@@ -80,7 +55,7 @@ namespace PPRP
         {
             int idx = -1;
             if (!HasRegions) return idx;
-            
+
             idx = Regions.FindIndex((pak) => { return pak.RegionId == regionId; });
             if (idx == -1 || idx >= Regions.Count) idx = -1; // out of range.
 
@@ -119,6 +94,36 @@ namespace PPRP
                 Current = Regions[0];
             else Current = Regions[idx];
         }
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// Gets Pak Menu items.
+        /// </summary>
+        public List<PakMenuItem> Regions
+        {
+            get 
+            {
+                if (null == _regions)
+                {
+                    lock (typeof(AreaNavi))
+                    {
+                        _regions = PakMenuItem.Gets().Value;
+                    }
+                }
+                return _regions;
+            }
+            set { }
+        }
+
+        public bool HasRegions
+        {
+            get { return (null == Regions || Regions.Count <= 0); }
+        }
+
+        public PakMenuItem Current { get; set; }
 
         #endregion
     }

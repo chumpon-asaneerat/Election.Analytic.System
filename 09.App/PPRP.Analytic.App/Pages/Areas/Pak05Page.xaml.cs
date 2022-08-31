@@ -96,6 +96,11 @@ namespace PPRP.Pages
 
             if (null == Provinces || Provinces.Count <= 0)
             {
+                med.Info("Provinces is null or Count : 0");
+
+            }
+            else
+            {
                 med.Info("No of Provinces : {0}", Provinces.Count);
             }
 

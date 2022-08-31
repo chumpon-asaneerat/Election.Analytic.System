@@ -122,13 +122,15 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
             if (null != AreaNavi.Instance.Regions)
             {
-                Console.WriteLine("No of regions : {0}", AreaNavi.Instance.Regions.Count);
+                med.Info("No of Regions : {0}", AreaNavi.Instance.Regions.Count);
             }
             else
             {
-                Console.WriteLine("No of regions : -1");
+                med.Info("Regions is null or Count : 0");
             }
             lstPaks.ItemsSource = AreaNavi.Instance.Regions;
         }
