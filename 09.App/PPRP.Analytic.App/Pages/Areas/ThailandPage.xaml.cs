@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 using NLib;
 using NLib.Services;
@@ -33,12 +34,6 @@ namespace PPRP.Pages
 
         #endregion
 
-        #region Internal Variables
-
-        private List<PakMenuItem> _regions = null;
-
-        #endregion
-
         #region Private Methods
 
         private void GotoMainMenuPage()
@@ -55,66 +50,67 @@ namespace PPRP.Pages
         private void cmdPak_Click(object sender, RoutedEventArgs e)
         {
             var pak = (sender as Button).DataContext as PakMenuItem;
+            AreaNavi.Instance.Current = pak; // set current.
             if (null != pak)
             {
                 if (pak.RegionId == "01")
                 {
                     var page = PPRPApp.Pages.Pak01;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "02")
                 {
                     var page = PPRPApp.Pages.Pak02;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "03")
                 {
                     var page = PPRPApp.Pages.Pak03;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "04")
                 {
                     var page = PPRPApp.Pages.Pak04;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "05")
                 {
                     var page = PPRPApp.Pages.Pak05;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "06")
                 {
                     var page = PPRPApp.Pages.Pak06;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "07")
                 {
                     var page = PPRPApp.Pages.Pak07;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "08")
                 {
                     var page = PPRPApp.Pages.Pak08;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "09")
                 {
                     var page = PPRPApp.Pages.Pak09;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
                 else if (pak.RegionId == "10")
                 {
                     var page = PPRPApp.Pages.Pak10;
-                    page.Setup(pak.RegionId);
+                    page.Setup();
                     PageContentManager.Instance.Current = page;
                 }
             }
@@ -126,12 +122,15 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-            _regions = PakMenuItem.Gets().Value;
-            if (null != _regions)
+            if (null != AreaNavi.Instance.Regions)
             {
-                Console.WriteLine("No of region : {0}", _regions.Count);
+                Console.WriteLine("No of regions : {0}", AreaNavi.Instance.Regions.Count);
             }
-            lstPaks.ItemsSource = _regions;
+            else
+            {
+                Console.WriteLine("No of regions : -1");
+            }
+            lstPaks.ItemsSource = AreaNavi.Instance.Regions;
         }
 
         #endregion

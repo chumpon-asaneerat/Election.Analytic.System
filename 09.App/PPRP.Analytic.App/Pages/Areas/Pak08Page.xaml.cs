@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 using NLib;
 using NLib.Services;
@@ -33,9 +34,22 @@ namespace PPRP.Pages
 
         #endregion
 
-        #region Internal Variables
+        #region Helper Peroperties
 
-        private List<ProvinceMenuItem> _provinces = null;
+        private PakMenuItem Current
+        {
+            get { return AreaNavi.Instance.Current; }
+        }
+
+        private List<ProvinceMenuItem> Provinces
+        {
+            get
+            {
+                var provinces = (null != AreaNavi.Instance.Current && null != AreaNavi.Instance.Current.Provinces) ?
+                    AreaNavi.Instance.Current.Provinces : null;
+                return provinces;
+            }
+        }
 
         #endregion
 
@@ -72,7 +86,7 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup(string regiondId)
+        public void Setup(PakMenuItem pak)
         {
             _provinces = ProvinceMenuItem.Gets(regiondId).Value;
             if (null != _provinces)

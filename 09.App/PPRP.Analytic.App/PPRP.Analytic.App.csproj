@@ -104,6 +104,7 @@
     <Compile Include="Pages\MPD\MPD2562VoteSummaryPage.xaml.cs">
       <DependentUpon>MPD2562VoteSummaryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\AreaNavigator.cs" />
     <Compile Include="Services\PPRPApp.cs" />
     <None Include="SingeltonSample.cs" />
     <Page Include="MainWindow.xaml">

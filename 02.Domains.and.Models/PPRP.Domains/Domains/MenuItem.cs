@@ -20,8 +20,26 @@ namespace PPRP.Domains
 {
     public class PakMenuItem
     {
+        private List<ProvinceMenuItem> _Items = null;
+
         public string RegionId { get; set; }
         public string RegionName { get; set; }
+
+        public List<ProvinceMenuItem> Provinces
+        {
+            get 
+            {
+                lock (typeof(PakMenuItem))
+                {
+                    if (null != _Items)
+                    {
+                        _Items = ProvinceMenuItem.Gets(RegionId).Value;
+                    }
+                }
+                return _Items;
+            }
+            set { }
+        }
 
         public static NDbResult<List<PakMenuItem>> Gets()
         {
@@ -44,8 +62,11 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT DISTINCT RegionId, RegionName ";
-                query += "  FROM MSubdistrictView ";
+                query += @"
+                    SELECT RegionId, RegionName
+                      FROM MRegion 
+                  ORDER BY RegionId
+                ";
 
                 rets.Value = cnn.Query<PakMenuItem>(query).ToList();
             }
@@ -94,9 +115,12 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
-                query += "SELECT DISTINCT RegionId, ProvinceId, ProvinceNameTH ";
-                query += "  FROM MSubdistrictView ";
-                query += " WHERE RegionId = @RegionId ";
+                query += @"
+                    SELECT RegionId, ProvinceId, ProvinceNameTH 
+                      FROM MProvince 
+                     WHERE RegionId = @RegionId 
+                     ORDER BY RegionId
+                ";
 
                 rets.Value = cnn.Query<ProvinceMenuItem>(query, new { RegionId = regionId }).ToList();
             }
