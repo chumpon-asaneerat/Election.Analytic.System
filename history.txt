@@ -31,8 +31,10 @@ Election.Analytic.System - PPRP  #211
 Election.Analytic.System - PPRP  #210
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #209
-- 
+- Update App version
+- Recompile all projects
 
 [commited]
 Election.Analytic.System - PPRP  #208
