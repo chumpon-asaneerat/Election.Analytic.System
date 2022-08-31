@@ -41,7 +41,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Button x:Name="cmdProvince"
-                                        Content="{Binding ProvinceNameTH}"
+                                        Content="{Binding DisplayText}"
                                         Margin="5"
                                         Width="Auto"
                                         Style="{StaticResource InlineButton}"

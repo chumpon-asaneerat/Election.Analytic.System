@@ -43,13 +43,8 @@ namespace PPRP.Pages
             PageContentManager.Instance.Current = page;
         }
 
-        #endregion
-
-        #region Button Handlers
-
-        private void cmdPak_Click(object sender, RoutedEventArgs e)
+        private void GotoPak(PakMenuItem pak)
         {
-            var pak = (sender as Button).DataContext as PakMenuItem;
             AreaNavi.Instance.Current = pak; // set current.
             if (null != pak)
             {
@@ -116,6 +111,28 @@ namespace PPRP.Pages
             }
         }
 
+        private void GotoProvince(ProvinceMenuItem province)
+        {
+
+        }
+
+        #endregion
+
+        #region Button Handlers
+
+        private void cmdPak_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button).DataContext as AreaMenuItem;
+            if (item.ItemType == AreaMenuItem.PAK)
+            {
+                GotoPak(item as PakMenuItem);
+            }
+            else
+            {
+                GotoProvince(item as ProvinceMenuItem);
+            }
+        }
+
         #endregion
 
         #region Public Methods
@@ -132,7 +149,33 @@ namespace PPRP.Pages
             {
                 med.Info("Regions is null or Count : 0");
             }
-            lstPaks.ItemsSource = AreaNavi.Instance.Regions;
+
+            var menuItems = new List<AreaMenuItem>();
+            var regions = AreaNavi.Instance.Regions;
+            if (null != regions)
+            {
+                foreach (var pak in regions)
+                {
+                    if (null == pak) continue;
+                    // add Pak
+                    menuItems.Add(pak);
+
+                    // Attemp later
+                    /*
+                    // extract provinces
+                    var provinces = pak.Provinces;
+                    if (null == provinces) continue;
+                    foreach (var province in provinces)
+                    {
+                        if (null == province) continue;
+                        // add Province
+                        menuItems.Add(province);
+                    }
+                    */
+                }
+            }
+
+            lstPaks.ItemsSource = menuItems;
         }
 
         #endregion

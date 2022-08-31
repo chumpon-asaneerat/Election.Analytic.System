@@ -108,12 +108,11 @@
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Border Name="item_border"
-                                Margin="2"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 BorderThickness="1"
-                                CornerRadius="12">
-                            <ContentPresenter Margin="2"
+                                CornerRadius="1">
+                            <ContentPresenter Margin="0"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -121,12 +120,11 @@
                         <!--  TOPMOST BORDER FOR SELECTION  -->
                         <!--  Need to set IsHitTestVisible to false for let mouse passthrough  -->
                         <Border Name="item_select_cover"
-                                Margin="2"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Background="{DynamicResource ListBoxItemSelectedBackground}"
                                 BorderThickness="0"
-                                CornerRadius="12"
+                                CornerRadius="1"
                                 IsHitTestVisible="False"
                                 Opacity=".1"
                                 Visibility="Hidden" />
@@ -145,10 +143,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="IsSelected" Value="True" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
     <!--  WRAP LISTBOX ITEM STYLES  -->
-    <!--    # WRAP LISTBOX ITEM STYLES - USER CARD ITEM:DATA TEMPLATE (UNUSED) -->
+    <!--  # WRAP LISTBOX ITEM STYLES - USER CARD ITEM:DATA TEMPLATE (UNUSED)  -->
     <DataTemplate x:Key="UserCardItem">
         <Grid Margin="2">
             <Grid.ColumnDefinitions>
@@ -205,4 +208,26 @@
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
+
+    <!--  # WRAP LISTBOX ITEM STYLES - AREA (PAK/PROVINCE)  -->
+    <DataTemplate x:Key="AreaItem">
+        <Grid Margin="1">
+            <Border>
+
+            </Border>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=ItemType}" Value="PAK">
+                <!--
+                <Setter TargetName="container_background" Property="Background" Value="{DynamicResource PurpleCard}" />
+                -->
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=ItemType}" Value="PROVINCE">
+                <!--
+                <Setter TargetName="container_background" Property="Background" Value="{DynamicResource RedCard}" />
+                -->
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
 </ResourceDictionary>

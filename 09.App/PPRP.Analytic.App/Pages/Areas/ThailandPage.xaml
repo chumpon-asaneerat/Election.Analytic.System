@@ -45,15 +45,29 @@
                      Opacity="0.7"
                      BorderThickness="0"
                      HorizontalContentAlignment="Stretch"
-                     Style="{StaticResource SingleSelectListBox}">
+                     ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
+                     Style="{StaticResource SingleSelectWrapListBox}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Button x:Name="cmdPak"
-                                Content="{Binding RegionName}"
-                                Margin="5"
+                                Margin="1"
                                 Width="Auto"
-                                Style="{StaticResource InlineButton}"
-                                Click="cmdPak_Click" />
+                                Style="{StaticResource InlineButton}" 
+                                Click="cmdPak_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="10" />
+                                <TextBlock Text="{Binding DisplayText}" />
+                                <TextBlock Width="10" />
+                            </StackPanel>
+                        </Button>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=ItemType}" Value="PAK">
+                                <Setter TargetName="cmdPak" Property="Width" Value="Auto" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=ItemType}" Value="PROVINCE">
+                                <Setter TargetName="cmdPak" Property="Width" Value="Auto" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

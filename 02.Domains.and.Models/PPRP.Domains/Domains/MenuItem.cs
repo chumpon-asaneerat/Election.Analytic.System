@@ -18,9 +18,48 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public class PakMenuItem
+    public abstract class AreaMenuItem
     {
+        public const string PAK = "PAK";
+        public const string PROVINCE = "PROVINCE";
+
+        public abstract string ItemType { get; set; }
+        public abstract string DisplayText { get; set; }
+    }
+
+    public class PakMenuItem : AreaMenuItem
+    {
+        #region Internal Variables
+
         private List<ProvinceMenuItem> _Items = null;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public PakMenuItem() : base()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public override string ItemType 
+        {
+            get { return PAK; }
+            set { }
+        }
+
+        public override string DisplayText
+        {
+            get { return RegionName;  }
+            set { }
+        }
 
         public string RegionId { get; set; }
         public string RegionName { get; set; }
@@ -40,6 +79,10 @@ namespace PPRP.Domains
             }
             set { }
         }
+
+        #endregion
+
+        #region Static Methods
 
         public static NDbResult<List<PakMenuItem>> Gets()
         {
@@ -86,13 +129,45 @@ namespace PPRP.Domains
 
             return rets;
         }
+
+        #endregion
     }
 
-    public class ProvinceMenuItem
+    public class ProvinceMenuItem : AreaMenuItem
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public ProvinceMenuItem() : base()
+        {
+
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public override string ItemType
+        {
+            get { return PROVINCE; }
+            set { }
+        }
+
+        public override string DisplayText
+        {
+            get { return ProvinceNameTH; }
+            set { }
+        }
+
         public string RegionId { get; set; }
         public string ProvinceId { get; set; }
         public string ProvinceNameTH { get; set; }
+
+        #endregion
+
+        #region Static Methods
 
         public static NDbResult<List<ProvinceMenuItem>> Gets(string regionId)
         {
@@ -140,5 +215,7 @@ namespace PPRP.Domains
 
             return rets;
         }
+
+        #endregion
     }
 }
