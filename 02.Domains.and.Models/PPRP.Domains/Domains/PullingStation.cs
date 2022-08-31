@@ -61,6 +61,13 @@ namespace PPRP.Domains
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
 
+
+            if (value.ProvinceId == "67" && 
+                value.PollingUnitNo > 1)
+            {
+                Console.WriteLine("detected");
+            }
+
             try
             {
                 cnn.Execute("ImportPollingStation", p, commandType: CommandType.StoredProcedure);

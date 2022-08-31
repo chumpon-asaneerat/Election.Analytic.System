@@ -18,204 +18,214 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public abstract class AreaMenuItem
-    {
-        public const string PAK = "PAK";
-        public const string PROVINCE = "PROVINCE";
+	public abstract class AreaMenuItem
+	{
+		public const string PAK = "PAK";
+		public const string PROVINCE = "PROVINCE";
 
-        public abstract string ItemType { get; set; }
-        public abstract string DisplayText { get; set; }
-    }
+		public abstract string ItemType { get; set; }
+		public abstract string DisplayText { get; set; }
+	}
 
-    public class PakMenuItem : AreaMenuItem
-    {
-        #region Internal Variables
+	public class PakMenuItem : AreaMenuItem
+	{
+		#region Internal Variables
 
-        private List<ProvinceMenuItem> _Items = null;
+		private List<ProvinceMenuItem> _Items = null;
 
-        #endregion
+		#endregion
 
-        #region Constructor
+		#region Constructor
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public PakMenuItem() : base()
-        {
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public PakMenuItem() : base()
+		{
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        #region Public Properties
+		#region Public Properties
 
-        public override string ItemType 
-        {
-            get { return PAK; }
-            set { }
-        }
+		public override string ItemType 
+		{
+			get { return PAK; }
+			set { }
+		}
 
-        public override string DisplayText
-        {
-            get { return RegionName;  }
-            set { }
-        }
+		public override string DisplayText
+		{
+			get { return RegionName;  }
+			set { }
+		}
 
-        public string RegionId { get; set; }
-        public string RegionName { get; set; }
+		public string RegionId { get; set; }
+		public string RegionName { get; set; }
 
-        public List<ProvinceMenuItem> Provinces
-        {
-            get 
-            {
-                lock (typeof(PakMenuItem))
-                {
-                    if (null == _Items)
-                    {
-                        _Items = ProvinceMenuItem.Gets(RegionId).Value;
-                    }
-                }
-                return _Items;
-            }
-            set { }
-        }
+		public List<ProvinceMenuItem> Provinces
+		{
+			get 
+			{
+				lock (typeof(PakMenuItem))
+				{
+					if (null == _Items)
+					{
+						_Items = ProvinceMenuItem.Gets(RegionId).Value;
+					}
+				}
+				return _Items;
+			}
+			set { }
+		}
 
-        #endregion
+		#endregion
 
-        #region Static Methods
+		#region Static Methods
 
-        public static NDbResult<List<PakMenuItem>> Gets()
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
+		public static NDbResult<List<PakMenuItem>> Gets()
+		{
+			MethodBase med = MethodBase.GetCurrentMethod();
 
-            NDbResult<List<PakMenuItem>> rets = new NDbResult<List<PakMenuItem>>();
+			NDbResult<List<PakMenuItem>> rets = new NDbResult<List<PakMenuItem>>();
 
-            IDbConnection cnn = DbServer.Instance.Db;
-            if (null == cnn || !DbServer.Instance.Connected)
-            {
-                string msg = "Connection is null or cannot connect to database server.";
-                med.Err(msg);
-                // Set error number/message
-                rets.ErrNum = 8000;
-                rets.ErrMsg = msg;
+			IDbConnection cnn = DbServer.Instance.Db;
+			if (null == cnn || !DbServer.Instance.Connected)
+			{
+				string msg = "Connection is null or cannot connect to database server.";
+				med.Err(msg);
+				// Set error number/message
+				rets.ErrNum = 8000;
+				rets.ErrMsg = msg;
 
-                return rets;
-            }
+				return rets;
+			}
 
-            try
-            {
-                string query = string.Empty;
-                query += @"
-                    SELECT RegionId, RegionName
-                      FROM MRegion 
-                  ORDER BY RegionId
-                ";
+			try
+			{
+				string query = string.Empty;
+				query += @"
+					SELECT RegionId, RegionName
+					  FROM MRegion 
+				  ORDER BY RegionId
+				";
 
-                rets.Value = cnn.Query<PakMenuItem>(query).ToList();
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-                // Set error number/message
-                rets.ErrNum = 9999;
-                rets.ErrMsg = ex.Message;
-            }
+				rets.Value = cnn.Query<PakMenuItem>(query).ToList();
+			}
+			catch (Exception ex)
+			{
+				med.Err(ex);
+				// Set error number/message
+				rets.ErrNum = 9999;
+				rets.ErrMsg = ex.Message;
+			}
 
-            if (null == rets.Value)
-            {
-                // create empty list.
-                rets.Value = new List<PakMenuItem>();
-            }
+			if (null == rets.Value)
+			{
+				// create empty list.
+				rets.Value = new List<PakMenuItem>();
+			}
 
-            return rets;
-        }
+			return rets;
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 
-    public class ProvinceMenuItem : AreaMenuItem
-    {
-        #region Constructor
+	public class ProvinceMenuItem : AreaMenuItem
+	{
+		#region Constructor
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        public ProvinceMenuItem() : base()
-        {
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public ProvinceMenuItem() : base()
+		{
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        #region Public Properties
+		#region Public Properties
 
-        public override string ItemType
-        {
-            get { return PROVINCE; }
-            set { }
-        }
+		public override string ItemType
+		{
+			get { return PROVINCE; }
+			set { }
+		}
 
-        public override string DisplayText
-        {
-            get { return ProvinceNameTH; }
-            set { }
-        }
+		public override string DisplayText
+		{
+			get { return string.Format("{0} - {1} เขต", ProvinceNameTH, UnitCount); }
+			set { }
+		}
 
-        public string RegionId { get; set; }
-        public string ProvinceId { get; set; }
-        public string ProvinceNameTH { get; set; }
+		public string RegionId { get; set; }
+		public string ProvinceId { get; set; }
+		public string ProvinceNameTH { get; set; }
 
-        #endregion
+		public int UnitCount { get; set; }
 
-        #region Static Methods
+		#endregion
 
-        public static NDbResult<List<ProvinceMenuItem>> Gets(string regionId)
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
+		#region Static Methods
 
-            NDbResult<List<ProvinceMenuItem>> rets = new NDbResult<List<ProvinceMenuItem>>();
+		public static NDbResult<List<ProvinceMenuItem>> Gets(string regionId)
+		{
+			MethodBase med = MethodBase.GetCurrentMethod();
 
-            IDbConnection cnn = DbServer.Instance.Db;
-            if (null == cnn || !DbServer.Instance.Connected)
-            {
-                string msg = "Connection is null or cannot connect to database server.";
-                med.Err(msg);
-                // Set error number/message
-                rets.ErrNum = 8000;
-                rets.ErrMsg = msg;
+			NDbResult<List<ProvinceMenuItem>> rets = new NDbResult<List<ProvinceMenuItem>>();
 
-                return rets;
-            }
+			IDbConnection cnn = DbServer.Instance.Db;
+			if (null == cnn || !DbServer.Instance.Connected)
+			{
+				string msg = "Connection is null or cannot connect to database server.";
+				med.Err(msg);
+				// Set error number/message
+				rets.ErrNum = 8000;
+				rets.ErrMsg = msg;
 
-            try
-            {
-                string query = string.Empty;
-                query += @"
-                    SELECT RegionId, ProvinceId, ProvinceNameTH 
-                      FROM MProvince 
-                     WHERE RegionId = @RegionId 
-                     ORDER BY RegionId
-                ";
+				return rets;
+			}
 
-                rets.Value = cnn.Query<ProvinceMenuItem>(query, new { RegionId = regionId }).ToList();
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-                // Set error number/message
-                rets.ErrNum = 9999;
-                rets.ErrMsg = ex.Message;
-            }
+			try
+			{
+				string query = string.Empty;
+				query += @"
+					SELECT A.RegionId
+						 , A.ProvinceId
+						 , A.ProvinceNameTH
+						 , COUNT(B.PollingUnitNo) AS UnitCount
+					  FROM MProvince A 
+						   LEFT JOIN (SELECT DISTINCT ProvinceId, PollingUnitNo FROM PollingStation) B ON 
+							 A.ProvinceId = B.ProvinceId
+					 WHERE A.RegionId = @RegionId
+					 GROUP BY A.RegionId
+							, A.ProvinceId
+							, A.ProvinceNameTH
+					 ORDER BY A.RegionId, A.ProvinceNameTH
+				";
 
-            if (null == rets.Value)
-            {
-                // create empty list.
-                rets.Value = new List<ProvinceMenuItem>();
-            }
+				rets.Value = cnn.Query<ProvinceMenuItem>(query, new { RegionId = regionId }).ToList();
+			}
+			catch (Exception ex)
+			{
+				med.Err(ex);
+				// Set error number/message
+				rets.ErrNum = 9999;
+				rets.ErrMsg = ex.Message;
+			}
 
-            return rets;
-        }
+			if (null == rets.Value)
+			{
+				// create empty list.
+				rets.Value = new List<ProvinceMenuItem>();
+			}
 
-        #endregion
-    }
+			return rets;
+		}
+
+		#endregion
+	}
 }
