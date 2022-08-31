@@ -68,6 +68,7 @@ namespace PPRP.Pages
         private void mnu03_Click(object sender, RoutedEventArgs e)
         {
             // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566 - MPD (candidate)
+            GotoMPDC2566();
         }
 
         private void mnu04_Click(object sender, RoutedEventArgs e)
@@ -141,6 +142,13 @@ namespace PPRP.Pages
         private void GotoMPD2562VoteSummary()
         {
             var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoMPDC2566()
+        {
+            var page = PPRPApp.Pages.MPDC2566Manage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

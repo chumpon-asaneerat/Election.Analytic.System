@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #207
 Election.Analytic.System - PPRP  #206
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #205
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements Import MPDC2566 #1.
 
 [commited]
 Election.Analytic.System - PPRP  #204

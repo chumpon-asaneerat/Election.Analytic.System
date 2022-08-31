@@ -17,16 +17,16 @@ using PPRP.Domains;
 namespace PPRP.Pages
 {
     /// <summary>
-    /// Interaction logic for MPD2562VoteSummaryManagePage.xaml
+    /// Interaction logic for MPDC2566ManagePage.xaml
     /// </summary>
-    public partial class MPD2562VoteSummaryManagePage : UserControl
+    public partial class MPDC2566ManagePage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MPD2562VoteSummaryManagePage()
+        public MPDC2566ManagePage()
         {
             InitializeComponent();
         }
@@ -58,7 +58,7 @@ namespace PPRP.Pages
 
         private void Import()
         {
-            var win = PPRPApp.Windows.ImportMPD2562VoteSummary;
+            var win = PPRPApp.Windows.ImportMPDC2566;
             win.Setup();
             if (win.ShowDialog() == false)
             {
@@ -69,9 +69,9 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
-            lvMPD2562Summaries.ItemsSource = null;
-            var summaries = MPD2562VoteSummary.Gets();
-            lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562VoteSummary>();
+            lvMPDC2566.ItemsSource = null;
+            var candidates = MPDC2566.Gets();
+            lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
         }
 
         #endregion

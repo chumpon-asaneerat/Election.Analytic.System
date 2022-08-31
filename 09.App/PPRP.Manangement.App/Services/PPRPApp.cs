@@ -151,6 +151,28 @@ namespace PPRP
 
             #endregion
 
+            #region MPDC2566
+
+            private static MPDC2566ManagePage _MPDC2566Manage;
+
+            /// <summary>Gets MPDC 2566 Manage Page.</summary>
+            public static MPDC2566ManagePage MPDC2566Manage
+            {
+                get
+                {
+                    if (null == _MPDC2566Manage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPDC2566Manage = new MPDC2566ManagePage();
+                        }
+                    }
+                    return _MPDC2566Manage;
+                }
+            }
+
+            #endregion
+
             #region PersonImage
 
             private static PersonImageManagePage _PersonImageManage;
@@ -245,6 +267,21 @@ namespace PPRP
                 get
                 {
                     var ret = new PPRP.Windows.ImportMPD2562VoteSummaryWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region ImportMPDC2566
+
+            /// <summary>Gets MPDC 2566 Import Window.</summary>
+            public static PPRP.Windows.ImportMPDC2566Window ImportMPDC2566
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMPDC2566Window();
                     ret.Owner = Application.Current.MainWindow;
                     return ret;
                 }

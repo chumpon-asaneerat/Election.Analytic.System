@@ -109,6 +109,9 @@
     <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
       <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPDC\MPDC2566ManagePage.xaml.cs">
+      <DependentUpon>MPDC2566ManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPD\MPD2562VoteSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2562VoteSummaryManagePage.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,9 @@
     <Compile Include="Windows\Images\ImportPersonImageWindow.xaml.cs">
       <DependentUpon>ImportPersonImageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Excels\ImportMPDC2566Window.xaml.cs">
+      <DependentUpon>ImportMPDC2566Window.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -159,6 +165,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MPDC\MPDC2566ManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Images\ImportPersonImageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Excels\ImportMPDC2566Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
