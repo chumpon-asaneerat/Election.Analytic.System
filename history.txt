@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #209
 Election.Analytic.System - PPRP  #208
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #207
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Fixed all imports windows's controls width.
 
 [commited]
 Election.Analytic.System - PPRP  #206

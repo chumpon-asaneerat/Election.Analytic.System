@@ -33,13 +33,13 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ชื่อข้อมูล"
-                                    Width="150"
+                                    Width="Auto"
                                     DisplayMemberBinding="{Binding DisplayText}" />
-                    <GridViewColumn Header="นำเข้าจากคอลัมน์" Width="200">
+                    <GridViewColumn Header="นำเข้าจากคอลัมน์" Width="215">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox x:Name="cbColumns"
-                                          Width="150"
+                                          Width="200"
                                           HorizontalAlignment="Stretch"
                                           ItemsSource="{Binding Columns}"
                                           DisplayMemberPath="ColumnName"
