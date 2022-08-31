@@ -68,6 +68,9 @@ namespace PPRP.Pages
         private void cmdPollingUnit_Click(object sender, RoutedEventArgs e)
         {
             var pollingUnit = (sender as Button).DataContext as PollingUnitMenuItem;
+
+            lstSummary.ItemsSource = MPD2562PersonalVoteSummary.Gets(
+                pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
         }
 
         #endregion

@@ -77,8 +77,30 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
     </Style>
 
+    <Style x:Key="BASEHorizontalWrapListBox"
+           BasedOn="{StaticResource BASEListBox}"
+           TargetType="{x:Type ListBox}">
+        <!--  Swap out the default items panel with a WrapPanel so that the images will be arranged with a different layout.  -->
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--  Set this attached property to 'Disabled' so that the ScrollViewer in the ListBox will never show a horizontal scrollbar, and the WrapPanel it contains will be constrained to the width of the ScrollViewer's viewable surface.  -->
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+    </Style>
+
     <Style x:Key="SingleSelectWrapListBox"
            BasedOn="{StaticResource BASEWrapListBox}"
+           TargetType="ListBox">
+        <Setter Property="SelectionMode" Value="Single" />
+    </Style>
+
+    <Style x:Key="SingleSelectHorizontalWrapListBox"
+           BasedOn="{StaticResource BASEHorizontalWrapListBox}"
            TargetType="ListBox">
         <Setter Property="SelectionMode" Value="Single" />
     </Style>
@@ -89,14 +111,81 @@
         <Setter Property="SelectionMode" Value="Multiple" />
     </Style>
 
+    <Style x:Key="MultiSelectHorizontalWrapListBox"
+           BasedOn="{StaticResource BASEHorizontalWrapListBox}"
+           TargetType="ListBox">
+        <Setter Property="SelectionMode" Value="Multiple" />
+    </Style>
+
     <Style x:Key="ExtendedSelectWrapListBox"
            BasedOn="{StaticResource BASEWrapListBox}"
            TargetType="ListBox">
         <Setter Property="SelectionMode" Value="Extended" />
     </Style>
 
+    <Style x:Key="ExtendedSelectHorizontalWrapListBox"
+           BasedOn="{StaticResource BASEHorizontalWrapListBox}"
+           TargetType="ListBox">
+        <Setter Property="SelectionMode" Value="Extended" />
+    </Style>
+
     <!--  BASE LISTBOX ITEM CONTAINER STYLES  -->
     <Style x:Key="BASEListBoxItemContainer" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <!--
+        <Setter Property="IsSelected" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=DataContext.IsSelected}" />
+        -->
+        <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualWidth}" />
+        <Setter Property="MaxHeight" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Border Name="item_border"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                BorderThickness="1"
+                                CornerRadius="1">
+                            <ContentPresenter Margin="0"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </Border>
+                        <!--  TOPMOST BORDER FOR SELECTION  -->
+                        <!--  Need to set IsHitTestVisible to false for let mouse passthrough  -->
+                        <Border Name="item_select_cover"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{DynamicResource ListBoxItemSelectedBackground}"
+                                BorderThickness="0"
+                                CornerRadius="1"
+                                IsHitTestVisible="False"
+                                Opacity=".1"
+                                Visibility="Hidden" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Selector.IsSelected" Value="True">
+                            <Setter TargetName="item_border" Property="BorderBrush" Value="{DynamicResource ListBoxItemSelectedBorderBrush}" />
+                            <Setter TargetName="item_select_cover" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <!--
+                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                            <Setter TargetName="item_border" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        -->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="True">
+                <Setter Property="IsSelected" Value="True" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--  BASE LISTBOX ITEM CONTAINER STYLES  -->
+    <Style x:Key="BASEHorizontalListBoxItemContainer" TargetType="{x:Type ListBoxItem}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <!--
         <Setter Property="IsSelected" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=DataContext.IsSelected}" />

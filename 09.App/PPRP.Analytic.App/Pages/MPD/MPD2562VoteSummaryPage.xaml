@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="900"
-             d:DesignWidth="1000">
+             d:DesignWidth="1300">
     <Grid>
         <DockPanel LastChildFill="True" Opacity="0.7">
             <DockPanel DockPanel.Dock="Bottom" Margin="5">
@@ -28,9 +28,10 @@
                 <Grid />
             </DockPanel>
             <DockPanel LastChildFill="True">
+                <!-- LEFT PANEL  -->
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Left"
-                           Width="400">
+                           Width="300">
                     <Border BorderThickness="1" BorderBrush="Silver">
                         <DockPanel LastChildFill="True">
                             <TextBlock x:Name="txtProvinceName"
@@ -58,9 +59,10 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
+                <!-- BOTTOM PANEL  -->
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Bottom"
-                           Height="200">
+                           Height="150">
                     <Border BorderThickness="1"
                             BorderBrush="Silver"
                             DockPanel.Dock="Right">
@@ -72,8 +74,63 @@
                         <Grid />
                     </Border>
                 </DockPanel>
+                <!-- DATA SUMMARY PANEL -->
                 <Border BorderThickness="1" BorderBrush="Silver">
-                    <Grid />
+                    <ListBox x:Name="lstSummary"
+                             BorderThickness="0"
+                             VerticalContentAlignment="Stretch"
+                             HorizontalContentAlignment="Stretch"
+                             ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
+                             Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" Width="260">
+                                    <!-- PARTY LOGO  -->
+                                    <Border DockPanel.Dock="Top" Height="80"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                        <Image Source="{Binding PartyLogo}" Width="90" Height="75"
+                                               Stretch="Uniform" />
+                                    </Border>
+                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <!-- PERSON PICTURE  -->
+                                    <Border DockPanel.Dock="Top" Height="270"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                        <Image Source="{Binding PersonImage}" Width="220" Height="270"
+                                               Stretch="Uniform" />
+                                    </Border>
+                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <TextBlock DockPanel.Dock="Top" 
+                                               Foreground="{StaticResource BlueMediumBrush}"
+                                               FontSize="30"
+                                               Height="65"
+                                               VerticalAlignment="Center"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding PartyName}"/>
+                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <TextBlock DockPanel.Dock="Top" 
+                                               Foreground="{StaticResource BlackBlush}"
+                                               FontSize="30"
+                                               Height="65"
+                                               VerticalAlignment="Center"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding FullName}"/>
+                                    <TextBlock DockPanel.Dock="Top" Height="10" />
+                                    <TextBlock DockPanel.Dock="Top" 
+                                               Foreground="{StaticResource BlackBlush}"
+                                               FontSize="48"
+                                               VerticalAlignment="Center"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding VoteCount, StringFormat={}{0:n0}}"/>
+                                    <Grid />
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Border>
             </DockPanel>
         </DockPanel>
