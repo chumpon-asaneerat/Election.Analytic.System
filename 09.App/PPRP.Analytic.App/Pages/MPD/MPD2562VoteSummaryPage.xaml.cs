@@ -65,6 +65,11 @@ namespace PPRP.Pages
             GotoPrevPage();
         }
 
+        private void cmdPollingUnit_Click(object sender, RoutedEventArgs e)
+        {
+            var pollingUnit = (sender as Button).DataContext as PollingUnitMenuItem;
+        }
+
         #endregion
 
         #region Private Methods
@@ -150,9 +155,16 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup(string regionId, string provinceId)
+        public void Setup(ProvinceMenuItem province)
         {
+            txtProvinceName.Text = "จ.";
+            lstPollingUnits.ItemsSource = null;
 
+            if (null == province)
+                return;
+
+            txtProvinceName.Text = "จ." + province.ProvinceNameTH;
+            lstPollingUnits.ItemsSource = PollingUnitMenuItem.Gets(province.RegionId, province.ProvinceId).Value;
         }
 
         #endregion

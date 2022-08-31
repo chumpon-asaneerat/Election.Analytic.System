@@ -30,18 +30,39 @@
             <DockPanel LastChildFill="True">
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Left"
-                           Width="300">
+                           Width="400">
                     <Border BorderThickness="1" BorderBrush="Silver">
                         <DockPanel LastChildFill="True">
-                            <TextBlock Text="จังหวัด" DockPanel.Dock="Top" />
-                            <ListBox x:Name="lstPollingStation" />
+                            <TextBlock x:Name="txtProvinceName"
+                                       DockPanel.Dock="Top"
+                                       FontSize="{StaticResource FontSize30}"
+                                       TextAlignment="Center" />
+                            <TextBlock Height="10" DockPanel.Dock="Top" />
+                            <ListBox x:Name="lstPollingUnits"
+                                     DockPanel.Dock="Top"
+                                     Opacity="0.7"
+                                     BorderThickness="0"
+                                     HorizontalContentAlignment="Stretch"
+                                     Style="{StaticResource SingleSelectListBox}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="cmdPollingUnit"
+                                                Content="{Binding DisplayText}"
+                                                Margin="5"
+                                                Width="Auto"
+                                                Style="{StaticResource InlineButton}"
+                                                Click="cmdPollingUnit_Click" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </DockPanel>
                     </Border>
                 </DockPanel>
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Bottom"
                            Height="200">
-                    <Border BorderThickness="1" BorderBrush="Silver"
+                    <Border BorderThickness="1"
+                            BorderBrush="Silver"
                             DockPanel.Dock="Right">
                         <DockPanel LastChildFill="True" Width="300">
                             <Grid />

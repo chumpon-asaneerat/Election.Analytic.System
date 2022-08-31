@@ -22,6 +22,7 @@ namespace PPRP.Domains
 	{
 		public const string PAK = "PAK";
 		public const string PROVINCE = "PROVINCE";
+		public const string POLLUNIT = "POLLUNIT";
 
 		public abstract string ItemType { get; set; }
 		public abstract string DisplayText { get; set; }
@@ -221,6 +222,100 @@ namespace PPRP.Domains
 			{
 				// create empty list.
 				rets.Value = new List<ProvinceMenuItem>();
+			}
+
+			return rets;
+		}
+
+		#endregion
+	}
+
+	public class PollingUnitMenuItem : AreaMenuItem
+	{
+		#region Constructor
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public PollingUnitMenuItem() : base()
+		{
+
+		}
+
+		#endregion
+
+		#region Public Properties
+
+		public override string ItemType
+		{
+			get { return POLLUNIT; }
+			set { }
+		}
+
+		public override string DisplayText
+		{
+			get { return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo); }
+			set { }
+		}
+
+		public string RegionId { get; set; }
+		public string ProvinceId { get; set; }
+		public string ProvinceNameTH { get; set; }
+
+		public int PollingUnitNo { get; set; }
+
+		#endregion
+
+		#region Static Methods
+
+		public static NDbResult<List<PollingUnitMenuItem>> Gets(string regionId, string provinceId)
+		{
+			MethodBase med = MethodBase.GetCurrentMethod();
+
+			NDbResult<List<PollingUnitMenuItem>> rets = new NDbResult<List<PollingUnitMenuItem>>();
+
+			IDbConnection cnn = DbServer.Instance.Db;
+			if (null == cnn || !DbServer.Instance.Connected)
+			{
+				string msg = "Connection is null or cannot connect to database server.";
+				med.Err(msg);
+				// Set error number/message
+				rets.ErrNum = 8000;
+				rets.ErrMsg = msg;
+
+				return rets;
+			}
+
+			try
+			{
+				string query = string.Empty;
+				query += @"
+					SELECT DISTINCT 
+						   A.RegionId
+						 , A.ProvinceId
+						 , A.ProvinceNameTH
+						 , B.PollingUnitNo
+					  FROM MProvince A, PollingStation B 
+					 WHERE A.RegionId = B.RegionId
+					   AND A.ProvinceId = B.ProvinceId
+					   AND A.RegionId = @RegionId
+					   AND A.ProvinceId = @ProvinceId
+				";
+
+				rets.Value = cnn.Query<PollingUnitMenuItem>(query, new { RegionId = regionId, ProvinceId = provinceId }).ToList();
+			}
+			catch (Exception ex)
+			{
+				med.Err(ex);
+				// Set error number/message
+				rets.ErrNum = 9999;
+				rets.ErrMsg = ex.Message;
+			}
+
+			if (null == rets.Value)
+			{
+				// create empty list.
+				rets.Value = new List<PollingUnitMenuItem>();
 			}
 
 			return rets;

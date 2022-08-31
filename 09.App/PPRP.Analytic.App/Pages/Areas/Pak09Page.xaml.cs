@@ -82,7 +82,7 @@ namespace PPRP.Pages
             if (null == province)
                 return;
             var page = PPRPApp.Pages.MPD2562VoteSummary;
-            page.Setup(province.RegionId, province.ProvinceId);
+            page.Setup(province);
             PageContentManager.Instance.Current = page;
         }
 
