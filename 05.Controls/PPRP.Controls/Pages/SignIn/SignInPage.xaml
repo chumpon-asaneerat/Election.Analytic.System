@@ -58,12 +58,12 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="2*" />
                         <RowDefinition Height="75" />
-                        <RowDefinition Height="*"
-                                       MinHeight="250"
-                                       MaxHeight="300" />
-                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="200"
+                                       MinHeight="200"
+                                       MaxHeight="200" />
+                        <RowDefinition Height="3*" />
                     </Grid.RowDefinitions>
                     <Border Grid.Column="1"
                             Grid.Row="1"
@@ -90,7 +90,7 @@
                     <Border Grid.Column="1"
                             Grid.Row="2"
                             Background="{StaticResource BlueLightBrush3}">
-                        <DockPanel LastChildFill="True" Margin="75, 15">
+                        <DockPanel LastChildFill="True" Margin="75,15">
                             <TextBlock DockPanel.Dock="Top"
                                        Style="{StaticResource LabelText}"
                                        Foreground="{StaticResource TextBlockForegroundWhite}"
