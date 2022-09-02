@@ -84,7 +84,7 @@
                              Style="{StaticResource SingleSelectHorizontalWrapListBox}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel LastChildFill="True" Width="200">
+                                <DockPanel LastChildFill="True" Width="230">
                                     <!--  PARTY LOGO  -->
                                     <Border DockPanel.Dock="Top"
                                             Height="75"
@@ -95,23 +95,23 @@
                                                Height="75"
                                                Stretch="Uniform" />
                                     </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="2" />
+                                    <TextBlock DockPanel.Dock="Top" Height="10" />
                                     <!--  PERSON PICTURE  -->
                                     <Border DockPanel.Dock="Top"
                                             Height="255"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center">
                                         <Image Source="{Binding PersonImage}"
-                                               Width="170"
-                                               Height="255"
+                                               Width="220"
+                                               Height="340"
                                                Stretch="Uniform" />
                                     </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="2" />
+                                    <TextBlock DockPanel.Dock="Top" Height="10" />
                                     <!--  PARTY NAME  -->
                                     <TextBlock DockPanel.Dock="Top"
                                                Foreground="{StaticResource BlueMediumBrush}"
-                                               FontSize="24"
-                                               Height="65"
+                                               FontSize="28"
+                                               Height="60"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
@@ -120,16 +120,17 @@
                                     <!--  FULL NAME  -->
                                     <TextBlock DockPanel.Dock="Top"
                                                Foreground="{StaticResource BlackBlush}"
-                                               FontSize="24"
+                                               FontSize="28"
                                                Height="65"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
                                                Text="{Binding FullName}" />
                                     <TextBlock DockPanel.Dock="Top" Height="3" />
+                                    <!--  VOTE COUNT  -->
                                     <TextBlock DockPanel.Dock="Top"
                                                Foreground="{StaticResource BlackBlush}"
-                                               FontSize="30"
+                                               FontSize="42"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
