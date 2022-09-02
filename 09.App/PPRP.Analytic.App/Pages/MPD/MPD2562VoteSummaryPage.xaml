@@ -84,44 +84,46 @@
                              Style="{StaticResource SingleSelectHorizontalWrapListBox}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel LastChildFill="True" Width="260">
+                                <DockPanel LastChildFill="True" Width="200">
                                     <!-- PARTY LOGO  -->
-                                    <Border DockPanel.Dock="Top" Height="80"
+                                    <Border DockPanel.Dock="Top" Height="75"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center">
                                         <Image Source="{Binding PartyLogo}" Width="90" Height="75"
                                                Stretch="Uniform" />
                                     </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <TextBlock DockPanel.Dock="Top" Height="2" />
                                     <!-- PERSON PICTURE  -->
-                                    <Border DockPanel.Dock="Top" Height="270"
+                                    <Border DockPanel.Dock="Top" Height="255"
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Center">
-                                        <Image Source="{Binding PersonImage}" Width="220" Height="270"
+                                        <Image Source="{Binding PersonImage}" Width="170" Height="255"
                                                Stretch="Uniform" />
                                     </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <TextBlock DockPanel.Dock="Top" Height="2" />
+                                    <!-- PARTY NAME  -->
                                     <TextBlock DockPanel.Dock="Top" 
                                                Foreground="{StaticResource BlueMediumBrush}"
                                                FontSize="30"
-                                               Height="65"
+                                               Height="52"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
                                                Text="{Binding PartyName}"/>
-                                    <TextBlock DockPanel.Dock="Top" Height="5" />
+                                    <TextBlock DockPanel.Dock="Top" Height="2" />
+                                    <!-- FULL NAME  -->
                                     <TextBlock DockPanel.Dock="Top" 
                                                Foreground="{StaticResource BlackBlush}"
-                                               FontSize="30"
-                                               Height="65"
+                                               FontSize="24"
+                                               Height="52"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
                                                Text="{Binding FullName}"/>
-                                    <TextBlock DockPanel.Dock="Top" Height="10" />
+                                    <TextBlock DockPanel.Dock="Top" Height="3" />
                                     <TextBlock DockPanel.Dock="Top" 
                                                Foreground="{StaticResource BlackBlush}"
-                                               FontSize="48"
+                                               FontSize="30"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
