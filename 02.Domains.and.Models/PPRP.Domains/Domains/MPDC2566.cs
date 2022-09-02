@@ -129,7 +129,7 @@ namespace PPRP.Domains
 	}
 
 	public class MPDC2566Summary : NInpc
-    {
+	{
 		#region Internal Variables
 
 		// for person image
@@ -246,7 +246,7 @@ namespace PPRP.Domains
 					WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
 					AND B.ProvinceId = @ProvinceId
 					AND A.PollingUnitNo = @PollingUnitNo
-					ORDER BY A.CandidateNo DESC
+					ORDER BY A.CandidateNo
 				";
 
 				rets.Value = cnn.Query<MPDC2566Summary>(query,

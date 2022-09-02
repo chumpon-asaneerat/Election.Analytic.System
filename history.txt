@@ -1,8 +1,11 @@
 Election.Analytic.System - PPRP  #230
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #229
-- 
+- Update projects
+  - Update PPRP.Domains project
+    - Update Candidate Vote Summary Update fixed sort order.
 
 [commited]
 Election.Analytic.System - PPRP  #228
