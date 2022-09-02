@@ -13,7 +13,7 @@
         <DockPanel LastChildFill="True" Opacity="0.7">
             <DockPanel DockPanel.Dock="Left"
                        LastChildFill="True"
-                       Width="250">
+                       Width="300">
                 <TextBlock DockPanel.Dock="Bottom" Height="2" />
                 <TextBlock DockPanel.Dock="Bottom" Height="10" />
                 <Button x:Name="cmdGotoThailandPage"
@@ -33,7 +33,7 @@
                 </Grid.RowDefinitions>
                 <ListBox x:Name="lstProvinces"
                          Grid.Row="1"
-                         Width="200"
+                         Width="300"
                          Height="Auto"
                          Opacity="0.7"
                          BorderThickness="0"
