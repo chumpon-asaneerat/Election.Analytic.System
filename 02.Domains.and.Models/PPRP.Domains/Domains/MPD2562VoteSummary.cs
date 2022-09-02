@@ -249,7 +249,7 @@ namespace PPRP.Domains
 
 				string query = string.Empty;
 				query += @"
-				 SELECT TOP 10
+				 SELECT TOP 6
 						 B.ProvinceId
 					   , B.ProvinceNameTH
 					   , A.PollingUnitNo
