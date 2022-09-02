@@ -59,14 +59,29 @@
                         </DockPanel>
                     </Border>
                 </DockPanel>
+                <DockPanel LastChildFill="True" DockPanel.Dock="Top">
+                    <Grid Margin="3,1">
+                        <Border CornerRadius="3"
+                                BorderThickness="2"
+                                BorderBrush="{StaticResource BlueHeavyBrush}"
+                                Background="{StaticResource BlueLightBrush2}">
+                            <TextBlock x:Name="txtPollingUnitInfo"
+                                       Foreground="{StaticResource WhiteBrush}"
+                                       FontSize="32"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Text="จังหวัด เขต" />
+                        </Border>
+                    </Grid>
+                </DockPanel>
                 <!--  BOTTOM PANEL  -->
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Bottom"
-                           Height="150">
+                           Height="200">
                     <Border BorderThickness="1"
                             BorderBrush="Silver"
                             DockPanel.Dock="Right">
-                        <DockPanel LastChildFill="True" Width="300">
+                        <DockPanel LastChildFill="True" Width="350">
                             <Grid />
                         </DockPanel>
                     </Border>
@@ -126,11 +141,11 @@
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
                                                Text="{Binding FullName}" />
-                                    <TextBlock DockPanel.Dock="Top" Height="3" />
+                                    <TextBlock DockPanel.Dock="Top" Height="5" />
                                     <!--  VOTE COUNT  -->
                                     <TextBlock DockPanel.Dock="Top"
                                                Foreground="{StaticResource BlackBlush}"
-                                               FontSize="42"
+                                               FontSize="48"
                                                VerticalAlignment="Center"
                                                TextAlignment="Center"
                                                TextWrapping="Wrap"
