@@ -104,6 +104,37 @@ namespace PPRP
             return ret;
         }
 
+        public static ImageSource GetImageSource(Uri resourceUri)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            ImageSource ret = null;
+            if (null == resourceUri)
+            {
+                med.Err("Uri is null.");
+                return ret;
+            }
+            try
+            {
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = resourceUri;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.EndInit();
+                image.Freeze();
+
+                ret = image;
+            }
+            catch (Exception ex)
+            {
+                ret = null;
+                //throw ex;
+                med.Err(ex);
+            }
+
+            return ret;
+        }
+
         public static string GetJsonString(byte[] buffers)
         {
             MethodBase med = MethodBase.GetCurrentMethod();

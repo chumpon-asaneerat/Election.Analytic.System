@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="DbServer.cs" />
     <Compile Include="Domains\Common.cs" />
+    <Compile Include="Domains\Defaults.cs" />
     <Compile Include="Domains\Enums.cs" />
     <Compile Include="Domains\MAge.cs" />
     <Compile Include="Domains\MContent.cs" />
@@ -94,6 +95,10 @@
       <Project>{25f76701-c7d6-4cc4-beb9-db40d2bbbd9d}</Project>
       <Name>PPRP.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Default\person.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
