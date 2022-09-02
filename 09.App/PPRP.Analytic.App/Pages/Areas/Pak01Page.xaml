@@ -4,54 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignHeight="900"
+             d:DesignWidth="1300">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak1.png" Stretch="Uniform" />
         </Grid.Background>
         <DockPanel LastChildFill="True" Opacity="0.7">
-            <DockPanel DockPanel.Dock="Bottom" Margin="5">
+            <DockPanel DockPanel.Dock="Left"
+                       LastChildFill="True"
+                       Width="250">
+                <TextBlock DockPanel.Dock="Bottom" Height="2" />
+                <TextBlock DockPanel.Dock="Bottom" Height="10" />
                 <Button x:Name="cmdGotoThailandPage"
-                        DockPanel.Dock="Right"
-                        Margin="5"
+                        DockPanel.Dock="Bottom"
+                        Margin="10,1"
                         Style="{StaticResource InlineButton}"
-                        Width="250"
                         Content="กลับสู่หน้าจอแผนที่ 10 ภาค"
                         Click="cmdGotoThailandPage_Click" />
-                <TextBlock DockPanel.Dock="Right" Width="10" />
                 <Grid />
             </DockPanel>
-            <DockPanel LastChildFill="True">
-                <TextBlock Width="20" DockPanel.Dock="Right" />
-                <Grid DockPanel.Dock="Right">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <ListBox x:Name="lstProvinces"
-                             Grid.Row="1"
-                             Width="200"
-                             Height="Auto"
-                             Opacity="0.7"
-                             BorderThickness="0"
-                             HorizontalContentAlignment="Stretch"
-                             Style="{StaticResource SingleSelectListBox}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Button x:Name="cmdProvince"
-                                        Content="{Binding DisplayText}"
-                                        Margin="5"
-                                        Width="Auto"
-                                        Style="{StaticResource InlineButton}"
-                                        Click="cmdProvince_Click" />
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Grid>
-                <Grid />
-            </DockPanel>
+            <TextBlock Width="20" DockPanel.Dock="Right" />
+            <Grid DockPanel.Dock="Right">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ListBox x:Name="lstProvinces"
+                         Grid.Row="1"
+                         Width="200"
+                         Height="Auto"
+                         Opacity="0.7"
+                         BorderThickness="0"
+                         HorizontalContentAlignment="Stretch"
+                         Style="{StaticResource SingleSelectListBox}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button x:Name="cmdProvince"
+                                    Content="{Binding DisplayText}"
+                                    Margin="5"
+                                    Width="Auto"
+                                    Style="{StaticResource InlineButton}"
+                                    Click="cmdProvince_Click" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+            <Grid />
         </DockPanel>
     </Grid>
 </UserControl>
