@@ -98,8 +98,7 @@
                                 <Border DockPanel.Dock="Top"
                                         BorderThickness="1"
                                         BorderBrush="{StaticResource BlueHeavyBrush}">
-                                    <StackPanel Orientation="Vertical"
-                                                HorizontalAlignment="Stretch">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                                         <!--  TOTAL VOTES  -->
                                         <StackPanel Orientation="Horizontal"
                                                     VerticalAlignment="Center"
@@ -115,16 +114,16 @@
                                         </StackPanel>
                                         <!--  TOTAL COUNTS  -->
                                         <StackPanel Orientation="Horizontal"
-                                                VerticalAlignment="Center"
-                                                HorizontalAlignment="Center">
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
                                             <TextBlock Text="อันดับ  :  "
-                                                   VerticalAlignment="Center"
-                                                   FontSize="{StaticResource FontSize30}" />
+                                                       VerticalAlignment="Center"
+                                                       FontSize="{StaticResource FontSize30}" />
                                             <TextBlock x:Name="txtTotalCounts"
-                                                   VerticalAlignment="Center"
-                                                   Foreground="{StaticResource BlueHeavyBrush}"
-                                                   Text="-"
-                                                   FontSize="48" />
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{StaticResource BlueHeavyBrush}"
+                                                       Text="-"
+                                                       FontSize="48" />
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
@@ -205,6 +204,19 @@
                             </DockPanel>
                         </DockPanel>
                     </Border>
+                    <Border DockPanel.Dock="Top"
+                            CornerRadius="3"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource BlueHeavyBrush}"
+                            Background="{StaticResource BlueLightBrush2}">
+                        <DockPanel LastChildFill="True">
+                            <TextBlock Text="ข้อมูลว่าที่ผู้สมัครปี 2566"
+                                       FontSize="18"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource WhiteBrush}" />
+                        </DockPanel>
+                    </Border>
                     <!--  CANDIDATE LIST BOX  -->
                     <Border BorderThickness="1" BorderBrush="Silver">
                         <ListBox x:Name="lstCandidates"
@@ -217,7 +229,7 @@
                                 <DataTemplate>
                                     <DockPanel LastChildFill="True"
                                                Width="265"
-                                               Height="290">
+                                               Height="265">
                                         <!--  CANDIDATE INFO  -->
                                         <StackPanel Orientation="Vertical"
                                                     HorizontalAlignment="Center"
@@ -246,12 +258,12 @@
                                         </StackPanel>
                                         <!--  PERSON PICTURE  -->
                                         <Border Margin="3"
-                                                Height="250"
+                                                Height="230"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center">
                                             <Image Source="{Binding PersonImage}"
-                                                   Width="200"
-                                                   Height="250"
+                                                   Width="190"
+                                                   Height="220"
                                                    Stretch="Uniform" />
                                         </Border>
                                     </DockPanel>
