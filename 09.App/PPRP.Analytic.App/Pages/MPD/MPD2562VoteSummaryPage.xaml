@@ -219,7 +219,71 @@
                     </Border>
                     <!--  CANDIDATE LIST BOX  -->
                     <Border BorderThickness="1" BorderBrush="Silver">
-                        <ListBox x:Name="lstCandidates"
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Auto"
+                                      VirtualizingPanel.IsVirtualizing="True"
+                                      VirtualizingPanel.VirtualizationMode="Recycling">
+                            <ListBox x:Name="lstCandidates"
+                                     BorderThickness="0"
+                                     VerticalContentAlignment="Stretch"
+                                     HorizontalContentAlignment="Stretch"
+                                     ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
+                                     Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel LastChildFill="True"
+                                                   Width="265"
+                                                   Height="265">
+                                            <!--  CANDIDATE INFO  -->
+                                            <StackPanel Orientation="Vertical"
+                                                        HorizontalAlignment="Center"
+                                                        DockPanel.Dock="Bottom">
+                                                <TextBlock Height="2" />
+                                                <!--  PREV PARTY NAME  -->
+                                                <!--
+                                                <TextBlock DockPanel.Dock="Top"
+                                                       Foreground="{StaticResource BlueMediumBrush}"
+                                                       FontSize="28"
+                                                       Height="60"
+                                                       VerticalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Text="{Binding PrevPartyName}" />
+                                                -->
+                                                <TextBlock Height="2" />
+                                                <!--  FULL NAME  -->
+                                                <TextBlock Foreground="{StaticResource BlackBlush}"
+                                                           FontSize="20"
+                                                           VerticalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           TextWrapping="Wrap"
+                                                           Text="{Binding FullName}" />
+                                                <TextBlock Height="2" />
+                                            </StackPanel>
+                                            <!--  PERSON PICTURE  -->
+                                            <Border Margin="3"
+                                                    Height="230"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                                <Image Source="{Binding PersonImage}"
+                                                       Width="190"
+                                                       Height="220"
+                                                       Stretch="Uniform" />
+                                            </Border>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </Border>
+                </DockPanel>
+                <!--  DATA SUMMARY PANEL  -->
+                <Border BorderThickness="1" BorderBrush="Silver">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto"
+                                  VirtualizingPanel.IsVirtualizing="True"
+                                  VirtualizingPanel.VirtualizationMode="Recycling">
+                        <ListBox x:Name="lstSummary"
                                  BorderThickness="0"
                                  VerticalContentAlignment="Stretch"
                                  HorizontalContentAlignment="Stretch"
@@ -227,117 +291,63 @@
                                  Style="{StaticResource SingleSelectHorizontalWrapListBox}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <DockPanel LastChildFill="True"
-                                               Width="265"
-                                               Height="265">
-                                        <!--  CANDIDATE INFO  -->
-                                        <StackPanel Orientation="Vertical"
-                                                    HorizontalAlignment="Center"
-                                                    DockPanel.Dock="Bottom">
-                                            <TextBlock Height="2" />
-                                            <!--  PREV PARTY NAME  -->
-                                            <!--
-                                            <TextBlock DockPanel.Dock="Top"
-                                                   Foreground="{StaticResource BlueMediumBrush}"
-                                                   FontSize="28"
-                                                   Height="60"
-                                                   VerticalAlignment="Center"
-                                                   TextAlignment="Center"
-                                                   TextWrapping="Wrap"
-                                                   Text="{Binding PrevPartyName}" />
-                                            -->
-                                            <TextBlock Height="2" />
-                                            <!--  FULL NAME  -->
-                                            <TextBlock Foreground="{StaticResource BlackBlush}"
-                                                       FontSize="20"
-                                                       VerticalAlignment="Center"
-                                                       TextAlignment="Center"
-                                                       TextWrapping="Wrap"
-                                                       Text="{Binding FullName}" />
-                                            <TextBlock Height="2" />
-                                        </StackPanel>
+                                    <DockPanel LastChildFill="True" Width="270">
+                                        <!--  PARTY LOGO  -->
+                                        <Border DockPanel.Dock="Top"
+                                                Height="100"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center">
+                                            <Image Source="{Binding PartyLogo}"
+                                                   Width="100"
+                                                   Height="100"
+                                                   Stretch="Uniform" />
+                                        </Border>
+                                        <TextBlock DockPanel.Dock="Top" Height="10" />
                                         <!--  PERSON PICTURE  -->
-                                        <Border Margin="3"
-                                                Height="230"
+                                        <Border DockPanel.Dock="Top"
+                                                Height="340"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center">
                                             <Image Source="{Binding PersonImage}"
-                                                   Width="190"
-                                                   Height="220"
+                                                   Width="260"
+                                                   Height="340"
                                                    Stretch="Uniform" />
                                         </Border>
+                                        <TextBlock DockPanel.Dock="Top" Height="10" />
+                                        <!--  PARTY NAME  -->
+                                        <TextBlock DockPanel.Dock="Top"
+                                                   Foreground="{StaticResource BlueMediumBrush}"
+                                                   FontSize="28"
+                                                   Height="65"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding PartyName}" />
+                                        <TextBlock DockPanel.Dock="Top" Height="2" />
+                                        <!--  FULL NAME  -->
+                                        <TextBlock DockPanel.Dock="Top"
+                                                   Foreground="{StaticResource BlackBlush}"
+                                                   FontSize="28"
+                                                   Height="65"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding FullName}" />
+                                        <TextBlock DockPanel.Dock="Top" Height="5" />
+                                        <!--  VOTE COUNT  -->
+                                        <TextBlock DockPanel.Dock="Top"
+                                                   Foreground="{StaticResource BlackBlush}"
+                                                   FontSize="48"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding VoteCount, StringFormat={}{0:n0}}" />
+                                        <Grid />
                                     </DockPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                    </Border>
-                </DockPanel>
-                <!--  DATA SUMMARY PANEL  -->
-                <Border BorderThickness="1" BorderBrush="Silver">
-                    <ListBox x:Name="lstSummary"
-                             BorderThickness="0"
-                             VerticalContentAlignment="Stretch"
-                             HorizontalContentAlignment="Stretch"
-                             ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
-                             Style="{StaticResource SingleSelectHorizontalWrapListBox}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <DockPanel LastChildFill="True" Width="270">
-                                    <!--  PARTY LOGO  -->
-                                    <Border DockPanel.Dock="Top"
-                                            Height="100"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Center">
-                                        <Image Source="{Binding PartyLogo}"
-                                               Width="100"
-                                               Height="100"
-                                               Stretch="Uniform" />
-                                    </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="10" />
-                                    <!--  PERSON PICTURE  -->
-                                    <Border DockPanel.Dock="Top"
-                                            Height="340"
-                                            VerticalAlignment="Center"
-                                            HorizontalAlignment="Center">
-                                        <Image Source="{Binding PersonImage}"
-                                               Width="260"
-                                               Height="340"
-                                               Stretch="Uniform" />
-                                    </Border>
-                                    <TextBlock DockPanel.Dock="Top" Height="10" />
-                                    <!--  PARTY NAME  -->
-                                    <TextBlock DockPanel.Dock="Top"
-                                               Foreground="{StaticResource BlueMediumBrush}"
-                                               FontSize="28"
-                                               Height="65"
-                                               VerticalAlignment="Center"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="{Binding PartyName}" />
-                                    <TextBlock DockPanel.Dock="Top" Height="2" />
-                                    <!--  FULL NAME  -->
-                                    <TextBlock DockPanel.Dock="Top"
-                                               Foreground="{StaticResource BlackBlush}"
-                                               FontSize="28"
-                                               Height="65"
-                                               VerticalAlignment="Center"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="{Binding FullName}" />
-                                    <TextBlock DockPanel.Dock="Top" Height="5" />
-                                    <!--  VOTE COUNT  -->
-                                    <TextBlock DockPanel.Dock="Top"
-                                               Foreground="{StaticResource BlackBlush}"
-                                               FontSize="48"
-                                               VerticalAlignment="Center"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="{Binding VoteCount, StringFormat={}{0:n0}}" />
-                                    <Grid />
-                                </DockPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                    </ScrollViewer>
                 </Border>
             </DockPanel>
         </DockPanel>
