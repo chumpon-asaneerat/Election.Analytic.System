@@ -293,7 +293,7 @@ namespace PPRP.Domains
                 ";
 
                 rets.Value = cnn.Query<MPD2562PersonalVoteSummary>(query, 
-                    new { MaxRow = maxRow, ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
+                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
             }
             catch (Exception ex)
             {

@@ -20,8 +20,8 @@ namespace PPRP
                 // common
                 public static string Version = AppConsts.Version;
                 public static string Minor = AppConsts.Minor;
-                public static string Build = "208";
-                public static DateTime LastUpdate = new DateTime(2022, 08, 31, 17, 10, 00);
+                public static string Build = "230";
+                public static DateTime LastUpdate = new DateTime(2022, 09, 02, 14, 10, 00);
             }
 
             public static class Management
@@ -30,8 +30,8 @@ namespace PPRP
                 // common
                 public static string Version = AppConsts.Version;
                 public static string Minor = AppConsts.Minor;
-                public static string Build = "208";
-                public static DateTime LastUpdate = new DateTime(2022, 08, 31, 17, 10, 00);
+                public static string Build = "230";
+                public static DateTime LastUpdate = new DateTime(2022, 09, 02, 14, 10, 00);
             }
         }
     }

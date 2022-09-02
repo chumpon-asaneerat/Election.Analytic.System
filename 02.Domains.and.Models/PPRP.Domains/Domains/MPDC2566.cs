@@ -19,8 +19,17 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-	public class MPDC2566
+	public class MPDC2566 : NInpc
 	{
+		#region Internal Variables
+
+		// for person image
+		private byte[] _PersonImageData = null;
+		private bool _PersonImageLoading = false;
+		private ImageSource _PersonImage = null;
+
+		#endregion
+
 		#region Public Properties
 
 		public string ProvinceName { get; set; }
@@ -31,11 +40,51 @@ namespace PPRP.Domains
 		public string EducationLevel { get; set; }
 		public string Remark { get; set; }
 
+		public byte[] PersonImageData
+		{
+			get { return _PersonImageData; }
+			set
+			{
+				_PersonImageData = value;
+				if (null == _PersonImageData)
+				{
+					_PersonImage = null;
+				}
+			}
+		}
+
+		public ImageSource PersonImage
+		{
+			get
+			{
+				if (null == _PersonImage && !_PersonImageLoading)
+				{
+					_PersonImageLoading = true;
+					ImageSource imgSrc;
+					if (null == _PersonImageData)
+					{
+						imgSrc = Defaults.Person;
+					}
+					else
+					{
+						imgSrc = ByteUtils.GetImageSource(PersonImageData);
+					}
+
+					_PersonImage = imgSrc;
+					_PersonImageLoading = false;
+					Raise(() => PersonImage);
+				}
+
+				return _PersonImage;
+			}
+			set { }
+		}
+
 		#endregion
 
 		#region Static Methods
 
-		public static NDbResult<List<MPDC2566>> Gets()
+		public static NDbResult<List<MPDC2566>> Gets(string provinceId, int pollingUnitNo)
 		{
 			MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -57,11 +106,42 @@ namespace PPRP.Domains
 			{
 				string query = string.Empty;
 				query += @"
-					SELECT * 
-					  FROM MPDC2566
+					SELECT TOP 4
+						  B.ProvinceId
+						, B.ProvinceNameTH
+						, A.PollingUnitNo
+						, A.FullName
+						, IMG.Data AS PersonImageData
+						, C.PartyId
+						, A.PrevPartyName
+						, C.Data AS LogoData
+						, A.CandidateNo
+						, A.EducationLevel
+						, A.Remark
+					 FROM MPDC2566 A
+							LEFT OUTER JOIN (SELECT P.PartyId
+												  , P.PartyName  
+												  , CT.Data
+												FROM MParty P LEFT OUTER JOIN MContent CT 
+													ON P.ContentId = CT.ContentId) C 
+											ON (
+												UPPER(LTRIM(RTRIM(A.PrevPartyName))) = UPPER(LTRIM(RTRIM(C.PartyName)))
+											)
+							LEFT OUTER JOIN PersonImage IMG 
+											ON (   
+													(IMG.FullName = A.FullName)
+												OR (IMG.FullName LIKE '%' + A.FullName + '%')
+												OR (A.FullName LIKE '%' + IMG.FullName + '%')
+											)
+						, MProvince B 
+					WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
+					AND B.ProvinceId = @ProvinceId
+					AND A.PollingUnitNo = @PollingUnitNo
+					ORDER BY A.CandidateNo DESC
 				";
 
-				rets.Value = cnn.Query<MPDC2566>(query).ToList();
+				rets.Value = cnn.Query<MPDC2566>(query,
+					new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
 			}
 			catch (Exception ex)
 			{

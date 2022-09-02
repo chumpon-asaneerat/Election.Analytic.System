@@ -81,12 +81,150 @@
                     <Border BorderThickness="1"
                             BorderBrush="Silver"
                             DockPanel.Dock="Right">
-                        <DockPanel LastChildFill="True" Width="350">
-                            <Grid />
+                        <DockPanel LastChildFill="True"
+                                   Width="350"
+                                   Background="{StaticResource WhiteBrush}">
+                            <DockPanel LastChildFill="True">
+                                <!--  TOTAL VOTES  -->
+                                <StackPanel DockPanel.Dock="Top"
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center">
+                                    <TextBlock Text="ผลรวมคะแนน: "
+                                               VerticalAlignment="Center"
+                                               FontSize="{StaticResource FontSize30}" />
+                                    <TextBlock x:Name="txtTotalVotes"
+                                               VerticalAlignment="Center"
+                                               Foreground="{StaticResource BlueHeavyBrush}"
+                                               Text="3000"
+                                               FontSize="48" />
+                                </StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0"
+                                            Background="{StaticResource BlueMediumBrush}"
+                                            BorderThickness="1"
+                                            BorderBrush="{StaticResource BlueHeavyBrush2}">
+                                        <DockPanel LastChildFill="True">
+                                            <Border DockPanel.Dock="Top" Background="{StaticResource BlueMediumBrush}">
+                                                <TextBlock Text="จำนวนหน่วย"
+                                                           VerticalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           Foreground="{StaticResource BlackBlush}" />
+
+                                            </Border>
+                                            <Border Background="{StaticResource BlueLightBrush}">
+                                                <TextBlock x:Name="txtTotalVoteSum1"
+                                                           Foreground="{StaticResource BlackBlush}"
+                                                           FontSize="32"
+                                                           TextAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Text="0" />
+                                            </Border>
+                                        </DockPanel>
+                                    </Border>
+                                    <Border Grid.Column="1"
+                                            Background="{StaticResource BlueMediumBrush}"
+                                            BorderThickness="1"
+                                            BorderBrush="{StaticResource BlueHeavyBrush2}">
+                                        <DockPanel LastChildFill="True">
+                                            <Border DockPanel.Dock="Top" Background="{StaticResource BlueMediumBrush}">
+                                                <TextBlock Text="ผู้มีสิทธิเลือกตั้ง"
+                                                           VerticalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           Foreground="{StaticResource BlackBlush}" />
+                                            </Border>
+                                            <Border Background="{StaticResource BlueLightBrush}">
+                                                <TextBlock x:Name="txtTotalVoteSum2"
+                                                           Foreground="{StaticResource BlackBlush}"
+                                                           FontSize="32"
+                                                           TextAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Text="0" />
+                                            </Border>
+                                        </DockPanel>
+                                    </Border>
+                                    <Border Grid.Column="2"
+                                            Background="{StaticResource BlueMediumBrush}"
+                                            BorderThickness="1"
+                                            BorderBrush="{StaticResource BlueHeavyBrush2}">
+                                        <DockPanel LastChildFill="True">
+                                            <Border DockPanel.Dock="Top" Background="{StaticResource BlueMediumBrush}">
+                                                <TextBlock Text="ผู้ใช้สิทธิเลือกตั้ง"
+                                                           VerticalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           Foreground="{StaticResource BlackBlush}" />
+
+                                            </Border>
+                                            <Border Background="{StaticResource BlueLightBrush}">
+                                                <TextBlock x:Name="txtTotalVoteSum3"
+                                                           Foreground="{StaticResource BlackBlush}"
+                                                           FontSize="32"
+                                                           TextAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           Text="0" />
+                                            </Border>
+                                        </DockPanel>
+                                    </Border>
+                                </Grid>
+                            </DockPanel>
                         </DockPanel>
                     </Border>
+                    <!--  CANDIDATE LIST BOX  -->
                     <Border BorderThickness="1" BorderBrush="Silver">
-                        <Grid />
+                        <ListBox x:Name="lstCandidates"
+                                 BorderThickness="0"
+                                 VerticalContentAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch"
+                                 ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
+                                 Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel LastChildFill="True" Width="230">
+                                        <!--  CANDIDATE INFO  -->
+                                        <StackPanel Orientation="Vertical"
+                                                    HorizontalAlignment="Center"
+                                                    DockPanel.Dock="Bottom">
+                                            <TextBlock Height="2" />
+                                            <!--  PREV PARTY NAME  -->
+                                            <!--
+                                            <TextBlock DockPanel.Dock="Top"
+                                                   Foreground="{StaticResource BlueMediumBrush}"
+                                                   FontSize="28"
+                                                   Height="60"
+                                                   VerticalAlignment="Center"
+                                                   TextAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   Text="{Binding PrevPartyName}" />
+                                            -->
+                                            <TextBlock Height="2" />
+                                            <!--  FULL NAME  -->
+                                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                                       FontSize="20"
+                                                       VerticalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Text="{Binding FullName}" />
+                                            <TextBlock Height="2" />
+                                        </StackPanel>
+                                        <!--  PERSON PICTURE  -->
+                                        <Border Margin="3"
+                                                Height="190"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center">
+                                            <Image Source="{Binding PersonImage}"
+                                                   Width="120"
+                                                   Height="160"
+                                                   Stretch="Uniform" />
+                                        </Border>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Border>
                 </DockPanel>
                 <!--  DATA SUMMARY PANEL  -->
