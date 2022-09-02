@@ -255,8 +255,6 @@ namespace PPRP.Domains
 
             try
             {
-                int maxRow = 10;
-
                 string query = string.Empty;
                 query += @"
                  SELECT TOP 6

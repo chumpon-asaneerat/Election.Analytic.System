@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #226
 Election.Analytic.System - PPRP  #225
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #224
-- 
+- Update projects
+  - Update PPRP.Analytic.App project
+    - Update Vote Summary Update layout #14.
 
 [commited]
 Election.Analytic.System - PPRP  #223

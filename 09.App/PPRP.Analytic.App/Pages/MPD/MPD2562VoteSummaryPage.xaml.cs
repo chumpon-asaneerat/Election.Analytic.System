@@ -72,7 +72,7 @@ namespace PPRP.Pages
             lstSummary.ItemsSource = MPD2562PersonalVoteSummary.Gets(
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
 
-            lstCandidates.ItemsSource = MPDC2566.Gets(
+            lstCandidates.ItemsSource = MPDC2566Summary.Gets(
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
         }
 
