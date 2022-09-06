@@ -25,8 +25,10 @@ Election.Analytic.System - PPRP  #233
 Election.Analytic.System - PPRP  #232
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #231
-- 
+- Update projects
+  - Add Imports folder (in solution show only excel files, all logo and person images see folder directly).
 
 [commited]
 Election.Analytic.System - PPRP  #230
