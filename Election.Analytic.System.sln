@@ -59,6 +59,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPRP.ShapeMap.Imports", "02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestJsonMap", "20.Samples\Catfood.Shapefile\WpfTestJsonMap\WpfTestJsonMap.csproj", "{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Imports", "Imports", "{CABFFD55-E6DA-4EB9-B120-76DD9899E30F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excels", "Excels", "{F4520DA4-975D-4691-B7E8-7B2D37678152}"
+	ProjectSection(SolutionItems) = preProject
+		Imports\Excels\ข้อมูลการเขตเลือกตั้งปี 2562.xlsx = Imports\Excels\ข้อมูลการเขตเลือกตั้งปี 2562.xlsx
+		Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx = Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx
+		Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx = Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -210,6 +219,8 @@ Global
 		{FC952ED6-0F73-4C65-A0E6-F516D94AD5DD} = {C19E9DD7-1D7D-451F-BC3D-DED0326CED15}
 		{3AF94133-365F-4DA5-8EE5-0B2E0C959AC7} = {C19E9DD7-1D7D-451F-BC3D-DED0326CED15}
 		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B} = {525B8B26-FD1D-41BC-8FFD-77E7815F9AA8}
+		{CABFFD55-E6DA-4EB9-B120-76DD9899E30F} = {75838037-0E66-401F-B4EA-52EA4DFE7EE0}
+		{F4520DA4-975D-4691-B7E8-7B2D37678152} = {CABFFD55-E6DA-4EB9-B120-76DD9899E30F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E08B5C6-85F0-4C52-8DFE-D55880DD5FC9}
