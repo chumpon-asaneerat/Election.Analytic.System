@@ -1,4 +1,4 @@
-Election.Analytic.System - PPRP  #240
+﻿Election.Analytic.System - PPRP  #240
 - 
 
 Election.Analytic.System - PPRP  #239
@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #237
 Election.Analytic.System - PPRP  #236
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #235
-- 
+- Update projects
+  - Add Imports file
+    - Add ข้อมูลผู้ใช้สิทธิปี 2562 350 เขต.xlsx
 
 [commited]
 Election.Analytic.System - PPRP  #234
