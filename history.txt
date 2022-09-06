@@ -10,8 +10,14 @@ Election.Analytic.System - PPRP  #238
 Election.Analytic.System - PPRP  #237
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #236
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - Rename AttachProperties.cs to KeyboardOptionsAttachProperties.cs
+    - FocusOptions, KeyboardOptions class inherited from DependencyObject.
+    - Add MouseOptionsAttachedProperties.cs
+    - MouseOptions class DoubleClick implements #1.
 
 [commited]
 Election.Analytic.System - PPRP  #235

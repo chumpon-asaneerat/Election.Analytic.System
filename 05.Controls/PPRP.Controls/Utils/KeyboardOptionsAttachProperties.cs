@@ -17,7 +17,7 @@ namespace PPRP.Controls.Utils
     /// <summary>
     /// The Focus Options class.
     /// </summary>
-    public class FocusOptions
+    public class FocusOptions : DependencyObject
     {
         #region SelectAll
 
@@ -195,7 +195,7 @@ namespace PPRP.Controls.Utils
     /// <summary>
     /// The Keyboard Options class.
     /// </summary>
-    public class KeyboardOptions
+    public class KeyboardOptions : DependencyObject
     {
         #region Enabled
 
