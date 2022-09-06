@@ -321,6 +321,21 @@ namespace PPRP
             public static Window MainWindow { get { return Application.Current.MainWindow; } }
 
             #endregion
+
+            #region MPDC2566Preview
+
+            /// <summary>Gets MPDC 2566 Preview Window.</summary>
+            public static PPRP.Windows.MPDC2566PreviewWindow MPDC2566Preview
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.MPDC2566PreviewWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
         }
     }
 }
