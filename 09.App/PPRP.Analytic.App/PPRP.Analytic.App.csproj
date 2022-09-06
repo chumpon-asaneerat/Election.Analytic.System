@@ -106,6 +106,9 @@
     </Compile>
     <Compile Include="Services\AreaNavigator.cs" />
     <Compile Include="Services\PPRPApp.cs" />
+    <Compile Include="Windows\MPDC2566PreviewWindow.xaml.cs">
+      <DependentUpon>MPDC2566PreviewWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +171,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\MPD\MPD2562VoteSummaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MPDC2566PreviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -252,6 +259,9 @@
     <Resource Include="Images\Maps\Pak8.png" />
     <Resource Include="Images\Maps\Pak9.png" />
     <Resource Include="Images\Maps\Thailand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Windows\MPDC\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
