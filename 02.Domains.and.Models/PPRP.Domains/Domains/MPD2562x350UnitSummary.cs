@@ -27,6 +27,7 @@ namespace PPRP.Domains
 
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
+        public int PollingUnitCount { get; set; }
         public int RightCount { get; set; }
         public int ExerciseCount { get; set; }
         public int InvalidCount { get; set; }
@@ -103,10 +104,18 @@ namespace PPRP.Domains
             {
                 string query = string.Empty;
                 query += @"
-                    SELECT * 
-                      FROM MPD2562x350UnitSummary
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(@ProvinceName)))
-                       AND PollingUnitNo = @PollingUnitNo
+                    SELECT A.ProvinceName
+                         , A.PollingUnitNo 
+                         , A.RightCount
+                         , A.ExerciseCount
+                         , A.InvalidCount 
+                         , A.NoVoteCount 
+                         , B.PollingUnitCount
+                      FROM MPD2562x350UnitSummary A, MPD2562PollingUnitSummary B
+                     WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceName)))
+                       AND B.PollingUnitNo = A.PollingUnitNo
+                       AND UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(@ProvinceName)))
+                       AND A.PollingUnitNo = @PollingUnitNo
                 ";
 
                 rets.Value = cnn.Query<MPD2562x350UnitSummary>(query, 
