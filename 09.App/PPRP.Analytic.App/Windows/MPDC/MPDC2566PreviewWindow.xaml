@@ -78,23 +78,25 @@
                             <TextBlock Height="5" />
                             <!--  PROVINCE NAME/PollingNo  -->
                             <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="20"
                                        FontWeight="Bold">
-                                <Run Text="จังหวัด "/>
-                                <Run Text="{Binding ProvinceName}"/>
-                                <Run Text=" เขต "/>
-                                <Run Text="{Binding PollingUnitNo}"/>
+                                <Run Text="จังหวัด " />
+                                <Run Text="{Binding ProvinceName}" />
+                                <Run Text=" เขต " />
+                                <Run Text="{Binding PollingUnitNo}" />
                             </TextBlock>
                             <TextBlock Height="5" />
                             <!--  FULL NAME  -->
                             <TextBlock x:Name="txtCandidateNo"
                                        Foreground="{StaticResource BlackBlush}"
-                                       FontSize="20"
-                                       Text="ว่าที่ผู้สมัครอันดับที่ -" />
+                                       FontSize="20">
+                                <Run Text="ว่าที่ผู้สมัครอันดับที่ " />
+                                <Run Text="{Binding CandidateNo}" />
+                            </TextBlock>
                             <TextBlock Height="5" />
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="20"
                                        VerticalAlignment="Center"
-                                       TextAlignment="Center"
                                        TextWrapping="Wrap"
                                        Text="{Binding FullName}" />
                             <TextBlock Height="5" />
@@ -124,14 +126,14 @@
                                 <Run Text="สังกัดย่อย : " />
                                 <Run Text="{Binding SubGroup}" />
                             </TextBlock>
-                            <TextBlock Height="5" />
+                            <TextBlock Height="10" />
                             <!--  REMARK  -->
                             <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontWeight="Bold"
                                        FontSize="20"
                                        VerticalAlignment="Center"
                                        TextWrapping="Wrap"
-                                       Text="หมายเหตุ : ">
-                            </TextBlock>
+                                       Text="บันทึกเพิ่มเติม (หมายเหตุ) : " />
                             <TextBlock Height="5" />
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="20"

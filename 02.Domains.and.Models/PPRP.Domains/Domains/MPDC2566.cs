@@ -149,6 +149,7 @@ namespace PPRP.Domains
 		public string FullName { get; set; }
 		public string PrevPartyName { get; set; }
 		public string EducationLevel { get; set; }
+		public string SubGroup { get; set; }
 		public string Remark { get; set; }
 
 		public byte[] PersonImageData
@@ -219,7 +220,7 @@ namespace PPRP.Domains
 				query += @"
 					SELECT TOP 4
 						  B.ProvinceId
-						, B.ProvinceNameTH
+						, B.ProvinceNameTH AS ProvinceName
 						, A.PollingUnitNo
 						, A.FullName
 						, IMG.Data AS PersonImageData

@@ -45,7 +45,8 @@ namespace PPRP.Windows
         public void Setup(MPDC2566Summary person)
         {
             _person = person;
-            if (null != _person)
+            this.DataContext = _person;
+            if (null == _person)
             {
                 
             }

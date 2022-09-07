@@ -145,7 +145,8 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 BorderThickness="1"
-                                CornerRadius="1">
+                                CornerRadius="1"
+                                Background="#11F0F0F0">
                             <ContentPresenter Margin="0"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -200,7 +201,8 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 BorderThickness="1"
-                                CornerRadius="1">
+                                CornerRadius="1"
+                                Background="#11F0F0F0">
                             <ContentPresenter Margin="0"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -301,9 +303,7 @@
     <!--  # WRAP LISTBOX ITEM STYLES - AREA (PAK/PROVINCE)  -->
     <DataTemplate x:Key="AreaItem">
         <Grid Margin="1">
-            <Border>
-
-            </Border>
+            <Border />
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=ItemType}" Value="PAK">
