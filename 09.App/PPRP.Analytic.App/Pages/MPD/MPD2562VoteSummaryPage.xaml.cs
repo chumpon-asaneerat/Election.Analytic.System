@@ -72,8 +72,33 @@ namespace PPRP.Pages
 
             txtPollingUnitInfo.Text = pollingUnit.DisplayText;
 
-            lstSummary.ItemsSource = MPD2562PersonalVoteSummary.Gets(
+            var top6 = MPD2562PersonalVoteSummary.Gets(6,
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+            var top16 = MPD2562PersonalVoteSummary.Gets(16,
+                pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+
+            int sum6 = 0;
+            if (null != top6 && top6.Count > 0)
+            {
+                foreach(var item in top6)
+                {
+                    sum6 += item.VoteCount;
+                }
+            }
+
+            int sum16 = 0;
+            if (null != top16 && top16.Count > 0)
+            {
+                foreach (var item in top16)
+                {
+                    sum16 += item.VoteCount;
+                }
+            }
+
+            int diff = sum16 - sum6; // sum from 7-16
+            txtTotalVotes.Text = diff.ToString("n0");
+
+            lstSummary.ItemsSource = top6;
 
             lstCandidates.ItemsSource = MPDC2566Summary.Gets(
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;

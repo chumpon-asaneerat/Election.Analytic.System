@@ -100,27 +100,22 @@
                                         BorderThickness="1"
                                         BorderBrush="{StaticResource BlueHeavyBrush}">
                                     <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-                                        <!--  TOTAL VOTES  -->
-                                        <StackPanel Orientation="Horizontal"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Center">
-                                            <TextBlock Text="ผลรวมคะแนน  :  "
-                                                       VerticalAlignment="Center"
-                                                       FontSize="{StaticResource FontSize30}" />
-                                            <TextBlock x:Name="txtTotalVotes"
-                                                       VerticalAlignment="Center"
-                                                       Foreground="{StaticResource BlueHeavyBrush}"
-                                                       Text="-"
-                                                       FontSize="48" />
-                                        </StackPanel>
                                         <!--  TOTAL COUNTS  -->
                                         <StackPanel Orientation="Horizontal"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                            <TextBlock Text="อันดับ  :  "
+                                            <TextBlock Text="ผลรวมคะแนน อันดับ (7 - 16) "
                                                        VerticalAlignment="Center"
                                                        FontSize="{StaticResource FontSize30}" />
-                                            <TextBlock x:Name="txtTotalCounts"
+                                        </StackPanel>
+                                        <!--  TOTAL VOTES  -->
+                                        <StackPanel Orientation="Horizontal"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                            <TextBlock Text="คะแนน  :  "
+                                                       VerticalAlignment="Center"
+                                                       FontSize="{StaticResource FontSize30}" />
+                                            <TextBlock x:Name="txtTotalVotes"
                                                        VerticalAlignment="Center"
                                                        Foreground="{StaticResource BlueHeavyBrush}"
                                                        Text="-"

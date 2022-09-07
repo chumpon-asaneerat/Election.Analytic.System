@@ -235,7 +235,13 @@ namespace PPRP.Domains
 
         #region Static Methods
 
+        /*
         public static NDbResult<List<MPD2562PersonalVoteSummary>> Gets(string provinceId, int pollingUnitNo)
+        {
+            return Gets(6, provinceId, pollingUnitNo);
+        }
+        */
+        public static NDbResult<List<MPD2562PersonalVoteSummary>> Gets(int top, string provinceId, int pollingUnitNo)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -256,8 +262,8 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
+                query += "SELECT TOP " + top.ToString() + " ";
                 query += @"
-                 SELECT TOP 6
                          B.ProvinceId
                        , B.ProvinceNameTH
                        , A.PollingUnitNo
@@ -290,7 +296,7 @@ namespace PPRP.Domains
                   ORDER BY A.VoteCount DESC
                 ";
 
-                rets.Value = cnn.Query<MPD2562PersonalVoteSummary>(query, 
+                rets.Value = cnn.Query<MPD2562PersonalVoteSummary>(query,
                     new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
             }
             catch (Exception ex)
