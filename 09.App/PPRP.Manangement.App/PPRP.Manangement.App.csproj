@@ -149,6 +149,9 @@
     <Compile Include="Windows\Excels\ImportMPD2562x350UnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562x350UnitSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Excels\ImportMPD2562PollingUnitSummaryWindow.xaml.cs">
+      <DependentUpon>ImportMPD2562PollingUnitSummaryWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Excels\ImportMPD2562x350UnitSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Excels\ImportMPD2562PollingUnitSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

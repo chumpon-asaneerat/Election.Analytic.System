@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #257
 Election.Analytic.System - PPRP  #256
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #255
-- 
+- Update projects
+  - Update PPRP.Analytic.App, PPRP.Manangement.App project
+    - Implements MPD2562PollingUnitSummary #2.
 
 [commited]
 Election.Analytic.System - PPRP  #254
