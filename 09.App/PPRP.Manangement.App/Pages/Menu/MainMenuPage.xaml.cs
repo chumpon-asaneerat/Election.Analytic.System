@@ -82,6 +82,12 @@ namespace PPRP.Pages
             GotoMPD2562x350UnitSummary();
         }
 
+        private void mnu06_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562 - MPD Polling Unit summary.
+            GotoMPD2562PollingUnitSummary();
+        }
+
         #endregion
 
         #region Group 2 - ข้อมูลทางภูมิศาสตร์
@@ -141,6 +147,13 @@ namespace PPRP.Pages
         private void GotoPullingStation()
         {
             var page = PPRPApp.Pages.PollingStationManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoMPD2562PollingUnitSummary()
+        {
+            var page = PPRPApp.Pages.MPD2562PollingUnitSummaryManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

@@ -76,6 +76,16 @@
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
                                                Cursor="Hand">
+                                        <Hyperlink x:Name="mnu06"
+                                                   Foreground="{StaticResource MainMenuItemForeground}"
+                                                   Click="mnu06_Click">
+                                            ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
                                         <Hyperlink x:Name="mnu01"
                                                    Foreground="{StaticResource MainMenuItemForeground}"
                                                    Click="mnu01_Click">
