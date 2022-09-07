@@ -19,8 +19,12 @@ Election.Analytic.System - PPRP  #255
 Election.Analytic.System - PPRP  #254
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #253
-- 
+- Update projects
+  - Update PPRP.Analytic.App, PPRP.Manangement.App project
+    - Implements MPD2562x350UnitSummary #6.
+  - Update Excel file - ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต 2562.xlsx
 
 [commited]
 Election.Analytic.System - PPRP  #252

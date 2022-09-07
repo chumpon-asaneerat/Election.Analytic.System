@@ -148,7 +148,7 @@
 
                                             </Border>
                                             <Border Background="{StaticResource BlueLightBrush}">
-                                                <TextBlock x:Name="txtTotalVoteSum1"
+                                                <TextBlock x:Name="txtPollingUnitCount"
                                                            Foreground="{StaticResource BlackBlush}"
                                                            FontSize="48"
                                                            TextAlignment="Center"
@@ -170,7 +170,7 @@
                                                            Foreground="{StaticResource BlackBlush}" />
                                             </Border>
                                             <Border Background="{StaticResource BlueLightBrush}">
-                                                <TextBlock x:Name="txtTotalVoteSum2"
+                                                <TextBlock x:Name="txtRightCount"
                                                            Foreground="{StaticResource BlackBlush}"
                                                            FontSize="48"
                                                            TextAlignment="Center"
@@ -192,7 +192,7 @@
                                                            Foreground="{StaticResource BlackBlush}" />
                                             </Border>
                                             <Border Background="{StaticResource BlueLightBrush}">
-                                                <TextBlock x:Name="txtTotalVoteSum3"
+                                                <TextBlock x:Name="txtExerciseCount"
                                                            Foreground="{StaticResource BlackBlush}"
                                                            FontSize="48"
                                                            TextAlignment="Center"

@@ -77,6 +77,8 @@ namespace PPRP.Pages
 
             lstCandidates.ItemsSource = MPDC2566Summary.Gets(
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+
+            UpdatePollingUnitSummary();
         }
 
         #endregion
@@ -188,6 +190,13 @@ namespace PPRP.Pages
             var win = PPRPApp.Windows.MPDC2566Preview;
             win.Setup(inst);
             win.ShowDialog();
+        }
+
+        private void UpdatePollingUnitSummary()
+        {
+            txtPollingUnitCount.Text = "0";
+            txtRightCount.Text = "0";
+            txtExerciseCount.Text = "0";
         }
 
         #endregion
