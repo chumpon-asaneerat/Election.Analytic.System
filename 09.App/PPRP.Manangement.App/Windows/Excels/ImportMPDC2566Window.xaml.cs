@@ -202,6 +202,7 @@ namespace PPRP.Windows
                     new string[] { "FullName", "ข้อมูลชื่อผู้สมัคร" },
                     new string[] { "PrevPartyName", "ข้อมูลชื่อสังกัดพรรคเดิม" },
                     new string[] { "EducationLevel", "ข้อมูลระดับการศึกษา" },
+                    new string[] { "SubGroup", "ข้อมูลกลุ่มย่อย" },
                     new string[] { "Remark", "ข้อมูลหมายเหตุ" },
                 };
 

@@ -25,8 +25,14 @@ Election.Analytic.System - PPRP  #243
 Election.Analytic.System - PPRP  #242
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #241
-- 
+- Update projects
+  - Update PPRP.Analytic.App project
+    - Implements MPDC2566PreviewWindow #4.
+  - Update PPRP.Manangement.App project
+    - Update ImportMPDC2566Window to supports new columns -> SubGroup
+  - Update Excel file - รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx
 
 [commited]
 Election.Analytic.System - PPRP  #240

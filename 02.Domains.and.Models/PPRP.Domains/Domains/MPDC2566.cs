@@ -29,6 +29,7 @@ namespace PPRP.Domains
 		public string FullName { get; set; }
 		public string PrevPartyName { get; set; }
 		public string EducationLevel { get; set; }
+		public string SubGroup { get; set; }
 		public string Remark { get; set; }
 
 		#endregion
@@ -100,6 +101,7 @@ namespace PPRP.Domains
 			p.Add("@FullName", value.FullName);
 			p.Add("@PrevPartyName", value.PrevPartyName);
 			p.Add("@EducationLevel", value.EducationLevel);
+			p.Add("@SubGroup", value.SubGroup);
 			p.Add("@Remark", value.Remark);
 
 			p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -226,6 +228,7 @@ namespace PPRP.Domains
 						, C.Data AS LogoData
 						, A.CandidateNo
 						, A.EducationLevel
+						, A.SubGroup
 						, A.Remark
 					 FROM MPDC2566 A
 							LEFT OUTER JOIN (SELECT P.PartyId
