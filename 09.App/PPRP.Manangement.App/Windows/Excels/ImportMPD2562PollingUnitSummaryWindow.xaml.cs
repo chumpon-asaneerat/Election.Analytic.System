@@ -198,10 +198,7 @@ namespace PPRP.Windows
                 {
                     new string[] { "ProvinceName", "ข้อมูลชื่อจังหวัด" },
                     new string[] { "PollingUnitNo", "ข้อมูลเขตเลือกตั้งที่" },
-                    new string[] { "FullName", "ข้อมูลชื่อผู้สมัคร" },
-                    new string[] { "VoteNo", "ข้อมูลหมายเลขผู้สมัคร" },
-                    new string[] { "PartyName", "ข้อมูลชื่อพรรค" },
-                    new string[] { "VoteCount", "ข้อมูลผลคะแนน" }
+                    new string[] { "PollingUnitCount", "จำนวนหน่วย" }
                 };
 
                 wsMap.Setup(import, mapProperties);
