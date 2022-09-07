@@ -78,7 +78,7 @@ namespace PPRP.Pages
             lstCandidates.ItemsSource = MPDC2566Summary.Gets(
                 pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
 
-            UpdatePollingUnitSummary();
+            UpdatePollingUnitSummary(pollingUnit.ProvinceNameTH, pollingUnit.PollingUnitNo);
         }
 
         #endregion
@@ -192,11 +192,17 @@ namespace PPRP.Pages
             win.ShowDialog();
         }
 
-        private void UpdatePollingUnitSummary()
+        private void UpdatePollingUnitSummary(string provinceName, int pollingUnitNo)
         {
             txtPollingUnitCount.Text = "0";
             txtRightCount.Text = "0";
             txtExerciseCount.Text = "0";
+
+            var unitSum = MPD2562x350UnitSummary.Get(provinceName, pollingUnitNo).Value;
+            if (null == unitSum) return;
+            txtPollingUnitCount.Text = unitSum.PollingUnitCount.ToString("n0");
+            txtRightCount.Text = unitSum.RightCount.ToString("n0");
+            txtExerciseCount.Text = unitSum.ExerciseCount.ToString("n0");
         }
 
         #endregion

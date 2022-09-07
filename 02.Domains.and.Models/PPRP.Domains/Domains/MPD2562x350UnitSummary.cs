@@ -82,11 +82,11 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static NDbResult<List<MPD2562x350UnitSummary>> Gets(string provinceName, int pollingUnitNo)
+        public static NDbResult<MPD2562x350UnitSummary> Get(string provinceName, int pollingUnitNo)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
-            NDbResult<List<MPD2562x350UnitSummary>> rets = new NDbResult<List<MPD2562x350UnitSummary>>();
+            NDbResult<MPD2562x350UnitSummary> rets = new NDbResult<MPD2562x350UnitSummary>();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
@@ -119,7 +119,7 @@ namespace PPRP.Domains
                 ";
 
                 rets.Value = cnn.Query<MPD2562x350UnitSummary>(query, 
-                    new { ProvinceName = provinceName, PollingUnitNo = pollingUnitNo }).ToList();
+                    new { ProvinceName = provinceName, PollingUnitNo = pollingUnitNo }).ToList().FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace PPRP.Domains
             if (null == rets.Value)
             {
                 // create empty list.
-                rets.Value = new List<MPD2562x350UnitSummary>();
+                rets.Value = new MPD2562x350UnitSummary();
             }
 
             return rets;
