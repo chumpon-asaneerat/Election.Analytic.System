@@ -230,13 +230,8 @@
                                      HorizontalContentAlignment="Stretch"
                                      Style="{StaticResource SingleSelectHorizontalWrapListBox}">
                                 <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
-                                        <Setter Property="util:MouseOptions.DoubleClick">
-                                            <Setter.Value>
-                                                <MouseBinding Command="{Binding OnListBoxItemDoubleClickCommand}"
-                                                              MouseAction="LeftDoubleClick"/>
-                                            </Setter.Value>
-                                        </Setter>
+                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick" />
                                     </Style>
                                 </ListBox.ItemContainerStyle>
                                 <ListBox.ItemTemplate>

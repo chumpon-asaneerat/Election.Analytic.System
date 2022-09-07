@@ -12,6 +12,9 @@ using NLib.Reflection;
 
 namespace PPRP.Controls.Utils
 {
+    // Note: This implements does not work because we cannot assigned the doublc click event handler
+    // at design time.
+    // now this file is set compile -> none
     #region MouseOptions
 
     /// <summary>

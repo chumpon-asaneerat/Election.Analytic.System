@@ -178,7 +178,7 @@
     </Compile>
     <Compile Include="Services\SignInManager.cs" />
     <Compile Include="Utils\KeyboardOptionsAttachProperties.cs" />
-    <Compile Include="Utils\MouseOptionsAttachedProperties.cs" />
+    <None Include="Utils\MouseOptionsAttachedProperties.cs" />
     <Compile Include="Utils\IsLastItemConverter.cs" />
     <Compile Include="Utils\IsProgressedConverter.cs" />
     <Compile Include="Utils\StringToNumberConverter.cs" />

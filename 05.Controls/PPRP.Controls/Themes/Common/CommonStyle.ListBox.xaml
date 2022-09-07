@@ -3,7 +3,6 @@
                     xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:util="clr-namespace:PPRP.Controls.Utils"
                     mc:Ignorable="PresentationOptions">
     <ResourceDictionary.MergedDictionaries>
         <!--  Force Merge related resource dictionary  -->
@@ -138,15 +137,6 @@
         -->
         <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualWidth}" />
         <Setter Property="MaxHeight" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ActualHeight}" />
-        <!-- SUPPORTS LISTBOX ITEM HANDLE MOUSE HABDLERS -->
-        <!--
-        <Setter Property="util:MouseOptions.DoubleClick">
-            <Setter.Value>
-                <MouseBinding Command="{Binding OnListBoxItemDoubleClickCommand}"
-                    MouseAction="LeftDoubleClick"/>
-            </Setter.Value>
-        </Setter>
-        -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">

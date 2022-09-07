@@ -81,7 +81,7 @@ namespace PPRP.Pages
 
         #endregion
 
-        public void OnListBoxItemDoubleClickCommand(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ListBoxItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = sender as ListBoxItem;
             if (null != item)

@@ -4,8 +4,12 @@
 Election.Analytic.System - PPRP  #239
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #238
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - FocusOptions, KeyboardOptions class inherited from object (not assigned base class).
+    - MouseOptions class DoubleClick implements #3 (not work) so MouseOptions.cs change from Action Compile->none.
 
 [commited]
 Election.Analytic.System - PPRP  #237
