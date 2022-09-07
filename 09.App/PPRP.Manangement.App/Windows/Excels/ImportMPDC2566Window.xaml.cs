@@ -203,7 +203,7 @@ namespace PPRP.Windows
                     new string[] { "PrevPartyName", "ข้อมูลชื่อสังกัดพรรคเดิม" },
                     new string[] { "EducationLevel", "ข้อมูลระดับการศึกษา" },
                     new string[] { "SubGroup", "ข้อมูลกลุ่มย่อย" },
-                    new string[] { "Remark", "ข้อมูลหมายเหตุ" },
+                    new string[] { "Remark", "ข้อมูลหมายเหตุ" }
                 };
 
                 wsMap.Setup(import, mapProperties);

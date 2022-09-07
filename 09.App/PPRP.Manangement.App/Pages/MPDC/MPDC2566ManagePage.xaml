@@ -93,6 +93,9 @@
                                 <GridViewColumn Header="ระดับการศึกษา"
                                                 Width="150"
                                                 DisplayMemberBinding="{Binding EducationLevel}" />
+                                <GridViewColumn Header="กลุ่มย่อย"
+                                                Width="150"
+                                                DisplayMemberBinding="{Binding SubGroup}" />
                                 <GridViewColumn Header="หมายเหตุ"
                                                 Width="150"
                                                 DisplayMemberBinding="{Binding Remark}" />
