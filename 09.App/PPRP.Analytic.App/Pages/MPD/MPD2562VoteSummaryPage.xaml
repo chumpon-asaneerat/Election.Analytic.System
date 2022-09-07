@@ -211,7 +211,7 @@
                             BorderBrush="{StaticResource BlueHeavyBrush}"
                             Background="{StaticResource BlueLightBrush2}">
                         <DockPanel LastChildFill="True">
-                            <TextBlock Text="ข้อมูลว่าที่ผู้สมัครปี 2566"
+                            <TextBlock Text="ข้อมูลว่าที่ผู้สมัครฯ ปี 2566"
                                        FontSize="18"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
@@ -228,10 +228,37 @@
                                      BorderThickness="0"
                                      VerticalContentAlignment="Stretch"
                                      HorizontalContentAlignment="Stretch"
+                                     ToolTipService.InitialShowDelay="500"
+                                     ToolTipService.ShowDuration="10000"
+                                     ToolTipService.BetweenShowDelay="1000"
                                      Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                                <ListBox.ToolTip>
+                                    <ToolTip HasDropShadow="True"
+                                             Placement="MousePoint"
+                                             VerticalOffset="20"
+                                             HorizontalOffset="400"
+                                             Margin="0"
+                                             Background="Transparent"
+                                             BorderBrush="Transparent"
+                                             BorderThickness="0"
+                                             VerticalAlignment="Stretch"
+                                             VerticalContentAlignment="Stretch"
+                                             HorizontalAlignment="Stretch"
+                                             HorizontalContentAlignment="Stretch">
+                                        <Border BorderBrush="Silver"
+                                                BorderThickness="1"
+                                                Background="Cornsilk"
+                                                CornerRadius="5">
+                                            <TextBlock Text="ดูข้อมูลว่าที่ผู้สมัครฯ กรุณาดับเบิ้ลคลิกที่รูป"
+                                                       Margin="5"
+                                                       Foreground="{StaticResource BlackBlush}"
+                                                       FontSize="{StaticResource FontSize24}" />
+                                        </Border>
+                                    </ToolTip>
+                                </ListBox.ToolTip>
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
-                                        <!-- EXAMPLE USAGES -->
+                                        <!--  EXAMPLE USAGES  -->
                                         <!--
                                         <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
                                         <EventSetter Event="MouseUp" Handler="lstCandidates_ListBoxItem_MouseUp" />
