@@ -173,6 +173,28 @@ namespace PPRP
 
             #endregion
 
+            #region MPD2562VoteSummary
+
+            private static MPD2562x350UnitSummaryManagePage _MPD2562x350UnitSummaryManage;
+
+            /// <summary>Gets MPDx350Unit 2562 Summary Manage Page.</summary>
+            public static MPD2562x350UnitSummaryManagePage MPD2562x350UnitSummaryManage
+            {
+                get
+                {
+                    if (null == _MPD2562x350UnitSummaryManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPD2562x350UnitSummaryManage = new MPD2562x350UnitSummaryManagePage();
+                        }
+                    }
+                    return _MPD2562x350UnitSummaryManage;
+                }
+            }
+
+            #endregion
+
             #region PersonImage
 
             private static PersonImageManagePage _PersonImageManage;
@@ -267,6 +289,21 @@ namespace PPRP
                 get
                 {
                     var ret = new PPRP.Windows.ImportMPD2562VoteSummaryWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region ImportMPD2562x350UnitSummary
+
+            /// <summary>Gets MPD 2562x350Unit Summary Import Window.</summary>
+            public static PPRP.Windows.ImportMPD2562x350UnitSummaryWindow ImportMPD2562x350UnitSummary
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMPD2562x350UnitSummaryWindow();
                     ret.Owner = Application.Current.MainWindow;
                     return ret;
                 }

@@ -76,6 +76,12 @@ namespace PPRP.Pages
             // ข้อมูลว่าที่ผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบบัญชีรายชื่อ ปี 2566 - MPR (candidate)
         }
 
+        private void mnu05_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลผู้ใช้สิทธิ 350 เขต ปี 2562 - MPD 350 Unit(summary)
+            GotoMPD2562x350UnitSummary();
+        }
+
         #endregion
 
         #region Group 2 - ข้อมูลทางภูมิศาสตร์
@@ -142,6 +148,13 @@ namespace PPRP.Pages
         private void GotoMPD2562VoteSummary()
         {
             var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoMPD2562x350UnitSummary()
+        {
+            var page = PPRPApp.Pages.MPD2562x350UnitSummaryManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }
