@@ -58,24 +58,20 @@ namespace PPRP.Pages
 
         private void Import()
         {
-            /*
-            var win = PPRPApp.Windows.ImportMPD2562VoteSummary;
+            var win = PPRPApp.Windows.ImportMPD2562PollingUnitSummary;
             win.Setup();
             if (win.ShowDialog() == false)
             {
                 return;
             }
             RefreshList();
-            */
         }
 
         private void RefreshList()
         {
-            /*
             lvMPD2562Summaries.ItemsSource = null;
-            var summaries = MPD2562VoteSummary.Gets();
-            lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562VoteSummary>();
-            */
+            var summaries = MPD2562PollingUnitSummary.Gets();
+            lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562PollingUnitSummary>();
         }
 
         #endregion
