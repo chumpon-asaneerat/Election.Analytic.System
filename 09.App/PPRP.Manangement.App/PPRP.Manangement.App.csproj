@@ -109,6 +109,9 @@
     <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
       <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPD\MPD2562x350UnitSummaryManagePage.xaml.cs">
+      <DependentUpon>MPD2562x350UnitSummaryManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPDC\MPDC2566ManagePage.xaml.cs">
       <DependentUpon>MPDC2566ManagePage.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MPD\MPD2562x350UnitSummaryManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
