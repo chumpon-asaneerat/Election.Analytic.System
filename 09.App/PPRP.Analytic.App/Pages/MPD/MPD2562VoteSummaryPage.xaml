@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:util="clr-namespace:PPRP.Controls.Utils;assembly=PPRP.Controls"
              mc:Ignorable="d"
              d:DesignHeight="900"
              d:DesignWidth="1300">
@@ -227,8 +228,17 @@
                                      BorderThickness="0"
                                      VerticalContentAlignment="Stretch"
                                      HorizontalContentAlignment="Stretch"
-                                     ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
                                      Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
+                                        <Setter Property="util:MouseOptions.DoubleClick">
+                                            <Setter.Value>
+                                                <MouseBinding Command="{Binding OnListBoxItemDoubleClickCommand}"
+                                                              MouseAction="LeftDoubleClick"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <DockPanel LastChildFill="True"

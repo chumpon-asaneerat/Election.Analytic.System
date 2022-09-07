@@ -81,6 +81,15 @@ namespace PPRP.Pages
 
         #endregion
 
+        public void OnListBoxItemDoubleClickCommand(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var item = sender as ListBoxItem;
+            if (null != item)
+            {
+                Console.WriteLine("ListBoxItem Double click");
+            }
+        }
+
         #region Private Methods
 
         private void GotoThailandPage()

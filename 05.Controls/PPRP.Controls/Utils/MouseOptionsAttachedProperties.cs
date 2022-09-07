@@ -10,7 +10,7 @@ using NLib.Reflection;
 
 #endregion
 
-namespace PPRP.Utils
+namespace PPRP.Controls.Utils
 {
     #region MouseOptions
 

@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #239
 Election.Analytic.System - PPRP  #238
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #237
-- 
+- Update projects
+  - Update PPRP.Controls project
+    - MouseOptions class DoubleClick implements #2 (not work).
 
 [commited]
 Election.Analytic.System - PPRP  #236
