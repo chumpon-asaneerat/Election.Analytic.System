@@ -5,7 +5,7 @@
         xmlns:xlsCtrl="clr-namespace:PPRP.Controls"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="นำเข้าข้อมูลผลการเลือกตั้งทั่วไป ปี 2562"
+        Title="นำเข้าข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562"
         Height="600"
         Width="1000"
         HorizontalAlignment="Center"
@@ -18,7 +18,7 @@
         Unloaded="UserControl_Unloaded">
     <Window.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">นำเข้าข้อมูลผลการเลือกตั้งทั่วไป ปี 2562</sys:String>
+        <sys:String x:Key="PageTitle">นำเข้าข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562</sys:String>
     </Window.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
