@@ -109,6 +109,9 @@
     <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
       <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPD\MPD2562PollingUnitSummaryManagePage.xaml.cs">
+      <DependentUpon>MPD2562PollingUnitSummaryManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPD\MPD2562x350UnitSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2562x350UnitSummaryManagePage.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MPD\MPD2562PollingUnitSummaryManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
