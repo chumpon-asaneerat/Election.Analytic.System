@@ -28,8 +28,11 @@ Election.Analytic.System - PPRP  #242
 Election.Analytic.System - PPRP  #241
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #240
-- 
+- Update projects
+  - Update PPRP.Analytic.App project
+    - Implements MPDC2566PreviewWindow #3.
 
 [commited]
 Election.Analytic.System - PPRP  #239

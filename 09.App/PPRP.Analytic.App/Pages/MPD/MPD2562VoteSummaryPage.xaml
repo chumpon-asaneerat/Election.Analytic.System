@@ -231,7 +231,12 @@
                                      Style="{StaticResource SingleSelectHorizontalWrapListBox}">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
-                                        <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick" />
+                                        <!-- EXAMPLE USAGES -->
+                                        <!--
+                                        <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
+                                        <EventSetter Event="MouseUp" Handler="lstCandidates_ListBoxItem_MouseUp" />
+                                        -->
+                                        <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
                                     </Style>
                                 </ListBox.ItemContainerStyle>
                                 <ListBox.ItemTemplate>

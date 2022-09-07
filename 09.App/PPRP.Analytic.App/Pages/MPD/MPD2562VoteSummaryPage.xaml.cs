@@ -81,14 +81,26 @@ namespace PPRP.Pages
 
         #endregion
 
-        private void ListBoxItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        #region lstCandidates ListBoxItem Handlers
+
+        private void lstCandidates_ListBoxItem_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Uncomment code in xaml to use this method.
+            var item = sender as ListBoxItem;
+            if (null == item || null == item.DataContext) return;
+            var inst = item.DataContext as MPDC2566Summary;
+            ShowPreview(inst);
+        }
+
+        private void lstCandidates_ListBoxItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var item = sender as ListBoxItem;
-            if (null != item)
-            {
-                Console.WriteLine("ListBoxItem Double click");
-            }
+            if (null == item || null == item.DataContext) return;
+            var inst = item.DataContext as MPDC2566Summary;
+            ShowPreview(inst);
         }
+
+        #endregion
 
         #region Private Methods
 
@@ -167,6 +179,15 @@ namespace PPRP.Pages
                     PageContentManager.Instance.Current = page;
                 }
             }
+        }
+
+        private void ShowPreview(MPDC2566Summary inst)
+        {
+            if (null == inst) return;
+
+            var win = PPRPApp.Windows.MPDC2566Preview;
+            win.Setup(inst);
+            win.ShowDialog();
         }
 
         #endregion
