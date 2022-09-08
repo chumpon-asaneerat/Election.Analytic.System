@@ -69,6 +69,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excels", "Excels", "{F4520D
 		Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx = Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf.Canvas", "Wpf.Canvas", "{D5B6DDAB-927B-4882-A7D4-F2DB955BBB3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.Canvas.Sample", "20.Samples\Wpf.Canvas\Wpf.Canvas.Sample\Wpf.Canvas.Sample.csproj", "{3EB3F00C-6730-4579-818C-E3419767B5A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -197,6 +201,14 @@ Global
 		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|x86.ActiveCfg = Release|Any CPU
 		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B}.Release|x86.Build.0 = Release|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Debug|x86.Build.0 = Debug|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Release|x86.ActiveCfg = Release|Any CPU
+		{3EB3F00C-6730-4579-818C-E3419767B5A5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -222,6 +234,8 @@ Global
 		{FF88EB0A-5A5A-4D75-BB73-DAC7B0D8FC3B} = {525B8B26-FD1D-41BC-8FFD-77E7815F9AA8}
 		{CABFFD55-E6DA-4EB9-B120-76DD9899E30F} = {75838037-0E66-401F-B4EA-52EA4DFE7EE0}
 		{F4520DA4-975D-4691-B7E8-7B2D37678152} = {CABFFD55-E6DA-4EB9-B120-76DD9899E30F}
+		{D5B6DDAB-927B-4882-A7D4-F2DB955BBB3B} = {5974B971-1E0E-42BD-A2DF-E995F702D971}
+		{3EB3F00C-6730-4579-818C-E3419767B5A5} = {D5B6DDAB-927B-4882-A7D4-F2DB955BBB3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E08B5C6-85F0-4C52-8DFE-D55880DD5FC9}
