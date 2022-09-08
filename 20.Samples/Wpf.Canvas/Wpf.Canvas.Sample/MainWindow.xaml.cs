@@ -55,8 +55,6 @@ namespace Wpf.Canvas.Sample
             timer.Start();
 
             InitCanvasManager();
-
-            UpdateResourceUsage();
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
