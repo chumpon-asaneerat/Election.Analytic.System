@@ -90,7 +90,7 @@ namespace Wpf.Canvas.Sample
             //  10,000 use 0.118 s
             //   5,000 use 0.074 s
             //   1,000 use 0.004 s
-            var shapes = CreateLines(100000);
+            var shapes = CreateLines(5000);
             foreach (var shape in shapes)
             {
                 manager.AddShape(shape);
