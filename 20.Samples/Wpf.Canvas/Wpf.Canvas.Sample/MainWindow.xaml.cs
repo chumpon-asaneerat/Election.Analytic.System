@@ -87,12 +87,17 @@ namespace Wpf.Canvas.Sample
             if (max <= 0) max = 1;
             List<Shape> shapes = new List<Shape>();
 
+            //int maxX = Convert.ToInt32(canvas.ActualWidth);
+            //int maxY = Convert.ToInt32(canvas.ActualHeight);
+            int maxX = 1200;
+            int maxY = 800;
+
             for (int i = 0; i < max; i++)
             {
-                double x1 = Convert.ToDouble(rnd.Next(1000));
-                double y1 = Convert.ToDouble(rnd.Next(1000));
-                double x2 = Convert.ToDouble(rnd.Next(1000));
-                double y2 = Convert.ToDouble(rnd.Next(1000));
+                double x1 = Convert.ToDouble(rnd.Next(maxX));
+                double y1 = Convert.ToDouble(rnd.Next(maxY));
+                double x2 = Convert.ToDouble(rnd.Next(maxX));
+                double y2 = Convert.ToDouble(rnd.Next(maxY));
                 var brush = new SolidColorBrush(GetRandomColor());
 
                 var shape = manager.CreateLineShape(x1, y1, x2, y2, brush, 2);
