@@ -1,8 +1,11 @@
 ﻿Election.Analytic.System - PPRP  #270
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #269
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements Geolocation mange page #2.
 
 [commited]
 Election.Analytic.System - PPRP  #268

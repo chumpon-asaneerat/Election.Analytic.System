@@ -77,16 +77,16 @@
                             <GridView>
                                 <GridViewColumn Header="ภาค"
                                                 Width="150"
-                                                DisplayMemberBinding="{Binding PartyName}" />
+                                                DisplayMemberBinding="{Binding RegionName}" />
                                 <GridViewColumn Header="จังหวัด"
                                                 Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
+                                                DisplayMemberBinding="{Binding ProvinceNameTH}" />
                                 <GridViewColumn Header="อำเภอ"
                                                 Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
+                                                DisplayMemberBinding="{Binding DistrictNameTH}" />
                                 <GridViewColumn Header="ตำบล"
                                                 Width="200"
-                                                DisplayMemberBinding="{Binding PartyName}" />
+                                                DisplayMemberBinding="{Binding SubdistrictNameTH}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -15,8 +15,9 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public class PullingStation
+    public class PollingStation
     {
+        #region Public Properties
         public int YearThai { get; set; }
         public string RegionName { get; set; }
         public string GeoSubGroup { get; set; }
@@ -30,8 +31,60 @@ namespace PPRP.Domains
         public int PollingSubUnitNo { get; set; }
         public int VillageCount { get; set; }
 
+        #endregion
 
-        public static void ImportPullingStation(PullingStation value)
+        #region Static Methods
+
+        public static NDbResult<List<PollingStation>> Gets()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<PollingStation>> rets = new NDbResult<List<PollingStation>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM PollingStationView 
+                     ORDER BY RegionId 
+                            , ProvinceNameTH 
+                            , DistrictNameTH 
+                            , SubdistrictNameTH 
+                ";
+
+                rets.Value = cnn.Query<PollingStation>(query).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<PollingStation>();
+            }
+
+            return rets;
+        }
+
+        public static void ImportPullingStation(PollingStation value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -87,5 +140,7 @@ namespace PPRP.Domains
 
             return;
         }
+
+        #endregion
     }
 }

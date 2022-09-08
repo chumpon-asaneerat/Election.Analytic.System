@@ -44,16 +44,16 @@ namespace PPRP.Windows
 
         #region Internal Class
 
-        public class XlsPullingStation : PullingStation
+        public class XlsPollingStation : PollingStation
         {
             public static int ThaiYear = 2562;
 
-            public static List<XlsPullingStation> LoadWorksheetTable(NExcelImport import,
+            public static List<XlsPollingStation> LoadWorksheetTable(NExcelImport import,
                 string sheetName, List<NExcelMapProperty> mapProperties)
             {
                 MethodBase med = MethodBase.GetCurrentMethod();
 
-                var results = new List<XlsPullingStation>();
+                var results = new List<XlsPollingStation>();
                 if (null == import || string.IsNullOrWhiteSpace(sheetName) ||
                     null == mapProperties || mapProperties.Count <= 0)
                     return results;
@@ -82,8 +82,8 @@ namespace PPRP.Windows
                             // start row at position 2.
                             for (int row = 2; row <= rowCount; row++)
                             {
-                                var inst = new XlsPullingStation();
-                                inst.YearThai = XlsPullingStation.ThaiYear;
+                                var inst = new XlsPollingStation();
+                                inst.YearThai = XlsPollingStation.ThaiYear;
 
                                 foreach (var key in columns.Keys)
                                 {
@@ -93,7 +93,7 @@ namespace PPRP.Windows
                                     try
                                     {
                                         object oVal = sheet.Cells[row, columns[key]].Value;
-                                        DynamicAccess<XlsPullingStation>.Set(inst, key, oVal);
+                                        DynamicAccess<XlsPollingStation>.Set(inst, key, oVal);
                                     }
                                     catch (Exception ex)
                                     {
@@ -128,7 +128,7 @@ namespace PPRP.Windows
         #region Internal Variables
 
         private NExcelImport import = new NExcelImport();
-        private List<XlsPullingStation> items = null;
+        private List<XlsPollingStation> items = null;
 
         #endregion
 
@@ -155,7 +155,7 @@ namespace PPRP.Windows
                 var model = wsMap.ImportModel;
                 lvMapPreview.Setup(import);
 
-                items = XlsPullingStation.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
+                items = XlsPollingStation.LoadWorksheetTable(import, model.Worksheet.SheetName, model.Maps);
                 if (null != items)
                 {
 
@@ -222,7 +222,7 @@ namespace PPRP.Windows
             {
                 foreach (var item in items)
                 {
-                    PullingStation.ImportPullingStation(item);
+                    PollingStation.ImportPullingStation(item);
                 }
             }
         }
