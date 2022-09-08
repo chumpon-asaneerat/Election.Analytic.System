@@ -7,8 +7,12 @@ Election.Analytic.System - PPRP  #269
 Election.Analytic.System - PPRP  #268
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #267
-- 
+- Update projects
+  - Update PPRP.Analytic.App, PPRP.Manangement.App project
+    - Implements MPD2562PollingUnitSummary #11.
+      - Add auto select first item.
 
 [commited]
 Election.Analytic.System - PPRP  #266
