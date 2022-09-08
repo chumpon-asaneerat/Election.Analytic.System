@@ -38,6 +38,7 @@ namespace Wpf.Canvas.Sample
 
         #region Internal Variables
 
+        private Random rnd = new Random();
         private NWpfCanvasManager manager = null;
 
         #endregion
@@ -61,8 +62,52 @@ namespace Wpf.Canvas.Sample
         private void InitCanvasManager()
         {
             manager = new NWpfCanvasManager(this.canvas);
-            var line1 = manager.CreateLineShape(1, 1, 50, 50, null, 2);
-            manager.AddShape(line1);
+
+            StopWatch.Start();
+
+            var shapes = CreateLines(100);
+            foreach (var shape in shapes)
+            {
+                manager.AddShape(shape);
+            }
+
+            UpdateExecuteTime(StopWatch.Stop());
+        }
+
+        private void UpdateExecuteTime(TimeSpan ts)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                txtExecuteTime.Text = string.Format("Execute time: {0:n0} ms.", ts.TotalMilliseconds);
+            }, System.Windows.Threading.DispatcherPriority.Render);
+        }
+
+        private List<Shape> CreateLines(int max = 1)
+        {
+            if (max <= 0) max = 1;
+            List<Shape> shapes = new List<Shape>();
+
+            for (int i = 0; i < max; i++)
+            {
+                double x1 = Convert.ToDouble(rnd.Next(1000));
+                double y1 = Convert.ToDouble(rnd.Next(1000));
+                double x2 = Convert.ToDouble(rnd.Next(1000));
+                double y2 = Convert.ToDouble(rnd.Next(1000));
+                var brush = new SolidColorBrush(GetRandomColor());
+
+                var shape = manager.CreateLineShape(x1, y1, x2, y2, brush, 2);
+
+                shapes.Add(shape);
+            }
+
+            return shapes;
+        }
+
+        private Color GetRandomColor()
+        {
+            byte[] b = new byte[3];
+            rnd.NextBytes(b);
+            return Color.FromRgb(b[0], b[1], b[2]);
         }
 
         #endregion

@@ -88,4 +88,20 @@ namespace Wpf.Canvas.Sample
 
         #endregion
     }
+
+
+    public class StopWatch
+    {
+        private static DateTime _dt = DateTime.Now;
+
+        public static void Start()
+        {
+            _dt = DateTime.Now;
+        }
+        
+        public static TimeSpan Stop()
+        {
+            return DateTime.Now - _dt;
+        }
+    }
 }
