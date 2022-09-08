@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 #endregion
 
@@ -40,6 +41,7 @@ namespace Wpf.Canvas.Sample
 
         private Random rnd = new Random();
         private NWpfCanvasManager manager = null;
+        private DispatcherTimer timer = null;
 
         #endregion
 
@@ -47,12 +49,31 @@ namespace Wpf.Canvas.Sample
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
             InitCanvasManager();
+
+            UpdateResourceUsage();
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
             manager = null;
+
+            timer.Stop();
+            timer.Tick -= Timer_Tick;
+            timer = null;
+        }
+
+        #endregion
+
+        #region Timer Tick
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            UpdateResourceUsage();
         }
 
         #endregion
@@ -74,12 +95,21 @@ namespace Wpf.Canvas.Sample
             UpdateExecuteTime(StopWatch.Stop());
         }
 
+        private void UpdateResourceUsage()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var usage = ResourceUsage.GetUsage();
+                txtResourceUsage.Text = string.Format("CPU: {0:n2} %, RAM {1:n2} MB", usage.CPU, usage.RAM);
+            }, DispatcherPriority.Render);
+        }
+
         private void UpdateExecuteTime(TimeSpan ts)
         {
             Dispatcher.Invoke(() =>
             {
                 txtExecuteTime.Text = string.Format("Execute time: {0:n0} ms.", ts.TotalMilliseconds);
-            }, System.Windows.Threading.DispatcherPriority.Render);
+            }, DispatcherPriority.Render);
         }
 
         private List<Shape> CreateLines(int max = 1)

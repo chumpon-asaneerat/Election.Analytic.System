@@ -45,7 +45,7 @@
                 Panel.ZIndex="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="Auto">
                 <TextBlock Width="20" />
-                <TextBlock x:Name="txtMemoryUsage"
+                <TextBlock x:Name="txtResourceUsage"
                            FontSize="18"
                            Foreground="WhiteSmoke"
                            VerticalAlignment="Center"
