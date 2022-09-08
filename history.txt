@@ -22,8 +22,9 @@ Election.Analytic.System - PPRP  #274
 Election.Analytic.System - PPRP  #273
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #272
-- 
+- Rebuild all projects.
 
 [commited]
 Election.Analytic.System - PPRP  #271
