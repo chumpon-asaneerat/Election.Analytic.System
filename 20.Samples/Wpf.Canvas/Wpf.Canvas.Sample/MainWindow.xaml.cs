@@ -84,7 +84,13 @@ namespace Wpf.Canvas.Sample
 
             StopWatch.Start();
 
-            var shapes = CreateLines(100);
+
+            // 100,000 use 1.946 s
+            //  50,000 use 1.187 s
+            //  10,000 use 0.118 s
+            //   5,000 use 0.074 s
+            //   1,000 use 0.004 s
+            var shapes = CreateLines(100000);
             foreach (var shape in shapes)
             {
                 manager.AddShape(shape);
