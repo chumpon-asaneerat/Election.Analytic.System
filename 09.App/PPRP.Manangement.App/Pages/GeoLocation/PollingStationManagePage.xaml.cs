@@ -66,13 +66,22 @@ namespace PPRP.Pages
             }
         }
 
+        private void RefreshList()
+        {
+            /*
+            lvGeoLocations.ItemsSource = null;
+            var parties = MParty.Gets();
+            lvGeoLocations.ItemsSource = (null != parties) ? parties.Value : new List<MParty>();
+            */
+        }
+
         #endregion
 
         #region Public Methods
 
         public void Setup()
         {
-
+            RefreshList();
         }
 
         #endregion
