@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 #endregion
@@ -39,6 +41,40 @@ namespace Wpf.Canvas.Sample
         ~NWpfCanvasManager()
         {
             this.Canvas = null;
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public Shape CreateLineShape(double x1, double y1, double x2, double y2,
+            Brush stoke = null, double stokeThickness = 1, 
+            HorizontalAlignment horzAlignment = HorizontalAlignment.Left, 
+            VerticalAlignment vertAlignment = VerticalAlignment.Center)
+        {
+            var shape = new Line();
+            // Line Stoke
+            shape.Stroke = (null == stoke) ? Brushes.Black : stoke;
+            shape.StrokeThickness = stokeThickness;
+            // Point Start
+            shape.X1 = x1;
+            shape.Y1 = y1;
+            // Point End
+            shape.X2 = x2;
+            shape.Y2 = y2;
+
+            shape.HorizontalAlignment = horzAlignment;
+            shape.VerticalAlignment = vertAlignment;
+
+            return shape;
+        }
+
+        public void AddShape(Shape shape)
+        {
+            if (null == shape) return;
+            if (null == this.Canvas) return;
+
+            Canvas.Children.Add(shape);
         }
 
         #endregion

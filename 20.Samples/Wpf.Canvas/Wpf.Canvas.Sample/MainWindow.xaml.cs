@@ -61,6 +61,8 @@ namespace Wpf.Canvas.Sample
         private void InitCanvasManager()
         {
             manager = new NWpfCanvasManager(this.canvas);
+            var line1 = manager.CreateLineShape(1, 1, 50, 50, null, 2);
+            manager.AddShape(line1);
         }
 
         #endregion
