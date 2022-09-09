@@ -197,13 +197,21 @@ namespace NLib.Services
 
         private void Processing()
         {
+            bool onScanning = false;
+
             while (_running && null != _th && !_isExit)
             {
                 var ts = DateTime.Now - _lastUpdate;
-                if (ts.TotalSeconds >= _RefreshInSeconds)
+                if (ts.TotalSeconds >= _RefreshInSeconds && !onScanning)
                 {
+                    onScanning = true;
+
                     UpdateResourceInfo();
+
+                    _lastUpdate = DateTime.Now; // update last check time.
                     Thread.Sleep(50);
+
+                    onScanning = false;
                 }
             }
         }
