@@ -162,9 +162,16 @@ namespace NLib.Services
             }
             if (null == _cpu || null == _ram)
                 return;
+
             // Getting first initial values
-            _cpu.NextValue();
-            _ram.NextValue();
+            try
+            {
+                // If system has multiple cores, that should be taken into account
+                _usage.CPU = Math.Round(_cpu.NextValue() / Environment.ProcessorCount, 2);
+                // Returns number of MB consumed by application
+                _usage.RAM = Math.Round(_ram.NextValue() / 1024 / 1024, 2);
+            }
+            catch { }
         }
 
         private void UpdateResourceInfo()
@@ -184,10 +191,14 @@ namespace NLib.Services
 
             lock (_usage)
             {
-                // If system has multiple cores, that should be taken into account
-                _usage.CPU = Math.Round(_cpu.NextValue() / Environment.ProcessorCount, 2);
-                // Returns number of MB consumed by application
-                _usage.RAM = Math.Round(_ram.NextValue() / 1024 / 1024, 2);
+                try
+                {
+                    // If system has multiple cores, that should be taken into account
+                    _usage.CPU = Math.Round(_cpu.NextValue() / Environment.ProcessorCount, 2);
+                    // Returns number of MB consumed by application
+                    _usage.RAM = Math.Round(_ram.NextValue() / 1024 / 1024, 2);
+                }
+                catch { }
             }
         }
 
@@ -202,6 +213,7 @@ namespace NLib.Services
             while (_running && null != _th && !_isExit)
             {
                 var ts = DateTime.Now - _lastUpdate;
+
                 if (ts.TotalSeconds >= _RefreshInSeconds && !onScanning)
                 {
                     onScanning = true;
