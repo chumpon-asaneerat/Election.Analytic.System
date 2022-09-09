@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #288
 Election.Analytic.System - PPRP  #287
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #286
-- 
+- Update projects
+  - Implements Wpf.Canvas.Sample project #13.
 
 [commited]
 Election.Analytic.System - PPRP  #285
