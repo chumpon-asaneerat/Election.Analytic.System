@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using NLib.Services;
+
 #endregion
 
 namespace Wpf.Canvas.Sample
@@ -49,6 +51,8 @@ namespace Wpf.Canvas.Sample
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            NResourceMonitor.Instance.Start();
+
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -64,6 +68,8 @@ namespace Wpf.Canvas.Sample
             timer.Stop();
             timer.Tick -= Timer_Tick;
             timer = null;
+
+            NResourceMonitor.Instance.Shutdown();
         }
 
         #endregion
@@ -103,7 +109,7 @@ namespace Wpf.Canvas.Sample
         {
             Dispatcher.Invoke(() =>
             {
-                var usage = ResourceUsage.GetUsage();
+                var usage = NResourceMonitor.Instance.Current;
                 txtResourceUsage.Text = string.Format("CPU: {0:n2} %, RAM {1:n2} MB", usage.CPU, usage.RAM);
             }, DispatcherPriority.Render);
         }
