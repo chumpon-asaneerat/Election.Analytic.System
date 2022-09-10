@@ -117,15 +117,19 @@ namespace Wpf.Canvas.Sample
 
             // Use: PathGeometry   : 1.682s - 1.800s
             // Use: StreamGeometry : 1.234s - 1.326s
-            this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayMap));
+
+            //this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayThailandMap));
+
+            this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayYasothonMaps));
         }
 
 
         private delegate void DoOperation();
 
         private JsonShapeFile thailandMap;
+        private List<JsonShapeFile> yasothonMaps = new List<JsonShapeFile>();
 
-        private void DisplayMap()
+        private void DisplayThailandMap()
         {
             if (null == thailandMap)
             {
@@ -140,6 +144,41 @@ namespace Wpf.Canvas.Sample
             UpdateExecuteTime(StopWatch.Stop());
         }
 
+
+        private void DisplayYasothonMaps()
+        {
+            if (null == yasothonMaps) yasothonMaps = new List<JsonShapeFile>();
+            if (yasothonMaps.Count <= 0)
+            {
+                string[] files = new string[]
+                {
+                    @"Maps\Yasothon\Thailand.Yasothon.json",
+                    @"Maps\Yasothon\Kham Khuean Kaeo\Thailand.Yasothon.Kham Khuean Kaeo.json",
+                    @"Maps\Yasothon\Kho Wang\Thailand.Yasothon.Kho Wang.json",
+                    @"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
+                    @"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
+                    @"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
+                    @"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
+                    @"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
+                    @"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
+                    @"Maps\Yasothon\Thai Charoen\Thailand.Yasothon.Thai Charoen.json"
+                };
+                foreach (var file in files)
+                {
+                    string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, file);
+                    var map = JsonMapFileManager.Load(fileName);
+                    if (null != map)
+                    {
+                        yasothonMaps.Add(map);
+                    }
+                }
+            }
+            if (yasothonMaps.Count <= 0)
+                return;
+            StopWatch.Start();
+            DisplayShapes(yasothonMaps);
+            UpdateExecuteTime(StopWatch.Stop());
+        }
 
         // Transformation from lon/lat to canvas coordinates.
         private TransformGroup shapeTransform;
@@ -251,6 +290,34 @@ namespace Wpf.Canvas.Sample
             {
                 var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
                 this.canvas.Children.Add(shape);
+            }
+        }
+
+        private void DisplayShapes(List<JsonShapeFile> maps)
+        {
+            int i = 0;
+            foreach (var map in maps)
+            {
+                if (i == 0)
+                {
+                    // Set up the transformation for WPF shapes.            
+                    if (this.shapeTransform == null)
+                    {
+                        this.shapeTransform = this.CreateShapeTransform(manager.Canvas, map);
+                    }
+
+                    // Add the zoom and pan transforms to the view transform.
+                    this.viewTransform.Children.Add(this.zoomTransform);
+                    this.viewTransform.Children.Add(this.panTransform);
+                }
+
+                foreach (var jshape in map.Shapes)
+                {
+                    var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                    this.canvas.Children.Add(shape);
+                }
+
+                i++;
             }
         }
 
