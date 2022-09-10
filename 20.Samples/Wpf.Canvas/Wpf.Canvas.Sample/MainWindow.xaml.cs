@@ -115,14 +115,21 @@ namespace Wpf.Canvas.Sample
             this.zoomTransform.ScaleY = 1;
             this.shapeTransform = null;
 
-            // Use: PathGeometry   : 1.682s - 1.800s
-            // Use: StreamGeometry : 1.234s - 1.326s
+            this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayThailandMap));
+        }
 
-            //this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayThailandMap));
+        private void cmdYasothon_Click(object sender, RoutedEventArgs e)
+        {
+            this.canvas.Children.Clear(); // reset canvas
+            // Reset transformations.
+            this.panTransform.X = 0;
+            this.panTransform.Y = 0;
+            this.zoomTransform.ScaleX = 1;
+            this.zoomTransform.ScaleY = 1;
+            this.shapeTransform = null;
 
             this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayYasothonMaps));
         }
-
 
         private delegate void DoOperation();
 
@@ -238,7 +245,7 @@ namespace Wpf.Canvas.Sample
                 }
             }
 
-            // Width and height of the bounding box.
+            // Width and height of the bounding box + 50 for margin.
             double width = Math.Abs(xmax - xmin);
             double height = Math.Abs(ymax - ymin);
 
