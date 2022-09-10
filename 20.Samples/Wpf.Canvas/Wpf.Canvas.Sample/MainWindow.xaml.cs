@@ -238,7 +238,9 @@ namespace Wpf.Canvas.Sample
             Shape ret = null;
             if (null == jshape) return ret;
 
-            Geometry geometry = CreatePathGeometry(jshape);
+            //Geometry geometry = CreatePathGeometry(jshape);
+            Geometry geometry = CreateStreamGeometry(jshape);
+
             // Transform the geometry based on current zoom and pan settings.
             geometry.Transform = this.viewTransform;
 
@@ -307,6 +309,44 @@ namespace Wpf.Canvas.Sample
             }
 
             // Return the created path geometry.
+            return geometry;
+        }
+
+        private Geometry CreateStreamGeometry(JsonShape jshape)
+        {
+            // Create a new stream geometry.
+            StreamGeometry geometry = new StreamGeometry();
+
+            // Obtain the stream geometry context for drawing each part.
+            using (StreamGeometryContext ctx = geometry.Open())
+            {
+                foreach (var jpart in jshape.Parts)
+                {
+                    // Draw figures.
+
+                    // Decide if the line segments are stroked or not. For the
+                    // PolyLine type it must be stroked.
+                    bool isStroked = true;
+
+                    int maxPts = jpart.Count;
+                    for (int i = 0; i < maxPts; ++i)
+                    {
+                        System.Windows.Point pt = new System.Windows.Point(
+                            jpart.Points[i, 0],
+                            jpart.Points[i, 1]);
+                        // Transform from lon/lat to canvas coordinates.
+                        pt = this.shapeTransform.Transform(pt);
+
+
+                        if (i == 0)
+                            ctx.BeginFigure(pt, true, false);
+                        else
+                            ctx.LineTo(pt, isStroked, true);
+                    }
+                }
+            }
+
+            // Return the created stream geometry.
             return geometry;
         }
 
