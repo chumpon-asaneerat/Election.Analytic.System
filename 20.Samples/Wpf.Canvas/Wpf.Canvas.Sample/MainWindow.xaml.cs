@@ -18,6 +18,9 @@ using System.Windows.Threading;
 
 using NLib.Services;
 
+using PPRP;
+using PPRP.Models.Maps;
+
 #endregion
 
 namespace Wpf.Canvas.Sample
@@ -91,6 +94,7 @@ namespace Wpf.Canvas.Sample
             StopWatch.Start();
 
 
+            /*
             // 100,000 use 1.946 s
             //  50,000 use 1.187 s
             //  10,000 use 0.118 s
@@ -101,8 +105,209 @@ namespace Wpf.Canvas.Sample
             {
                 manager.AddShape(shape);
             }
+            */
+            LoadMaps();
 
             UpdateExecuteTime(StopWatch.Stop());
+        }
+
+        // Transformation from lon/lat to canvas coordinates.
+        private TransformGroup shapeTransform;
+
+        // Combined view transformation (zoom and pan).
+        private TransformGroup viewTransform = new TransformGroup();
+        private ScaleTransform zoomTransform = new ScaleTransform();
+        private TranslateTransform panTransform = new TranslateTransform();
+
+        private void LoadMaps()
+        {
+            string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, @"Maps\Thailand.json");
+            var map = JsonMapFileManager.Load(fileName);
+            if (null == map)
+                return;
+            DisplayShape(map);
+        }
+
+        /// <summary>
+        /// Computes a transformation so that the shapefile geometry
+        /// will maximize the available space on the canvas and be
+        /// perfectly centered as well.
+        /// </summary>
+        /// <param name="info">Shapefile information.</param>
+        /// <returns>A transformation object.</returns>
+        private TransformGroup CreateShapeTransform(System.Windows.Controls.Canvas canvas, JsonShapeFile jshapeFile)
+        {
+            // Bounding box for the shapefile.
+
+            //double xmin = jshapeFile.Bound.Left;
+            //double xmax = jshapeFile.Bound.Right;
+            //double ymin = jshapeFile.Bound.Top;
+            //double ymax = jshapeFile.Bound.Bottom;
+
+            // Bounding box for the shapes.
+            double xmin = 0;
+            double xmax = 0;
+            double ymin = 0;
+            double ymax = 0;
+
+            foreach (var jshape in jshapeFile.Shapes)
+            {
+                for (int i = 0; i < jshape.Parts.Count; ++i)
+                {
+                    var jpart = jshape.Parts[i];
+                    for (int j = 0; j < jpart.Count; ++j)
+                    {
+                        var x = jpart.Points[j, 0];
+                        var y = jpart.Points[j, 1];
+
+                        if (j == 0)
+                        {
+                            xmin = x;
+                            xmax = x;
+                            ymin = y;
+                            ymax = y;
+                        }
+                        else
+                        {
+                            xmin = Math.Min(xmin, x);
+                            xmax = Math.Max(xmax, x);
+                            ymin = Math.Min(ymin, y);
+                            ymax = Math.Max(ymax, y);
+                        }
+                    }
+                }
+            }
+
+            // Width and height of the bounding box.
+            double width = Math.Abs(xmax - xmin);
+            double height = Math.Abs(ymax - ymin);
+
+            // Aspect ratio of the bounding box.
+            double aspectRatio = width / height;
+
+            // Aspect ratio of the canvas.
+            double canvasRatio = canvas.ActualWidth / canvas.ActualHeight;
+
+            // Compute a scale factor so that the shapefile geometry
+            // will maximize the space used on the canvas while still
+            // maintaining its aspect ratio.
+            double scaleFactor = 1.0;
+            if (aspectRatio < canvasRatio)
+                scaleFactor = canvas.ActualHeight / height;
+            else
+                scaleFactor = canvas.ActualWidth / width;
+
+            // Compute the scale transformation. Note that we flip
+            // the Y-values because the lon/lat grid is like a cartesian
+            // coordinate system where Y-values increase upwards.
+            ScaleTransform xformScale = new ScaleTransform(scaleFactor, -scaleFactor);
+
+            // Compute the translate transformation so that the shapefile
+            // geometry will be centered on the canvas.
+            TranslateTransform xformTrans = new TranslateTransform();
+            xformTrans.X = (canvas.ActualWidth - (xmin + xmax) * scaleFactor) / 2;
+            xformTrans.Y = (canvas.ActualHeight + (ymin + ymax) * scaleFactor) / 2;
+
+            // Add the two transforms to a transform group.
+            TransformGroup xformGroup = new TransformGroup();
+            xformGroup.Children.Add(xformScale);
+            xformGroup.Children.Add(xformTrans);
+
+            return xformGroup;
+        }
+
+        private void DisplayShape(JsonShapeFile map)
+        {
+            // Set up the transformation for WPF shapes.            
+            if (this.shapeTransform == null)
+                this.shapeTransform = this.CreateShapeTransform(manager.Canvas, map);
+
+            // Add the zoom and pan transforms to the view transform.
+            this.viewTransform.Children.Add(this.zoomTransform);
+            this.viewTransform.Children.Add(this.panTransform);
+
+            foreach (var jshape in map.Shapes)
+            {
+                var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                manager.Canvas.Children.Add(shape);
+            }
+        }
+
+        private Shape CreateWPFShape(string shapeName, JsonShape jshape)
+        {
+            Shape ret = null;
+            if (null == jshape) return ret;
+
+            Geometry geometry = CreatePathGeometry(jshape);
+            // Transform the geometry based on current zoom and pan settings.
+            geometry.Transform = this.viewTransform;
+
+            // Create a new WPF Path.
+            System.Windows.Shapes.Path path = new System.Windows.Shapes.Path();
+
+
+            // Assign the geometry to the path and set its name.
+            path.Data = geometry;
+            path.Name = shapeName;
+
+            // Set path properties.
+            path.StrokeThickness = 0.5;
+
+            path.Stroke = Brushes.Gray;
+            path.Fill = new SolidColorBrush(GetRandomColor());
+
+            /*
+            if (record.ShapeType == (int)ShapeType.Polygon)
+            {
+                path.Stroke = this.strokeBrush;
+                path.Fill = this.GetRandomShapeBrush();
+            }
+            else
+            {
+                path.Stroke = Brushes.DimGray;
+            }
+            */
+
+            ret = path;
+
+            // Return the created WPF shape.
+            return ret;
+        }
+
+        private Geometry CreatePathGeometry(JsonShape jshape)
+        {
+            // Create a new geometry.
+            PathGeometry geometry = new PathGeometry();
+
+            // Add figures to the geometry.
+
+            foreach (var jpart in jshape.Parts)
+            {
+                // Create a new path figure.
+                PathFigure figure = new PathFigure();
+
+                int maxPts = jpart.Count;
+                for (int i = 0; i < maxPts; ++i)
+                {
+                    System.Windows.Point pt = new System.Windows.Point(
+                        jpart.Points[i, 0],
+                        jpart.Points[i, 1]);
+
+                    // Transform from lon/lat to canvas coordinates.
+                    pt = this.shapeTransform.Transform(pt);
+
+                    if (i == 0)
+                        figure.StartPoint = pt;
+                    else
+                        figure.Segments.Add(new LineSegment(pt, true));
+                }
+
+                // Add the new figure to the geometry.
+                geometry.Figures.Add(figure);
+            }
+
+            // Return the created path geometry.
+            return geometry;
         }
 
         private void UpdateResourceUsage()

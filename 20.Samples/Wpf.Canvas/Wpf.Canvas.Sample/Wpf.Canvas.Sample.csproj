@@ -74,6 +74,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NJson.cs" />
     <Compile Include="NResourceMonitor.cs" />
     <Compile Include="NWpfCanvasManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

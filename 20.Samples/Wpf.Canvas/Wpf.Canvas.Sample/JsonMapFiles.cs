@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
+using PPRP; // for NJson
+
 #endregion
 
 namespace PPRP.Models.Maps
@@ -236,14 +238,18 @@ namespace PPRP.Models.Maps
     #endregion
 
 
-    public class JsonMapFile
+    public class JsonMapFileManager
     {
-        public void Load(string fileName)
+        public static JsonShapeFile Load(string fileName)
         {
-            if (!File.Exists(fileName))
-            {
+            JsonShapeFile result = null;
 
+            if (File.Exists(fileName))
+            {
+                result = NJson.LoadFromFile<JsonShapeFile>(fileName);
             }
+
+            return result;
         }
     }
        
