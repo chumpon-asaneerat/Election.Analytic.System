@@ -221,10 +221,11 @@ namespace NLib.Services
                     UpdateResourceInfo();
 
                     _lastUpdate = DateTime.Now; // update last check time.
-                    Thread.Sleep(50);
 
                     onScanning = false;
                 }
+                // Give CPU a break.
+                Thread.Sleep(250);
             }
         }
 

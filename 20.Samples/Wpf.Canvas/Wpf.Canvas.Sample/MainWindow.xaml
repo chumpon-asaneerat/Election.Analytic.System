@@ -32,7 +32,7 @@
                 CornerRadius="5"
                 Width="Auto"
                 Panel.ZIndex="0">
-            <Canvas x:Name="canvas" />
+            <Canvas x:Name="canvas" Margin="20" />
         </Border>
         <!--  INFO BLOCK CPU, MEM  -->
         <Border Grid.Column="2"
