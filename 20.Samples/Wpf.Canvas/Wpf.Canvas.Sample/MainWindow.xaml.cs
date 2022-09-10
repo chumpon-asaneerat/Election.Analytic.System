@@ -107,12 +107,23 @@ namespace Wpf.Canvas.Sample
             }
             */
 
-            this.Dispatcher.Invoke(() =>
-            {
-                LoadMaps();
-                UpdateExecuteTime(StopWatch.Stop());
-            });
+
+            // Use: PathGeometry   : 1.682s - 1.800s
+            // Use: StreamGeometry : 1.234s - 1.326s
+
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new DoOperation(this.DisplayMap));
         }
+
+
+
+        private delegate void DoOperation();
+
+        private void DisplayMap()
+        {
+            LoadMaps();
+            UpdateExecuteTime(StopWatch.Stop());
+        }
+
 
         // Transformation from lon/lat to canvas coordinates.
         private TransformGroup shapeTransform;
