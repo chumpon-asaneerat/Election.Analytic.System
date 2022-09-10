@@ -91,9 +91,6 @@ namespace Wpf.Canvas.Sample
         {
             manager = new NWpfCanvasManager(this.canvas);
 
-            StopWatch.Start();
-
-
             /*
             // 100,000 use 1.946 s
             //  50,000 use 1.187 s
@@ -106,20 +103,29 @@ namespace Wpf.Canvas.Sample
                 manager.AddShape(shape);
             }
             */
+        }
 
+        private void cmdThailand_Click(object sender, RoutedEventArgs e)
+        {
+            this.canvas.Children.Clear(); // reset canvas
+            // Reset transformations.
+            this.panTransform.X = 0;
+            this.panTransform.Y = 0;
+            this.zoomTransform.ScaleX = 1;
+            this.zoomTransform.ScaleY = 1;
+            this.shapeTransform = null;
 
             // Use: PathGeometry   : 1.682s - 1.800s
             // Use: StreamGeometry : 1.234s - 1.326s
-
-            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new DoOperation(this.DisplayMap));
+            this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayMap));
         }
-
 
 
         private delegate void DoOperation();
 
         private void DisplayMap()
         {
+            StopWatch.Start();
             LoadMaps();
             UpdateExecuteTime(StopWatch.Stop());
         }
@@ -331,6 +337,7 @@ namespace Wpf.Canvas.Sample
             // Create a new stream geometry.
             StreamGeometry geometry = new StreamGeometry();
 
+            int iCnt = 0;
             // Obtain the stream geometry context for drawing each part.
             using (StreamGeometryContext ctx = geometry.Open())
             {
@@ -351,14 +358,18 @@ namespace Wpf.Canvas.Sample
                         // Transform from lon/lat to canvas coordinates.
                         pt = this.shapeTransform.Transform(pt);
 
-
                         if (i == 0)
                             ctx.BeginFigure(pt, true, false);
                         else
                             ctx.LineTo(pt, isStroked, true);
+
+
+                        iCnt++; // count all points
                     }
                 }
             }
+
+            Console.WriteLine("Total: {0} pts", iCnt);
 
             // Return the created stream geometry.
             return geometry;

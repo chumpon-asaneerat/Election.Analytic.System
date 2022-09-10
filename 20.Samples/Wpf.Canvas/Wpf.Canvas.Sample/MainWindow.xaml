@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <!--  CANVAS  -->
         <Border Grid.Column="0"
-                Grid.ColumnSpan="3"
+                Grid.ColumnSpan="2"
                 Grid.Row="0"
                 Grid.RowSpan="3"
                 BorderBrush="CornflowerBlue"
@@ -56,6 +56,13 @@
                            HorizontalAlignment="Center"
                            Text="CPU 0 %, MEM: - MB." />
                 <TextBlock Width="20" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="2"
+                Grid.Row="1"
+                Margin="5">
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="cmdThailand" Content="Thailand" FontSize="18" Margin="2" Click="cmdThailand_Click"/>
             </StackPanel>
         </Border>
         <!--  INFO BLOCK EXECUTE TIMES  -->
