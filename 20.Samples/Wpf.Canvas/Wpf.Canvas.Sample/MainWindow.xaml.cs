@@ -106,9 +106,12 @@ namespace Wpf.Canvas.Sample
                 manager.AddShape(shape);
             }
             */
-            LoadMaps();
 
-            UpdateExecuteTime(StopWatch.Stop());
+            this.Dispatcher.Invoke(() =>
+            {
+                LoadMaps();
+                UpdateExecuteTime(StopWatch.Stop());
+            });
         }
 
         // Transformation from lon/lat to canvas coordinates.
