@@ -123,10 +123,20 @@ namespace Wpf.Canvas.Sample
 
         private delegate void DoOperation();
 
+        private JsonShapeFile thailandMap;
+
         private void DisplayMap()
         {
+            if (null == thailandMap)
+            {
+                string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, @"Maps\Thailand.json");
+                thailandMap = JsonMapFileManager.Load(fileName);
+            }
+            if (null == thailandMap)
+                return;
+
             StopWatch.Start();
-            LoadMaps();
+            DisplayShape(thailandMap);
             UpdateExecuteTime(StopWatch.Stop());
         }
 
@@ -138,15 +148,6 @@ namespace Wpf.Canvas.Sample
         private TransformGroup viewTransform = new TransformGroup();
         private ScaleTransform zoomTransform = new ScaleTransform();
         private TranslateTransform panTransform = new TranslateTransform();
-
-        private void LoadMaps()
-        {
-            string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, @"Maps\Thailand.json");
-            var map = JsonMapFileManager.Load(fileName);
-            if (null == map)
-                return;
-            DisplayShape(map);
-        }
 
         /// <summary>
         /// Computes a transformation so that the shapefile geometry
@@ -249,7 +250,7 @@ namespace Wpf.Canvas.Sample
             foreach (var jshape in map.Shapes)
             {
                 var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
-                manager.Canvas.Children.Add(shape);
+                this.canvas.Children.Add(shape);
             }
         }
 
