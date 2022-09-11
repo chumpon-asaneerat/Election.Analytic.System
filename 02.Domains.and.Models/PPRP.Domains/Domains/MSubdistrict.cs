@@ -109,6 +109,52 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static void ImportADM3(MSubdistrict value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            if (null == value)
+            {
+                string msg = "Value is null.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceNameTH", value.ProvinceNameTH);
+            p.Add("@ProvinceNameEN", value.ProvinceNameEN);
+            p.Add("@DistrictNameTH", value.DistrictNameTH);
+            p.Add("@DistrictNameEN", value.DistrictNameEN);
+            p.Add("@SubdistrictNameTH", value.SubdistrictNameTH);
+            p.Add("@SubdistrictNameEN", value.SubdistrictNameEN);
+            p.Add("@ADM3Code", value.ADM3Code);
+            p.Add("@AreaM2", value.SubdistrictAreaM2);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("SaveMSubdistrictADM3", p, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
+
         #endregion
     }
 }
