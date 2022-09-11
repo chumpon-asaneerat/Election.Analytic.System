@@ -63,9 +63,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Imports", "Imports", "{CABF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excels", "Excels", "{F4520DA4-975D-4691-B7E8-7B2D37678152}"
 	ProjectSection(SolutionItems) = preProject
+		Imports\Excels\tha_adm_areas_adm1.xlsx = Imports\Excels\tha_adm_areas_adm1.xlsx
+		Imports\Excels\tha_adm_areas_adm2.xlsx = Imports\Excels\tha_adm_areas_adm2.xlsx
+		Imports\Excels\tha_adm_areas_adm3.xlsx = Imports\Excels\tha_adm_areas_adm3.xlsx
 		Imports\Excels\ข้อมูลการเขตเลือกตั้งปี 2562.xlsx = Imports\Excels\ข้อมูลการเขตเลือกตั้งปี 2562.xlsx
 		Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx = Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx
 		Imports\Excels\ข้อมูลผู้ใช้สิทธิปี 2562 350 เขต.xlsx = Imports\Excels\ข้อมูลผู้ใช้สิทธิปี 2562 350 เขต.xlsx
+		Imports\Excels\ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต 2562.xlsx = Imports\Excels\ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต 2562.xlsx
 		Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx = Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx
 	EndProjectSection
 EndProject
