@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -212,12 +213,21 @@ namespace PPRP.Windows
 
         private void Imports()
         {
-            if (null != items)
+            if (null != items && items.Count > 0)
             {
+                var prog = PPRPApp.Windows.ProgressDialog;
+                prog.Owner = this;
+                prog.Setup(items.Count);
+                prog.Show();
+
                 foreach (var item in items)
                 {
                     MSubdistrict.ImportADM3(item);
+                    prog.Increment();
                 }
+
+                // Close progress dialog.
+                prog.Close();
             }
         }
 

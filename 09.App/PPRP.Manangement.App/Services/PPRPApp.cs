@@ -339,6 +339,21 @@ namespace PPRP
 
             #endregion
 
+            #region Common Progress Dialog
+
+            /// <summary>Gets Common Progress Dialog Window.</summary>
+            public static PPRP.Windows.ProgressWindow ProgressDialog
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ProgressWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
             #region Import Party Image
 
             /// <summary>Gets Import Party Image Window.</summary>
