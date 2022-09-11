@@ -10,8 +10,9 @@ Election.Analytic.System - PPRP  #328
 Election.Analytic.System - PPRP  #327
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #326
-- 
+- Update App Version
 
 [commited]
 Election.Analytic.System - PPRP  #325
