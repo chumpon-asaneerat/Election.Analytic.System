@@ -164,6 +164,15 @@
     <Compile Include="Windows\Excels\MPD\ImportMPD2562PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ImportMDistrictWindow.xaml.cs">
+      <DependentUpon>ImportMDistrictWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ImportMProvinceWindow.xaml.cs">
+      <DependentUpon>ImportMProvinceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ImportMSubdistrictWindow.xaml.cs">
+      <DependentUpon>ImportMSubdistrictWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -258,6 +267,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Excels\MPD\ImportMPD2562PollingUnitSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ImportMDistrictWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ImportMProvinceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ImportMSubdistrictWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
