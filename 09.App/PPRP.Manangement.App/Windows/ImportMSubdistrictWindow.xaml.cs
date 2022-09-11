@@ -214,10 +214,12 @@ namespace PPRP.Windows
         {
             if (null != items)
             {
+                /*
                 foreach (var item in items)
                 {
                     PollingStation.ImportPullingStation(item);
                 }
+                */
             }
         }
 

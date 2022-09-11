@@ -212,7 +212,7 @@ namespace PPRP.Windows
             {
                 foreach (var item in items)
                 {
-                    PollingStation.ImportPullingStation(item);
+                    MProvince.ImportADM1(item);
                 }
             }
         }
