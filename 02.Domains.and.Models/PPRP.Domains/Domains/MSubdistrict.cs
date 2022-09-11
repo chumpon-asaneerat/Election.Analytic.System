@@ -51,6 +51,64 @@ namespace PPRP.Domains
 
         #region Static Methods
 
+        public static NDbResult<List<MSubdistrict>> Gets(
+            string subdistrictId = null, string subdistrictNameTH = null,
+            string districtId = null, string districtNameTH = null,
+            string provinceId = null, string provinceNameTH = null,
+            string regionId = null, string regionName = null,
+            string geoGroup = null, string geoSubGroup = null)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MSubdistrict>> rets = new NDbResult<List<MSubdistrict>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+
+            p.Add("@SubdistrictId", subdistrictId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@SubdistrictNameTH", subdistrictNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@DistrictId", districtId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@DistrictNameTH", districtNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@ProvinceId", provinceId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@ProvinceNameTH", provinceNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionId", regionId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionName", regionName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoGroup", geoGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoSubGroup", geoSubGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            try
+            {
+                rets.Value = cnn.Query<MSubdistrict>("GetMSubdistricts", p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MSubdistrict>();
+            }
+
+            return rets;
+        }
+
         #endregion
     }
 }
