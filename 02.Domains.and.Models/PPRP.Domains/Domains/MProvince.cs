@@ -43,8 +43,10 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MProvince>> Gets(string provinceId, string provinceNameTH,
-            string regionId, string regionName, string geoGroup, string geoSubGroup)
+        public static NDbResult<List<MProvince>> Gets(
+            string provinceId = null, string provinceNameTH = null,
+            string regionId = null, string regionName = null, 
+            string geoGroup = null, string geoSubGroup = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 

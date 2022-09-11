@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">ข้อมูลจังหวัด (ESRI - ADM1)</sys:String>
+        <sys:String x:Key="PageTitle">ข้อมูลตำบล (ESRI - ADM3)</sys:String>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -72,7 +72,7 @@
                                 Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <ListView x:Name="lvProvinces" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvSubdistricts" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="จังหวัด"

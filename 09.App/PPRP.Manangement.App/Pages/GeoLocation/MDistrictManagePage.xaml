@@ -72,7 +72,7 @@
                                 Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <ListView x:Name="lvGeoLocations" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvDistricts" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="ภาค"

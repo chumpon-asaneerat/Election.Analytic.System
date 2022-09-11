@@ -70,9 +70,11 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
-            lvProvinces.ItemsSource = null;
-            var locations = PollingStation.Gets();
-            lvProvinces.ItemsSource = (null != locations) ? locations.Value : new List<PollingStation>();
+            /*
+            lvSubdistricts.ItemsSource = null;
+            var subdistricts = MSubdistrict.Gets();
+            lvSubdistricts.ItemsSource = (null != subdistricts) ? subdistricts.Value : new List<MSubdistrict>();
+            */
         }
 
         #endregion

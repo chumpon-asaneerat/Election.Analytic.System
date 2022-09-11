@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">ข้อมูลตำบล (ESRI - ADM3)</sys:String>
+        <sys:String x:Key="PageTitle">ข้อมูลจังหวัด (ESRI - ADM1)</sys:String>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -72,21 +72,24 @@
                                 Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <ListView x:Name="lvGeoLocations" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvProvinces" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ภาค"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding RegionName}" />
                                 <GridViewColumn Header="จังหวัด"
                                                 Width="200"
                                                 DisplayMemberBinding="{Binding ProvinceNameTH}" />
-                                <GridViewColumn Header="อำเภอ"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding DistrictNameTH}" />
-                                <GridViewColumn Header="ตำบล"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding SubdistrictNameTH}" />
+                                <GridViewColumn Header="ภาค (เขตตำรวจ)"
+                                                Width="150"
+                                                DisplayMemberBinding="{Binding RegionName}" />
+                                <GridViewColumn Header="ภาคหลัก (ภูมิศาสตร์)"
+                                                Width="180"
+                                                DisplayMemberBinding="{Binding GeoGroup}" />
+                                <GridViewColumn Header="ภาคย่อย (ภูมิศาสตร์)"
+                                                Width="180"
+                                                DisplayMemberBinding="{Binding GeoSubGroup}" />
+                                <GridViewColumn Header="ขนาดพื้นที่ (ตารางเมตร)"
+                                                Width="150"
+                                                DisplayMemberBinding="{Binding ProvinceAreaM2}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -179,7 +179,7 @@
                                         <Hyperlink x:Name="mnu22"
                                                    Click="mnu22_Click"
                                                    Foreground="{StaticResource MainMenuItemForeground}">
-                                            ข้อมูลพื้นที่ (จังหวัด)
+                                            ข้อมูลพื้นที่ (จังหวัด ESRI-ADM1)
                                         </Hyperlink>
                                     </TextBlock>
                                     <!-- District (Master)  -->
@@ -190,7 +190,7 @@
                                         <Hyperlink x:Name="mnu23"
                                                    Click="mnu23_Click"
                                                    Foreground="{StaticResource MainMenuItemForeground}">
-                                            ข้อมูลพื้นที่ (อำเภอ/เขต)
+                                            ข้อมูลพื้นที่ (อำเภอ/เขต ESRI-ADM2)
                                         </Hyperlink>
                                     </TextBlock>
                                     <!-- Subdistrict (Master)  -->
@@ -201,7 +201,7 @@
                                         <Hyperlink x:Name="mnu24"
                                                    Click="mnu24_Click"
                                                    Foreground="{StaticResource MainMenuItemForeground}">
-                                            ข้อมูลพื้นที่ (ตำบล/แขวง)
+                                            ข้อมูลพื้นที่ (ตำบล/แขวง ESRI-ADM3)
                                         </Hyperlink>
                                     </TextBlock>
                                     <!--
