@@ -109,6 +109,9 @@
     <Compile Include="Controls\WorksheetMapListViewControl.xaml.cs">
       <DependentUpon>WorksheetMapListViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
+      <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPD\MPD2562PollingUnitSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2562PollingUnitSummaryManagePage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,12 @@
     </Compile>
     <Compile Include="Pages\MPD\MPD2562VoteSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2562VoteSummaryManagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GeoLocation\MProvinceManagePage.xaml.cs">
+      <DependentUpon>MProvinceManagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GeoLocation\MSubdistrictManagePage.xaml.cs">
+      <DependentUpon>MSubdistrictManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Party\PartyManagePage.xaml.cs">
       <DependentUpon>PartyManagePage.xaml</DependentUpon>
@@ -176,6 +185,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\GeoLocation\MDistrictManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,6 +206,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MPD\MPD2562VoteSummaryManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GeoLocation\MProvinceManagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\GeoLocation\MSubdistrictManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
