@@ -14,33 +14,29 @@
         Height="120"
         Width="400"
         mc:Ignorable="d">
-    <Grid Background="Transparent"
-          Opacity="0.75">
-        <Border BorderBrush="{StaticResource BlueHeavyBrush2}"
-                BorderThickness="2"
-                CornerRadius="10"
-                Background="{StaticResource BlueLightBrush3}">
-            <StackPanel Orientation="Vertical"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Stretch">
-                <TextBlock x:Name="txtTitle"
-                           Text="ดำเนินการนำเข้าข้อมูล"
-                           FontSize="{StaticResource FontSize24}"
-                           Foreground="{StaticResource WhiteBrush}"
-                           VerticalAlignment="Center"
-                           TextAlignment="Center" />
-                <ProgressBar x:Name="progress"
-                             Margin="5"
-                             Background="WhiteSmoke"
-                             Height="25" />
-                <TextBlock Height="5" />
-                <TextBlock x:Name="txtInfo"
-                           Text="-"
-                           FontSize="{StaticResource FontSize18}"
-                           Foreground="{StaticResource WhiteBrush}"
-                           VerticalAlignment="Center"
-                           TextAlignment="Center" />
-            </StackPanel>
-        </Border>
-    </Grid>
+    <Border BorderBrush="{StaticResource BlueHeavyBrush2}"
+            BorderThickness="1"
+            Background="{StaticResource BlueLightBrush3}">
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch">
+            <TextBlock x:Name="txtTitle"
+                       Text="ดำเนินการนำเข้าข้อมูล"
+                       FontSize="{StaticResource FontSize24}"
+                       Foreground="{StaticResource WhiteBrush}"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+            <ProgressBar x:Name="progress"
+                         Margin="5"
+                         Background="WhiteSmoke"
+                         Height="25" />
+            <TextBlock Height="5" />
+            <TextBlock x:Name="txtInfo"
+                       Text="-"
+                       FontSize="{StaticResource FontSize18}"
+                       Foreground="{StaticResource WhiteBrush}"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+        </StackPanel>
+    </Border>
 </Window>
