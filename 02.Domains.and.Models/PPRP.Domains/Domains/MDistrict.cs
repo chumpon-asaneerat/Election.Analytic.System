@@ -25,9 +25,125 @@ namespace PPRP.Domains
     {
         #region Public Properties
 
+        public string DistrictId { get; set; }
+        public string DistrictNameTH { get; set; }
+        public string DistrictNameEN { get; set; }
+        public string ADM2Code { get; set; }
+        public decimal DistrictAreaM2 { get; set; }
+        public Guid DistrictContentId { get; set; }
+
+        public string ProvinceId { get; set; }
+        public string ProvinceNameTH { get; set; }
+        public string ProvinceNameEN { get; set; }
+
+        public string RegionId { get; set; }
+        public string RegionName { get; set; }
+        public string GeoGroup { get; set; }
+        public string GeoSubGroup { get; set; }
+
+
         #endregion
 
         #region Static Methods
+
+        public static NDbResult<List<MDistrict>> Gets(
+            string districtId = null, string districtNameTH = null,
+            string provinceId = null, string provinceNameTH = null,
+            string regionId = null, string regionName = null,
+            string geoGroup = null, string geoSubGroup = null)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MDistrict>> rets = new NDbResult<List<MDistrict>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+
+            p.Add("@DistrictId", districtId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@DistrictNameTH", districtNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@ProvinceId", provinceId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@ProvinceNameTH", provinceNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionId", regionId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionName", regionName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoGroup", geoGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoSubGroup", geoSubGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            try
+            {
+                rets.Value = cnn.Query<MDistrict>("GetMDistricts", p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MDistrict>();
+            }
+
+            return rets;
+        }
+
+        public static void ImportADM2(MDistrict value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            if (null == value)
+            {
+                string msg = "Value is null.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceNameTH", value.ProvinceNameTH);
+            p.Add("@ProvinceNameEN", value.ProvinceNameEN);
+            p.Add("@DistrictNameTH", value.DistrictNameTH);
+            p.Add("@DistrictNameEN", value.DistrictNameEN);
+            p.Add("@ADM2Code", value.ADM2Code);
+            p.Add("@AreaM2", value.DistrictAreaM2);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("SaveMDistrictADM2", p, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
 
         #endregion
     }

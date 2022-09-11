@@ -201,7 +201,7 @@ namespace PPRP.Windows
                     new string[] { "DistrictNameTH", "ข้อมูลชื่ออำเภอ (TH)" },
                     new string[] { "DistrictNameEN", "ข้อมูลชื่ออำเภอ (EN)" },
                     new string[] { "ADM2Code", "ข้อมูลรหัส AMD 2" },
-                    new string[] { "AreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
+                    new string[] { "DistrictAreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
                 };
 
                 wsMap.Setup(import, mapProperties);
@@ -212,12 +212,10 @@ namespace PPRP.Windows
         {
             if (null != items)
             {
-                /*
                 foreach (var item in items)
                 {
-                    PollingStation.ImportPullingStation(item);
+                    MDistrict.ImportADM2(item);
                 }
-                */
             }
         }
 

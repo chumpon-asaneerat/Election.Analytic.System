@@ -87,6 +87,9 @@
                                 <GridViewColumn Header="ภาคย่อย (ภูมิศาสตร์)"
                                                 Width="180"
                                                 DisplayMemberBinding="{Binding GeoSubGroup}" />
+                                <GridViewColumn Header="จังหวัด (EN)"
+                                                Width="Auto"
+                                                DisplayMemberBinding="{Binding ProvinceNameEN}" />
                                 <GridViewColumn Header="รหัส ADM1">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>

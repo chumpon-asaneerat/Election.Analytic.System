@@ -29,15 +29,13 @@ namespace PPRP.Domains
         public string ProvinceNameTH { get; set; }
         public string ProvinceNameEN { get; set; }
         public string ADM1Code { get; set; }
+        public decimal ProvinceAreaM2 { get; set; }
+        public Guid ProvinceContentId { get; set; }
 
         public string RegionId { get; set; }
         public string RegionName { get; set; }
-
         public string GeoGroup { get; set; }
         public string GeoSubGroup { get; set; }
-
-        public decimal ProvinceAreaM2 { get; set; }
-        public Guid ProvinceContentId { get; set; }
 
         #endregion
 
