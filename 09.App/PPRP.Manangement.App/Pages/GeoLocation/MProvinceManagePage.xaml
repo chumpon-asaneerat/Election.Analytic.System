@@ -87,9 +87,24 @@
                                 <GridViewColumn Header="ภาคย่อย (ภูมิศาสตร์)"
                                                 Width="180"
                                                 DisplayMemberBinding="{Binding GeoSubGroup}" />
-                                <GridViewColumn Header="ขนาดพื้นที่ (ตารางเมตร)"
-                                                Width="180"
-                                                DisplayMemberBinding="{Binding ProvinceAreaM2, StringFormat={}{0:n2}}" />
+                                <GridViewColumn Header="รหัส ADM1">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ADM1Code}"
+                                                       TextAlignment="Center"
+                                                       Width="100" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ขนาดพื้นที่ (ตารางเมตร)">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ProvinceAreaM2, StringFormat={}{0:n2}}"
+                                                       TextAlignment="Right"
+                                                       Width="180" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
