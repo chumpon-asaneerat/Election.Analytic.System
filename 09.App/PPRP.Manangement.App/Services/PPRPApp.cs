@@ -107,7 +107,7 @@ namespace PPRP
 
             #endregion
 
-            #region PollingStation
+            #region Polling Station
 
             private static PollingStationManagePage _PollingStationManage;
 
@@ -195,7 +195,7 @@ namespace PPRP
 
             #endregion
 
-            #region MPD2562VoteSummary
+            #region MPD2562 Vote Summary
 
             private static MPD2562VoteSummaryManagePage _MPD2562VoteSummaryManage;
 
@@ -239,7 +239,7 @@ namespace PPRP
 
             #endregion
 
-            #region MPD2562VoteSummary
+            #region MPD2562 Vote Summary
 
             private static MPD2562x350UnitSummaryManagePage _MPD2562x350UnitSummaryManage;
 
@@ -261,7 +261,7 @@ namespace PPRP
 
             #endregion
 
-            #region MPD2562PollingUnitSummary
+            #region MPD2562 Polling Unit Summary
 
             private static MPD2562PollingUnitSummaryManagePage _MPD2562PollingUnitSummaryManage;
 
@@ -283,7 +283,7 @@ namespace PPRP
 
             #endregion
 
-            #region PersonImage
+            #region Person Image
 
             private static PersonImageManagePage _PersonImageManage;
 
@@ -305,7 +305,7 @@ namespace PPRP
 
             #endregion
 
-            #region ExcelImportSample
+            #region Excel Import Sample
 
             private static ExcelImportSamplePage _ExcelSample;
 
@@ -339,7 +339,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportPartyImage
+            #region Import Party Image
 
             /// <summary>Gets Import Party Image Window.</summary>
             public static PPRP.Windows.ImportPartyImageWindow ImportPartyImage
@@ -354,7 +354,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportPartyImage
+            #region Import Polling Station
 
             /// <summary>Gets Polling Station Import Window.</summary>
             public static PPRP.Windows.ImportPollingStationWindow ImportPollingStation
@@ -369,7 +369,52 @@ namespace PPRP
 
             #endregion
 
-            #region ImportMPD2562VoteSummary
+            #region Import MProvince
+
+            /// <summary>Gets MProvince Import Window.</summary>
+            public static PPRP.Windows.ImportMProvinceWindow ImportMProvince
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMProvinceWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region Import MDistrict
+
+            /// <summary>Gets MDistrict Import Window.</summary>
+            public static PPRP.Windows.ImportMDistrictWindow ImportMDistrict
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMDistrictWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region Import MSubdistrict
+
+            /// <summary>Gets MSubdistrict Import Window.</summary>
+            public static PPRP.Windows.ImportMSubdistrictWindow ImportMSubdistrict
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMSubdistrictWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region Import MPD2562 Vote Summary
 
             /// <summary>Gets MPD 2562 Vote Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562VoteSummaryWindow ImportMPD2562VoteSummary
@@ -384,7 +429,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportMPD2562x350UnitSummary
+            #region Import MPD2562 x350 Unit Summary
 
             /// <summary>Gets MPD 2562x350Unit Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562x350UnitSummaryWindow ImportMPD2562x350UnitSummary
@@ -399,7 +444,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportMPD2562PollingUnitSummary
+            #region Import MPD2562 Polling Unit Summary
 
             /// <summary>Gets MPD Polling Unit Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562PollingUnitSummaryWindow ImportMPD2562PollingUnitSummary
@@ -414,7 +459,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportMPDC2566
+            #region Import MPDC2566
 
             /// <summary>Gets MPDC 2566 Import Window.</summary>
             public static PPRP.Windows.ImportMPDC2566Window ImportMPDC2566
@@ -429,7 +474,7 @@ namespace PPRP
 
             #endregion
 
-            #region ImportPersonImage
+            #region Import Person Image
 
             /// <summary>Gets Person Image Import Window.</summary>
             public static PPRP.Windows.ImportPersonImageWindow ImportPersonImage

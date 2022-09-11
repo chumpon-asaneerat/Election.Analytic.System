@@ -164,13 +164,13 @@
     <Compile Include="Windows\Excels\MPD\ImportMPD2562PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ImportMDistrictWindow.xaml.cs">
+    <Compile Include="Windows\Excels\Geolocation\ImportMDistrictWindow.xaml.cs">
       <DependentUpon>ImportMDistrictWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ImportMProvinceWindow.xaml.cs">
+    <Compile Include="Windows\Excels\Geolocation\ImportMProvinceWindow.xaml.cs">
       <DependentUpon>ImportMProvinceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ImportMSubdistrictWindow.xaml.cs">
+    <Compile Include="Windows\Excels\Geolocation\ImportMSubdistrictWindow.xaml.cs">
       <DependentUpon>ImportMSubdistrictWindow.xaml</DependentUpon>
     </Compile>
     <None Include="SingeltonSample.cs" />
@@ -270,15 +270,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ImportMDistrictWindow.xaml">
+    <Page Include="Windows\Excels\Geolocation\ImportMDistrictWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ImportMProvinceWindow.xaml">
+    <Page Include="Windows\Excels\Geolocation\ImportMProvinceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ImportMSubdistrictWindow.xaml">
+    <Page Include="Windows\Excels\Geolocation\ImportMSubdistrictWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

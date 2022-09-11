@@ -58,14 +58,12 @@ namespace PPRP.Pages
 
         private void Import()
         {
-            /*
-            var win = PPRPApp.Windows.ImportPollingStation;
+            var win = PPRPApp.Windows.ImportMDistrict;
             win.Setup();
             if (win.ShowDialog() == false)
             {
                 return;
             }
-            */
         }
 
         private void RefreshList()

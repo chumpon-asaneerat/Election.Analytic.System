@@ -88,8 +88,8 @@
                                                 Width="180"
                                                 DisplayMemberBinding="{Binding GeoSubGroup}" />
                                 <GridViewColumn Header="ขนาดพื้นที่ (ตารางเมตร)"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding ProvinceAreaM2}" />
+                                                Width="180"
+                                                DisplayMemberBinding="{Binding ProvinceAreaM2, StringFormat={}{0:n2}}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
