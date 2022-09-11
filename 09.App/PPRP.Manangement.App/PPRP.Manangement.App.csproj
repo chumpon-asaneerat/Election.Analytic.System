@@ -143,10 +143,10 @@
       <DependentUpon>ExcelImportSamplePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\PPRPApp.cs" />
-    <Compile Include="Windows\Excels\ImportMPD2562VoteSummaryWindow.xaml.cs">
+    <Compile Include="Windows\Excels\MPD\ImportMPD2562VoteSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562VoteSummaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Excels\ImportPollingStationWindow.xaml.cs">
+    <Compile Include="Windows\Excels\Geolocation\ImportPollingStationWindow.xaml.cs">
       <DependentUpon>ImportPollingStationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Images\ImportPartyImageWindow.xaml.cs">
@@ -155,13 +155,13 @@
     <Compile Include="Windows\Images\ImportPersonImageWindow.xaml.cs">
       <DependentUpon>ImportPersonImageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Excels\ImportMPDC2566Window.xaml.cs">
+    <Compile Include="Windows\Excels\MPDC\ImportMPDC2566Window.xaml.cs">
       <DependentUpon>ImportMPDC2566Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Excels\ImportMPD2562x350UnitSummaryWindow.xaml.cs">
+    <Compile Include="Windows\Excels\MPD\ImportMPD2562x350UnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562x350UnitSummaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Excels\ImportMPD2562PollingUnitSummaryWindow.xaml.cs">
+    <Compile Include="Windows\Excels\MPD\ImportMPD2562PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
     <None Include="SingeltonSample.cs" />
@@ -233,11 +233,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Excels\ImportMPD2562VoteSummaryWindow.xaml">
+    <Page Include="Windows\Excels\MPD\ImportMPD2562VoteSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Excels\ImportPollingStationWindow.xaml">
+    <Page Include="Windows\Excels\Geolocation\ImportPollingStationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -249,15 +249,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Excels\ImportMPDC2566Window.xaml">
+    <Page Include="Windows\Excels\MPDC\ImportMPDC2566Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Excels\ImportMPD2562x350UnitSummaryWindow.xaml">
+    <Page Include="Windows\Excels\MPD\ImportMPD2562x350UnitSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Excels\ImportMPD2562PollingUnitSummaryWindow.xaml">
+    <Page Include="Windows\Excels\MPD\ImportMPD2562PollingUnitSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -360,6 +360,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\MPD\Note แบบแบ่งเขต.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Excels\MPDC\Note ว่าที่ แบบแบ่งเขต.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\Excels\MPD\Note แบบแบ่งเขต.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
