@@ -225,7 +225,6 @@ namespace PPRP.Windows
                     MSubdistrict.ImportADM3(item);
                     prog.Increment();
                 }
-
                 // Close progress dialog.
                 prog.Close();
             }

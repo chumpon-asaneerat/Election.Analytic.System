@@ -176,12 +176,20 @@ namespace PPRP.Windows
 
         private void Imports()
         {
-            if (null != _parties)
+            if (null != _parties && _parties.Count > 0)
             {
-                foreach(var party in _parties)
+                var prog = PPRPApp.Windows.ProgressDialog;
+                prog.Owner = this;
+                prog.Setup(_parties.Count);
+                prog.Show();
+
+                foreach (var party in _parties)
                 {
                     MParty.ImportPartyImage(party.PartyName, party.Data);
+                    prog.Increment();
                 }
+                // Close progress dialog.
+                prog.Close();
             }
         }
 

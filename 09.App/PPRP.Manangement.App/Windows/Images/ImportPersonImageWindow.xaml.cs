@@ -176,12 +176,20 @@ namespace PPRP.Windows
 
         private void Imports()
         {
-            if (null != _persons)
+            if (null != _persons && _persons.Count > 0)
             {
+                var prog = PPRPApp.Windows.ProgressDialog;
+                prog.Owner = this;
+                prog.Setup(_persons.Count);
+                prog.Show();
+
                 foreach (var person in _persons)
                 {
                     PersonImage.ImportPersonImage(person.PersonName, person.Data);
+                    prog.Increment();
                 }
+                // Close progress dialog.
+                prog.Close();
             }
         }
 

@@ -19,8 +19,11 @@ Election.Analytic.System - PPRP  #325
 Election.Analytic.System - PPRP  #324
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #323
-- 
+- Update projects
+  - Update PPRP.Manangement.App project
+    - Implements progress when import #2
 
 [commited]
 Election.Analytic.System - PPRP  #322
