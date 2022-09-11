@@ -1,8 +1,11 @@
 ﻿Election.Analytic.System - PPRP  #320
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #319
-- 
+- Update projects
+  - Update PPRP.Domains project
+    - Implements MSubdistrict class #4
 
 [commited]
 Election.Analytic.System - PPRP  #318

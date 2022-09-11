@@ -69,11 +69,9 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
-            /*
             lvSubdistricts.ItemsSource = null;
             var subdistricts = MSubdistrict.Gets();
             lvSubdistricts.ItemsSource = (null != subdistricts) ? subdistricts.Value : new List<MSubdistrict>();
-            */
         }
 
         #endregion
