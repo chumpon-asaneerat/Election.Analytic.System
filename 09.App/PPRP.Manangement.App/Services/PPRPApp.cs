@@ -129,6 +129,72 @@ namespace PPRP
 
             #endregion
 
+            #region MProvince
+
+            private static MProvinceManagePage _MProvinceManage;
+
+            /// <summary>Gets MProvince Manage Page.</summary>
+            public static MProvinceManagePage MProvinceManage
+            {
+                get
+                {
+                    if (null == _MProvinceManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MProvinceManage = new MProvinceManagePage();
+                        }
+                    }
+                    return _MProvinceManage;
+                }
+            }
+
+            #endregion
+
+            #region MDistrict
+
+            private static MDistrictManagePage _MDistrictManage;
+
+            /// <summary>Gets MDistrict Manage Page.</summary>
+            public static MDistrictManagePage MDistrictManage
+            {
+                get
+                {
+                    if (null == _MDistrictManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MDistrictManage = new MDistrictManagePage();
+                        }
+                    }
+                    return _MDistrictManage;
+                }
+            }
+
+            #endregion
+
+            #region MSubdistrict
+
+            private static MSubdistrictManagePage _MSubdistrictManage;
+
+            /// <summary>Gets MSubdistrict Manage Page.</summary>
+            public static MSubdistrictManagePage MSubdistrictManage
+            {
+                get
+                {
+                    if (null == _MSubdistrictManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MSubdistrictManage = new MSubdistrictManagePage();
+                        }
+                    }
+                    return _MSubdistrictManage;
+                }
+            }
+
+            #endregion
+
             #region MPD2562VoteSummary
 
             private static MPD2562VoteSummaryManagePage _MPD2562VoteSummaryManage;

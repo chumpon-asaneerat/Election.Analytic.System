@@ -201,17 +201,23 @@ namespace PPRP.Pages
 
         private void GotoProvinceManagePage()
         {
-
+            var page = PPRPApp.Pages.MProvinceManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
         }
 
         private void GotoDistrictManagePage()
         {
-
+            var page = PPRPApp.Pages.MDistrictManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
         }
 
         private void GotoSubdistrictManagePage()
         {
-
+            var page = PPRPApp.Pages.MSubdistrictManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion
