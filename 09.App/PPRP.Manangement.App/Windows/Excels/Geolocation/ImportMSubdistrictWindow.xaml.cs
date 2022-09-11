@@ -203,7 +203,7 @@ namespace PPRP.Windows
                     new string[] { "SubdistrictNameTH", "ข้อมูลชื่อตำบล (TH)" },
                     new string[] { "SubdistrictNameEN", "ข้อมูลชื่อตำบล (EN)" },
                     new string[] { "ADM3Code", "ข้อมูลรหัส AMD 3" },
-                    new string[] { "AreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
+                    new string[] { "SubdistrictAreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
                 };
 
                 wsMap.Setup(import, mapProperties);

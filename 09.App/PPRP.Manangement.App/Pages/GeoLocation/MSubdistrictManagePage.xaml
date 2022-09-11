@@ -78,15 +78,39 @@
                                 <GridViewColumn Header="จังหวัด"
                                                 Width="200"
                                                 DisplayMemberBinding="{Binding ProvinceNameTH}" />
-                                <GridViewColumn Header="ภาค (เขตตำรวจ)"
+                                <GridViewColumn Header="อำเภอ"
+                                                Width="200"
+                                                DisplayMemberBinding="{Binding DistrictNameTH}" />
+                                <GridViewColumn Header="ตำบล"
                                                 Width="Auto"
-                                                DisplayMemberBinding="{Binding RegionName}" />
-                                <GridViewColumn Header="ภาคหลัก (ภูมิศาสตร์)"
+                                                DisplayMemberBinding="{Binding SubdistrictNameTH}" />
+                                <GridViewColumn Header="จังหวัด (EN)"
                                                 Width="Auto"
-                                                DisplayMemberBinding="{Binding GeoGroup}" />
-                                <GridViewColumn Header="ภาคย่อย (ภูมิศาสตร์)"
+                                                DisplayMemberBinding="{Binding ProvinceNameEN}" />
+                                <GridViewColumn Header="อำเภอ (EN)"
                                                 Width="Auto"
-                                                DisplayMemberBinding="{Binding GeoSubGroup}" />
+                                                DisplayMemberBinding="{Binding DistrictNameEN}" />
+                                <GridViewColumn Header="ตำบล (EN)"
+                                                Width="Auto"
+                                                DisplayMemberBinding="{Binding SubdistrictNameEN}" />
+                                <GridViewColumn Header="รหัส ADM3">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ADM3Code}"
+                                                       TextAlignment="Center"
+                                                       Width="100" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ขนาดพื้นที่ (ตารางเมตร)">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding SubdistrictAreaM2, StringFormat={}{0:n2}}"
+                                                       TextAlignment="Right"
+                                                       Width="180" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
