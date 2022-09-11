@@ -10,13 +10,13 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Topmost="True"
+        Background="Transparent"
         Height="120"
         Width="400"
         mc:Ignorable="d">
-    <Grid Background="Transparent" Margin="5"
+    <Grid Background="Transparent"
           Opacity="0.75">
-        <Border Margin="5"
-                BorderBrush="{StaticResource BlueHeavyBrush2}"
+        <Border BorderBrush="{StaticResource BlueHeavyBrush2}"
                 BorderThickness="2"
                 CornerRadius="10"
                 Background="{StaticResource BlueLightBrush3}">
