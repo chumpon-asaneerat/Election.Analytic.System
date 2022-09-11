@@ -100,7 +100,20 @@ namespace PPRP.Pages
 
         private void mnu22_Click(object sender, RoutedEventArgs e)
         {
-            // ข้อมูลแผนที่
+            // ข้อมูลจังหวัด (MProvince)
+            GotoProvinceManagePage();
+        }
+
+        private void mnu23_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลอำเภอ (MDistrict)
+            GotoDistrictManagePage();
+        }
+
+        private void mnu24_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลตำบล (MSubdistrict)
+            GotoSubdistrictManagePage();
         }
 
         #endregion
@@ -184,6 +197,21 @@ namespace PPRP.Pages
             var page = PPRPApp.Pages.PersonImageManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoProvinceManagePage()
+        {
+
+        }
+
+        private void GotoDistrictManagePage()
+        {
+
+        }
+
+        private void GotoSubdistrictManagePage()
+        {
+
         }
 
         #endregion

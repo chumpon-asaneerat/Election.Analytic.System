@@ -72,6 +72,7 @@
                                                    Margin="5"
                                                    Text="การจัดการข้อมูลการเลือกตั้ง" />
                                     </Border>
+                                    <!-- MPD Polling Station year 62  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
@@ -82,6 +83,7 @@
                                             ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562
                                         </Hyperlink>
                                     </TextBlock>
+                                    <!-- MPD Summary year 62  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
@@ -92,6 +94,7 @@
                                             ข้อมูลผู้สมัครรับเลือกตั้งสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562
                                         </Hyperlink>
                                     </TextBlock>
+                                    <!-- MPD Vote Summary year 62  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
@@ -112,6 +115,7 @@
                                         </Hyperlink>
                                     </TextBlock>
                                     -->
+                                    <!-- MPD Candidate 66  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
@@ -156,6 +160,7 @@
                                                    Margin="5"
                                                    Text="ข้อมูลทางภูมิศาสตร์" />
                                     </Border>
+                                    <!-- Polling Station (Master)  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
                                                Margin="15,5,5,5"
@@ -164,6 +169,39 @@
                                                    Click="mnu21_Click"
                                                    Foreground="{StaticResource MainMenuItemForeground}">
                                             ข้อมูลพื้นที่ (จังหวัด/อำเภอ/ตำบล(แขวง))
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <!-- Province (Master)  -->                                        
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu22"
+                                                   Click="mnu22_Click"
+                                                   Foreground="{StaticResource MainMenuItemForeground}">
+                                            ข้อมูลพื้นที่ (จังหวัด)
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <!-- District (Master)  -->
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu23"
+                                                   Click="mnu23_Click"
+                                                   Foreground="{StaticResource MainMenuItemForeground}">
+                                            ข้อมูลพื้นที่ (อำเภอ/เขต)
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <!-- Subdistrict (Master)  -->
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu24"
+                                                   Click="mnu24_Click"
+                                                   Foreground="{StaticResource MainMenuItemForeground}">
+                                            ข้อมูลพื้นที่ (ตำบล/แขวง)
                                         </Hyperlink>
                                     </TextBlock>
                                     <!--
