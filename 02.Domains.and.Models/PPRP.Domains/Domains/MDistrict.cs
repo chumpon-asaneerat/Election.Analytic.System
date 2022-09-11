@@ -35,6 +35,7 @@ namespace PPRP.Domains
         public string ProvinceId { get; set; }
         public string ProvinceNameTH { get; set; }
         public string ProvinceNameEN { get; set; }
+        public string ADM1Code { get; set; }
 
         public string RegionId { get; set; }
         public string RegionName { get; set; }

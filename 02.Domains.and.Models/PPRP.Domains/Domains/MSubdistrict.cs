@@ -25,6 +25,28 @@ namespace PPRP.Domains
     {
         #region Public Properties
 
+        public string SubdistrictId { get; set; }
+        public string SubdistrictNameTH { get; set; }
+        public string SubdistrictNameEN { get; set; }
+        public string ADM3Code { get; set; }
+        public decimal SubdistrictAreaM2 { get; set; }
+        public Guid SubdistrictContentId { get; set; }
+
+        public string DistrictId { get; set; }
+        public string DistrictNameTH { get; set; }
+        public string DistrictNameEN { get; set; }
+        public string ADM2Code { get; set; }
+
+        public string ProvinceId { get; set; }
+        public string ProvinceNameTH { get; set; }
+        public string ProvinceNameEN { get; set; }
+        public string ADM1Code { get; set; }
+
+        public string RegionId { get; set; }
+        public string RegionName { get; set; }
+        public string GeoGroup { get; set; }
+        public string GeoSubGroup { get; set; }
+
         #endregion
 
         #region Static Methods
