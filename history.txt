@@ -19,8 +19,11 @@ Election.Analytic.System - PPRP  #315
 Election.Analytic.System - PPRP  #314
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #313
-- 
+- Update projects
+  - Update PPRP.Domains project
+    - Implements MProvince class #10
 
 [commited]
 Election.Analytic.System - PPRP  #312

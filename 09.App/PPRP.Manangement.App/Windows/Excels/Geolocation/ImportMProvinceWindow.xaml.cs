@@ -199,7 +199,7 @@ namespace PPRP.Windows
                     new string[] { "ProvinceNameTH", "ข้อมูลชื่อจังหวัด (TH)" },
                     new string[] { "ProvinceNameEN", "ข้อมูลชื่อจังหวัด (EN)" },
                     new string[] { "ADM1Code", "ข้อมูลรหัส AMD 1" },
-                    new string[] { "AreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
+                    new string[] { "ProvinceAreaM2", "ข้อมูลขนาดพื้นที่ (ตารางเมตร)" }
                 };
 
                 wsMap.Setup(import, mapProperties);

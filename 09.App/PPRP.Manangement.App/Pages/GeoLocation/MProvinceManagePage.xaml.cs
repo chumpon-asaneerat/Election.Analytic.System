@@ -64,6 +64,7 @@ namespace PPRP.Pages
             {
                 return;
             }
+            RefreshList();
         }
 
         private void RefreshList()

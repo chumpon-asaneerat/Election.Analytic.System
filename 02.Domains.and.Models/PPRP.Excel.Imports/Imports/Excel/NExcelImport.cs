@@ -811,73 +811,13 @@ namespace PPRP.Imports.Excel
                     var sheet = package.Workbook.Worksheets[sheetName];
                     if (null != sheet)
                     {
-                        /*
-                        int colCount = sheet.Dimension.End.Column;  //get Column Count
-                        int rowCount = sheet.Dimension.End.Row;     //get row count
 
-
-                        for (int row = 1; row <= rowCount; row++)
-                        {
-                            foreach (var mapProp in mapProperties)
-                            {
-                                if (string.IsNullOrWhiteSpace(mapProp.PropertyName))
-                                    continue;
-                                if (string.IsNullOrWhiteSpace(mapProp.ColumnLetter))
-                                    continue;
-                                if (mapProp.ColumnIndex < 1)
-                                    continue;
-
-                                var sVal = sheet.Cells[row, mapProp.ColumnIndex].Value?.ToString().Trim();
-                            }
-                        }
-
-                        for (int row = 1; row <= rowCount; row++)
-                        {
-                            for (int col = 1; col <= colCount; col++)
-                            {
-                                var sVal = sheet.Cells[row, col].Value?.ToString().Trim();
-                            }
-                        }
-                        */
-
-
-                        /*
-                        var accessor = sheet.Extract<T>();
-                        foreach (var mapProp in mapProperties)
-                        {
-                            if (string.IsNullOrWhiteSpace(mapProp.ColumnLetter))
-                                continue;
-                            accessor.WithProperty(p => , mapProp.ColumnLetter)
-                        }
-                        var outputs = accessor.GetData(3,
-                            row => null != sheet.Cells[row, 1].Value).ToList();
-                        */
                     }
                 }
                 catch (Exception ex)
                 {
                     med.Err(ex);
                 }
-
-
-                /*
-                var sheet = package.Workbook.Worksheets[sheetName];
-                if (null != sheet)
-                {
-                    var accessor = sheet.Extract<GeoLocation>()
-                        // Here we can chain multiple definition for the columns
-                        .WithProperty(p => p.ProvinceCode, "A")
-                        .WithProperty(p => p.AmphurCode, "B")
-                        .WithProperty(p => p.TumbonCode, "C")
-                        .WithProperty(p => p.ProvinceName, "E")
-                        .WithProperty(p => p.AmphurName, "F")
-                        .WithProperty(p => p.TumbonName, "G");
-                    var results = accessor
-                        .GetData(3, row => null != sheet.Cells[row, 1].Value).ToList();
-                    gridSheetData.ItemsSource = results;
-                }
-            }
-            */
             }
 
             return results;
