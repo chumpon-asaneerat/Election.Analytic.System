@@ -5,6 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Data;
 using System.Linq;
+using System.Reflection;
+
+using System.Windows.Media;
+
+using NLib;
 
 using Dapper;
 using Newtonsoft.Json;
@@ -13,7 +18,80 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    class MProvince
+    /// <summary>
+    /// The MProvince class.
+    /// </summary>
+    public class MProvince
     {
+        #region Public Properties
+
+        public string ProvinceId { get; set; }
+        public string ProvinceNameTH { get; set; }
+        public string ProvinceNameEN { get; set; }
+        public string ADM1Code { get; set; }
+
+        public string RegionId { get; set; }
+        public string RegionName { get; set; }
+
+        public string GeoGroup { get; set; }
+        public string GeoSubGroup { get; set; }
+
+        public decimal ProvinceAreaM2 { get; set; }
+        public Guid ProvinceContentId { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static NDbResult<List<MProvince>> Gets(string provinceId, string provinceNameTH,
+            string regionId, string regionName, string geoGroup, string geoSubGroup)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MProvince>> rets = new NDbResult<List<MProvince>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceId", provinceId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@ProvinceNameTH", provinceNameTH, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionId", regionId, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@RegionName", regionName, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoGroup", geoGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("@GeoSubGroup", geoSubGroup, dbType: DbType.String, direction: ParameterDirection.Input);
+
+            try
+            {
+                rets.Value = cnn.Query<MProvince>("GetMProvinces", p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MProvince>();
+            }
+
+            return rets;
+        }
+
+        #endregion
     }
 }
