@@ -28,8 +28,10 @@ Election.Analytic.System - PPRP  #332
 Election.Analytic.System - PPRP  #331
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #330
-- 
+- Update projects
+  - Add ConsoleApp1 project.
 
 [commited]
 Election.Analytic.System - PPRP  #329

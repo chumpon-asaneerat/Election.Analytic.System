@@ -79,6 +79,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.Canvas.Sample", "20.Sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualCanvas", "20.Samples\Catfood.Shapefile\VirtualCanvas\VirtualCanvas.csproj", "{D41435B0-81DE-4C55-B100-85D9A0374DDB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,6 +225,14 @@ Global
 		{D41435B0-81DE-4C55-B100-85D9A0374DDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D41435B0-81DE-4C55-B100-85D9A0374DDB}.Release|x86.ActiveCfg = Release|Any CPU
 		{D41435B0-81DE-4C55-B100-85D9A0374DDB}.Release|x86.Build.0 = Release|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC8DC90A-E297-41BF-AB37-C6693C3D13BF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
