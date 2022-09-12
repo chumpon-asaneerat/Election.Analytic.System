@@ -8,7 +8,7 @@
              d:DesignHeight="900"
              d:DesignWidth="1300">
     <Grid>
-        <DockPanel LastChildFill="True" Opacity="0.7">
+        <DockPanel LastChildFill="True">
             <DockPanel LastChildFill="True">
                 <!--  LEFT PANEL  -->
                 <DockPanel LastChildFill="True"
