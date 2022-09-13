@@ -163,12 +163,12 @@ namespace Wpf.Canvas.Sample
                     @"Maps\Yasothon\Thailand.Yasothon.json",
                     @"Maps\Yasothon\Kham Khuean Kaeo\Thailand.Yasothon.Kham Khuean Kaeo.json",
                     @"Maps\Yasothon\Kho Wang\Thailand.Yasothon.Kho Wang.json",
-                    @"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
-                    @"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
-                    @"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
-                    @"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
-                    @"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
-                    @"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
+                    //@"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
+                    //@"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
+                    //@"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
+                    //@"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
+                    //@"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
+                    //@"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
                     @"Maps\Yasothon\Thai Charoen\Thailand.Yasothon.Thai Charoen.json"
                 };
                 foreach (var file in files)
@@ -495,9 +495,10 @@ namespace Wpf.Canvas.Sample
 
                         // Calc Rectancle
                         rect.Left = Math.Min(rect.Left, pt.X);
+                        rect.Right = Math.Max(rect.Right, pt.X);
+
                         rect.Top = Math.Min(rect.Top, pt.Y);
-                        rect.Right = Math.Max(rect.Left, pt.X);
-                        rect.Bottom = Math.Max(rect.Top, pt.Y);
+                        rect.Bottom = Math.Max(rect.Bottom, pt.Y);
 
                         if (i == 0)
                             ctx.BeginFigure(pt, true, false);
@@ -510,6 +511,7 @@ namespace Wpf.Canvas.Sample
             }
 
             Console.WriteLine("Total: {0} pts", iCnt);
+            combine.Children.Add(geometry);
 
             string text = string.Empty;
             if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
@@ -531,14 +533,12 @@ namespace Wpf.Canvas.Sample
             var txtHt = formattedText.Height;
             var rectWd = rect.Right - rect.Left;
             var rectHt = rect.Bottom - rect.Top;
-            var ptX = rectWd - txtWd;
-            var ptY = rectHt - txtHt;
+            var ptX = rect.Left + ((rectWd - txtWd) / 2);
+            var ptY = rect.Top + ((rectHt - txtHt) / 2);
 
             System.Windows.Point centerPt = new Point(ptX, ptY);
 
             Geometry textGeometry = formattedText.BuildGeometry(centerPt);
-
-            combine.Children.Add(geometry);
             combine.Children.Add(textGeometry);
 
             // Return the created stream geometry.
