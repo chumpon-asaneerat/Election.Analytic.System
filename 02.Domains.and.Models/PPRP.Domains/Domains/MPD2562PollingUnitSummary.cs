@@ -28,6 +28,7 @@ namespace PPRP.Domains
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
         public int PollingUnitCount { get; set; }
+        public string AreaRemark { get; set; }
 
         #endregion
 
@@ -102,6 +103,47 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SaveMPD2562PollingUnitSummary", p, commandType: CommandType.StoredProcedure);
+
+                // Set error number/message
+                int errNum = p.Get<int>("@errNum");
+                string errMsg = p.Get<string>("@errMsg");
+                if (errNum != 0)
+                {
+                    Console.WriteLine(errMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
+
+        public static void ImportAreaRemark(MPD2562PollingUnitSummary value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", value.ProvinceName);
+            p.Add("@PollingUnitNo", value.PollingUnitNo);
+            p.Add("@AreaRemark", value.AreaRemark);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("ImportMPD2562PollingUnitAreaRemark", p, commandType: CommandType.StoredProcedure);
 
                 // Set error number/message
                 int errNum = p.Get<int>("@errNum");
