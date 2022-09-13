@@ -239,11 +239,11 @@ namespace PPRP
 
             #endregion
 
-            #region MPD2562 Vote Summary
+            #region MPD2562 350 Unit Summary
 
             private static MPD2562x350UnitSummaryManagePage _MPD2562x350UnitSummaryManage;
 
-            /// <summary>Gets MPDx350Unit 2562 Summary Manage Page.</summary>
+            /// <summary>Gets MPD2562 350 Unit Summary Manage Page.</summary>
             public static MPD2562x350UnitSummaryManagePage MPD2562x350UnitSummaryManage
             {
                 get
@@ -265,7 +265,7 @@ namespace PPRP
 
             private static MPD2562PollingUnitSummaryManagePage _MPD2562PollingUnitSummaryManage;
 
-            /// <summary>Gets MPDx350Unit 2562 Summary Manage Page.</summary>
+            /// <summary>Gets MPD2562 Polling Unit Summary Manage Page.</summary>
             public static MPD2562PollingUnitSummaryManagePage MPD2562PollingUnitSummaryManage
             {
                 get
@@ -278,6 +278,28 @@ namespace PPRP
                         }
                     }
                     return _MPD2562PollingUnitSummaryManage;
+                }
+            }
+
+            #endregion
+
+            #region MPD2562 Area Remark Summary
+
+            private static MPD2562AreaRemarkManagePage _MPD2562AreaRemarkManage;
+
+            /// <summary>Gets MPD2562 Area Remark Summary Manage Page.</summary>
+            public static MPD2562AreaRemarkManagePage MPD2562AreaRemarkManage
+            {
+                get
+                {
+                    if (null == _MPD2562AreaRemarkManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPD2562AreaRemarkManage = new MPD2562AreaRemarkManagePage();
+                        }
+                    }
+                    return _MPD2562AreaRemarkManage;
                 }
             }
 
@@ -431,7 +453,7 @@ namespace PPRP
 
             #region Import MPD2562 Vote Summary
 
-            /// <summary>Gets MPD 2562 Vote Summary Import Window.</summary>
+            /// <summary>Gets MPD2562 Vote Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562VoteSummaryWindow ImportMPD2562VoteSummary
             {
                 get
@@ -446,7 +468,7 @@ namespace PPRP
 
             #region Import MPD2562 x350 Unit Summary
 
-            /// <summary>Gets MPD 2562x350Unit Summary Import Window.</summary>
+            /// <summary>Gets MPD2562 350 Unit Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562x350UnitSummaryWindow ImportMPD2562x350UnitSummary
             {
                 get
@@ -461,12 +483,27 @@ namespace PPRP
 
             #region Import MPD2562 Polling Unit Summary
 
-            /// <summary>Gets MPD Polling Unit Summary Import Window.</summary>
+            /// <summary>Gets MPD2562 Polling Unit Summary Import Window.</summary>
             public static PPRP.Windows.ImportMPD2562PollingUnitSummaryWindow ImportMPD2562PollingUnitSummary
             {
                 get
                 {
                     var ret = new PPRP.Windows.ImportMPD2562PollingUnitSummaryWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
+            #region Import MPD2562 Area Remark Summary
+
+            /// <summary>Gets MPD2562 Area Remark Import Window.</summary>
+            public static PPRP.Windows.ImportMPD2562AreaRemarkSummaryWindow ImportMPD2562AreaRemarkSummary
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMPD2562AreaRemarkSummaryWindow();
                     ret.Owner = Application.Current.MainWindow;
                     return ret;
                 }

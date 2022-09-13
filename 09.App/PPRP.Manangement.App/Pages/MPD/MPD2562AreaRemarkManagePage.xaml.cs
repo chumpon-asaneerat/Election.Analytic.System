@@ -58,15 +58,13 @@ namespace PPRP.Pages
 
         private void Import()
         {
-            /*
-            var win = PPRPApp.Windows.ImportMPD2562x350UnitSummary;
+            var win = PPRPApp.Windows.ImportMPD2562AreaRemarkSummary;
             win.Setup();
             if (win.ShowDialog() == false)
             {
                 return;
             }
             RefreshList();
-            */
         }
 
         private void RefreshList()

@@ -84,6 +84,9 @@
                                 <GridViewColumn Header="จำนวนหน่วย"
                                                 Width="150"
                                                 DisplayMemberBinding="{Binding PollingUnitCount}" />
+                                <GridViewColumn Header="ข้อมูลพื้นที่"
+                                                Width="250"
+                                                DisplayMemberBinding="{Binding AreaRemark}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
