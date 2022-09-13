@@ -112,7 +112,7 @@
     <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
       <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MPD2562AreaRemarkManagePage.xaml.cs">
+    <Compile Include="Pages\MPD\MPD2562AreaRemarkManagePage.xaml.cs">
       <DependentUpon>MPD2562AreaRemarkManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MPD\MPD2562PollingUnitSummaryManagePage.xaml.cs">
@@ -179,6 +179,9 @@
     <Compile Include="Windows\Common\ProgressWindow.xaml.cs">
       <DependentUpon>ProgressWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Excels\MPD\ImportMPD2562AreaRemarkSummaryWindow.xaml.cs">
+      <DependentUpon>ImportMPD2562AreaRemarkSummaryWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -208,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MPD2562AreaRemarkManagePage.xaml">
+    <Page Include="Pages\MPD\MPD2562AreaRemarkManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -293,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Common\ProgressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Excels\MPD\ImportMPD2562AreaRemarkSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
