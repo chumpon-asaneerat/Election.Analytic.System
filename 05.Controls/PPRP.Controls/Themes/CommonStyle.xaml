@@ -35,7 +35,7 @@
     <Color x:Key="BlueHeavyColor2" PresentationOptions:Freeze="True">#1F4E79</Color>
 
     <Color x:Key="BlackColor" PresentationOptions:Freeze="True">#000000</Color>
-    <Color x:Key="WhiteColor" PresentationOptions:Freeze="True">#FFFFFF</Color>
+    <Color x:Key="WhiteColor" PresentationOptions:Freeze="True">#EFEFEF</Color>
     <Color x:Key="GrayColor" PresentationOptions:Freeze="True">#7F7F7F</Color>
     <Color x:Key="TransparentColor" PresentationOptions:Freeze="True">Transparent</Color>
 

@@ -106,6 +106,9 @@
     </Compile>
     <Compile Include="Services\AreaNavigator.cs" />
     <Compile Include="Services\PPRPApp.cs" />
+    <Compile Include="Windows\MPDC2562AreaRemarkWindow.xaml.cs">
+      <DependentUpon>MPDC2562AreaRemarkWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MPDC\MPDC2566PreviewWindow.xaml.cs">
       <DependentUpon>MPDC2566PreviewWindow.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\MPD\MPD2562VoteSummaryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MPDC2562AreaRemarkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
