@@ -7,8 +7,10 @@ Election.Analytic.System - PPRP  #349
 Election.Analytic.System - PPRP  #348
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #347
-- 
+- Update projects
+  - Implements MPD2562PollingUnitSummary ImportAreaRemark #9.
 
 [commited]
 Election.Analytic.System - PPRP  #346
