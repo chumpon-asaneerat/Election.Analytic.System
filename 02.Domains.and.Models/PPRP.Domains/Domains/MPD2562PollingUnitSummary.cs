@@ -79,6 +79,48 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static NDbResult<MPD2562PollingUnitSummary> Get(string provinceName, int pollingUnitNo)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<MPD2562PollingUnitSummary> ret = new NDbResult<MPD2562PollingUnitSummary>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM MPD2562PollingUnitSummary
+                     WHERE ProvinceName = @ProvinceName
+                       AND PollingUnitNo = @PollingUnitNo
+                ";
+
+                ret.Value = cnn.Query<MPD2562PollingUnitSummary>(query, 
+                    new { provinceName, pollingUnitNo }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
+            }
+
+            return ret;
+        }
+
         public static void Save(MPD2562PollingUnitSummary value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();

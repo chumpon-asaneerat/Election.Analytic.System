@@ -34,6 +34,12 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        private PollingUnitMenuItem _pullingUnitItem = null;
+
+        #endregion
+
         #region Helper Peroperties
 
         private PakMenuItem Current
@@ -69,6 +75,11 @@ namespace PPRP.Pages
         {
             var pollingUnit = (sender as Button).DataContext as PollingUnitMenuItem;
             LoadSummary(pollingUnit);
+        }
+
+        private void cmdAreaInfo_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAreaInfo();
         }
 
         #endregion
@@ -182,6 +193,21 @@ namespace PPRP.Pages
             win.ShowDialog();
         }
 
+        private void ShowAreaInfo()
+        {
+            MPD2562PollingUnitSummary summary = null;
+
+            if (null != _pullingUnitItem)
+            {
+                summary = MPD2562PollingUnitSummary.Get(
+                    _pullingUnitItem.ProvinceNameTH, _pullingUnitItem.PollingUnitNo).Value;
+            }
+
+            var win = PPRPApp.Windows.MPDC2562AreaRemark;
+            win.Setup(summary);
+            win.ShowDialog();
+        }
+
         private void LoadSummary(PollingUnitMenuItem pollingUnit)
         {
             txtPollingUnitInfo.Text = "-";
@@ -190,15 +216,17 @@ namespace PPRP.Pages
             txtRightCount.Text = "-";
             txtExerciseCount.Text = "-";
 
-            if (null == pollingUnit)
+            _pullingUnitItem = pollingUnit; // keep current
+
+            if (null == _pullingUnitItem)
                 return;
 
             txtPollingUnitInfo.Text = pollingUnit.DisplayText;
 
             var top6 = MPD2562PersonalVoteSummary.Gets(6,
-                pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+                _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
             var top16 = MPD2562PersonalVoteSummary.Gets(16,
-                pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+                _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
 
             int sum6 = 0;
             if (null != top6 && top6.Count > 0)
@@ -224,9 +252,9 @@ namespace PPRP.Pages
             lstSummary.ItemsSource = top6;
 
             lstCandidates.ItemsSource = MPDC2566Summary.Gets(
-                pollingUnit.ProvinceId, pollingUnit.PollingUnitNo).Value;
+                _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
 
-            UpdatePollingUnitSummary(pollingUnit.ProvinceNameTH, pollingUnit.PollingUnitNo);
+            UpdatePollingUnitSummary(_pullingUnitItem.ProvinceNameTH, _pullingUnitItem.PollingUnitNo);
         }
 
         private void UpdatePollingUnitSummary(string provinceName, int pollingUnitNo)
@@ -249,6 +277,7 @@ namespace PPRP.Pages
         public void Setup(ProvinceMenuItem province)
         {
             txtProvinceName.Text = "จ.";
+            _pullingUnitItem = null;
             lstPollingUnits.ItemsSource = null;
 
 

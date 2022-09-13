@@ -73,7 +73,8 @@
                                         Margin="2"
                                         Width="100"
                                         Content="ข้อมูลพื้นที่"
-                                        Style="{StaticResource InlineButton}" />
+                                        Style="{StaticResource InlineButton}" 
+                                        Click="cmdAreaInfo_Click"/>
                                 <TextBlock DockPanel.Dock="Right" Width="5" />
                                 <TextBlock x:Name="txtPollingUnitInfo"
                                            Foreground="{StaticResource WhiteBrush}"
