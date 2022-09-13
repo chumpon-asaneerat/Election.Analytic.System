@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -464,10 +465,13 @@ namespace Wpf.Canvas.Sample
 
         private Geometry CreateStreamGeometry(JsonShape jshape)
         {
+            GeometryGroup combine = new GeometryGroup();
+
+            RectangleD rect = new RectangleD();
+            int iCnt = 0;
+
             // Create a new stream geometry.
             StreamGeometry geometry = new StreamGeometry();
-
-            int iCnt = 0;
             // Obtain the stream geometry context for drawing each part.
             using (StreamGeometryContext ctx = geometry.Open())
             {
@@ -485,8 +489,15 @@ namespace Wpf.Canvas.Sample
                         System.Windows.Point pt = new System.Windows.Point(
                             jpart.Points[i, 0],
                             jpart.Points[i, 1]);
+
                         // Transform from lon/lat to canvas coordinates.
                         pt = this.shapeTransform.Transform(pt);
+
+                        // Calc Rectancle
+                        rect.Left = Math.Min(rect.Left, pt.X);
+                        rect.Top = Math.Min(rect.Top, pt.Y);
+                        rect.Right = Math.Max(rect.Left, pt.X);
+                        rect.Bottom = Math.Max(rect.Top, pt.Y);
 
                         if (i == 0)
                             ctx.BeginFigure(pt, true, false);
@@ -500,8 +511,38 @@ namespace Wpf.Canvas.Sample
 
             Console.WriteLine("Total: {0} pts", iCnt);
 
+            string text = string.Empty;
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                text = jshape.ADM3_EN.Trim();
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                text = jshape.ADM2_EN.Trim();
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                text = jshape.ADM1_EN.Trim();
+
+            // Create the formatted text based on the properties set.
+            FormattedText formattedText = new FormattedText(text,
+                CultureInfo.GetCultureInfo("en-us"),
+                FlowDirection.LeftToRight, new Typeface("Tahoma"),
+                16,
+                Brushes.White,
+                120 / 96);
+
+            var txtWd = formattedText.Width;
+            var txtHt = formattedText.Height;
+            var rectWd = rect.Right - rect.Left;
+            var rectHt = rect.Bottom - rect.Top;
+            var ptX = rectWd - txtWd;
+            var ptY = rectHt - txtHt;
+
+            System.Windows.Point centerPt = new Point(ptX, ptY);
+
+            Geometry textGeometry = formattedText.BuildGeometry(centerPt);
+
+            combine.Children.Add(geometry);
+            combine.Children.Add(textGeometry);
+
             // Return the created stream geometry.
-            return geometry;
+            return combine;
         }
 
         private void UpdateResourceUsage()
