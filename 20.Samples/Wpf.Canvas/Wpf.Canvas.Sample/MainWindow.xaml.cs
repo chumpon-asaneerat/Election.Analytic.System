@@ -163,12 +163,12 @@ namespace Wpf.Canvas.Sample
                     @"Maps\Yasothon\Thailand.Yasothon.json",
                     @"Maps\Yasothon\Kham Khuean Kaeo\Thailand.Yasothon.Kham Khuean Kaeo.json",
                     @"Maps\Yasothon\Kho Wang\Thailand.Yasothon.Kho Wang.json",
-                    //@"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
-                    //@"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
-                    //@"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
-                    //@"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
-                    //@"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
-                    //@"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
+                    @"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
+                    @"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
+                    @"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
+                    @"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
+                    @"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
+                    @"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
                     @"Maps\Yasothon\Thai Charoen\Thailand.Yasothon.Thai Charoen.json"
                 };
                 foreach (var file in files)
