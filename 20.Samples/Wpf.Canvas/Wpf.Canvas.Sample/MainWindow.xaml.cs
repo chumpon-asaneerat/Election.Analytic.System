@@ -295,6 +295,7 @@ namespace Wpf.Canvas.Sample
 
             foreach (var jshape in map.Shapes)
             {
+                /*
                 string text = string.Empty;
                 if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
                     text = jshape.ADM3_EN.Trim();
@@ -321,6 +322,10 @@ namespace Wpf.Canvas.Sample
                 grid.Children.Add(textBlock); // add text
 
                 this.canvas.Children.Add(grid); // add to canvas
+                */
+
+                var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                this.canvas.Children.Add(shape); // add to canvas
             }
         }
 
@@ -344,6 +349,7 @@ namespace Wpf.Canvas.Sample
 
                 foreach (var jshape in map.Shapes)
                 {
+                    /*
                     string text = string.Empty;
                     if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
                         text = jshape.ADM3_EN.Trim();
@@ -367,6 +373,10 @@ namespace Wpf.Canvas.Sample
                     grid.Children.Add(textBlock); // add text
 
                     this.canvas.Children.Add(grid); // add to canvas
+                    */
+
+                    var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                    this.canvas.Children.Add(shape); // add to canvas
                 }
 
                 i++;
