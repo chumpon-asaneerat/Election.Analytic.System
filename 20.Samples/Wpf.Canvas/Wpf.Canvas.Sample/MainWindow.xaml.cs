@@ -295,8 +295,32 @@ namespace Wpf.Canvas.Sample
 
             foreach (var jshape in map.Shapes)
             {
+                string text = string.Empty;
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                    text = jshape.ADM3_EN.Trim();
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                    text = jshape.ADM2_EN.Trim();
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                    text = jshape.ADM1_EN.Trim();
+
                 var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
-                this.canvas.Children.Add(shape);
+
+                var grid = new Grid();
+                grid.Children.Add(shape); // add shape.
+
+                var textBlock = new TextBlock();
+                textBlock.Text = text;
+                textBlock.VerticalAlignment = VerticalAlignment.Center;
+                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                textBlock.TextAlignment = TextAlignment.Center;
+                textBlock.Foreground = Brushes.WhiteSmoke;
+                textBlock.Background = Brushes.Silver;
+                textBlock.Height = 20;
+                textBlock.Width = 200;
+
+                grid.Children.Add(textBlock); // add text
+
+                this.canvas.Children.Add(grid); // add to canvas
             }
         }
 
@@ -320,8 +344,29 @@ namespace Wpf.Canvas.Sample
 
                 foreach (var jshape in map.Shapes)
                 {
+                    string text = string.Empty;
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                        text = jshape.ADM3_EN.Trim();
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                        text = jshape.ADM2_EN.Trim();
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                        text = jshape.ADM1_EN.Trim();
+
                     var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
-                    this.canvas.Children.Add(shape);
+
+                    var grid = new Grid();
+                    grid.Children.Add(shape); // add shape.
+
+                    var textBlock = new TextBlock();
+                    textBlock.Text = text;
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+                    textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                    textBlock.TextAlignment = TextAlignment.Center;
+                    textBlock.Foreground = Brushes.Yellow;
+
+                    grid.Children.Add(textBlock); // add text
+
+                    this.canvas.Children.Add(grid); // add to canvas
                 }
 
                 i++;
@@ -437,7 +482,6 @@ namespace Wpf.Canvas.Sample
                             ctx.BeginFigure(pt, true, false);
                         else
                             ctx.LineTo(pt, isStroked, true);
-
 
                         iCnt++; // count all points
                     }
