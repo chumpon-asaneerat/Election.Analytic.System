@@ -9,7 +9,7 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
-        <sys:String x:Key="PageTitle">ข้อมูลพื้นที่ 2562 หมายเหตุเพิ่มเติม</sys:String>
+        <sys:String x:Key="PageTitle">ข้อมูลพื้นที่ 2562 (เพิ่มเติม)</sys:String>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -72,7 +72,7 @@
                                 Click="cmdHome_Click" />
                         <Grid />
                     </DockPanel>
-                    <ListView x:Name="lvMPD2562Summaries" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvMPD2562Items" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="จังหวัด"

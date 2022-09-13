@@ -88,6 +88,12 @@ namespace PPRP.Pages
             GotoMPD2562PollingUnitSummary();
         }
 
+        private void mnu07_Click(object sender, RoutedEventArgs e)
+        {
+            // ข้อมูลพื้นที่ 2562 (เพิ่มเติม)
+            GotoMPD2562AreaRemarkSummary();
+        }
+
         #endregion
 
         #region Group 2 - ข้อมูลทางภูมิศาสตร์
@@ -181,6 +187,13 @@ namespace PPRP.Pages
         private void GotoMPD2562x350UnitSummary()
         {
             var page = PPRPApp.Pages.MPD2562x350UnitSummaryManage;
+            page.Setup();
+            PageContentManager.Instance.Current = page;
+        }
+
+        private void GotoMPD2562AreaRemarkSummary()
+        {
+            var page = PPRPApp.Pages.MPD2562AreaRemarkManage;
             page.Setup();
             PageContentManager.Instance.Current = page;
         }

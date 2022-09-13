@@ -69,11 +69,9 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
-            /*
-            lvMPD2562x350Units.ItemsSource = null;
-            var summaries = MPD2562x350UnitSummary.Gets();
-            lvMPD2562x350Units.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562x350UnitSummary>();
-            */
+            lvMPD2562Items.ItemsSource = null;
+            var summaries = MPD2562PollingUnitSummary.Gets();
+            lvMPD2562Items.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562PollingUnitSummary>();
         }
 
         #endregion
