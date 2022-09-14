@@ -36,6 +36,7 @@ namespace PPRP.Pages
 
         #region Helper Peroperties
 
+        /*
         private PakMenuItem Current
         {
             get { return AreaNavi.Instance.Current; }
@@ -50,6 +51,7 @@ namespace PPRP.Pages
                 return provinces;
             }
         }
+        */
 
         #endregion
 
