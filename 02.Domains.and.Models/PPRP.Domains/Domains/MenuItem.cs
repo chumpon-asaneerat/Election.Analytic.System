@@ -18,19 +18,16 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-	/*
-	public abstract class AreaMenuItem
+	public class AreaMenuItem
 	{
 		public const string PAK = "PAK";
 		public const string PROVINCE = "PROVINCE";
 		public const string POLLUNIT = "POLLUNIT";
 
-		public abstract string ItemType { get; set; }
-		public abstract string DisplayText { get; set; }
+		public virtual string ItemType { get; set; }
+		public virtual string DisplayText { get; set; }
 	}
-	*/
 
-	/*
 	public class PakMenuItem : AreaMenuItem
 	{
 		#region Internal Variables
@@ -136,9 +133,7 @@ namespace PPRP.Domains
 
 		#endregion
 	}
-	*/
 
-	/*
 	public class ProvinceMenuItem : AreaMenuItem
 	{
 		#region Constructor
@@ -234,9 +229,7 @@ namespace PPRP.Domains
 
 		#endregion
 	}
-	*/
 
-	/*
 	public class PollingUnitMenuItem : AreaMenuItem
 	{
 		#region Constructor
@@ -330,5 +323,4 @@ namespace PPRP.Domains
 
 		#endregion
 	}
-	*/
 }
