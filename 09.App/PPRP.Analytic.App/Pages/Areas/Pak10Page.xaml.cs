@@ -98,12 +98,13 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            /*
             MethodBase med = MethodBase.GetCurrentMethod();
 
             if (null == Provinces || Provinces.Count <= 0)
             {
                 med.Info("Provinces is null or Count : 0");
-                
+
             }
             else
             {
@@ -111,6 +112,7 @@ namespace PPRP.Pages
             }
 
             lstProvinces.ItemsSource = Provinces;
+            */
         }
 
         #endregion

@@ -98,6 +98,7 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            /*
             MethodBase med = MethodBase.GetCurrentMethod();
 
             if (null == Provinces || Provinces.Count <= 0)
@@ -111,6 +112,7 @@ namespace PPRP.Pages
             }
 
             lstProvinces.ItemsSource = Provinces;
+            */
         }
 
         #endregion
