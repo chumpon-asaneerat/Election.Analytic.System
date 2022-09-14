@@ -113,7 +113,11 @@ namespace PPRP.Pages
 
         private void GotoProvince(ProvinceMenuItem province)
         {
-
+            if (null == province)
+                return;
+            var page = PPRPApp.Pages.MPD2562VoteSummary;
+            page.Setup(province);
+            PageContentManager.Instance.Current = page;
         }
 
         #endregion
