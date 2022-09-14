@@ -43,7 +43,6 @@ namespace PPRP.Pages
             PageContentManager.Instance.Current = page;
         }
 
-        /*
         private void GotoPak(PakMenuItem pak)
         {
             AreaNavi.Instance.Current = pak; // set current.
@@ -116,16 +115,13 @@ namespace PPRP.Pages
         {
 
         }
-        */
 
         #endregion
 
         #region Button Handlers
 
-        private void cmdPak_Click(object sender, RoutedEventArgs e)
+        private void CmdPakProvinceClickCallback(AreaMenuItem item)
         {
-            /*
-            var item = (sender as Button).DataContext as AreaMenuItem;
             if (item.ItemType == AreaMenuItem.PAK)
             {
                 GotoPak(item as PakMenuItem);
@@ -134,7 +130,6 @@ namespace PPRP.Pages
             {
                 GotoProvince(item as ProvinceMenuItem);
             }
-            */
         }
 
         #endregion
@@ -166,8 +161,7 @@ namespace PPRP.Pages
                 }
             }
 
-            //lstPaks.ItemsSource = menuItems;
-            navPaks.DataContext = menuItems;
+            navPaks.Setup(menuItems, this.CmdPakProvinceClickCallback);
         }
 
         #endregion
