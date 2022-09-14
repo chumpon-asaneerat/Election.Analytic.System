@@ -13,6 +13,9 @@
                     <Expander.Header>
                         <Button Content="{Binding DisplayText}" />
                     </Expander.Header>
+                    <ListBox ItemsSource="{Binding Provinces}" 
+                             DisplayMemberPath="DisplayText"
+                             HorizontalContentAlignment="Stretch"/>
                 </Expander>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
