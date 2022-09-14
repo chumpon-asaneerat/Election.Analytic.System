@@ -94,7 +94,6 @@ namespace PPRP
                 Current = Regions[0];
             else Current = Regions[idx];
         }
-        */
 
         #endregion
 
