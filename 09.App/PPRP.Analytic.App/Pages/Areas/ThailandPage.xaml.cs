@@ -143,7 +143,6 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-            /*
             MethodBase med = MethodBase.GetCurrentMethod();
 
             if (null != AreaNavi.Instance.Regions)
@@ -164,22 +163,10 @@ namespace PPRP.Pages
                     if (null == pak) continue;
                     // add Pak
                     menuItems.Add(pak);
-
-                    // Attemp later
-                    // extract provinces
-                    //var provinces = pak.Provinces;
-                    //if (null == provinces) continue;
-                    //foreach (var province in provinces)
-                    //{
-                    //    if (null == province) continue;
-                    //    // add Province
-                    //    menuItems.Add(province);
-                    //}
                 }
             }
 
             lstPaks.ItemsSource = menuItems;
-            */
         }
 
         #endregion
