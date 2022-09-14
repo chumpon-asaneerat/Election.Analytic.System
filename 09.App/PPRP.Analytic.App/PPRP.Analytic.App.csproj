@@ -65,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ThailandMenuControl.xaml.cs">
+      <DependentUpon>ThailandMenuControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Areas\Pak01Page.xaml.cs">
       <DependentUpon>Pak01Page.xaml</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
     <Compile Include="Windows\MPDC\MPDC2566PreviewWindow.xaml.cs">
       <DependentUpon>MPDC2566PreviewWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\ThailandMenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

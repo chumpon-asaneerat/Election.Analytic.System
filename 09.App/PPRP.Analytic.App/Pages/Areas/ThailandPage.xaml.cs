@@ -167,6 +167,7 @@ namespace PPRP.Pages
             }
 
             //lstPaks.ItemsSource = menuItems;
+            navPaks.DataContext = menuItems;
         }
 
         #endregion
