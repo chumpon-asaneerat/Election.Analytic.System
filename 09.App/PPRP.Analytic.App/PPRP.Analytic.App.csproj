@@ -112,7 +112,6 @@
     <Compile Include="Windows\MPDC\MPDC2566PreviewWindow.xaml.cs">
       <DependentUpon>MPDC2566PreviewWindow.xaml</DependentUpon>
     </Compile>
-    <None Include="SingeltonSample.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
