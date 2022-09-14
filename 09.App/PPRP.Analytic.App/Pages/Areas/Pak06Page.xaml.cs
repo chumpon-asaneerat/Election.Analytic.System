@@ -77,7 +77,6 @@ namespace PPRP.Pages
             PageContentManager.Instance.Current = page;
         }
 
-        /*
         private void GotoVoteSummaryPage(ProvinceMenuItem province)
         {
             if (null == province)
@@ -86,7 +85,6 @@ namespace PPRP.Pages
             page.Setup(province);
             PageContentManager.Instance.Current = page;
         }
-        */
 
         #endregion
 
