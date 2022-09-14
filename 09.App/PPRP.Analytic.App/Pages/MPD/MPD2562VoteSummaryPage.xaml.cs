@@ -36,12 +36,12 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        //private PollingUnitMenuItem _pullingUnitItem = null;
+        private PollingUnitMenuItem _pullingUnitItem = null;
 
         #endregion
 
         #region Helper Peroperties
-        /*
+
         private PakMenuItem Current
         {
             get { return AreaNavi.Instance.Current; }
@@ -56,7 +56,7 @@ namespace PPRP.Pages
                 return provinces;
             }
         }
-        */
+
         #endregion
 
         #region Button Handlers
@@ -73,10 +73,8 @@ namespace PPRP.Pages
 
         private void cmdPollingUnit_Click(object sender, RoutedEventArgs e)
         {
-            /*
             var pollingUnit = (sender as Button).DataContext as PollingUnitMenuItem;
             LoadSummary(pollingUnit);
-            */
         }
 
         private void cmdAreaInfo_Click(object sender, RoutedEventArgs e)
@@ -118,7 +116,6 @@ namespace PPRP.Pages
 
         private void GotoPrevPage()
         {
-            /*
             AreaNavi.Instance.GoPrev();
 
             string regionId = (null != Current) ? Current.RegionId : string.Empty;
@@ -186,7 +183,6 @@ namespace PPRP.Pages
                     PageContentManager.Instance.Current = page;
                 }
             }
-            */
         }
 
         private void ShowPreview(MPDC2566Summary inst)
@@ -200,7 +196,6 @@ namespace PPRP.Pages
 
         private void ShowAreaInfo()
         {
-            /*
             MPD2562PollingUnitSummary summary = null;
 
             if (null != _pullingUnitItem)
@@ -212,10 +207,8 @@ namespace PPRP.Pages
             var win = PPRPApp.Windows.MPDC2562AreaRemark;
             win.Setup(summary);
             win.ShowDialog();
-            */
         }
 
-        /*
         private void LoadSummary(PollingUnitMenuItem pollingUnit)
         {
             txtPollingUnitInfo.Text = "-";
@@ -264,7 +257,7 @@ namespace PPRP.Pages
 
             UpdatePollingUnitSummary(_pullingUnitItem.ProvinceNameTH, _pullingUnitItem.PollingUnitNo);
         }
-        */
+
         private void UpdatePollingUnitSummary(string provinceName, int pollingUnitNo)
         {
             txtPollingUnitCount.Text = "-";
@@ -282,7 +275,6 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        /*
         public void Setup(ProvinceMenuItem province)
         {
             txtProvinceName.Text = "จ.";
@@ -302,7 +294,6 @@ namespace PPRP.Pages
                 LoadSummary(items[0]); // update display
             }
         }
-        */
 
         #endregion
     }
