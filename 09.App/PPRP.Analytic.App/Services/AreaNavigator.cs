@@ -20,7 +20,7 @@ namespace PPRP
     {
         #region Internal Variables
 
-        //private List<PakMenuItem> _regions = null;
+        private List<PakMenuItem> _regions = null;
         
         #endregion
 
@@ -38,17 +38,14 @@ namespace PPRP
         /// </summary>
         ~AreaNavi()
         {
-            /*
             Current = null;
             _regions = null;
-            */
         }
 
         #endregion
 
         #region Public Methods
 
-        /*
         public int GetPakByMenuItem(PakMenuItem item)
         {
             return null != item ? GetPakByRegionId(item.RegionId) : -1;
@@ -103,7 +100,6 @@ namespace PPRP
 
         #region Public Properties
 
-        /*
         /// <summary>
         /// Gets Pak Menu items.
         /// </summary>
@@ -129,7 +125,6 @@ namespace PPRP
         }
 
         public PakMenuItem Current { get; set; }
-        */
 
         #endregion
     }
