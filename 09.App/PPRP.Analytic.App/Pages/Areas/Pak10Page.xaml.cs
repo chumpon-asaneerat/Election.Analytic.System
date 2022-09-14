@@ -36,7 +36,6 @@ namespace PPRP.Pages
 
         #region Helper Peroperties
 
-        /*
         private PakMenuItem Current
         {
             get { return AreaNavi.Instance.Current; }
@@ -51,7 +50,6 @@ namespace PPRP.Pages
                 return provinces;
             }
         }
-        */
 
         #endregion
 
@@ -64,10 +62,8 @@ namespace PPRP.Pages
 
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
-            /*
             var province = (sender as Button).DataContext as ProvinceMenuItem;
             GotoVoteSummaryPage(province);
-            */
         }
 
         #endregion
