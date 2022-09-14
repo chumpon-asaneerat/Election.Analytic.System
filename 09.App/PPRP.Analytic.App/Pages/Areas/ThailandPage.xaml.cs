@@ -166,7 +166,7 @@ namespace PPRP.Pages
                 }
             }
 
-            lstPaks.ItemsSource = menuItems;
+            //lstPaks.ItemsSource = menuItems;
         }
 
         #endregion

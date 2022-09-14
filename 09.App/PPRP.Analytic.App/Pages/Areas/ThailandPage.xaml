@@ -38,6 +38,7 @@
                 <Run Text="10 ภาค ตามเขตตำรวจ ดังนี้" FontWeight="Light" />
             </TextBlock>
             <!--  PAK LISTS  -->
+            <!--
             <ListBox x:Name="lstPaks"
                      DockPanel.Dock="Top"
                      Width="Auto"
@@ -71,6 +72,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            -->
             <Grid />
         </DockPanel>
     </DockPanel>
