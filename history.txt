@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #364
 Election.Analytic.System - PPRP  #363
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #362
-- 
+- Update projects
+  - Re-Implements Pak-Province Navigate menu page #9.
 
 [commited]
 Election.Analytic.System - PPRP  #361
