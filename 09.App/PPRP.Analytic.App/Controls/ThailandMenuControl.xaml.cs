@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+#endregion
+
 namespace PPRP.Controls
 {
     /// <summary>
@@ -20,9 +24,36 @@ namespace PPRP.Controls
     /// </summary>
     public partial class ThailandMenuControl : UserControl
     {
+        #region Constructor
+
         public ThailandMenuControl()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region Button Handlers
+
+        private void cmdPak_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdProvince_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void Setup()
+        {
+
+        }
+
+        #endregion
     }
 }
