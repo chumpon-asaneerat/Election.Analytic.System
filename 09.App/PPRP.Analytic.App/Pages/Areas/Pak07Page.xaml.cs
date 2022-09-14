@@ -77,7 +77,6 @@ namespace PPRP.Pages
             PageContentManager.Instance.Current = page;
         }
 
-        /*
         private void GotoVoteSummaryPage(ProvinceMenuItem province)
         {
             if (null == province)
@@ -86,7 +85,6 @@ namespace PPRP.Pages
             page.Setup(province);
             PageContentManager.Instance.Current = page;
         }
-        */
 
         #endregion
 
@@ -94,7 +92,6 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-            /*
             MethodBase med = MethodBase.GetCurrentMethod();
 
             if (null == Provinces || Provinces.Count <= 0)
@@ -108,7 +105,6 @@ namespace PPRP.Pages
             }
 
             lstProvinces.ItemsSource = Provinces;
-            */
         }
 
         #endregion
