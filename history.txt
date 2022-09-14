@@ -19,9 +19,12 @@ Election.Analytic.System - PPRP  #355
 Election.Analytic.System - PPRP  #354
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #353
-- 
+- Update projects
+  - Re-Implements Pak-Province Navigate menu page #1.
 
+[commited]
 Election.Analytic.System - PPRP  #352 (Milestone before changes Pak-Province menu)
 - Re Commit projects before changes Pak-Province menu.
 

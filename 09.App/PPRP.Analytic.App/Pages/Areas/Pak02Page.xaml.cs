@@ -62,8 +62,10 @@ namespace PPRP.Pages
 
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
+            /*
             var province = (sender as Button).DataContext as ProvinceMenuItem;
             GotoVoteSummaryPage(province);
+            */
         }
 
         #endregion
