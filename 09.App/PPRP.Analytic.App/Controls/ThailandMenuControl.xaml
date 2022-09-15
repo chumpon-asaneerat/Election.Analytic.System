@@ -6,56 +6,51 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
-    <ItemsControl ItemsSource="{Binding}">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Expander Style="{StaticResource ExpanderRightToggleStyle}">
-                    <Expander.Header>
-                        <Hyperlink x:Name="cmdPak" Click="cmdPak_Click">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ItemsControl ItemsSource="{Binding}"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Expander Style="{StaticResource ExpanderRightToggleStyle}" IsExpanded="True">
+                        <Expander.Header>
                             <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="30" />
                                 </Grid.ColumnDefinitions>
-                                <Border Background="Beige"
+                                <Button x:Name="cmdPak"
                                         Grid.Column="0"
-                                        CornerRadius="12, 12, 0, 0"
-                                        HorizontalAlignment="Stretch"
-                                        VerticalAlignment="Stretch">
-                                    <TextBlock Margin="5"
-                                               Text="{Binding DisplayText}"
-                                               FontSize="{StaticResource FontSize18}"
-                                               TextAlignment="Left"
-                                               HorizontalAlignment="Stretch"
-                                               VerticalAlignment="Center" />
-                                </Border>
-                            </Grid>
-                        </Hyperlink>
-                    </Expander.Header>
-                    <ListBox ItemsSource="{Binding Provinces}"
-                             HorizontalContentAlignment="Stretch"
-                             ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
-                             Style="{StaticResource SingleSelectWrapListBox}"
-                             BorderBrush="Transparent"
-                             BorderThickness="0">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Button x:Name="cmdProvince"
-                                        Margin="1"
-                                        Width="Auto"
+                                        Content="{Binding DisplayText}"
                                         Style="{StaticResource InlineButton}"
-                                        Click="cmdProvince_Click">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Width="10" />
-                                        <TextBlock Text="{Binding DisplayText}" />
-                                        <TextBlock Width="10" />
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Expander>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+                                        Click="cmdPak_Click" />
+                            </Grid>
+                        </Expander.Header>
+                        <ListBox ItemsSource="{Binding Provinces}"
+                                 Margin="5, 2"
+                                 HorizontalContentAlignment="Stretch"
+                                 ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
+                                 Style="{StaticResource SingleSelectWrapListBox}"
+                                 BorderThickness="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="cmdProvince"
+                                            Margin="1"
+                                            Width="Auto"
+                                            Style="{StaticResource InlineButton}"
+                                            Click="cmdProvince_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="10" />
+                                            <TextBlock Text="{Binding DisplayText}" />
+                                            <TextBlock Width="10" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Expander>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
 </UserControl>
