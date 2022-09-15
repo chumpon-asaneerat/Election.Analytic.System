@@ -120,7 +120,7 @@ namespace PPRP
 
         public bool HasRegions
         {
-            get { return (null == Regions || Regions.Count <= 0); }
+            get { return (null != Regions && Regions.Count > 0); }
         }
 
         public PakMenuItem Current { get; set; }

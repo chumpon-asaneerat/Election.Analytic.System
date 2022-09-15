@@ -115,6 +115,14 @@ namespace PPRP.Pages
         {
             if (null == province)
                 return;
+
+            if (null == AreaNavi.Instance.Current ||
+                AreaNavi.Instance.Current.RegionId != province.RegionId)
+            {
+                // Auto select current to region
+                AreaNavi.Instance.GotoPak(province.RegionId);
+            }
+
             var page = PPRPApp.Pages.MPD2562VoteSummary;
             page.Setup(province);
             PageContentManager.Instance.Current = page;
