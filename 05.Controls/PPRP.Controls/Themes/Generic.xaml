@@ -20,6 +20,8 @@
 
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListView.xaml" />
+
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.Expander.xaml" />
         <!--
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.xxx.xaml" />
         -->

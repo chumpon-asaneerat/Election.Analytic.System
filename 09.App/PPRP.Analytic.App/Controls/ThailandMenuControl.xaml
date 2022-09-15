@@ -9,13 +9,28 @@
     <ItemsControl ItemsSource="{Binding}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Expander>
+                <Expander Style="{StaticResource ExpanderRightToggleStyle}">
                     <Expander.Header>
-                        <Button x:Name="cmdPak" Content="{Binding DisplayText}" 
-                                Width="Auto"
-                                MinWidth="300"
-                                Style="{StaticResource InlineButton}"
-                                Click="cmdPak_Click"/>
+                        <Hyperlink x:Name="cmdPak" Click="cmdPak_Click">
+                            <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <Border Background="Beige"
+                                        Grid.Column="0"
+                                        CornerRadius="12, 12, 0, 0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch">
+                                    <TextBlock Margin="5"
+                                               Text="{Binding DisplayText}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               TextAlignment="Left"
+                                               HorizontalAlignment="Stretch"
+                                               VerticalAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </Hyperlink>
                     </Expander.Header>
                     <ListBox ItemsSource="{Binding Provinces}"
                              HorizontalContentAlignment="Stretch"
