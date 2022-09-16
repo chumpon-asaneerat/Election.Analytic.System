@@ -13,8 +13,9 @@ Election.Analytic.System - PPRP  #387
 Election.Analytic.System - PPRP  #386
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #385
-- 
+- Kik test join git
 
 [commited]
 Election.Analytic.System - PPRP  #384
