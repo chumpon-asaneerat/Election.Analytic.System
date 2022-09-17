@@ -16,8 +16,9 @@ Election.Analytic.System - PPRP  #426
 Election.Analytic.System - PPRP  #425
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #424
-- 
+- Update max width/height for Area Remark window.
 
 [commited]
 Election.Analytic.System - PPRP  #423
