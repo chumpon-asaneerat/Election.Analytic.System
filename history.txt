@@ -16,8 +16,10 @@ Election.Analytic.System - PPRP  #406
 Election.Analytic.System - PPRP  #405
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #404
-- 
+- Update projects
+  - Update MPD2562VoteSummaryPage remove ListBox Opacity.
 
 [commited]
 Election.Analytic.System - PPRP  #403
