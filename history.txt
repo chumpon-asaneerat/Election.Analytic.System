@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #404
 Election.Analytic.System - PPRP  #403
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #402
-- 
+- Update projects
+  - Update all pak pages ListBox Menu remove Opacity.
 
 [commited]
 Election.Analytic.System - PPRP  #401
