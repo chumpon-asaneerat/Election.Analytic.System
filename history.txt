@@ -22,8 +22,9 @@ Election.Analytic.System - PPRP  #414
 Election.Analytic.System - PPRP  #413
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #412
-- 
+- Update all pak background images.
 
 [commited]
 Election.Analytic.System - PPRP  #411

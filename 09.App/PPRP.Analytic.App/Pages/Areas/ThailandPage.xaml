@@ -39,42 +39,6 @@
                 <LineBreak />
                 <Run Text="10 ภาค ตามเขตตำรวจ ดังนี้" FontWeight="Light" />
             </TextBlock>
-            <!--  PAK LISTS  -->
-            <!--
-            <ListBox x:Name="lstPaks"
-                     DockPanel.Dock="Top"
-                     Width="Auto"
-                     Height="Auto"
-                     Opacity="0.7"
-                     BorderThickness="0"
-                     HorizontalContentAlignment="Stretch"
-                     ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
-                     Style="{StaticResource SingleSelectWrapListBox}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Button x:Name="cmdPak"
-                                Margin="1"
-                                Width="Auto"
-                                Style="{StaticResource InlineButton}"
-                                Click="cmdPak_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Width="10" />
-                                <TextBlock Text="{Binding DisplayText}" />
-                                <TextBlock Width="10" />
-                            </StackPanel>
-                        </Button>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Path=ItemType}" Value="PAK">
-                                <Setter TargetName="cmdPak" Property="Width" Value="Auto" />
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=ItemType}" Value="PROVINCE">
-                                <Setter TargetName="cmdPak" Property="Width" Value="Auto" />
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            -->
             <menu:ThailandMenuControl x:Name="navPaks"
                                       DockPanel.Dock="Top"
                                       Width="Auto"

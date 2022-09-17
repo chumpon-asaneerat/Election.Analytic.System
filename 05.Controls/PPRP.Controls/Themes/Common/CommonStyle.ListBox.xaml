@@ -146,7 +146,7 @@
                                 VerticalAlignment="Stretch"
                                 BorderThickness="0"
                                 CornerRadius="1"
-                                Background="#11F0F0F0">
+                                Background="Transparent">
                             <ContentPresenter Margin="0"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -202,7 +202,7 @@
                                 VerticalAlignment="Stretch"
                                 BorderThickness="0"
                                 CornerRadius="1"
-                                Background="#11F0F0F0">
+                                Background="Transparent">
                             <ContentPresenter Margin="0"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
