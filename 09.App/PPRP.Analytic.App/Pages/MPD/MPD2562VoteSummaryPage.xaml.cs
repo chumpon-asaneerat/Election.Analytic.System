@@ -255,7 +255,7 @@ namespace PPRP.Pages
                 _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
 
             int sum6 = 0;
-            if (null != top6 && top100.Count > 0)
+            if (null != top6 && top6.Count > 0)
             {
                 foreach (var item in top100)
                 {
