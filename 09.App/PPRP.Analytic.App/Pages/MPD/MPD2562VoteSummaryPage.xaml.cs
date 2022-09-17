@@ -84,6 +84,16 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region lstPollingUnits Handlers
+
+        private void lstPollingUnits_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var pollingUnit = lstPollingUnits.SelectedItem as PollingUnitMenuItem;
+            LoadSummary(pollingUnit);
+        }
+
+        #endregion
+
         #region lstCandidates ListBoxItem Handlers
 
         private void lstCandidates_ListBoxItem_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

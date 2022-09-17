@@ -254,7 +254,11 @@ namespace PPRP.Domains
 
 		public override string DisplayText
 		{
-			get { return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo); }
+			get 
+			{ 
+				//return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo);
+				return string.Format("เขต {0}", PollingUnitNo);
+			}
 			set { }
 		}
 

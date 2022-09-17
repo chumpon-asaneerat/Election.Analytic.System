@@ -15,8 +15,7 @@
                            DockPanel.Dock="Left"
                            Width="250">
                     <Border BorderThickness="1" BorderBrush="Silver">
-                        <DockPanel LastChildFill="True"
-                                   Background="{StaticResource WhiteBrush}">
+                        <DockPanel LastChildFill="True" Background="{StaticResource WhiteBrush}">
                             <!--  PROVINCE NAME INFO  -->
                             <TextBlock x:Name="txtProvinceName"
                                        DockPanel.Dock="Top"
@@ -28,13 +27,13 @@
                                 <TextBlock DockPanel.Dock="Bottom" Height="2" />
                                 <Button x:Name="cmdGotoThailandPage"
                                         DockPanel.Dock="Bottom"
-                                        Margin="5, 0"
+                                        Margin="5,0"
                                         Style="{StaticResource InlineButton}"
                                         Content="กลับสู่หน้าจอแผนที่ 10 ภาค"
                                         Click="cmdGotoThailandPage_Click" />
                                 <Button x:Name="cmdGotoPrev"
                                         DockPanel.Dock="Bottom"
-                                        Margin="5, 0"
+                                        Margin="5,0"
                                         Style="{StaticResource InlineButton}"
                                         Content="กลับสู่หน้าจอแผนที่ก่อนหน้า"
                                         Click="cmdGotoPrev_Click" />
@@ -44,15 +43,20 @@
                                      DockPanel.Dock="Top"
                                      BorderThickness="0"
                                      HorizontalContentAlignment="Stretch"
-                                     ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
-                                     Style="{StaticResource SingleSelectListBox}">
+                                     Style="{StaticResource SingleSelectListBox}"
+                                     SelectionChanged="lstPollingUnits_SelectionChanged">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="cmdPollingUnit"
-                                                Content="{Binding DisplayText}"
-                                                Width="Auto"
-                                                Style="{StaticResource InlineButton}"
-                                                Click="cmdPollingUnit_Click" />
+                                        <Border BorderThickness="0,0,0,1" BorderBrush="DimGray">
+                                            <TextBlock Margin="0,0,0,2" Cursor="Hand">
+                                                <Hyperlink TextDecorations="None">
+                                                    <TextBlock Margin="3,1"
+                                                               Text="{Binding DisplayText}"
+                                                               FontFamily="{DynamicResource THSarabun}"
+                                                               FontSize="{StaticResource FontSize24}" />
+                                                </Hyperlink>
+                                            </TextBlock>
+                                        </Border>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
@@ -60,7 +64,7 @@
                     </Border>
                 </DockPanel>
                 <DockPanel LastChildFill="True" DockPanel.Dock="Top">
-                    <Grid Margin="3, 1">
+                    <Grid Margin="3,1">
                         <Border CornerRadius="3"
                                 BorderThickness="1"
                                 BorderBrush="DimGray"
@@ -73,8 +77,8 @@
                                         Margin="2"
                                         Width="100"
                                         Content="ข้อมูลพื้นที่"
-                                        Style="{StaticResource InlineButton}" 
-                                        Click="cmdAreaInfo_Click"/>
+                                        Style="{StaticResource InlineButton}"
+                                        Click="cmdAreaInfo_Click" />
                                 <TextBlock DockPanel.Dock="Right" Width="5" />
                                 <TextBlock x:Name="txtPollingUnitInfo"
                                            Foreground="DimGray"

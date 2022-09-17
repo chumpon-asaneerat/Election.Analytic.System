@@ -4,8 +4,10 @@
 Election.Analytic.System - PPRP  #409
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #408
-- 
+- Update projects
+  - Update MPD2562VoteSummaryPage change listbox item template.
 
 [commited]
 Election.Analytic.System - PPRP  #407
