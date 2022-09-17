@@ -128,7 +128,7 @@
     <Compile Include="Pages\Menu\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MPDPreviewVoteSummaryPage.xaml.cs">
+    <Compile Include="Pages\Reports\MPDPreviewVoteSummaryPage.xaml.cs">
       <DependentUpon>MPDPreviewVoteSummaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MPD\MPD2562VoteSummaryPage.xaml.cs">
@@ -206,7 +206,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\MPDPreviewVoteSummaryPage.xaml">
+    <Page Include="Pages\Reports\MPDPreviewVoteSummaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

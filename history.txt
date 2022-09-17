@@ -7,8 +7,10 @@ Election.Analytic.System - PPRP  #419
 Election.Analytic.System - PPRP  #418
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #417
-- 
+- Update projects
+  - Implements print MPD print vote summary #3.
 
 [commited]
 Election.Analytic.System - PPRP  #416

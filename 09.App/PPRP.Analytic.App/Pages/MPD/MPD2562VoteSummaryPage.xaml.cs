@@ -76,6 +76,11 @@ namespace PPRP.Pages
             ShowAreaInfo();
         }
 
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
+        {
+            GotoPrintPreview();
+        }
+
         #endregion
 
         #region lstPollingUnits Handlers
@@ -275,6 +280,11 @@ namespace PPRP.Pages
             txtExerciseCount.Text = unitSum.ExerciseCount.ToString("n0");
         }
 
+        private void GotoPrintPreview()
+        {
+
+        }
+
         #endregion
 
         #region Public Methods
@@ -300,6 +310,37 @@ namespace PPRP.Pages
                 lstPollingUnits.SelectedIndex = 0; // auto select first item.
                 lstPollingUnits.ScrollIntoView(items[0]);
                 LoadSummary(items[0]); // update display
+            }
+        }
+
+        public void Setup(ProvinceMenuItem province, int selectIndex)
+        {
+            txtProvinceName.Text = "จ.";
+            _pullingUnitItem = null;
+            lstPollingUnits.SelectedIndex = -1;
+            lstPollingUnits.SelectedItem = null;
+            lstPollingUnits.ItemsSource = null;
+
+            if (null == province)
+                return;
+
+            txtProvinceName.Text = "จ." + province.ProvinceNameTH;
+            var items = PollingUnitMenuItem.Gets(province.RegionId, province.ProvinceId).Value;
+            lstPollingUnits.ItemsSource = items;
+            if (null != items && items.Count > 0)
+            {
+                if (selectIndex > -1 && selectIndex < items.Count)
+                {
+                    lstPollingUnits.SelectedIndex = selectIndex; // auto select first item.
+                    lstPollingUnits.ScrollIntoView(items[selectIndex]);
+                    LoadSummary(items[selectIndex]); // update display
+                }
+                else
+                {
+                    lstPollingUnits.SelectedIndex = 0; // auto select first item.
+                    lstPollingUnits.ScrollIntoView(items[0]);
+                    LoadSummary(items[0]); // update display
+                }
             }
         }
 
