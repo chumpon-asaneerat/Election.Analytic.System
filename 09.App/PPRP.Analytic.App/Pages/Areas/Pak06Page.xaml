@@ -11,7 +11,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak6.jpg" Stretch="Uniform" />
         </Grid.Background>
-        <DockPanel LastChildFill="True" Opacity="0.7">
+        <DockPanel LastChildFill="True">
             <DockPanel DockPanel.Dock="Left"
                        LastChildFill="True"
                        Width="300">
