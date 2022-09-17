@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #398
 Election.Analytic.System - PPRP  #397
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #396
-- 
+- Update projects
+  - Implements import MPD2566PollingUnitSummary #4.
 
 [commited]
 Election.Analytic.System - PPRP  #395

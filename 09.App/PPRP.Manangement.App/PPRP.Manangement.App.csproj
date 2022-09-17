@@ -112,7 +112,7 @@
     <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
       <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MPD2566PollingUnitSummaryManagePage.xaml.cs">
+    <Compile Include="Pages\MPD\MPD2566PollingUnitSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2566PollingUnitSummaryManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MPD\MPD2562AreaRemarkManagePage.xaml.cs">
@@ -185,7 +185,7 @@
     <Compile Include="Windows\Excels\MPD\ImportMPD2562AreaRemarkSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2562AreaRemarkSummaryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\ImportMPD2566PollingUnitSummaryWindow.xaml.cs">
+    <Compile Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2566PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
     <None Include="SingeltonSample.cs" />
@@ -217,7 +217,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MPD2566PollingUnitSummaryManagePage.xaml">
+    <Page Include="Pages\MPD\MPD2566PollingUnitSummaryManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,7 +313,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\ImportMPD2566PollingUnitSummaryWindow.xaml">
+    <Page Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
