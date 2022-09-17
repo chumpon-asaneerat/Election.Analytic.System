@@ -83,6 +83,17 @@
                                             ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2562
                                         </Hyperlink>
                                     </TextBlock>
+                                    <!-- MPD Polling Station year 66-->
+                                    <TextBlock FontFamily="{DynamicResource THSarabun}"
+                                               FontSize="{StaticResource FontSize18}"
+                                               Margin="15,5,5,5"
+                                               Cursor="Hand">
+                                        <Hyperlink x:Name="mnu08"
+                                                   Foreground="{StaticResource MainMenuItemForeground}"
+                                                   Click="mnu08_Click">
+                                            ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต ปี 2566
+                                        </Hyperlink>
+                                    </TextBlock>
                                     <!-- MPD Area Remark year 62  -->
                                     <TextBlock FontFamily="{DynamicResource THSarabun}"
                                                FontSize="{StaticResource FontSize18}"
