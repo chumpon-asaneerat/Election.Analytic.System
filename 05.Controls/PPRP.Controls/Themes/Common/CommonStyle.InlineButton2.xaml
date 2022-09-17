@@ -10,49 +10,49 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!--  CONST INLINE BUTTON BRUSHS AND COLORS  -->
-    <SolidColorBrush x:Key="InlineButtonForground"
+    <SolidColorBrush x:Key="InlineButtonForgroundv2"
                      PresentationOptions:Freeze="True"
                      Color="{StaticResource WhiteColor}" />
 
-    <SolidColorBrush x:Key="InlineButtonPressedForground"
+    <SolidColorBrush x:Key="InlineButtonPressedForgroundv2"
                      PresentationOptions:Freeze="True"
                      Color="WhiteSmoke" />
 
-    <SolidColorBrush x:Key="InlineButtonDisableForground"
+    <SolidColorBrush x:Key="InlineButtonDisableForgroundv2"
                      PresentationOptions:Freeze="True"
                      Color="DimGray" />
 
-    <SolidColorBrush x:Key="InlineButtonOuterBorderBrush"
+    <SolidColorBrush x:Key="InlineButtonOuterBorderBrushv2"
                      PresentationOptions:Freeze="True"
                      Color="#7FFFFFFF" />
 
-    <SolidColorBrush x:Key="InlineButtonInnerBackground"
+    <SolidColorBrush x:Key="InlineButtonInnerBackgroundv2"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueMediumColor}" />
-    <SolidColorBrush x:Key="InlineButtonInnerBorderBrush"
+                     Color="{StaticResource BlueLightColor2}" />
+    <SolidColorBrush x:Key="InlineButtonInnerBorderBrushv2"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueMediumColor}" />
+                     Color="{StaticResource BlueLightColor3}" />
 
-    <SolidColorBrush x:Key="InlineButtonFocusedBorderBrush"
+    <SolidColorBrush x:Key="InlineButtonFocusedBorderBrushv2"
                      PresentationOptions:Freeze="True"
                      Color="{StaticResource BlueLightColor}" />
 
-    <Color x:Key="InlineButtonGlowColor1">#334488FF</Color>
-    <Color x:Key="InlineButtonGlowColor2">#B24488FF</Color>
+    <Color x:Key="InlineButtonGlowColor1v2">#334488FF</Color>
+    <Color x:Key="InlineButtonGlowColor2v2">#B24488FF</Color>
 
-    <Color x:Key="InlineButtonShineColor1">#99FFFFFF</Color>
-    <Color x:Key="InlineButtonShineColor2">#33FFFFFF</Color>
+    <Color x:Key="InlineButtonShineColor1v2">#99FFFFFF</Color>
+    <Color x:Key="InlineButtonShineColor2v2">#33FFFFFF</Color>
 
-    <SolidColorBrush x:Key="InlineButtonPressBorderBackgound"
+    <SolidColorBrush x:Key="InlineButtonPressBorderBackgoundv2"
                      PresentationOptions:Freeze="True"
                      Color="{StaticResource BlueMediumColor}" />
 
-    <SolidColorBrush x:Key="InlineButtonDisableBorderBackgound"
+    <SolidColorBrush x:Key="InlineButtonDisableBorderBackgoundv2"
                      PresentationOptions:Freeze="True"
                      Color="#7FAAAAAA" />
 
     <!--  CONST BUTTON CONTROL TEMPLATE  -->
-    <ControlTemplate x:Key="InlineButtonTemplate" TargetType="{x:Type Button}">
+    <ControlTemplate x:Key="InlineButtonTemplatev2" TargetType="{x:Type Button}">
         <ControlTemplate.Resources>
             <Storyboard x:Key="Timeline1">
                 <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
@@ -70,13 +70,13 @@
             </Storyboard>
         </ControlTemplate.Resources>
         <Border Padding="1"
-                BorderBrush="{StaticResource InlineButtonOuterBorderBrush}"
+                BorderBrush="{StaticResource InlineButtonOuterBorderBrushv2}"
                 BorderThickness="0"
                 CornerRadius="4">
             <Border x:Name="border"
                     Padding="0"
-                    Background="{StaticResource InlineButtonInnerBackground}"
-                    BorderBrush="{StaticResource InlineButtonInnerBorderBrush}"
+                    Background="{StaticResource InlineButtonInnerBackgroundv2}"
+                    BorderBrush="{StaticResource InlineButtonInnerBorderBrushv2}"
                     BorderThickness="1"
                     Margin="1"
                     CornerRadius="4">
@@ -101,8 +101,8 @@
                                         <TranslateTransform X="-0.368" Y="-0.152" />
                                     </TransformGroup>
                                 </RadialGradientBrush.RelativeTransform>
-                                <GradientStop Offset="0" Color="{StaticResource InlineButtonGlowColor1}" />
-                                <GradientStop Offset="1" Color="{StaticResource InlineButtonGlowColor2}" />
+                                <GradientStop Offset="0" Color="{StaticResource InlineButtonGlowColor1v2}" />
+                                <GradientStop Offset="1" Color="{StaticResource InlineButtonGlowColor2v2}" />
                             </RadialGradientBrush>
                         </Border.Background>
                     </Border>
@@ -118,8 +118,8 @@
                             CornerRadius="4,4,0,0">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0.494,0.028" EndPoint="0.494,0.889">
-                                <GradientStop Offset="0" Color="{StaticResource InlineButtonShineColor1}" />
-                                <GradientStop Offset="1" Color="{StaticResource InlineButtonShineColor2}" />
+                                <GradientStop Offset="0" Color="{StaticResource InlineButtonShineColor1v2}" />
+                                <GradientStop Offset="1" Color="{StaticResource InlineButtonShineColor2v2}" />
                             </LinearGradientBrush>
                         </Border.Background>
                     </Border>
@@ -129,14 +129,14 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="shine" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Background" Value="{StaticResource InlineButtonPressBorderBackgound}" />
+                <Setter TargetName="border" Property="Background" Value="{StaticResource InlineButtonPressBorderBackgoundv2}" />
                 <Setter TargetName="glow" Property="Visibility" Value="Hidden" />
-                <Setter Property="Foreground" Value="{StaticResource InlineButtonPressedForground}" />
+                <Setter Property="Foreground" Value="{StaticResource InlineButtonPressedForgroundv2}" />
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
                 <Setter TargetName="border" Property="Padding" Value="0" />
                 <Setter TargetName="border" Property="BorderThickness" Value="2" />
-                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource InlineButtonFocusedBorderBrush}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource InlineButtonFocusedBorderBrushv2}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Trigger.EnterActions>
@@ -148,21 +148,21 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter TargetName="shine" Property="Visibility" Value="Hidden" />
-                <Setter TargetName="border" Property="Background" Value="{StaticResource InlineButtonDisableBorderBackgound}" />
+                <Setter TargetName="border" Property="Background" Value="{StaticResource InlineButtonDisableBorderBackgoundv2}" />
                 <Setter TargetName="glow" Property="Visibility" Value="Hidden" />
-                <Setter Property="Foreground" Value="{StaticResource InlineButtonDisableForground}" />
+                <Setter Property="Foreground" Value="{StaticResource InlineButtonDisableForgroundv2}" />
                 <Setter Property="Cursor" Value="Arrow" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <!--  CONST INLINE BUTTON STYLE  -->
-    <Style x:Key="InlineButton" TargetType="Button">
+    <Style x:Key="InlineButton2" TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{StaticResource InlineButtonForground}" />
+        <Setter Property="Foreground" Value="{StaticResource InlineButtonForgroundv2}" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
         <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="Template" Value="{DynamicResource InlineButtonTemplate}" />
+        <Setter Property="Template" Value="{DynamicResource InlineButtonTemplatev2}" />
     </Style>
 </ResourceDictionary>

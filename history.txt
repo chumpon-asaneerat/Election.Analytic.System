@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #408
 Election.Analytic.System - PPRP  #407
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #406
-- 
+- Update projects
+  - Update thailand menu button style (InlineButton for PAK, InlineButton2 for Province).
+  - Update all pak button style.
 
 [commited]
 Election.Analytic.System - PPRP  #405

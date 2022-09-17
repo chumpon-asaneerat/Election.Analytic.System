@@ -16,6 +16,7 @@
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.InlineButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.InlineButton2.xaml" />
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ImageButton.xaml" />
 
         <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;component/Themes/Common/CommonStyle.ListBox.xaml" />
