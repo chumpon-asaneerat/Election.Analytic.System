@@ -256,7 +256,15 @@ namespace PPRP.Domains
 		{
 			get 
 			{ 
-				//return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo);
+				return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo);
+			}
+			set { }
+		}
+
+		public string DisplayMenu
+		{
+			get
+			{
 				return string.Format("เขต {0}", PollingUnitNo);
 			}
 			set { }

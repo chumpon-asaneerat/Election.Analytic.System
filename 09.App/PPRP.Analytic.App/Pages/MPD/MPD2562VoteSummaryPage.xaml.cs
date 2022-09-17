@@ -71,12 +71,6 @@ namespace PPRP.Pages
             GotoPrevPage();
         }
 
-        private void cmdPollingUnit_Click(object sender, RoutedEventArgs e)
-        {
-            var pollingUnit = (sender as Button).DataContext as PollingUnitMenuItem;
-            LoadSummary(pollingUnit);
-        }
-
         private void cmdAreaInfo_Click(object sender, RoutedEventArgs e)
         {
             ShowAreaInfo();
@@ -289,6 +283,8 @@ namespace PPRP.Pages
         {
             txtProvinceName.Text = "จ.";
             _pullingUnitItem = null;
+            lstPollingUnits.SelectedIndex = -1;
+            lstPollingUnits.SelectedItem = null;
             lstPollingUnits.ItemsSource = null;
 
 
@@ -300,7 +296,9 @@ namespace PPRP.Pages
             lstPollingUnits.ItemsSource = items;
             if (null != items && items.Count > 0)
             {
+
                 lstPollingUnits.SelectedIndex = 0; // auto select first item.
+                lstPollingUnits.ScrollIntoView(items[0]);
                 LoadSummary(items[0]); // update display
             }
         }

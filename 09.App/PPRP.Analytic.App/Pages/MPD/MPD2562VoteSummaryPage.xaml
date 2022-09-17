@@ -20,8 +20,9 @@
                             <TextBlock x:Name="txtProvinceName"
                                        DockPanel.Dock="Top"
                                        FontSize="{StaticResource FontSize30}"
+                                       VerticalAlignment="Center"
                                        TextAlignment="Center" />
-                            <TextBlock Height="10" DockPanel.Dock="Top" />
+                            <TextBlock Height="3" DockPanel.Dock="Top" />
                             <!--  BUTTON NAV AREA  -->
                             <DockPanel DockPanel.Dock="Bottom" Margin="5">
                                 <TextBlock DockPanel.Dock="Bottom" Height="2" />
@@ -43,20 +44,23 @@
                                      DockPanel.Dock="Top"
                                      BorderThickness="0"
                                      HorizontalContentAlignment="Stretch"
-                                     Style="{StaticResource SingleSelectListBox}"
-                                     SelectionChanged="lstPollingUnits_SelectionChanged">
+                                     SelectionMode="Single"
+                                     IsSynchronizedWithCurrentItem="False"
+                                     SelectionChanged="lstPollingUnits_SelectionChanged"
+                                     VirtualizingPanel.IsVirtualizing="True"
+                                     VirtualizingPanel.VirtualizationMode="Recycling"
+                                     ItemContainerStyle="{StaticResource BasicListBoxItemStyle}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Border BorderThickness="0,0,0,1" BorderBrush="DimGray">
-                                            <TextBlock Margin="0,0,0,2" Cursor="Hand">
-                                                <Hyperlink TextDecorations="None">
-                                                    <TextBlock Margin="3,1"
-                                                               Text="{Binding DisplayText}"
-                                                               FontFamily="{DynamicResource THSarabun}"
-                                                               FontSize="{StaticResource FontSize24}" />
-                                                </Hyperlink>
-                                            </TextBlock>
-                                        </Border>
+                                        <TextBlock Margin="0,0,0,2" Cursor="Hand">
+                                            <Hyperlink TextDecorations="None">
+                                                <TextBlock Margin="3,1"
+                                                           Text="{Binding DisplayMenu}"
+                                                           VerticalAlignment="Center"
+                                                           FontFamily="{DynamicResource THSarabun}"
+                                                           FontSize="{StaticResource FontSize18}" />
+                                            </Hyperlink>
+                                        </TextBlock>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
