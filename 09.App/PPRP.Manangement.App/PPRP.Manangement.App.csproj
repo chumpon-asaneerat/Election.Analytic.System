@@ -112,6 +112,9 @@
     <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
       <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPD2566PollingUnitSummaryManagePage.xaml.cs">
+      <DependentUpon>MPD2566PollingUnitSummaryManagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPD\MPD2562AreaRemarkManagePage.xaml.cs">
       <DependentUpon>MPD2562AreaRemarkManagePage.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MPD2566PollingUnitSummaryManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
