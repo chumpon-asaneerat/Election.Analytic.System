@@ -213,11 +213,10 @@ namespace PPRP.Domains
 					SELECT A.RegionId
 						 , A.ProvinceId
 						 , A.ProvinceNameTH
-						 , COUNT(B.PollingUnitNo) AS UnitCount
-					  FROM MProvince A 
-						   LEFT JOIN (SELECT DISTINCT ProvinceId, PollingUnitNo FROM PollingStation) B ON 
-							 A.ProvinceId = B.ProvinceId
+						 , COUNT(A.PollingUnitNo) AS UnitCount
+					  FROM MPDPollingUnitSummary A 
 					 WHERE A.RegionId = @RegionId
+					   AND A.RegionId IS NOT NULL
 					 GROUP BY A.RegionId
 							, A.ProvinceId
 							, A.ProvinceNameTH

@@ -16,8 +16,10 @@ Election.Analytic.System - PPRP  #416
 Election.Analytic.System - PPRP  #415
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #414
-- 
+- Update projects
+  - Implements supports PollingStation 2566 in manu #2.
 
 [commited]
 Election.Analytic.System - PPRP  #413
