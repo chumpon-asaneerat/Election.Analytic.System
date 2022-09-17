@@ -128,7 +128,7 @@
     <Compile Include="Pages\Menu\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Reports\MPDPreviewVoteSummaryPage.xaml.cs">
+    <Compile Include="Pages\Preview\MPDPreviewVoteSummaryPage.xaml.cs">
       <DependentUpon>MPDPreviewVoteSummaryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MPD\MPD2562VoteSummaryPage.xaml.cs">
@@ -206,7 +206,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Reports\MPDPreviewVoteSummaryPage.xaml">
+    <Page Include="Pages\Preview\MPDPreviewVoteSummaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +303,9 @@
     <Resource Include="Images\Maps\Pak8.jpg" />
     <Resource Include="Images\Maps\Pak9.jpg" />
     <Resource Include="Images\Maps\Thailand.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,7 +36,8 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        private PollingUnitMenuItem _pullingUnitItem = null;
+        private ProvinceMenuItem _provinceMenuItem = null;
+        private int _PollingItemIndex = 0;
         private MPDPrintVoteSummary _item = null;
 
         #endregion
@@ -63,7 +64,7 @@ namespace PPRP.Pages
         {
             // Report Menu Page
             var page = PPRPApp.Pages.MPD2562VoteSummary;
-            page.Setup(null, 0);
+            page.Setup(_provinceMenuItem, _PollingItemIndex);
             PageContentManager.Instance.Current = page;
         }
 
@@ -74,7 +75,10 @@ namespace PPRP.Pages
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                this.rptViewer.Print(ReportDisplayName);
+                if (null != _provinceMenuItem)
+                {
+                    this.rptViewer.Print(ReportDisplayName);
+                }
             }
             catch (Exception ex)
             {
@@ -136,9 +140,40 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup()
+        public void Setup(ProvinceMenuItem menuItem, int pollingItemIndex, MPDPrintVoteSummary item)
         {
-            _item = null;
+            _provinceMenuItem = menuItem;
+            _PollingItemIndex = pollingItemIndex;
+            if (null == _provinceMenuItem)
+            {
+                // something invalid?.
+            }
+
+            _item = item;
+            var model = GetReportModel();
+            if (null == model ||
+                null == model.DataSources || model.DataSources.Count <= 0 ||
+                null == model.DataSources[0] || null == model.DataSources[0].Items)
+            {
+                /*
+                var win = TODApp.Windows.MessageBox;
+                win.Setup("ไม่พบข้อมูลในการจัดพิมพ์รายงาน.", "DMT - Tour of Duty");
+                win.ShowDialog();
+                */
+                this.rptViewer.ClearReport();
+            }
+            else
+            {
+                MethodBase med = MethodBase.GetCurrentMethod();
+                try
+                {
+                    this.rptViewer.LoadReport(model);
+                }
+                catch (Exception ex)
+                {
+                    med.Err(ex);
+                }
+            }
         }
 
         #endregion

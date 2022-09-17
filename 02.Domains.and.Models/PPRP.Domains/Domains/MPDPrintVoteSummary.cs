@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PPRP.Domains
 {
+    #region MPDPrintVoteSummary
+
     public class MPDPrintVoteSummary
     {
         #region Person 1
@@ -73,7 +75,7 @@ namespace PPRP.Domains
         public byte[] CandidateImage { get; set; }
         public string CandidateFullName { get; set; }
         public string CandidateSubGroup { get; set; }
-        public int CandidatePrevYear { get; set; }
+        public string CandidatePrevYear { get; set; }
         public string CandidatePrevVote { get; set; }
         public string CandidateRemark { get; set; }
 
@@ -83,12 +85,14 @@ namespace PPRP.Domains
 
         public int PrevVoteYear { get; set; }
         public int PollingUnitCount { get; set; }
-        public int RightsCount { get; set; }
-        public int ExcerciseCount { get; set; }
-        public decimal ExcercisePercent { get; set; }
+        public int RightCount { get; set; }
+        public int ExerciseCount { get; set; }
+        public decimal ExercisePercent { get; set; }
         public int DifferenceVoteFromNo2 { get; set; }
         public int VoteCount7toLast { get; set; }
 
         #endregion
     }
+
+    #endregion
 }

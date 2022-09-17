@@ -292,19 +292,42 @@ namespace PPRP
 
             private static MPD2562VoteSummaryPage _MPD2562VoteSummaryPage;
 
-            /// <summary>Gets MPD2562VoteSummaryPage Page.</summary>
+            /// <summary>Gets MPD2562VoteSummary Page.</summary>
             public static MPD2562VoteSummaryPage MPD2562VoteSummary
             {
                 get
                 {
                     if (null == _MPD2562VoteSummaryPage)
                     {
-                        lock (typeof(Pak10Page))
+                        lock (typeof(MPD2562VoteSummaryPage))
                         {
                             _MPD2562VoteSummaryPage = new MPD2562VoteSummaryPage();
                         }
                     }
                     return _MPD2562VoteSummaryPage;
+                }
+            }
+
+            #endregion
+
+            #region MPDPreviewVoteSummary
+
+
+            private static MPDPreviewVoteSummaryPage _MPDPreviewVoteSummary;
+
+            /// <summary>Gets MPDPreviewVoteSummary Page.</summary>
+            public static MPDPreviewVoteSummaryPage MPDPreviewVoteSummary
+            {
+                get
+                {
+                    if (null == _MPDPreviewVoteSummary)
+                    {
+                        lock (typeof(MPDPreviewVoteSummaryPage))
+                        {
+                            _MPDPreviewVoteSummary = new MPDPreviewVoteSummaryPage();
+                        }
+                    }
+                    return _MPDPreviewVoteSummary;
                 }
             }
 
