@@ -533,6 +533,21 @@ namespace PPRP
 
             #endregion
 
+            #region Import MPD2566 Polling Unit Summary
+
+            /// <summary>Gets MPD2566 Polling Unit Summary Import Window.</summary>
+            public static PPRP.Windows.ImportMPD2566PollingUnitSummaryWindow ImportMPD2566PollingUnitSummary
+            {
+                get
+                {
+                    var ret = new PPRP.Windows.ImportMPD2566PollingUnitSummaryWindow();
+                    ret.Owner = Application.Current.MainWindow;
+                    return ret;
+                }
+            }
+
+            #endregion
+
             #region Import MPDC2566
 
             /// <summary>Gets MPDC 2566 Import Window.</summary>
