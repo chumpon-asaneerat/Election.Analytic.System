@@ -305,6 +305,28 @@ namespace PPRP
 
             #endregion
 
+            #region MPD2566 Polling Unit Summary
+
+            private static MPD2566PollingUnitSummaryManagePage _MPD2566PollingUnitSummaryManage;
+
+            /// <summary>Gets MPD2566 Polling Unit Summary Manage Page.</summary>
+            public static MPD2566PollingUnitSummaryManagePage MPD2566PollingUnitSummaryManage
+            {
+                get
+                {
+                    if (null == _MPD2566PollingUnitSummaryManage)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPD2566PollingUnitSummaryManage = new MPD2566PollingUnitSummaryManagePage();
+                        }
+                    }
+                    return _MPD2566PollingUnitSummaryManage;
+                }
+            }
+
+            #endregion
+
             #region Person Image
 
             private static PersonImageManagePage _PersonImageManage;
