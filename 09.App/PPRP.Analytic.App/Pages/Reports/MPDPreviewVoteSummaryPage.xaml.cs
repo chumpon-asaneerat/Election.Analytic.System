@@ -37,6 +37,7 @@ namespace PPRP.Pages
         #region Internal Variables
 
         private PollingUnitMenuItem _pullingUnitItem = null;
+        private MPDPrintVoteSummary _item = null;
 
         #endregion
 
@@ -56,6 +57,8 @@ namespace PPRP.Pages
 
         #region Private Methods
 
+        #region Navigate Methods
+
         private void GotoMPD2562VoteSummary()
         {
             // Report Menu Page
@@ -66,8 +69,68 @@ namespace PPRP.Pages
 
         private void Print()
         {
+            cmdPrint.Visibility = Visibility.Collapsed;
 
+            MethodBase med = MethodBase.GetCurrentMethod();
+            try
+            {
+                this.rptViewer.Print(ReportDisplayName);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            cmdPrint.Visibility = Visibility.Visible;
+
+            GotoMPD2562VoteSummary();
         }
+
+        #endregion
+
+        #region Report methods
+
+        private string ReportDisplayName
+        {
+            get { return "MPDVoteSummary." + DateTime.Now.ToThaiDateTimeString("ddMMyyyyHHmmssfff"); }
+        }
+
+        private RdlcReportModel GetReportModel()
+        {
+            Assembly assembly = this.GetType().Assembly;
+            RdlcReportModel inst = new RdlcReportModel();
+
+            // Set Display Name (default file name).
+            inst.DisplayName = ReportDisplayName;
+
+            inst.Definition.EmbededReportName = "DMT.TOD.Reports.RevenueSlip.rdlc";
+            inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
+                inst.Definition.EmbededReportName);
+            // clear reprot datasource.
+            inst.DataSources.Clear();
+
+            List<MPDPrintVoteSummary> items = new List<MPDPrintVoteSummary>();
+            if (null != _item)
+            {
+                items.Add(_item); // Add new because is blank.
+            }
+
+            // assign new data source
+            RdlcReportDataSource mainDS = new RdlcReportDataSource();
+            mainDS.Name = "main"; // the datasource name in the rdlc report.
+            mainDS.Items = items; // setup data source
+            // Add to datasources
+            inst.DataSources.Add(mainDS);
+
+            // Add parameters (if required).
+            DateTime today = DateTime.Now;
+            string printDate = today.ToThaiDateTimeString("dd/MM/yyyy HH:mm:ss");
+            inst.Parameters.Add(RdlcReportParameter.Create("PrintDate", printDate));
+
+            return inst;
+        }
+
+        #endregion
 
         #endregion
 
@@ -75,7 +138,7 @@ namespace PPRP.Pages
 
         public void Setup()
         {
-
+            _item = null;
         }
 
         #endregion
