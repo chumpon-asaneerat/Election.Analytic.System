@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #389
 Election.Analytic.System - PPRP  #388
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #387
-- 
+- Update projects
+  - Update PPRP.Analytic.App
+    - Update Thailand background image.
 
 [commited]
 Election.Analytic.System - PPRP  #386
