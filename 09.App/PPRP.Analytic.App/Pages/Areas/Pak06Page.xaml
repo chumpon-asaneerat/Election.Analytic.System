@@ -8,7 +8,7 @@
              d:DesignWidth="1300">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak6.png" Stretch="Uniform" />
+            <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak6.jpg" Stretch="Uniform" />
         </Grid.Background>
         <DockPanel LastChildFill="True" Opacity="0.7">
             <DockPanel DockPanel.Dock="Left"
