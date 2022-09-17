@@ -4,8 +4,11 @@
 Election.Analytic.System - PPRP  #389
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #388
-- 
+- Update projects
+  - Update PPRP.Analytic.App
+    - Update Pak1-3 background image.
 
 [commited]
 Election.Analytic.System - PPRP  #387
