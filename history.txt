@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #388
 Election.Analytic.System - PPRP  #387
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #386
-- 
+- Update projects
+  - Add new Pak images
 
 [commited]
 Election.Analytic.System - PPRP  #385
