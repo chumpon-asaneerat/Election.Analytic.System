@@ -44,7 +44,7 @@
                         <DataTemplate>
                             <Button x:Name="cmdProvince"
                                     Content="{Binding DisplayText}"
-                                    Margin="5"
+                                    Margin="5, 0"
                                     Width="Auto"
                                     Style="{StaticResource InlineButton}"
                                     Click="cmdProvince_Click" />
