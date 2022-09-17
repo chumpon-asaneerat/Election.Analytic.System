@@ -4,8 +4,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- Attach default Theme -->
-                <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml" />
 
                 <ResourceDictionary Source="pack://application:,,,/PPRP.Controls;Component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
