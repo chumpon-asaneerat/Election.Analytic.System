@@ -58,7 +58,20 @@
                                                            Text="{Binding DisplayMenu}"
                                                            VerticalAlignment="Center"
                                                            FontFamily="{DynamicResource THSarabun}"
-                                                           FontSize="{StaticResource FontSize18}" />
+                                                           FontSize="{StaticResource FontSize18}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ThaiYear}" Value="2562">
+                                                                    <Setter Property="Foreground" Value="DimGray" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding ThaiYear}" Value="2566">
+                                                                    <Setter Property="Foreground" Value="DarkRed" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
                                             </Hyperlink>
                                         </TextBlock>
                                     </DataTemplate>

@@ -193,6 +193,22 @@ namespace PPRP.Domains
 			try
 			{
 				string query = string.Empty;
+				/*
+				query += @"
+					SELECT A.RegionId
+						 , A.ProvinceId
+						 , A.ProvinceNameTH
+						 , COUNT(B.PollingUnitNo) AS UnitCount
+					  FROM MProvince A 
+						   LEFT JOIN (SELECT DISTINCT ProvinceId, PollingUnitNo FROM PollingStation) B ON 
+							 A.ProvinceId = B.ProvinceId
+					 WHERE A.RegionId = @RegionId
+					 GROUP BY A.RegionId
+							, A.ProvinceId
+							, A.ProvinceNameTH
+					 ORDER BY A.RegionId, A.ProvinceNameTH
+				";
+				*/
 				query += @"
 					SELECT A.RegionId
 						 , A.ProvinceId
@@ -265,15 +281,22 @@ namespace PPRP.Domains
 		{
 			get
 			{
-				return string.Format("เขต {0}", PollingUnitNo);
+				if (ThaiYear == 2566)
+				{
+					return string.Format("เขต {0} ({1})", PollingUnitNo, ThaiYear);
+				}
+				else
+				{
+					return string.Format("เขต {0}", PollingUnitNo);
+				}
 			}
 			set { }
 		}
 
+		public int ThaiYear { get; set; }
 		public string RegionId { get; set; }
 		public string ProvinceId { get; set; }
 		public string ProvinceNameTH { get; set; }
-
 		public int PollingUnitNo { get; set; }
 
 		#endregion
@@ -302,16 +325,10 @@ namespace PPRP.Domains
 			{
 				string query = string.Empty;
 				query += @"
-					SELECT DISTINCT 
-						   A.RegionId
-						 , A.ProvinceId
-						 , A.ProvinceNameTH
-						 , B.PollingUnitNo
-					  FROM MProvince A, PollingStation B 
-					 WHERE A.RegionId = B.RegionId
-					   AND A.ProvinceId = B.ProvinceId
-					   AND A.RegionId = @RegionId
-					   AND A.ProvinceId = @ProvinceId
+					SELECT *
+					  FROM MPDPollingUnitSummary
+					 WHERE RegionId = @RegionId
+					   AND ProvinceId = @ProvinceId
 				";
 
 				rets.Value = cnn.Query<PollingUnitMenuItem>(query, new { RegionId = regionId, ProvinceId = provinceId }).ToList();
