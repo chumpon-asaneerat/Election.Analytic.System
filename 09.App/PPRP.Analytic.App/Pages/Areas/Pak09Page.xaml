@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="900"
-             d:DesignWidth="1300">
+             d:DesignWidth="1300"
+             Background="#7DBFFD">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak9.jpg" Stretch="Uniform" />
