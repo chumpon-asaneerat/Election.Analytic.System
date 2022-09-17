@@ -38,6 +38,7 @@
                          Height="Auto"
                          BorderThickness="0"
                          HorizontalContentAlignment="Stretch"
+                         ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
                          Style="{StaticResource SingleSelectListBox}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>

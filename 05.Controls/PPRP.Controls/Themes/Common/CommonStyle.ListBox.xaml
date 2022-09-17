@@ -19,10 +19,10 @@
     <!--  CONST LISTBOX COLORS  -->
     <SolidColorBrush x:Key="ListBoxItemSelectedBorderBrush"
                      PresentationOptions:Freeze="True"
-                     Color="DarkOrange" />
+                     Color="{StaticResource BlueLightColor2}" />
     <SolidColorBrush x:Key="ListBoxItemSelectedBackground"
                      PresentationOptions:Freeze="True"
-                     Color="Orange" />
+                     Color="{StaticResource BlueLightColor3}" />
     <SolidColorBrush x:Key="ListBoxItemSelectedForground"
                      PresentationOptions:Freeze="True"
                      Color="WhiteSmoke" />
@@ -144,7 +144,7 @@
                         <Border Name="item_border"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 CornerRadius="1"
                                 Background="#11F0F0F0">
                             <ContentPresenter Margin="0"
@@ -200,7 +200,7 @@
                         <Border Name="item_border"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                BorderThickness="1"
+                                BorderThickness="0"
                                 CornerRadius="1"
                                 Background="#11F0F0F0">
                             <ContentPresenter Margin="0"

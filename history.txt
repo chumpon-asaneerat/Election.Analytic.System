@@ -13,8 +13,10 @@ Election.Analytic.System - PPRP  #407
 Election.Analytic.System - PPRP  #406
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #405
-- 
+- Update projects
+  - Update all pak pages listbox item container style.
 
 [commited]
 Election.Analytic.System - PPRP  #404
