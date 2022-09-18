@@ -19,260 +19,268 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-	public class MPDC2566
-	{
-		#region Public Properties
+    public class MPDC2566
+    {
+        #region Public Properties
 
-		public string ProvinceName { get; set; }
-		public int PollingUnitNo { get; set; }
-		public int CandidateNo { get; set; }
-		public string FullName { get; set; }
-		public string PrevPartyName { get; set; }
-		public string EducationLevel { get; set; }
-		public string SubGroup { get; set; }
-		public string Remark { get; set; }
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public int CandidateNo { get; set; }
+        public string FullName { get; set; }
+        public string PrevPartyName { get; set; }
+        public string EducationLevel { get; set; }
+        public string SubGroup { get; set; }
+        public string Remark { get; set; }
 
-		#endregion
+        #endregion
 
-		#region Static Methods
+        #region Static Methods
 
-		public static NDbResult<List<MPDC2566>> Gets()
-		{
-			MethodBase med = MethodBase.GetCurrentMethod();
+        public static NDbResult<List<MPDC2566>> Gets(string provinceName = null)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
 
-			NDbResult<List<MPDC2566>> rets = new NDbResult<List<MPDC2566>>();
+            string sProvinceName = provinceName;
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
+            {
+                sProvinceName = null;
+            }
 
-			IDbConnection cnn = DbServer.Instance.Db;
-			if (null == cnn || !DbServer.Instance.Connected)
-			{
-				string msg = "Connection is null or cannot connect to database server.";
-				med.Err(msg);
-				// Set error number/message
-				rets.ErrNum = 8000;
-				rets.ErrMsg = msg;
+            NDbResult<List<MPDC2566>> rets = new NDbResult<List<MPDC2566>>();
 
-				return rets;
-			}
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
 
-			try
-			{
-				string query = string.Empty;
-				query += @"
-					SELECT *
-						FROM MPDC2566 A
-				";
+                return rets;
+            }
 
-				rets.Value = cnn.Query<MPDC2566>(query).ToList();
-			}
-			catch (Exception ex)
-			{
-				med.Err(ex);
-				// Set error number/message
-				rets.ErrNum = 9999;
-				rets.ErrMsg = ex.Message;
-			}
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT *
+                        FROM MPDC2566
+                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                     ORDER BY ProvinceName, PollingUnitNo
+                ";
 
-			if (null == rets.Value)
-			{
-				// create empty list.
-				rets.Value = new List<MPDC2566>();
-			}
+                rets.Value = cnn.Query<MPDC2566>(query, new { ProvinceName = sProvinceName }).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
 
-			return rets;
-		}
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPDC2566>();
+            }
 
-		public static void Save(MPDC2566 value)
-		{
-			MethodBase med = MethodBase.GetCurrentMethod();
+            return rets;
+        }
 
-			IDbConnection cnn = DbServer.Instance.Db;
-			if (null == cnn || !DbServer.Instance.Connected)
-			{
-				string msg = "Connection is null or cannot connect to database server.";
-				med.Err(msg);
+        public static void Save(MPDC2566 value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
 
-				return;
-			}
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
 
-			var p = new DynamicParameters();
-			p.Add("@ProvinceName", value.ProvinceName);
-			p.Add("@PollingUnitNo", value.PollingUnitNo);
-			p.Add("@CandidateNo", value.CandidateNo);
-			p.Add("@FullName", value.FullName);
-			p.Add("@PrevPartyName", value.PrevPartyName);
-			p.Add("@EducationLevel", value.EducationLevel);
-			p.Add("@SubGroup", value.SubGroup);
-			p.Add("@Remark", value.Remark);
+                return;
+            }
 
-			p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-			p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", value.ProvinceName);
+            p.Add("@PollingUnitNo", value.PollingUnitNo);
+            p.Add("@CandidateNo", value.CandidateNo);
+            p.Add("@FullName", value.FullName);
+            p.Add("@PrevPartyName", value.PrevPartyName);
+            p.Add("@EducationLevel", value.EducationLevel);
+            p.Add("@SubGroup", value.SubGroup);
+            p.Add("@Remark", value.Remark);
 
-			try
-			{
-				cnn.Execute("SaveMPDC2566", p, commandType: CommandType.StoredProcedure);
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
 
-				// Set error number/message
-				int errNum = p.Get<int>("@errNum");
-				string errMsg = p.Get<string>("@errMsg");
-				if (errNum != 0)
-				{
-					Console.WriteLine(errMsg);
-				}
-			}
-			catch (Exception ex)
-			{
-				med.Err(ex);
-			}
+            try
+            {
+                cnn.Execute("SaveMPDC2566", p, commandType: CommandType.StoredProcedure);
 
-			return;
-		}
+                // Set error number/message
+                int errNum = p.Get<int>("@errNum");
+                string errMsg = p.Get<string>("@errMsg");
+                if (errNum != 0)
+                {
+                    Console.WriteLine(errMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
 
-		#endregion
-	}
+            return;
+        }
 
-	public class MPDC2566Summary : NInpc
-	{
-		#region Internal Variables
+        #endregion
+    }
 
-		// for person image
-		private byte[] _PersonImageData = null;
-		private bool _PersonImageLoading = false;
-		private ImageSource _PersonImage = null;
+    public class MPDC2566Summary : NInpc
+    {
+        #region Internal Variables
 
-		#endregion
+        // for person image
+        private byte[] _PersonImageData = null;
+        private bool _PersonImageLoading = false;
+        private ImageSource _PersonImage = null;
 
-		#region Public Properties
+        #endregion
 
-		public string ProvinceName { get; set; }
-		public int PollingUnitNo { get; set; }
-		public int CandidateNo { get; set; }
-		public string FullName { get; set; }
-		public string PrevPartyName { get; set; }
-		public string EducationLevel { get; set; }
-		public string SubGroup { get; set; }
-		public string Remark { get; set; }
+        #region Public Properties
 
-		public byte[] PersonImageData
-		{
-			get { return _PersonImageData; }
-			set
-			{
-				_PersonImageData = value;
-				if (null == _PersonImageData)
-				{
-					_PersonImage = null;
-				}
-			}
-		}
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public int CandidateNo { get; set; }
+        public string FullName { get; set; }
+        public string PrevPartyName { get; set; }
+        public string EducationLevel { get; set; }
+        public string SubGroup { get; set; }
+        public string Remark { get; set; }
 
-		public ImageSource PersonImage
-		{
-			get
-			{
-				if (null == _PersonImage && !_PersonImageLoading)
-				{
-					_PersonImageLoading = true;
-					ImageSource imgSrc;
-					if (null == _PersonImageData)
-					{
-						imgSrc = Defaults.Person;
-					}
-					else
-					{
-						imgSrc = ByteUtils.GetImageSource(PersonImageData);
-					}
+        public byte[] PersonImageData
+        {
+            get { return _PersonImageData; }
+            set
+            {
+                _PersonImageData = value;
+                if (null == _PersonImageData)
+                {
+                    _PersonImage = null;
+                }
+            }
+        }
 
-					_PersonImage = imgSrc;
-					_PersonImageLoading = false;
-					Raise(() => PersonImage);
-				}
+        public ImageSource PersonImage
+        {
+            get
+            {
+                if (null == _PersonImage && !_PersonImageLoading)
+                {
+                    _PersonImageLoading = true;
+                    ImageSource imgSrc;
+                    if (null == _PersonImageData)
+                    {
+                        imgSrc = Defaults.Person;
+                    }
+                    else
+                    {
+                        imgSrc = ByteUtils.GetImageSource(PersonImageData);
+                    }
 
-				return _PersonImage;
-			}
-			set { }
-		}
+                    _PersonImage = imgSrc;
+                    _PersonImageLoading = false;
+                    Raise(() => PersonImage);
+                }
 
-		#endregion
+                return _PersonImage;
+            }
+            set { }
+        }
 
-		#region Static Methods
+        #endregion
 
-		public static NDbResult<List<MPDC2566Summary>> Gets(string provinceId, int pollingUnitNo)
-		{
-			MethodBase med = MethodBase.GetCurrentMethod();
+        #region Static Methods
 
-			NDbResult<List<MPDC2566Summary>> rets = new NDbResult<List<MPDC2566Summary>>();
+        public static NDbResult<List<MPDC2566Summary>> Gets(string provinceId, int pollingUnitNo)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
 
-			IDbConnection cnn = DbServer.Instance.Db;
-			if (null == cnn || !DbServer.Instance.Connected)
-			{
-				string msg = "Connection is null or cannot connect to database server.";
-				med.Err(msg);
-				// Set error number/message
-				rets.ErrNum = 8000;
-				rets.ErrMsg = msg;
+            NDbResult<List<MPDC2566Summary>> rets = new NDbResult<List<MPDC2566Summary>>();
 
-				return rets;
-			}
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
 
-			try
-			{
-				string query = string.Empty;
-				query += @"
-					SELECT TOP 4
-						  B.ProvinceId
-						, B.ProvinceNameTH AS ProvinceName
-						, A.PollingUnitNo
-						, A.FullName
-						, IMG.Data AS PersonImageData
-						, C.PartyId
-						, A.PrevPartyName
-						, C.Data AS LogoData
-						, A.CandidateNo
-						, A.EducationLevel
-						, A.SubGroup
-						, A.Remark
-					 FROM MPDC2566 A
-							LEFT OUTER JOIN (SELECT P.PartyId
-												  , P.PartyName  
-												  , CT.Data
-												FROM MParty P LEFT OUTER JOIN MContent CT 
-													ON P.ContentId = CT.ContentId) C 
-											ON (
-												UPPER(LTRIM(RTRIM(A.PrevPartyName))) = UPPER(LTRIM(RTRIM(C.PartyName)))
-											)
-							LEFT OUTER JOIN PersonImage IMG 
-											ON (   
-													(IMG.FullName = A.FullName)
-												OR (IMG.FullName LIKE '%' + A.FullName + '%')
-												OR (A.FullName LIKE '%' + IMG.FullName + '%')
-											)
-						, MProvince B 
-					WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
-					AND B.ProvinceId = @ProvinceId
-					AND A.PollingUnitNo = @PollingUnitNo
-					ORDER BY A.CandidateNo
-				";
+                return rets;
+            }
 
-				rets.Value = cnn.Query<MPDC2566Summary>(query,
-					new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
-			}
-			catch (Exception ex)
-			{
-				med.Err(ex);
-				// Set error number/message
-				rets.ErrNum = 9999;
-				rets.ErrMsg = ex.Message;
-			}
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT TOP 4
+                          B.ProvinceId
+                        , B.ProvinceNameTH AS ProvinceName
+                        , A.PollingUnitNo
+                        , A.FullName
+                        , IMG.Data AS PersonImageData
+                        , C.PartyId
+                        , A.PrevPartyName
+                        , C.Data AS LogoData
+                        , A.CandidateNo
+                        , A.EducationLevel
+                        , A.SubGroup
+                        , A.Remark
+                     FROM MPDC2566 A
+                            LEFT OUTER JOIN (SELECT P.PartyId
+                                                  , P.PartyName  
+                                                  , CT.Data
+                                                FROM MParty P LEFT OUTER JOIN MContent CT 
+                                                    ON P.ContentId = CT.ContentId) C 
+                                            ON (
+                                                UPPER(LTRIM(RTRIM(A.PrevPartyName))) = UPPER(LTRIM(RTRIM(C.PartyName)))
+                                            )
+                            LEFT OUTER JOIN PersonImage IMG 
+                                            ON (   
+                                                    (IMG.FullName = A.FullName)
+                                                OR (IMG.FullName LIKE '%' + A.FullName + '%')
+                                                OR (A.FullName LIKE '%' + IMG.FullName + '%')
+                                            )
+                        , MProvince B 
+                    WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
+                    AND B.ProvinceId = @ProvinceId
+                    AND A.PollingUnitNo = @PollingUnitNo
+                    ORDER BY A.CandidateNo
+                ";
 
-			if (null == rets.Value)
-			{
-				// create empty list.
-				rets.Value = new List<MPDC2566Summary>();
-			}
+                rets.Value = cnn.Query<MPDC2566Summary>(query,
+                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
 
-			return rets;
-		}
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPDC2566Summary>();
+            }
 
-		#endregion
-	}
+            return rets;
+        }
+
+        #endregion
+    }
 }

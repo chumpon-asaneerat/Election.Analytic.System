@@ -102,7 +102,7 @@ namespace PPRP.Pages
             }
 
             lvMPDC2566.ItemsSource = null;
-            var candidates = MPDC2566.Gets();
+            var candidates = MPDC2566.Gets(provinceName);
             lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
         }
 
