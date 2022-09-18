@@ -16,8 +16,10 @@ Election.Analytic.System - PPRP  #466
 Election.Analytic.System - PPRP  #465
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #464
-- 
+- Update projects
+  - Fixed Bug MPDVoteSummaryReport #2.
 
 [commited]
 Election.Analytic.System - PPRP  #463

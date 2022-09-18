@@ -135,7 +135,7 @@
                                         <StackPanel Orientation="Horizontal"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                            <TextBlock Text="ผลรวมคะแนน อันดับ (7 - 16) "
+                                            <TextBlock Text="ผลรวมคะแนน อันดับ (7 - สุดท้าย) "
                                                        VerticalAlignment="Center"
                                                        FontSize="{StaticResource FontSize30}" />
                                         </StackPanel>

@@ -251,28 +251,28 @@ namespace PPRP.Pages
 
             var top6 = MPD2562PersonalVoteSummary.Gets(6,
                 _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
-            var top100 = MPD2562PersonalVoteSummary.Gets(100,
+            var top30 = MPD2562PersonalVoteSummary.Gets(30,
                 _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
 
             int sum6 = 0;
             if (null != top6 && top6.Count > 0)
             {
-                foreach (var item in top100)
+                foreach (var item in top6)
                 {
                     sum6 += item.VoteCount;
                 }
             }
 
-            int sum100 = 0;
-            if (null != top100 && top100.Count > 0)
+            int sum30 = 0;
+            if (null != top30 && top30.Count > 0)
             {
-                foreach (var item in top100)
+                foreach (var item in top30)
                 {
-                    sum100 += item.VoteCount;
+                    sum30 += item.VoteCount;
                 }
             }
 
-            int diff = sum100 - sum6; // sum from 7-100
+            int diff = sum30 - sum6; // sum from 7-100
             txtTotalVotes.Text = diff.ToString("n0");
 
             lstSummary.ItemsSource = top6;
@@ -324,7 +324,7 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[0];
                         item.Logo1 = p.LogoData;
-                        item.PersonImage1 = p.PersonImageData;
+                        item.PersonImage1 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
                         item.PartyName1 = "1." + p.PartyName;
                         item.FullName1 = p.FullName;
                         item.VoteCount1 = p.VoteCount;
@@ -334,7 +334,7 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[1];
                         item.Logo2 = p.LogoData;
-                        item.PersonImage2 = p.PersonImageData;
+                        item.PersonImage2 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
                         item.PartyName2 = "2." + p.PartyName;
                         item.FullName2 = p.FullName;
                         item.VoteCount2 = p.VoteCount;
@@ -344,7 +344,7 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[2];
                         item.Logo3 = p.LogoData;
-                        item.PersonImage3 = p.PersonImageData;
+                        item.PersonImage3 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
                         item.PartyName3 = "3." + p.PartyName;
                         item.FullName3 = p.FullName;
                         item.VoteCount3 = p.VoteCount;
@@ -354,8 +354,8 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[3];
                         item.Logo4 = p.LogoData;
-                        item.PersonImage4 = p.PersonImageData;
-                        item.PartyName4 = "3." + p.PartyName;
+                        item.PersonImage4 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
+                        item.PartyName4 = "4." + p.PartyName;
                         item.FullName4 = p.FullName;
                         item.VoteCount4 = p.VoteCount;
                     }
@@ -364,7 +364,7 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[4];
                         item.Logo5 = p.LogoData;
-                        item.PersonImage5 = p.PersonImageData;
+                        item.PersonImage5 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
                         item.PartyName5 = "5." + p.PartyName;
                         item.FullName5 = p.FullName;
                         item.VoteCount5 = p.VoteCount;
@@ -374,7 +374,7 @@ namespace PPRP.Pages
                     {
                         var p = _generalSummary.Top6[5];
                         item.Logo6 = p.LogoData;
-                        item.PersonImage6 = p.PersonImageData;
+                        item.PersonImage6 = (null != p.PersonImageData) ? p.PersonImageData : Defaults.PersonBuffer;
                         item.PartyName6 = "6." + p.PartyName;
                         item.FullName6 = p.FullName;
                         item.VoteCount6 = p.VoteCount;
@@ -384,13 +384,13 @@ namespace PPRP.Pages
                     if (null != _generalSummary.CandidateNo1)
                     {
                         var candidate = _generalSummary.CandidateNo1;
-                        item.CandidateImage = candidate.PersonImageData;
+                        item.CandidateImage = (null != candidate.PersonImageData) ? candidate.PersonImageData : Defaults.PersonBuffer;
                         item.CandidateFullName = candidate.FullName;
                         item.CandidateSubGroup = candidate.SubGroup;
                         item.CandidateRemark = candidate.Remark;
 
-                        item.CandidatePrevYear = string.Empty; // Hardcode Thai Year
-                        item.CandidatePrevVote = string.Empty;
+                        item.CandidatePrevYear = "2562"; // Hardcode Thai Year
+                        item.CandidatePrevVote = "-";
                     }
 
                     // General

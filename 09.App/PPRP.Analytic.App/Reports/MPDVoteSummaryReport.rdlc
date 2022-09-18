@@ -770,7 +770,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!CandidatePrevYear.Value, "main")</Value>
+                    <Value>=First(Fields!CandidatePrevYear.Value, "main")</Value>
                     <Style>
                       <FontFamily>TH Sarabun New</FontFamily>
                       <FontSize>16pt</FontSize>
