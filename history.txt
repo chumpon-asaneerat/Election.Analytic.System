@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #434
 Election.Analytic.System - PPRP  #433
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #432
-- 
+- Update projects
+  - Implements MPD2562VoteSummaryReport #3.
 
 [commited]
 Election.Analytic.System - PPRP  #431
