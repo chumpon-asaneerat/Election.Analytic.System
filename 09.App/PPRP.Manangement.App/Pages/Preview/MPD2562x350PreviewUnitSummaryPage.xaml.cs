@@ -85,7 +85,7 @@ namespace PPRP.Pages
 
             cmdPrint.Visibility = Visibility.Visible;
 
-            GotoMPD2562VoteSummary();
+            GotoMPD2562x350UnitSummary();
         }
 
         #endregion
