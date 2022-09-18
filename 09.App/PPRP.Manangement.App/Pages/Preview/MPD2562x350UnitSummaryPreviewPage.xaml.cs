@@ -18,16 +18,16 @@ using System.Reflection;
 namespace PPRP.Pages
 {
     /// <summary>
-    /// Interaction logic for MPD2562x350PreviewUnitSummaryPage.xaml
+    /// Interaction logic for MPD2562x350UnitSummaryPreviewPage.xaml
     /// </summary>
-    public partial class MPD2562x350PreviewUnitSummaryPage : UserControl
+    public partial class MPD2562x350UnitSummaryPreviewPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MPD2562x350PreviewUnitSummaryPage()
+        public MPD2562x350UnitSummaryPreviewPage()
         {
             InitializeComponent();
         }

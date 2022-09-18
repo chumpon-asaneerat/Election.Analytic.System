@@ -217,7 +217,7 @@ namespace PPRP
 
             #endregion
 
-            #region MPD2562 Vote Summary
+            #region MPD2562 Preview Vote Summary
 
             private static MPD2562PreviewVoteSummaryPage _MPD2562PreviewVoteSummary;
 
@@ -278,6 +278,28 @@ namespace PPRP
                         }
                     }
                     return _MPD2562x350UnitSummaryManage;
+                }
+            }
+
+            #endregion
+
+            #region MPD2562 350 Unit Summary Preview
+
+            private static MPD2562x350UnitSummaryPreviewPage _MPD2562x350UnitSummaryPreview;
+
+            /// <summary>Gets MPD2562 350 Unit Summary Preview Page.</summary>
+            public static MPD2562x350UnitSummaryPreviewPage MPD2562x350UnitSummaryPreview
+            {
+                get
+                {
+                    if (null == _MPD2562x350UnitSummaryPreview)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPD2562x350UnitSummaryPreview = new MPD2562x350UnitSummaryPreviewPage();
+                        }
+                    }
+                    return _MPD2562x350UnitSummaryPreview;
                 }
             }
 

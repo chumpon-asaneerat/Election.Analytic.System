@@ -97,7 +97,7 @@ namespace PPRP.Pages
                 // Show Dialog.
                 return;
             }
-            var page = PPRPApp.Pages.MPD2562x350PreviewUnitSummary;
+            var page = PPRPApp.Pages.MPD2562x350UnitSummaryPreview;
             page.Setup(items);
             PageContentManager.Instance.Current = page;
         }
