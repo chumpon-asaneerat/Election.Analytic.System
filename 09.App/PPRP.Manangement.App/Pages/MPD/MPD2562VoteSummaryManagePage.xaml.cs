@@ -45,6 +45,11 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Print();
+        }
+
         #endregion
 
         #region Private Methods
@@ -67,11 +72,24 @@ namespace PPRP.Pages
             RefreshList();
         }
 
+        private void Print()
+        {
+            var items = MPD2562PrintVoteSummary.Gets(null).Value;
+            if (null == items)
+            {
+                // Show Dialog.
+                return;
+            }
+            var page = PPRPApp.Pages.MPD2562PreviewVoteSummary;
+            page.Setup(items);
+            PageContentManager.Instance.Current = page;
+        }
+
         private void RefreshList()
         {
             lvMPD2562Summaries.ItemsSource = null;
-            var summaries = MPD2562VoteSummary.Gets();
-            lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562VoteSummary>();
+            var summaries = MPD2562VoteSummary.Gets().Value;
+            lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries : new List<MPD2562VoteSummary>();
         }
 
         #endregion
