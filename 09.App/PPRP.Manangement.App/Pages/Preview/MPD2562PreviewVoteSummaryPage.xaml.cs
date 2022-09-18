@@ -62,7 +62,7 @@ namespace PPRP.Pages
         {
             // Report Menu Page
             var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
-            page.Setup();
+            page.Setup(false);
             PageContentManager.Instance.Current = page;
         }
 

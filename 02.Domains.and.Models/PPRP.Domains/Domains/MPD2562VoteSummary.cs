@@ -85,7 +85,7 @@ namespace PPRP.Domains
         public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName)
         {
             string sProvinceName = provinceName;
-            if (sProvinceName.Contains("ทุกจังหวัด") || string.IsNullOrWhiteSpace(sProvinceName))
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
             {
                 sProvinceName = null;
             }
