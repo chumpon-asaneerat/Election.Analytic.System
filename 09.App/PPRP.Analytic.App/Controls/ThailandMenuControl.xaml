@@ -27,13 +27,47 @@
                             </Grid>
                         </Expander.Header>
                         <ListBox ItemsSource="{Binding Provinces}"
-                                 Margin="5, 2"
+                                 Margin="5,2"
                                  HorizontalContentAlignment="Stretch"
                                  ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
                                  Style="{StaticResource SingleSelectWrapListBox}"
                                  BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="10" />
+                                        <TextBlock>
+                                            <Hyperlink x:Name="cmdProvince"
+                                                       Click="cmdProvince_Click"
+                                                       Cursor="Hand">
+                                                <Hyperlink.Style>
+                                                    <Style TargetType="{x:Type Hyperlink}">
+                                                        <Setter Property="TextDecorations" Value="None" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="TextDecorations">
+                                                                    <Setter.Value>
+                                                                        <TextDecorationCollection>
+                                                                            <TextDecoration Location="Underline">
+                                                                                <TextDecoration.Pen>
+                                                                                    <Pen Brush="{StaticResource BlueHeavyBrush2}" Thickness="2" />
+                                                                                </TextDecoration.Pen>
+                                                                            </TextDecoration>
+                                                                        </TextDecorationCollection>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Hyperlink.Style>
+                                                <TextBlock Text="{Binding ProvinceText}" 
+                                                           FontSize="{StaticResource FontSize24}"
+                                                           Foreground="{StaticResource BlueHeavyBrush2}" />
+                                            </Hyperlink>
+                                        </TextBlock>
+                                        <TextBlock Width="10" />
+                                    </StackPanel>
+                                    <!--
                                     <Button x:Name="cmdProvince"
                                             Margin="1"
                                             Width="Auto"
@@ -45,6 +79,7 @@
                                             <TextBlock Width="10" />
                                         </StackPanel>
                                     </Button>
+                                    -->
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>

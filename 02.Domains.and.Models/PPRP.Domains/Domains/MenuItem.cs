@@ -26,6 +26,8 @@ namespace PPRP.Domains
 
 		public virtual string ItemType { get; set; }
 		public virtual string DisplayText { get; set; }
+
+		public virtual string ProvinceText { get; set; }
 	}
 
 	public class PakMenuItem : AreaMenuItem
@@ -59,6 +61,12 @@ namespace PPRP.Domains
 		public override string DisplayText
 		{
 			get { return RegionName;  }
+			set { }
+		}
+
+		public override string ProvinceText 
+		{
+			get { return string.Empty;  }
 			set { }
 		}
 
@@ -159,6 +167,12 @@ namespace PPRP.Domains
 		public override string DisplayText
 		{
 			get { return string.Format("{0} - {1} เขต", ProvinceNameTH, UnitCount); }
+			set { }
+		}
+
+		public override string ProvinceText
+		{
+			get { return string.Format("{0}", ProvinceNameTH); }
 			set { }
 		}
 
@@ -273,6 +287,11 @@ namespace PPRP.Domains
 			{ 
 				return string.Format("{0} เขต {1}", ProvinceNameTH, PollingUnitNo);
 			}
+			set { }
+		}
+		public override string ProvinceText
+		{
+			get { return string.Format("{0}", ProvinceNameTH); }
 			set { }
 		}
 
