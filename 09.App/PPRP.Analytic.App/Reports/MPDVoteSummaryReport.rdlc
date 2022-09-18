@@ -186,7 +186,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!PrevVoteYear.Value, "main")</Value>
+                <Value>=Sum(Fields!RightCount.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -216,14 +216,14 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="RightsCount">
+      <Textbox Name="ExcerciseCount">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!RightsCount.Value, "main")</Value>
+                <Value>=Sum(Fields!ExerciseCount.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -236,7 +236,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>RightsCount</rd:DefaultName>
+        <rd:DefaultName>ExcerciseCount</rd:DefaultName>
         <Top>5.66983in</Top>
         <Left>9.78472in</Left>
         <Height>0.31644in</Height>
@@ -253,14 +253,14 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="ExcerciseCount">
+      <Textbox Name="VoteCount7toLast">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!ExcerciseCount.Value, "main")</Value>
+                <Value>=Sum(Fields!VoteCount7toLast.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -273,7 +273,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>ExcerciseCount</rd:DefaultName>
+        <rd:DefaultName>VoteCount7toLast</rd:DefaultName>
         <Top>6.727in</Top>
         <Left>9.78472in</Left>
         <Height>0.31644in</Height>
@@ -297,7 +297,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!ExcercisePercent.Value, "main")</Value>
+                <Value>=Sum(Fields!ExercisePercent.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -2134,7 +2134,7 @@
         </Field>
         <Field Name="CandidatePrevYear">
           <DataField>CandidatePrevYear</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CandidateRemark">
           <DataField>CandidateRemark</DataField>
@@ -2148,12 +2148,12 @@
           <DataField>DifferenceVoteFromNo2</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="ExcerciseCount">
-          <DataField>ExcerciseCount</DataField>
+        <Field Name="ExerciseCount">
+          <DataField>ExerciseCount</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="ExcercisePercent">
-          <DataField>ExcercisePercent</DataField>
+        <Field Name="ExercisePercent">
+          <DataField>ExercisePercent</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="FullName1">
@@ -2260,8 +2260,8 @@
           <DataField>PrevVoteYear</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="RightsCount">
-          <DataField>RightsCount</DataField>
+        <Field Name="RightCount">
+          <DataField>RightCount</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="VoteCount1">

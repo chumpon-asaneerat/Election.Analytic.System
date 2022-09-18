@@ -395,8 +395,19 @@ namespace PPRP.Pages
 
                     // General
                     item.PrevVoteYear = 2562; // Hardcode Thai Year
+                    item.PollingUnitCount = _generalSummary.PollingUnitCount;
                     item.RightCount = _generalSummary.RightCount;
                     item.ExerciseCount = _generalSummary.ExerciseCount;
+                    if (item.RightCount != 0)
+                    {
+                        item.ExercisePercent = Math.Round(
+                            Convert.ToDecimal((double)((double)item.ExerciseCount / (double)item.RightCount) * (double)100), 2);
+                    }
+                    else
+                    {
+                        item.ExercisePercent = decimal.Zero;
+                    }
+
                     item.DifferenceVoteFromNo2 = (null != _generalSummary.Top6[0] && null != _generalSummary.Top6[1]) ?
                         _generalSummary.Top6[0].VoteCount - _generalSummary.Top6[1].VoteCount : 0;
                     item.VoteCount7toLast = _generalSummary.VoteCount7toLast;
