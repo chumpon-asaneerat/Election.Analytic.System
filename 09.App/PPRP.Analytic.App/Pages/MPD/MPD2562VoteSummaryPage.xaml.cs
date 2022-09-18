@@ -280,6 +280,15 @@ namespace PPRP.Pages
             _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
             lstCandidates.ItemsSource = candidates;
 
+            if (null == candidates || candidates.Count <= 0)
+            {
+                txtCnadidateNoInfo.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txtCnadidateNoInfo.Visibility = Visibility.Hidden;
+            }
+
             // Create cache summary for print.
             _generalSummary = new GeneralSummary();
             _generalSummary.Top6 = top6;

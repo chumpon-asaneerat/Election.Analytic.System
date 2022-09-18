@@ -1,8 +1,10 @@
 ﻿Election.Analytic.System - PPRP  #480
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #479
-- 
+- Update projects
+  - Update Summary Information UI #1.
 
 [commited]
 Election.Analytic.System - PPRP  #478
