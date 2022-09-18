@@ -73,7 +73,7 @@ namespace PPRP.Pages
             {
                 return;
             }
-            RefreshList();
+            LoadProvinces();
         }
 
         private void LoadProvinces()
@@ -110,9 +110,12 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup()
+        public void Setup(bool reload = true)
         {
-            RefreshList();
+            if (reload)
+            {
+                LoadProvinces();
+            }
         }
 
         #endregion

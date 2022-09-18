@@ -73,7 +73,7 @@ namespace PPRP.Pages
             {
                 return;
             }
-            RefreshList();
+            LoadProvinces();
         }
 
         private void LoadProvinces()
@@ -101,6 +101,14 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
+            // Check province.
+            var province = cbProvince.SelectedItem as MProvince;
+            string provinceName = (null != province) ? province.ProvinceNameTH : null;
+            if (null != provinceName && provinceName.Contains("ทุกจังหวัด"))
+            {
+                provinceName = null;
+            }
+
             lvMPD2562x350Units.ItemsSource = null;
             var summaries = MPD2562x350UnitSummary.Gets();
             lvMPD2562x350Units.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562x350UnitSummary>();
@@ -110,9 +118,12 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup()
+        public void Setup(bool reload = true)
         {
-            RefreshList();
+            if (reload)
+            {
+                LoadProvinces();
+            }
         }
 
         #endregion
