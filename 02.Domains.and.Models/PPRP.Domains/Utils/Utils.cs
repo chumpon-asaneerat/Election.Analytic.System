@@ -122,8 +122,35 @@ namespace PPRP
                 image.CacheOption = BitmapCacheOption.OnLoad;
                 image.EndInit();
                 image.Freeze();
-
                 ret = image;
+            }
+            catch (Exception ex)
+            {
+                ret = null;
+                //throw ex;
+                med.Err(ex);
+            }
+
+            return ret;
+        }
+
+        public static byte[] GetImageSourceBuffer(Uri resourceUri)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            byte[] ret = null;
+            if (null == resourceUri)
+            {
+                med.Err("Uri is null.");
+                return ret;
+            }
+            try
+            {
+
+                var info = Application.GetResourceStream(resourceUri);
+                var memoryStream = new MemoryStream();
+                info.Stream.CopyTo(memoryStream);
+                ret = memoryStream.ToArray();
             }
             catch (Exception ex)
             {

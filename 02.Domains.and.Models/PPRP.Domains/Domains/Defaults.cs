@@ -20,6 +20,8 @@ namespace PPRP.Domains
     {
         private static bool _PersonImageLoading = false;
         private static ImageSource _PersonImage = null;
+        private static bool _PersonBufferLoading = false;
+        private static byte[] _PersonBuffer = null;
 
         public static ImageSource Person
         {
@@ -37,6 +39,25 @@ namespace PPRP.Domains
 
                 }
                 return _PersonImage;
+            }
+        }
+
+        public static byte[] PersonBuffer
+        {
+            get
+            {
+                if (null == _PersonBuffer && !_PersonBufferLoading)
+                {
+                    lock (typeof(Defaults))
+                    {
+                        _PersonImageLoading = true;
+                        var uri = new Uri("pack://application:,,,/PPRP.Domains;component/Images/Default/person.jpg", UriKind.Absolute);
+                        _PersonBuffer = ByteUtils.GetImageSourceBuffer(uri);
+                        _PersonImageLoading = false;
+                    }
+
+                }
+                return _PersonBuffer;
             }
         }
     }
