@@ -13,8 +13,10 @@ Election.Analytic.System - PPRP  #427
 Election.Analytic.System - PPRP  #426
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #425
-- 
+- Update projects
+  - Update Inline Button style back to original.
 
 [commited]
 Election.Analytic.System - PPRP  #424

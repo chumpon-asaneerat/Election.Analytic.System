@@ -12,7 +12,7 @@
     <!--  CONST INLINE BUTTON BRUSHS AND COLORS  -->
     <SolidColorBrush x:Key="InlineButtonForground"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource WhiteColor}" />
+                     Color="Black" />
 
     <SolidColorBrush x:Key="InlineButtonPressedForground"
                      PresentationOptions:Freeze="True"
@@ -28,14 +28,14 @@
 
     <SolidColorBrush x:Key="InlineButtonInnerBackground"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueMediumColor}" />
+                     Color="#EEAAAAAA" />
     <SolidColorBrush x:Key="InlineButtonInnerBorderBrush"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueMediumColor}" />
+                     Color="#FF555555" />
 
     <SolidColorBrush x:Key="InlineButtonFocusedBorderBrush"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueLightColor}" />
+                     Color="#FF222222" />
 
     <Color x:Key="InlineButtonGlowColor1">#334488FF</Color>
     <Color x:Key="InlineButtonGlowColor2">#B24488FF</Color>
@@ -45,7 +45,7 @@
 
     <SolidColorBrush x:Key="InlineButtonPressBorderBackgound"
                      PresentationOptions:Freeze="True"
-                     Color="{StaticResource BlueMediumColor}" />
+                     Color="#CC555555" />
 
     <SolidColorBrush x:Key="InlineButtonDisableBorderBackgound"
                      PresentationOptions:Freeze="True"
@@ -74,11 +74,10 @@
                 BorderThickness="0"
                 CornerRadius="4">
             <Border x:Name="border"
-                    Padding="0"
+                    Padding="1"
                     Background="{StaticResource InlineButtonInnerBackground}"
                     BorderBrush="{StaticResource InlineButtonInnerBorderBrush}"
                     BorderThickness="1"
-                    Margin="1"
                     CornerRadius="4">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -108,7 +107,6 @@
                     </Border>
                     <ContentPresenter Grid.RowSpan="2"
                                       Width="Auto"
-                                      Margin="1"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center" />
                     <Border x:Name="shine"
@@ -160,9 +158,9 @@
     <Style x:Key="InlineButton" TargetType="Button">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{StaticResource InlineButtonForground}" />
-        <Setter Property="FontFamily" Value="{DynamicResource DefaultFontFamily}" />
-        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
+        <Setter Property="FontSize" Value="{StaticResource InlineButtonFontSize16}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Template" Value="{DynamicResource InlineButtonTemplate}" />
     </Style>
+
 </ResourceDictionary>
