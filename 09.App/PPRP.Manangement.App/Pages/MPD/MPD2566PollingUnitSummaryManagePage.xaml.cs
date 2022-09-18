@@ -102,7 +102,7 @@ namespace PPRP.Pages
             }
 
             lvMPD2566Summaries.ItemsSource = null;
-            var summaries = MPD2566PollingUnitSummary.Gets();
+            var summaries = MPD2566PollingUnitSummary.Gets(provinceName);
             lvMPD2566Summaries.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2566PollingUnitSummary>();
         }
 
