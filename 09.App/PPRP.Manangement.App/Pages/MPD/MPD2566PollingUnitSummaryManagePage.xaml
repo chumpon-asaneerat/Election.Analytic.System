@@ -75,30 +75,30 @@
                     <ListView x:Name="lvMPD2566Summaries" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="จังหวัด"
-                                                Width="150">
+                                <GridViewColumn Header="จังหวัด">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding ProvinceName}" 
-                                                       TextAlignment="Left"/>
+                                            <TextBlock Width="150"
+                                                       Text="{Binding ProvinceName}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="เขต"
-                                                Width="50">
+                                <GridViewColumn Header="เขต">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding PollingUnitNo}" 
-                                                       TextAlignment="Center"/>
+                                            <TextBlock Width="100"
+                                                       Text="{Binding PollingUnitNo}"
+                                                       TextAlignment="Center" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="จำนวนหน่วย"
-                                                Width="150">
+                                <GridViewColumn Header="จำนวนหน่วย">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding PollingUnitCount}" 
-                                                       TextAlignment="Right"/>
+                                            <TextBlock Width="150"
+                                                       Text="{Binding PollingUnitCount}"
+                                                       TextAlignment="Center" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
