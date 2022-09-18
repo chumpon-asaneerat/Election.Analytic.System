@@ -250,60 +250,61 @@
                                       VerticalScrollBarVisibility="Auto"
                                       VirtualizingPanel.IsVirtualizing="True"
                                       VirtualizingPanel.VirtualizationMode="Recycling">
-                            <ListBox x:Name="lstCandidates"
-                                     BorderThickness="0"
-                                     VerticalContentAlignment="Stretch"
-                                     HorizontalContentAlignment="Stretch"
-                                     ToolTipService.InitialShowDelay="500"
-                                     ToolTipService.ShowDuration="10000"
-                                     ToolTipService.BetweenShowDelay="1000"
-                                     Style="{StaticResource SingleSelectHorizontalWrapListBox}">
-                                <ListBox.ToolTip>
-                                    <ToolTip HasDropShadow="True"
-                                             Placement="MousePoint"
-                                             VerticalOffset="20"
-                                             HorizontalOffset="400"
-                                             Margin="0"
-                                             Background="Transparent"
-                                             BorderBrush="Transparent"
-                                             BorderThickness="0"
-                                             VerticalAlignment="Stretch"
-                                             VerticalContentAlignment="Stretch"
-                                             HorizontalAlignment="Stretch"
-                                             HorizontalContentAlignment="Stretch">
-                                        <Border BorderBrush="Silver"
-                                                BorderThickness="1"
-                                                Background="Cornsilk"
-                                                CornerRadius="5">
-                                            <TextBlock Text="ดูข้อมูลว่าที่ผู้สมัครฯ กรุณาดับเบิ้ลคลิกที่รูป"
-                                                       Margin="5"
-                                                       Foreground="{StaticResource BlackBlush}"
-                                                       FontSize="{StaticResource FontSize24}" />
-                                        </Border>
-                                    </ToolTip>
-                                </ListBox.ToolTip>
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
-                                        <!--  EXAMPLE USAGES  -->
-                                        <!--
+                            <Grid>
+                                <ListBox x:Name="lstCandidates"
+                                         BorderThickness="0"
+                                         VerticalContentAlignment="Stretch"
+                                         HorizontalContentAlignment="Stretch"
+                                         ToolTipService.InitialShowDelay="500"
+                                         ToolTipService.ShowDuration="10000"
+                                         ToolTipService.BetweenShowDelay="1000"
+                                         Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                                    <ListBox.ToolTip>
+                                        <ToolTip HasDropShadow="True"
+                                                 Placement="MousePoint"
+                                                 VerticalOffset="20"
+                                                 HorizontalOffset="400"
+                                                 Margin="0"
+                                                 Background="Transparent"
+                                                 BorderBrush="Transparent"
+                                                 BorderThickness="0"
+                                                 VerticalAlignment="Stretch"
+                                                 VerticalContentAlignment="Stretch"
+                                                 HorizontalAlignment="Stretch"
+                                                 HorizontalContentAlignment="Stretch">
+                                            <Border BorderBrush="Silver"
+                                                    BorderThickness="1"
+                                                    Background="Cornsilk"
+                                                    CornerRadius="5">
+                                                <TextBlock Text="ดูข้อมูลว่าที่ผู้สมัครฯ กรุณาดับเบิ้ลคลิกที่รูป"
+                                                           Margin="5"
+                                                           Foreground="{StaticResource BlackBlush}"
+                                                           FontSize="{StaticResource FontSize24}" />
+                                            </Border>
+                                        </ToolTip>
+                                    </ListBox.ToolTip>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
+                                            <!--  EXAMPLE USAGES  -->
+                                            <!--
                                         <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
                                         <EventSetter Event="MouseUp" Handler="lstCandidates_ListBoxItem_MouseUp" />
-                                        -->
-                                        <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <DockPanel LastChildFill="True"
-                                                   Width="265"
-                                                   Height="265">
-                                            <!--  CANDIDATE INFO  -->
-                                            <StackPanel Orientation="Vertical"
-                                                        HorizontalAlignment="Center"
-                                                        DockPanel.Dock="Bottom">
-                                                <TextBlock Height="2" />
-                                                <!--  PREV PARTY NAME  -->
-                                                <!--
+                                            -->
+                                            <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <DockPanel LastChildFill="True"
+                                                       Width="265"
+                                                       Height="265">
+                                                <!--  CANDIDATE INFO  -->
+                                                <StackPanel Orientation="Vertical"
+                                                            HorizontalAlignment="Center"
+                                                            DockPanel.Dock="Bottom">
+                                                    <TextBlock Height="2" />
+                                                    <!--  PREV PARTY NAME  -->
+                                                    <!--
                                                 <TextBlock DockPanel.Dock="Top"
                                                        Foreground="{StaticResource BlueMediumBrush}"
                                                        FontSize="28"
@@ -312,31 +313,40 @@
                                                        TextAlignment="Center"
                                                        TextWrapping="Wrap"
                                                        Text="{Binding PrevPartyName}" />
-                                                -->
-                                                <TextBlock Height="2" />
-                                                <!--  FULL NAME  -->
-                                                <TextBlock Foreground="{StaticResource BlackBlush}"
-                                                           FontSize="20"
-                                                           VerticalAlignment="Center"
-                                                           TextAlignment="Center"
-                                                           TextWrapping="Wrap"
-                                                           Text="{Binding FullName}" />
-                                                <TextBlock Height="2" />
-                                            </StackPanel>
-                                            <!--  PERSON PICTURE  -->
-                                            <Border Margin="3"
-                                                    Height="230"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Center">
-                                                <Image Source="{Binding PersonImage}"
-                                                       Width="190"
-                                                       Height="220"
-                                                       Stretch="Uniform" />
-                                            </Border>
-                                        </DockPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                                                    -->
+                                                    <TextBlock Height="2" />
+                                                    <!--  FULL NAME  -->
+                                                    <TextBlock Foreground="{StaticResource BlackBlush}"
+                                                               FontSize="20"
+                                                               VerticalAlignment="Center"
+                                                               TextAlignment="Center"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding FullName}" />
+                                                    <TextBlock Height="2" />
+                                                </StackPanel>
+                                                <!--  PERSON PICTURE  -->
+                                                <Border Margin="3"
+                                                        Height="230"
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center">
+                                                    <Image Source="{Binding PersonImage}"
+                                                           Width="190"
+                                                           Height="220"
+                                                           Stretch="Uniform" />
+                                                </Border>
+                                            </DockPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <TextBlock x:Name="txtCnadidateNoInfo"
+                                           Foreground="DimGray"
+                                           FontSize="{StaticResource FontSize64}"
+                                           FontFamily="{StaticResource THSarabun}"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center"
+                                           Text="ไม่พบข้อมูล"
+                                           Visibility="Hidden" />
+                            </Grid>
                         </ScrollViewer>
                     </Border>
                 </DockPanel>
@@ -346,70 +356,80 @@
                                   VerticalScrollBarVisibility="Auto"
                                   VirtualizingPanel.IsVirtualizing="True"
                                   VirtualizingPanel.VirtualizationMode="Recycling">
-                        <ListBox x:Name="lstSummary"
-                                 BorderThickness="0"
-                                 VerticalContentAlignment="Stretch"
-                                 HorizontalContentAlignment="Stretch"
-                                 ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
-                                 Style="{StaticResource SingleSelectHorizontalWrapListBox}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel LastChildFill="True" Width="270">
-                                        <!--  PARTY LOGO  -->
-                                        <Border DockPanel.Dock="Top"
-                                                Height="100"
-                                                VerticalAlignment="Center"
-                                                HorizontalAlignment="Center">
-                                            <Image Source="{Binding PartyLogo}"
-                                                   Width="100"
-                                                   Height="100"
-                                                   Stretch="Uniform" />
-                                        </Border>
-                                        <TextBlock DockPanel.Dock="Top" Height="10" />
-                                        <!--  PERSON PICTURE  -->
-                                        <Border DockPanel.Dock="Top"
-                                                Height="340"
-                                                VerticalAlignment="Center"
-                                                HorizontalAlignment="Center">
-                                            <Image Source="{Binding PersonImage}"
-                                                   Width="260"
-                                                   Height="340"
-                                                   Stretch="Uniform" />
-                                        </Border>
-                                        <TextBlock DockPanel.Dock="Top" Height="10" />
-                                        <!--  PARTY NAME  -->
-                                        <TextBlock DockPanel.Dock="Top"
-                                                   Foreground="{StaticResource BlueMediumBrush}"
-                                                   FontSize="28"
-                                                   Height="65"
-                                                   VerticalAlignment="Center"
-                                                   TextAlignment="Center"
-                                                   TextWrapping="Wrap"
-                                                   Text="{Binding PartyName}" />
-                                        <TextBlock DockPanel.Dock="Top" Height="2" />
-                                        <!--  FULL NAME  -->
-                                        <TextBlock DockPanel.Dock="Top"
-                                                   Foreground="{StaticResource BlackBlush}"
-                                                   FontSize="28"
-                                                   Height="65"
-                                                   VerticalAlignment="Center"
-                                                   TextAlignment="Center"
-                                                   TextWrapping="Wrap"
-                                                   Text="{Binding FullName}" />
-                                        <TextBlock DockPanel.Dock="Top" Height="5" />
-                                        <!--  VOTE COUNT  -->
-                                        <TextBlock DockPanel.Dock="Top"
-                                                   Foreground="{StaticResource BlackBlush}"
-                                                   FontSize="48"
-                                                   VerticalAlignment="Center"
-                                                   TextAlignment="Center"
-                                                   TextWrapping="Wrap"
-                                                   Text="{Binding VoteCount, StringFormat={}{0:n0}}" />
-                                        <Grid />
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <Grid>
+                            <ListBox x:Name="lstSummary"
+                                     BorderThickness="0"
+                                     VerticalContentAlignment="Stretch"
+                                     HorizontalContentAlignment="Stretch"
+                                     ItemContainerStyle="{StaticResource BASEHorizontalListBoxItemContainer}"
+                                     Style="{StaticResource SingleSelectHorizontalWrapListBox}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel LastChildFill="True" Width="270">
+                                            <!--  PARTY LOGO  -->
+                                            <Border DockPanel.Dock="Top"
+                                                    Height="100"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                                <Image Source="{Binding PartyLogo}"
+                                                       Width="100"
+                                                       Height="100"
+                                                       Stretch="Uniform" />
+                                            </Border>
+                                            <TextBlock DockPanel.Dock="Top" Height="10" />
+                                            <!--  PERSON PICTURE  -->
+                                            <Border DockPanel.Dock="Top"
+                                                    Height="340"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                                <Image Source="{Binding PersonImage}"
+                                                       Width="260"
+                                                       Height="340"
+                                                       Stretch="Uniform" />
+                                            </Border>
+                                            <TextBlock DockPanel.Dock="Top" Height="10" />
+                                            <!--  PARTY NAME  -->
+                                            <TextBlock DockPanel.Dock="Top"
+                                                       Foreground="{StaticResource BlueMediumBrush}"
+                                                       FontSize="28"
+                                                       Height="65"
+                                                       VerticalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Text="{Binding PartyName}" />
+                                            <TextBlock DockPanel.Dock="Top" Height="2" />
+                                            <!--  FULL NAME  -->
+                                            <TextBlock DockPanel.Dock="Top"
+                                                       Foreground="{StaticResource BlackBlush}"
+                                                       FontSize="28"
+                                                       Height="65"
+                                                       VerticalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Text="{Binding FullName}" />
+                                            <TextBlock DockPanel.Dock="Top" Height="5" />
+                                            <!--  VOTE COUNT  -->
+                                            <TextBlock DockPanel.Dock="Top"
+                                                       Foreground="{StaticResource BlackBlush}"
+                                                       FontSize="48"
+                                                       VerticalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap"
+                                                       Text="{Binding VoteCount, StringFormat={}{0:n0}}" />
+                                            <Grid />
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <TextBlock x:Name="txtSummaryNoInfo"
+                                       Foreground="DimGray"
+                                       FontSize="{StaticResource FontSize64}"
+                                       FontFamily="{StaticResource THSarabun}"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Center"
+                                       Text="ไม่พบข้อมูล"
+                                       Visibility="Hidden" />
+                        </Grid>
                     </ScrollViewer>
                 </Border>
             </DockPanel>
