@@ -30,13 +30,13 @@
                                         DockPanel.Dock="Bottom"
                                         Margin="5,0"
                                         Style="{StaticResource InlineButton}"
-                                        Content="กลับสู่หน้าจอแผนที่ 10 ภาค"
+                                        Content="เมนูแผนที่ 10 ภาค"
                                         Click="cmdGotoThailandPage_Click" />
                                 <Button x:Name="cmdGotoPrev"
                                         DockPanel.Dock="Bottom"
                                         Margin="5,0"
                                         Style="{StaticResource InlineButton}"
-                                        Content="กลับสู่หน้าจอแผนที่ก่อนหน้า"
+                                        Content="เมนูภาค"
                                         Click="cmdGotoPrev_Click" />
                                 <Grid />
                             </DockPanel>

@@ -14,14 +14,14 @@
         <DockPanel LastChildFill="True">
             <DockPanel DockPanel.Dock="Left"
                        LastChildFill="True"
-                       Width="300">
+                       Width="250">
                 <TextBlock DockPanel.Dock="Bottom" Height="2" />
                 <TextBlock DockPanel.Dock="Bottom" Height="10" />
                 <Button x:Name="cmdGotoThailandPage"
                         DockPanel.Dock="Bottom"
                         Margin="10,1"
                         Style="{StaticResource InlineButton}"
-                        Content="กลับสู่หน้าจอแผนที่ 10 ภาค"
+                        Content="เมนูแผนที่ 10 ภาค"
                         Click="cmdGotoThailandPage_Click" />
                 <Grid />
             </DockPanel>
