@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #429
 Election.Analytic.System - PPRP  #428
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #427
-- 
+- Update projects
+  - PPRP.Domains project
+    - MPD2562VoteSummary domain add Gets method.
 
 [commited]
 Election.Analytic.System - PPRP  #426

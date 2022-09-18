@@ -82,6 +82,58 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName)
+        {
+            string sProvinceName = provinceName;
+            if (sProvinceName.Contains("ทุกจังหวัด") || string.IsNullOrWhiteSpace(sProvinceName))
+            {
+                sProvinceName = null;
+            }
+
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MPD2562VoteSummary>> rets = new NDbResult<List<MPD2562VoteSummary>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM MPD2562VoteSummary
+                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                ";
+
+                rets.Value = cnn.Query<MPD2562VoteSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPD2562VoteSummary>();
+            }
+
+            return rets;
+        }
+
         public static void Save(MPD2562VoteSummary value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
