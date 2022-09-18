@@ -49,6 +49,11 @@ namespace PPRP.Pages
 
         #region ComboBox Handlers
 
+        private void cbRegion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadProvinces();
+        }
+
         private void cbProvince_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshList();
@@ -73,13 +78,36 @@ namespace PPRP.Pages
             {
                 return;
             }
-            LoadProvinces();
+            LoadRegions();
+        }
+
+        private void LoadRegions()
+        {
+            cbRegion.ItemsSource = null;
+            var regions = MRegion.Gets().Value;
+            if (null != regions)
+            {
+                regions.Insert(0, new MRegion { RegionName = "ทุกภาค" });
+            }
+            cbRegion.ItemsSource = (null != regions) ? regions : new List<MRegion>();
+            if (null != regions)
+            {
+                cbRegion.SelectedIndex = 0;
+            }
         }
 
         private void LoadProvinces()
         {
+            // Check region.
+            var reion = cbRegion.SelectedItem as MRegion;
+            string regionId = (null != reion) ? reion.RegionId : null;
+            if (null != regionId && regionId.Contains("ทุกภาค"))
+            {
+                regionId = null;
+            }
+
             cbProvince.ItemsSource = null;
-            var provinces = MProvince.Gets().Value;
+            var provinces = MProvince.Gets(regionId: regionId).Value;
             if (null != provinces)
             {
                 provinces.Insert(0, new MProvince { ProvinceNameTH = "ทุกจังหวัด" });
@@ -93,6 +121,14 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
+            // Check region.
+            var reion = cbRegion.SelectedItem as MRegion;
+            string regionId = (null != reion) ? reion.RegionId : null;
+            if (null == regionId || string.IsNullOrWhiteSpace(regionId))
+            {
+                regionId = null;
+            }
+
             // Check province.
             var province = cbProvince.SelectedItem as MProvince;
             string provinceName = (null != province) ? province.ProvinceNameTH : null;
@@ -102,7 +138,7 @@ namespace PPRP.Pages
             }
 
             lvSubdistricts.ItemsSource = null;
-            var subdistricts = MSubdistrict.Gets();
+            var subdistricts = MSubdistrict.Gets(regionId: regionId, provinceNameTH: provinceName);
             lvSubdistricts.ItemsSource = (null != subdistricts) ? subdistricts.Value : new List<MSubdistrict>();
         }
 
@@ -114,7 +150,7 @@ namespace PPRP.Pages
         {
             if (reload)
             {
-                LoadProvinces();
+                LoadRegions();
             }
         }
 

@@ -52,6 +52,23 @@
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Top"
                                Height="40">
+                        <TextBlock Text="ภาค"
+                                   DockPanel.Dock="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Width="100"
+                                   Foreground="WhiteSmoke" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <ComboBox x:Name="cbRegion"
+                                  Width="300"
+                                  FontFamily="{StaticResource THSarabunNew}"
+                                  FontSize="{StaticResource FontSize18}"
+                                  Margin="3"
+                                  VerticalContentAlignment="Center"
+                                  IsSynchronizedWithCurrentItem="False"
+                                  DisplayMemberPath="RegionName"
+                                  SelectionChanged="cbRegion_SelectionChanged" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
                         <TextBlock Text="จังหวัด"
                                    DockPanel.Dock="Left"
                                    VerticalAlignment="Center"
