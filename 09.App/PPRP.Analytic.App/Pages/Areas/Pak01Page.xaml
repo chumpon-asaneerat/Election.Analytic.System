@@ -51,6 +51,7 @@
                                        Foreground="{StaticResource BlueHeavyBrush2}"
                                        FontWeight="Bold"
                                        FontSize="{StaticResource FontSize48}" />
+                            <TextBlock Width="5" />
                             <TextBlock Text="{Binding PakUnitText}"
                                        VerticalAlignment="Center"
                                        FontFamily="{StaticResource THSarabun}"
