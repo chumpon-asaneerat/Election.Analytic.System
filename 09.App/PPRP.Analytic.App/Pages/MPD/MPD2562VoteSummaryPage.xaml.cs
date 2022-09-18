@@ -256,10 +256,16 @@ namespace PPRP.Pages
             int sum6 = 0;
             if (null != top6 && top6.Count > 0)
             {
+                txtSummaryNoInfo.Visibility = Visibility.Hidden;
+
                 foreach (var item in top6)
                 {
                     sum6 += item.VoteCount;
                 }
+            }
+            else
+            {
+                txtSummaryNoInfo.Visibility = Visibility.Visible;
             }
 
             int sum30 = 0;
@@ -451,15 +457,9 @@ namespace PPRP.Pages
             lstPollingUnits.ItemsSource = items;
             if (null != items && items.Count > 0)
             {
-                txtSummaryNoInfo.Visibility = Visibility.Hidden;
-
                 lstPollingUnits.SelectedIndex = 0; // auto select first item.
                 lstPollingUnits.ScrollIntoView(items[0]);
                 LoadSummary(items[0]); // update display
-            }
-            else
-            {
-                txtSummaryNoInfo.Visibility = Visibility.Visible;
             }
         }
 
@@ -482,8 +482,6 @@ namespace PPRP.Pages
             lstPollingUnits.ItemsSource = items;
             if (null != items && items.Count > 0)
             {
-                txtSummaryNoInfo.Visibility = Visibility.Hidden;
-
                 if (selectIndex > -1 && selectIndex < items.Count)
                 {
                     lstPollingUnits.SelectedIndex = selectIndex; // auto select first item.
@@ -496,10 +494,6 @@ namespace PPRP.Pages
                     lstPollingUnits.ScrollIntoView(items[0]);
                     LoadSummary(items[0]); // update display
                 }
-            }
-            else
-            {
-                txtSummaryNoInfo.Visibility = Visibility.Visible;
             }
         }
 
