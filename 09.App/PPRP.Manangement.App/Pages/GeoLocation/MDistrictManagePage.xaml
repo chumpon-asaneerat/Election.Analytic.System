@@ -48,6 +48,28 @@
                        LastChildFill="True">
                 <!--  WORK AREA  -->
                 <DockPanel LastChildFill="True">
+                    <!--  FILTER BAR  -->
+                    <DockPanel LastChildFill="True"
+                               DockPanel.Dock="Top"
+                               Height="40">
+                        <TextBlock Text="จังหวัด"
+                                   DockPanel.Dock="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Width="100"
+                                   Foreground="WhiteSmoke" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <ComboBox x:Name="cbProvince"
+                                  Width="300"
+                                  FontFamily="{StaticResource THSarabunNew}"
+                                  FontSize="{StaticResource FontSize18}"
+                                  Margin="3"
+                                  VerticalContentAlignment="Center"
+                                  IsSynchronizedWithCurrentItem="False"
+                                  DisplayMemberPath="ProvinceNameTH"
+                                  SelectionChanged="cbProvince_SelectionChanged" />
+                        <Grid />
+                    </DockPanel>
                     <!--  BUTTONS BAR  -->
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Bottom"
