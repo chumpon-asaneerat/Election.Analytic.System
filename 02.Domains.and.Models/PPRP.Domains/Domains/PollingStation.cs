@@ -35,7 +35,7 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<PollingStation>> Gets()
+        public static NDbResult<List<PollingStation>> Gets(string regionName = null, string provinceNameTH = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -53,19 +53,33 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            string sRegionName = regionName;
+            if (string.IsNullOrWhiteSpace(sRegionName) || sRegionName.Contains("ทุกภาค"))
+            {
+                sRegionName = null;
+            }
+            string sProvinceNameTH = provinceNameTH;
+            if (string.IsNullOrWhiteSpace(sProvinceNameTH) || sProvinceNameTH.Contains("ทุกจังหวัด"))
+            {
+                sProvinceNameTH = null;
+            }
+
             try
             {
                 string query = string.Empty;
                 query += @"
                     SELECT * 
                       FROM PollingStationView 
+                     WHERE UPPER(LTRIM(RTRIM(RegionName))) = UPPER(LTRIM(RTRIM(COALESCE(@RegionName, RegionName))))
+                       AND UPPER(LTRIM(RTRIM(ProvinceNameTH))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceNameTH, ProvinceNameTH))))
                      ORDER BY RegionId 
                             , ProvinceNameTH 
                             , DistrictNameTH 
                             , SubdistrictNameTH 
                 ";
 
-                rets.Value = cnn.Query<PollingStation>(query).ToList();
+                rets.Value = cnn.Query<PollingStation>(query, 
+                    new { RegionName = sRegionName, ProvinceNameTH = sProvinceNameTH }).ToList();
             }
             catch (Exception ex)
             {
