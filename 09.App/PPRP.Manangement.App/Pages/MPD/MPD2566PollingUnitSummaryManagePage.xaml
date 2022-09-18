@@ -76,14 +76,32 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="จังหวัด"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding ProvinceName}" />
+                                                Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ProvinceName}" 
+                                                       TextAlignment="Left"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="เขต"
-                                                Width="50"
-                                                DisplayMemberBinding="{Binding PollingUnitNo}" />
+                                                Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding PollingUnitNo}" 
+                                                       TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="จำนวนหน่วย"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding PollingUnitCount}" />
+                                                Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding PollingUnitCount}" 
+                                                       TextAlignment="Right"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <!--
                                 <GridViewColumn Header="ข้อมูลพื้นที่"
                                                 Width="400"

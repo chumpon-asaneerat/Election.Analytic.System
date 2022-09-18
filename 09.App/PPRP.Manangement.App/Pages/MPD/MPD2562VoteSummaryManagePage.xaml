@@ -63,11 +63,11 @@
                                   Width="300"
                                   FontFamily="{StaticResource THSarabunNew}"
                                   FontSize="{StaticResource FontSize18}"
-                                  Margin="3" 
+                                  Margin="3"
                                   VerticalContentAlignment="Center"
                                   IsSynchronizedWithCurrentItem="False"
                                   DisplayMemberPath="ProvinceNameTH"
-                                  SelectionChanged="cbProvince_SelectionChanged"/>
+                                  SelectionChanged="cbProvince_SelectionChanged" />
                         <Grid />
                     </DockPanel>
                     <!--  BUTTONS BAR  -->
@@ -106,24 +106,48 @@
                     <ListView x:Name="lvMPD2562Summaries" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="จังหวัด"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding ProvinceName}" />
-                                <GridViewColumn Header="เขต"
-                                                Width="50"
-                                                DisplayMemberBinding="{Binding PollingUnitNo}" />
-                                <GridViewColumn Header="ชื่อผู้สมัคร"
-                                                Width="200"
-                                                DisplayMemberBinding="{Binding FullName}" />
-                                <GridViewColumn Header="หมายเลข"
-                                                Width="50"
-                                                DisplayMemberBinding="{Binding VoteNo}" />
-                                <GridViewColumn Header="พรรค"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding PartyName}" />
-                                <GridViewColumn Header="ผลคะแนน"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding VoteCount}" />
+                                <GridViewColumn Header="จังหวัด" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ProvinceName}" TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="เขต" Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding PollingUnitNo}" TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ชื่อผู้สมัคร" Width="250">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding FullName}" TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="หมายเลข" Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding VoteNo}" TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="พรรค" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding PartyName}" TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ผลคะแนน" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding VoteCount}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

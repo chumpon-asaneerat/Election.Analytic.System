@@ -75,24 +75,48 @@
                     <ListView x:Name="lvMPD2562x350Units" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="จังหวัด"
-                                                Width="150"
-                                                DisplayMemberBinding="{Binding ProvinceName}" />
-                                <GridViewColumn Header="เขต"
-                                                Width="50"
-                                                DisplayMemberBinding="{Binding PollingUnitNo}" />
-                                <GridViewColumn Header="ผู้มีสิทธิเลือกตั้ง"
-                                                Width="180"
-                                                DisplayMemberBinding="{Binding RightCount}" />
-                                <GridViewColumn Header="ผู้ใช้สิทธิเลือกตั้ง"
-                                                Width="180"
-                                                DisplayMemberBinding="{Binding ExerciseCount}" />
-                                <GridViewColumn Header="บัตรเสีย"
-                                                Width="180"
-                                                DisplayMemberBinding="{Binding InvalidCount}" />
-                                <GridViewColumn Header="บัตรไม่เลือกผู้สมัครผู้ใด"
-                                                Width="180"
-                                                DisplayMemberBinding="{Binding NoVoteCount}" />
+                                <GridViewColumn Header="จังหวัด" Width="150">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ProvinceName}" TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="เขต" Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding PollingUnitNo}" TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ผู้มีสิทธิเลือกตั้ง" Width="180">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding RightCount}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ผู้ใช้สิทธิเลือกตั้ง" Width="180">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ExerciseCount}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="บัตรเสีย" Width="180">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding InvalidCount}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="บัตรไม่เลือกผู้สมัครผู้ใด" Width="180">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding NoVoteCount}" TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

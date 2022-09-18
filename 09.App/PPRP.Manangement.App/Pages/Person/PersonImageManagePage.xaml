@@ -89,9 +89,13 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="ชื่อผู้สมัคร/ว่าที่ผู้สมัคร"
-                                                Width="250"
-                                                DisplayMemberBinding="{Binding FullName}" />
+                                <GridViewColumn Header="ชื่อผู้สมัคร/ว่าที่ผู้สมัคร" Width="250">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding FullName}" TextAlignment="Left" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

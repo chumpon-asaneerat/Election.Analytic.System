@@ -34,22 +34,20 @@
                     <Button x:Name="cmdPrint"
                             Click="cmdPrint_Click"
                             DockPanel.Dock="Right"
+                            Margin="5,0"
                             Style="{StaticResource InlineButton}"
-                            Width="200">
-                        <TextBlock Text="พิมพ์"
-                                   FontFamily="{DynamicResource THSarabunNew}"
-                                   FontSize="{StaticResource FontSize24}" />
-                    </Button>
+                            Width="150"
+                            Height="30"
+                            Content="พิมพ์" />
                     <Grid Width="5" DockPanel.Dock="Left" />
                     <Button x:Name="cmdCancel"
                             Click="cmdCancel_Click"
                             DockPanel.Dock="Left"
+                            Margin="5,0"
                             Style="{StaticResource InlineButton}"
-                            Width="200">
-                        <TextBlock Text="ยกเลิก"
-                                   FontFamily="{DynamicResource THSarabunNew}"
-                                   FontSize="{StaticResource FontSize24}" />
-                    </Button>
+                            Width="150"
+                            Height="30"
+                            Content="ยกเลิก" />
                     <Grid />
                 </DockPanel>
                 <!--  WORK AREA  -->
