@@ -141,9 +141,8 @@ namespace PPRP.Pages
 
         private void GotoPrevPage()
         {
-            AreaNavi.Instance.GoPrev();
-
             string regionId = (null != Current) ? Current.RegionId : string.Empty;
+            AreaNavi.Instance.GotoPak(regionId);
 
             if (!string.IsNullOrWhiteSpace(regionId))
             {

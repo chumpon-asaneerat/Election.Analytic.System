@@ -7,8 +7,10 @@ Election.Analytic.System - PPRP  #479
 Election.Analytic.System - PPRP  #478
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #477
-- 
+- Update projects
+  - Change Menu UI #11.
 
 [commited]
 Election.Analytic.System - PPRP  #476
