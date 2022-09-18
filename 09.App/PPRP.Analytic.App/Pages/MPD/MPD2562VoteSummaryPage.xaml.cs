@@ -310,6 +310,9 @@ namespace PPRP.Pages
             txtRightCount.Text = "-";
             txtExerciseCount.Text = "-";
 
+            if (string.IsNullOrWhiteSpace(provinceName) || pollingUnitNo <= 0)
+                return;
+
             var unitSum = MPD2562x350UnitSummary.Get(provinceName, pollingUnitNo).Value;
             if (null == unitSum) return;
 
