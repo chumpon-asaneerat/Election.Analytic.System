@@ -106,45 +106,57 @@
                     <ListView x:Name="lvMPD2562Summaries" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="จังหวัด" Width="150">
+                                <GridViewColumn Header="จังหวัด">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding ProvinceName}" TextAlignment="Left" />
+                                            <TextBlock Width="150"
+                                                       Text="{Binding ProvinceName}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="เขต" Width="50">
+                                <GridViewColumn Header="เขต">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding PollingUnitNo}" TextAlignment="Center" />
+                                            <TextBlock Width="100"
+                                                       Text="{Binding PollingUnitNo}"
+                                                       TextAlignment="Center" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="ชื่อผู้สมัคร" Width="250">
+                                <GridViewColumn Header="ชื่อผู้สมัคร">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding FullName}" TextAlignment="Left" />
+                                            <TextBlock Width="250"
+                                                       Text="{Binding FullName}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="หมายเลข" Width="50">
+                                <GridViewColumn Header="หมายเลข">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding VoteNo}" TextAlignment="Center" />
+                                            <TextBlock Width="50"
+                                                       Text="{Binding VoteNo}"
+                                                       TextAlignment="Center" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="พรรค" Width="150">
+                                <GridViewColumn Header="พรรค">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding PartyName}" TextAlignment="Left" />
+                                            <TextBlock Width="150"
+                                                       Text="{Binding PartyName}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="ผลคะแนน" Width="150">
+                                <GridViewColumn Header="ผลคะแนน">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding VoteCount}" TextAlignment="Right" />
+                                            <TextBlock Width="150"
+                                                       Text="{Binding VoteCount}"
+                                                       TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

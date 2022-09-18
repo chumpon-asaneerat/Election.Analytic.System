@@ -75,59 +75,57 @@
                     <ListView x:Name="lvSubdistricts" Style="{StaticResource SingleSelectListView}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="จังหวัด"
-                                                Width="200">
+                                <GridViewColumn Header="จังหวัด">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding ProvinceNameTH}" 
-                                                       TextAlignment="Left"/>
+                                            <TextBlock Width="200"
+                                                       Text="{Binding ProvinceNameTH}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="อำเภอ"
-                                                Width="200">
+                                <GridViewColumn Header="อำเภอ">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding DistrictNameTH}" 
-                                                       TextAlignment="Left"/>
+                                            <TextBlock Width="200"
+                                                       Text="{Binding DistrictNameTH}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="ตำบล"
-                                                Width="200">
+                                <GridViewColumn Header="ตำบล">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding SubdistrictNameTH}"
-                                                       TextAlignment="Left"
-                                                       Width="100" />
+                                            <TextBlock Width="200"
+                                                       Text="{Binding SubdistrictNameTH}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="จังหวัด (EN)"
-                                                Width="Auto">
+                                <GridViewColumn Header="จังหวัด (EN)">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding ProvinceNameEN}" 
-                                                       TextAlignment="Left"/>
+                                            <TextBlock Width="Auto"
+                                                       Text="{Binding ProvinceNameEN}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="อำเภอ (EN)"
-                                                Width="Auto">
+                                <GridViewColumn Header="อำเภอ (EN)">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding DistrictNameEN}" 
-                                                       TextAlignment="Left"/>
+                                            <TextBlock Width="Auto"
+                                                       Text="{Binding DistrictNameEN}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="ตำบล (EN)"
-                                                Width="200">
+                                <GridViewColumn Header="ตำบล (EN)">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding SubdistrictNameEN}"
-                                                       TextAlignment="Left"
-                                                       Width="100" />
+                                            <TextBlock Width="Auto"
+                                                       Text="{Binding SubdistrictNameEN}"
+                                                       TextAlignment="Left" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
