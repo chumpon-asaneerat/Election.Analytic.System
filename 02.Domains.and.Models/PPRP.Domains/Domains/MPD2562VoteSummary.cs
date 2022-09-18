@@ -185,6 +185,82 @@ namespace PPRP.Domains
 
     #endregion
 
+    #region MPD2562PrintVoteSummary
+
+    public class MPD2562PrintVoteSummary
+    {
+        #region Public Properties
+
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public string FullName { get; set; }
+        public int VoteNo { get; set; }
+        public string PartyName { get; set; }
+        public int VoteCount { get; set; }
+        public int RevoteNo { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static NDbResult<List<MPD2562PrintVoteSummary>> Gets(string provinceName)
+        {
+            string sProvinceName = provinceName;
+            if (sProvinceName.Contains("ทุกจังหวัด") || string.IsNullOrWhiteSpace(sProvinceName))
+            {
+                sProvinceName = null;
+            }
+
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult<List<MPD2562PrintVoteSummary>> rets = new NDbResult<List<MPD2562PrintVoteSummary>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM MPD2562VoteSummary
+                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
+                ";
+
+                rets.Value = cnn.Query<MPD2562PrintVoteSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPD2562PrintVoteSummary>();
+            }
+
+            return rets;
+        }
+
+        #endregion
+    }
+
+    #endregion
+
     #region MPD2562PersonalVoteSummary
 
     public class MPD2562PersonalVoteSummary : NInpc

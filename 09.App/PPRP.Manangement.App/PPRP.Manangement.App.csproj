@@ -136,6 +136,9 @@
     <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
       <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MPD2562PreviewVoteSummaryPage.xaml.cs">
+      <DependentUpon>MPD2562PreviewVoteSummaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MPD\MPD2566PollingUnitSummaryManagePage.xaml.cs">
       <DependentUpon>MPD2566PollingUnitSummaryManagePage.xaml</DependentUpon>
     </Compile>
@@ -239,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MPD2562PreviewVoteSummaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -423,6 +430,7 @@
     <Resource Include="Images\Users\red-user.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Pages\Preview\" />
     <Folder Include="Pages\SignIn\" />
   </ItemGroup>
   <ItemGroup>

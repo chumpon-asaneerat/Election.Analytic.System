@@ -28,8 +28,12 @@ Election.Analytic.System - PPRP  #432
 Election.Analytic.System - PPRP  #431
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #430
-- 
+- Update projects
+  - PPRP.Domains project
+    - Add MPD2562PringVoteSummary domain.
+    - MPD2562VoteSummary domain remove Gets(ProvinceName) method.
 
 [commited]
 Election.Analytic.System - PPRP  #429
