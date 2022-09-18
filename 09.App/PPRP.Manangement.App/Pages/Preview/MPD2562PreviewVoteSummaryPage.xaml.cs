@@ -94,7 +94,7 @@ namespace PPRP.Pages
 
         private string ReportDisplayName
         {
-            get { return "MPDVoteSummary." + DateTime.Now.ToThaiDateTimeString("ddMMyyyyHHmmssfff"); }
+            get { return "MPD2562VoteSummary." + DateTime.Now.ToThaiDateTimeString("ddMMyyyyHHmmssfff"); }
         }
 
         private RdlcReportModel GetReportModel()
@@ -105,7 +105,7 @@ namespace PPRP.Pages
             // Set Display Name (default file name).
             inst.DisplayName = ReportDisplayName;
 
-            inst.Definition.EmbededReportName = "PPRP.Reports.MPDVoteSummaryReport.rdlc";
+            inst.Definition.EmbededReportName = "PPRP.Reports.MPD2562VoteSummaryReport.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.

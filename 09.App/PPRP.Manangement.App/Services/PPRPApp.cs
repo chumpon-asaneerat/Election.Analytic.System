@@ -217,6 +217,28 @@ namespace PPRP
 
             #endregion
 
+            #region MPD2562 Vote Summary
+
+            private static MPD2562PreviewVoteSummaryPage _MPD2562PreviewVoteSummary;
+
+            /// <summary>Gets MPD 2562 Preview Vote Summary Page.</summary>
+            public static MPD2562PreviewVoteSummaryPage MPD2562PreviewVoteSummary
+            {
+                get
+                {
+                    if (null == _MPD2562PreviewVoteSummary)
+                    {
+                        lock (typeof(PPRPApp))
+                        {
+                            _MPD2562PreviewVoteSummary = new MPD2562PreviewVoteSummaryPage();
+                        }
+                    }
+                    return _MPD2562PreviewVoteSummary;
+                }
+            }
+
+            #endregion
+
             #region MPDC2566
 
             private static MPDC2566ManagePage _MPDC2566Manage;
