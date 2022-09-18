@@ -84,13 +84,13 @@ namespace PPRP.Domains
 
         public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName)
         {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
             string sProvinceName = provinceName;
             if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
             {
                 sProvinceName = null;
             }
-
-            MethodBase med = MethodBase.GetCurrentMethod();
 
             NDbResult<List<MPD2562VoteSummary>> rets = new NDbResult<List<MPD2562VoteSummary>>();
 

@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #454
 Election.Analytic.System - PPRP  #453
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #452
-- 
+- Update projects
+  - Implements Province Filter #11.
 
 [commited]
 Election.Analytic.System - PPRP  #451
