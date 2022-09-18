@@ -113,6 +113,7 @@ namespace PPRP.Domains
                     SELECT * 
                       FROM MPD2562VoteSummary
                      WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
                 ";
 
                 rets.Value = cnn.Query<MPD2562VoteSummary>(query, new { ProvinceName = sProvinceName }).ToList();
