@@ -1,5 +1,36 @@
-﻿Election.Analytic.System - PPRP  #480
+﻿Election.Analytic.System - PPRP  #490
 - 
+
+Election.Analytic.System - PPRP  #489
+- 
+
+Election.Analytic.System - PPRP  #488
+- 
+
+Election.Analytic.System - PPRP  #487
+- 
+
+Election.Analytic.System - PPRP  #486
+- 
+
+Election.Analytic.System - PPRP  #485
+- 
+
+Election.Analytic.System - PPRP  #484
+- 
+
+Election.Analytic.System - PPRP  #483
+- 
+
+Election.Analytic.System - PPRP  #482
+- 
+
+Election.Analytic.System - PPRP  #481
+- 
+
+[commited]
+Election.Analytic.System - PPRP  #480
+- Prepare history.txt
 
 [commited]
 Election.Analytic.System - PPRP  #479
