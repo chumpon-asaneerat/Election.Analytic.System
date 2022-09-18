@@ -53,7 +53,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>3.38417in</Top>
+        <Top>3.35917in</Top>
         <Left>0.05083in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
@@ -79,7 +79,7 @@
                 <Value>=First(Fields!FullName1.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -88,9 +88,9 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>3.74111in</Top>
+        <Top>3.70361in</Top>
         <Left>0.05083in</Left>
-        <Height>0.25in</Height>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -114,9 +114,9 @@
                 <Value>=Sum(Fields!VoteCount1.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
+                  <FontSize>26pt</FontSize>
                   <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -126,7 +126,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount1</rd:DefaultName>
-        <Top>4.03556in</Top>
+        <Top>4.04806in</Top>
         <Left>0.05083in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
@@ -135,7 +135,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -153,8 +153,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -164,8 +163,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PollingUnitCount</rd:DefaultName>
-        <Top>4.98in</Top>
-        <Left>9.01667in</Left>
+        <Top>4.955in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>5</ZIndex>
@@ -191,8 +190,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -202,8 +200,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PrevVoteYear</rd:DefaultName>
-        <Top>5.33811in</Top>
-        <Left>9.01667in</Left>
+        <Top>5.31311in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>6</ZIndex>
@@ -229,8 +227,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -240,8 +237,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>RightsCount</rd:DefaultName>
-        <Top>5.69483in</Top>
-        <Left>9.01667in</Left>
+        <Top>5.66983in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>7</ZIndex>
@@ -267,8 +264,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -278,8 +274,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ExcerciseCount</rd:DefaultName>
-        <Top>6.927in</Top>
-        <Left>9.70972in</Left>
+        <Top>6.727in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>8</ZIndex>
@@ -305,7 +301,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -315,8 +311,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>ExcercisePercent</rd:DefaultName>
-        <Top>6.05294in</Top>
-        <Left>9.01667in</Left>
+        <Top>6.02794in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>9</ZIndex>
@@ -342,8 +338,7 @@
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
                   <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <Format>#,##0.##</Format>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -353,8 +348,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>DifferenceVoteFromNo2</rd:DefaultName>
-        <Top>6.58139in</Top>
-        <Left>9.70972in</Left>
+        <Top>6.38139in</Top>
+        <Left>9.78472in</Left>
         <Height>0.31644in</Height>
         <Width>0.63611in</Width>
         <ZIndex>10</ZIndex>
@@ -375,7 +370,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>0.43in</Top>
-        <Left>2.46715in</Left>
+        <Left>2.44215in</Left>
         <Height>0.6in</Height>
         <Width>0.6in</Width>
         <ZIndex>11</ZIndex>
@@ -391,7 +386,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>1.93902in</Left>
+        <Left>1.91402in</Left>
         <Height>2.25in</Height>
         <Width>1.65625in</Width>
         <ZIndex>12</ZIndex>
@@ -422,8 +417,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PartyName2</rd:DefaultName>
-        <Top>3.38417in</Top>
-        <Left>1.93902in</Left>
+        <Top>3.35917in</Top>
+        <Left>1.91402in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>13</ZIndex>
@@ -448,7 +443,7 @@
                 <Value>=First(Fields!FullName2.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -458,9 +453,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName2</rd:DefaultName>
-        <Top>3.74111in</Top>
-        <Left>1.93902in</Left>
-        <Height>0.25in</Height>
+        <Top>3.70361in</Top>
+        <Left>1.91402in</Left>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>14</ZIndex>
         <Style>
@@ -484,8 +479,8 @@
                 <Value>=Sum(Fields!VoteCount2.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
-                  <Format>#,##0.##</Format>
+                  <FontSize>26pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -495,8 +490,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount2</rd:DefaultName>
-        <Top>4.03556in</Top>
-        <Left>1.93902in</Left>
+        <Top>4.04806in</Top>
+        <Left>1.91402in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
         <ZIndex>15</ZIndex>
@@ -504,7 +499,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -517,7 +512,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>0.43in</Top>
-        <Left>4.36438in</Left>
+        <Left>4.32688in</Left>
         <Height>0.6in</Height>
         <Width>0.6in</Width>
         <ZIndex>16</ZIndex>
@@ -533,7 +528,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>3.83625in</Left>
+        <Left>3.79875in</Left>
         <Height>2.25in</Height>
         <Width>1.65625in</Width>
         <ZIndex>17</ZIndex>
@@ -549,7 +544,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>0.43in</Top>
-        <Left>6.27187in</Left>
+        <Left>6.22187in</Left>
         <Height>0.6in</Height>
         <Width>0.6in</Width>
         <ZIndex>18</ZIndex>
@@ -565,7 +560,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>5.74375in</Left>
+        <Left>5.69375in</Left>
         <Height>2.25in</Height>
         <Width>1.65625in</Width>
         <ZIndex>19</ZIndex>
@@ -581,7 +576,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>0.43in</Top>
-        <Left>8.17187in</Left>
+        <Left>8.10937in</Left>
         <Height>0.6in</Height>
         <Width>0.6in</Width>
         <ZIndex>20</ZIndex>
@@ -597,7 +592,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>7.64375in</Left>
+        <Left>7.58125in</Left>
         <Height>2.25in</Height>
         <Width>1.65625in</Width>
         <ZIndex>21</ZIndex>
@@ -613,7 +608,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>0.43in</Top>
-        <Left>10.08771in</Left>
+        <Left>10.01271in</Left>
         <Height>0.6in</Height>
         <Width>0.6in</Width>
         <ZIndex>22</ZIndex>
@@ -629,7 +624,7 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>9.55958in</Left>
+        <Left>9.48458in</Left>
         <Height>2.25in</Height>
         <Width>1.65625in</Width>
         <ZIndex>23</ZIndex>
@@ -648,8 +643,8 @@
             <Sizing>Fit</Sizing>
             <Top>0.46875in</Top>
             <Left>0.0625in</Left>
-            <Height>2.25in</Height>
-            <Width>1.65625in</Width>
+            <Height>1.97177in</Height>
+            <Width>1.59375in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -666,9 +661,9 @@
                     <Value>ว่าที่ผู้สมัครพรรคพลังประชารัฐปี 2566</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>16pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
+                      <FontFamily>th Sarabun New</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                       <TextDecoration>None</TextDecoration>
                       <Color>CornflowerBlue</Color>
                     </Style>
@@ -717,9 +712,9 @@
             </Paragraphs>
             <rd:DefaultName>CandidateFullName</rd:DefaultName>
             <Top>0.46875in</Top>
-            <Left>2.16064in</Left>
+            <Left>2.03564in</Left>
             <Height>0.31644in</Height>
-            <Width>3.21682in</Width>
+            <Width>3.34182in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -753,9 +748,9 @@
             </Paragraphs>
             <rd:DefaultName>CandidateSubGroup</rd:DefaultName>
             <Top>0.82292in</Top>
-            <Left>2.51828in</Left>
+            <Left>2.03564in</Left>
             <Height>0.31644in</Height>
-            <Width>2.85918in</Width>
+            <Width>3.34182in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -790,7 +785,7 @@
             </Paragraphs>
             <rd:DefaultName>CandidatePrevYear</rd:DefaultName>
             <Top>1.17986in</Top>
-            <Left>3.44792in</Left>
+            <Left>3.32292in</Left>
             <Height>0.31644in</Height>
             <Width>0.7655in</Width>
             <ZIndex>4</ZIndex>
@@ -824,9 +819,9 @@
             </Paragraphs>
             <rd:DefaultName>CandidatePrevVote</rd:DefaultName>
             <Top>1.53425in</Top>
-            <Left>2.51828in</Left>
+            <Left>2.39328in</Left>
             <Height>0.31644in</Height>
-            <Width>2.85918in</Width>
+            <Width>2.98418in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -858,10 +853,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CandidateRemark</rd:DefaultName>
-            <Top>1.89514in</Top>
-            <Left>2.74397in</Left>
-            <Height>0.82361in</Height>
-            <Width>2.63349in</Width>
+            <Top>1.88264in</Top>
+            <Left>2.66064in</Left>
+            <Height>0.54538in</Height>
+            <Width>2.71682in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -881,7 +876,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>ชือ</Value>
+                    <Value>ชื่อ</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>TH Sarabun New</FontFamily>
@@ -897,7 +892,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>1.19062cm</Top>
-            <Left>4.63726cm</Left>
+            <Left>4.31976cm</Left>
             <Height>0.80376cm</Height>
             <Width>0.74493cm</Width>
             <ZIndex>7</ZIndex>
@@ -919,7 +914,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>สังกัดย่อย</Value>
+                    <Value>:</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>TH Sarabun New</FontFamily>
@@ -930,14 +925,16 @@
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>2.09021cm</Top>
-            <Left>4.63726cm</Left>
+            <Left>4.31976cm</Left>
             <Height>0.80376cm</Height>
-            <Width>1.65333cm</Width>
+            <Width>0.74493cm</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -973,7 +970,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>2.99685cm</Top>
-            <Left>10.77265cm</Left>
+            <Left>10.45515cm</Left>
             <Height>0.80376cm</Height>
             <Width>1.4464cm</Width>
             <ZIndex>9</ZIndex>
@@ -1011,7 +1008,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>3.897cm</Top>
-            <Left>4.63726cm</Left>
+            <Left>4.31976cm</Left>
             <Height>0.80376cm</Height>
             <Width>1.65333cm</Width>
             <ZIndex>10</ZIndex>
@@ -1049,7 +1046,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>2.99685cm</Top>
-            <Left>4.63726cm</Left>
+            <Left>4.31976cm</Left>
             <Height>0.80376cm</Height>
             <Width>4.03931cm</Width>
             <ZIndex>11</ZIndex>
@@ -1086,8 +1083,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
-            <Top>4.81365cm</Top>
-            <Left>4.63726cm</Left>
+            <Top>4.7819cm</Top>
+            <Left>4.31976cm</Left>
             <Height>0.80376cm</Height>
             <Width>2.26187cm</Width>
             <ZIndex>12</ZIndex>
@@ -1104,9 +1101,9 @@
           </Textbox>
         </ReportItems>
         <KeepTogether>true</KeepTogether>
-        <Top>11.52208cm</Top>
+        <Top>11.39508cm</Top>
         <Left>0.12911cm</Left>
-        <Height>7.09692cm</Height>
+        <Height>6.46351cm</Height>
         <Width>13.85359cm</Width>
         <ZIndex>24</ZIndex>
         <Style>
@@ -1133,14 +1130,16 @@
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>11.72316cm</Top>
+        <Top>11.53266cm</Top>
         <Left>19.41512cm</Left>
-        <Height>0.80376cm</Height>
-        <Width>7.21607cm</Width>
+        <Height>0.94396cm</Height>
+        <Width>8.84523cm</Width>
         <ZIndex>25</ZIndex>
         <Style>
           <Border>
@@ -1175,7 +1174,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>12.6492cm</Top>
+        <Top>12.5857cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
         <Width>3.40363cm</Width>
@@ -1201,9 +1200,9 @@
                 <Value>ผลการเลือกตั้งปี 2562</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
-                  <FontFamily>Times New Roman</FontFamily>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
+                  <FontFamily>th Sarabun New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                   <TextDecoration>None</TextDecoration>
                   <Color>CornflowerBlue</Color>
                 </Style>
@@ -1218,7 +1217,7 @@
         <Top>0.0635cm</Top>
         <Left>1.47055cm</Left>
         <Height>0.94396cm</Height>
-        <Width>25.67623cm</Width>
+        <Width>25.48573cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -1253,7 +1252,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>13.5588cm</Top>
+        <Top>13.4953cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
         <Width>3.40363cm</Width>
@@ -1291,7 +1290,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>14.46486cm</Top>
+        <Top>14.40136cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
         <Width>3.40364cm</Width>
@@ -1329,7 +1328,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>15.37446cm</Top>
+        <Top>15.31096cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
         <Width>3.40364cm</Width>
@@ -1367,10 +1366,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>16.71672cm</Top>
+        <Top>16.20872cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
-        <Width>5.13468cm</Width>
+        <Width>5.33929cm</Width>
         <ZIndex>31</ZIndex>
         <Style>
           <Border>
@@ -1405,10 +1404,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>17.59457cm</Top>
+        <Top>17.08657cm</Top>
         <Left>19.41512cm</Left>
         <Height>0.80376cm</Height>
-        <Width>5.13468cm</Width>
+        <Width>5.33929cm</Width>
         <ZIndex>32</ZIndex>
         <Style>
           <Border>
@@ -1442,8 +1441,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PartyName2</rd:DefaultName>
-        <Top>3.38417in</Top>
-        <Left>3.83625in</Left>
+        <Top>3.35917in</Top>
+        <Left>3.79875in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>33</ZIndex>
@@ -1468,7 +1467,7 @@
                 <Value>=First(Fields!FullName3.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1478,9 +1477,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName2</rd:DefaultName>
-        <Top>3.74111in</Top>
-        <Left>3.83625in</Left>
-        <Height>0.25in</Height>
+        <Top>3.70361in</Top>
+        <Left>3.79875in</Left>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>34</ZIndex>
         <Style>
@@ -1504,8 +1503,8 @@
                 <Value>=First(Fields!VoteCount3.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
-                  <Format>#,##0.##</Format>
+                  <FontSize>26pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1515,8 +1514,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount2</rd:DefaultName>
-        <Top>4.03556in</Top>
-        <Left>3.83625in</Left>
+        <Top>4.04806in</Top>
+        <Left>3.79875in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
         <ZIndex>35</ZIndex>
@@ -1524,7 +1523,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1552,8 +1551,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PartyName2</rd:DefaultName>
-        <Top>3.38417in</Top>
-        <Left>5.74375in</Left>
+        <Top>3.35917in</Top>
+        <Left>5.69375in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>36</ZIndex>
@@ -1578,7 +1577,7 @@
                 <Value>=First(Fields!FullName4.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1588,9 +1587,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName2</rd:DefaultName>
-        <Top>3.74111in</Top>
-        <Left>5.74375in</Left>
-        <Height>0.25in</Height>
+        <Top>3.70361in</Top>
+        <Left>5.69375in</Left>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>37</ZIndex>
         <Style>
@@ -1614,8 +1613,8 @@
                 <Value>=First(Fields!VoteCount4.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
-                  <Format>#,##0.##</Format>
+                  <FontSize>26pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1625,8 +1624,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount2</rd:DefaultName>
-        <Top>4.03556in</Top>
-        <Left>5.74375in</Left>
+        <Top>4.04806in</Top>
+        <Left>5.69375in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
         <ZIndex>38</ZIndex>
@@ -1634,7 +1633,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1662,8 +1661,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PartyName2</rd:DefaultName>
-        <Top>3.38417in</Top>
-        <Left>7.64375in</Left>
+        <Top>3.35917in</Top>
+        <Left>7.58125in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>39</ZIndex>
@@ -1688,7 +1687,7 @@
                 <Value>=First(Fields!FullName5.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1698,9 +1697,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName2</rd:DefaultName>
-        <Top>3.74111in</Top>
-        <Left>7.64375in</Left>
-        <Height>0.25in</Height>
+        <Top>3.70361in</Top>
+        <Left>7.58125in</Left>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>40</ZIndex>
         <Style>
@@ -1724,8 +1723,8 @@
                 <Value>=First(Fields!VoteCount5.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
-                  <Format>#,##0.##</Format>
+                  <FontSize>26pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1735,8 +1734,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount2</rd:DefaultName>
-        <Top>4.03556in</Top>
-        <Left>7.64375in</Left>
+        <Top>4.04806in</Top>
+        <Left>7.58125in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
         <ZIndex>41</ZIndex>
@@ -1744,7 +1743,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -1773,10 +1772,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>12.6492cm</Top>
-        <Left>24.63448cm</Left>
+        <Top>12.5857cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
-        <Width>1.99671cm</Width>
+        <Width>1.68207cm</Width>
         <ZIndex>42</ZIndex>
         <Style>
           <Border>
@@ -1811,10 +1810,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>13.5588cm</Top>
-        <Left>24.63448cm</Left>
+        <Top>13.4953cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
-        <Width>1.99671cm</Width>
+        <Width>1.68207cm</Width>
         <ZIndex>43</ZIndex>
         <Style>
           <Border>
@@ -1849,10 +1848,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>14.46486cm</Top>
-        <Left>24.63447cm</Left>
+        <Top>14.40136cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
-        <Width>1.99672cm</Width>
+        <Width>1.68207cm</Width>
         <ZIndex>44</ZIndex>
         <Style>
           <Border>
@@ -1887,10 +1886,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>15.37446cm</Top>
-        <Left>24.63447cm</Left>
+        <Top>15.31096cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
-        <Width>1.99672cm</Width>
+        <Width>1.68207cm</Width>
         <ZIndex>45</ZIndex>
         <Style>
           <Border>
@@ -1925,8 +1924,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>16.71673cm</Top>
-        <Left>26.38778cm</Left>
+        <Top>16.20873cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
         <Width>1.68207cm</Width>
         <ZIndex>46</ZIndex>
@@ -1963,8 +1962,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>17.59457cm</Top>
-        <Left>26.38778cm</Left>
+        <Top>17.08657cm</Top>
+        <Left>26.57828cm</Left>
         <Height>0.80376cm</Height>
         <Width>1.68207cm</Width>
         <ZIndex>47</ZIndex>
@@ -2000,8 +1999,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>PartyName2</rd:DefaultName>
-        <Top>3.38417in</Top>
-        <Left>9.55958in</Left>
+        <Top>3.35917in</Top>
+        <Left>9.48458in</Left>
         <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>48</ZIndex>
@@ -2026,7 +2025,7 @@
                 <Value>=First(Fields!FullName6.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>14pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2036,9 +2035,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>FullName2</rd:DefaultName>
-        <Top>3.74111in</Top>
-        <Left>9.55958in</Left>
-        <Height>0.25in</Height>
+        <Top>3.70361in</Top>
+        <Left>9.48458in</Left>
+        <Height>0.3125in</Height>
         <Width>1.65625in</Width>
         <ZIndex>49</ZIndex>
         <Style>
@@ -2062,8 +2061,8 @@
                 <Value>=First(Fields!VoteCount6.Value, "main")</Value>
                 <Style>
                   <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>22pt</FontSize>
-                  <Format>#,##0.##</Format>
+                  <FontSize>26pt</FontSize>
+                  <Format>n0</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -2073,8 +2072,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VoteCount2</rd:DefaultName>
-        <Top>4.03556in</Top>
-        <Left>9.55958in</Left>
+        <Top>4.04806in</Top>
+        <Left>9.48458in</Left>
         <Height>0.3875in</Height>
         <Width>1.65625in</Width>
         <ZIndex>50</ZIndex>
@@ -2082,7 +2081,7 @@
           <Border>
             <Style>None</Style>
           </Border>
-          <VerticalAlign>Top</VerticalAlign>
+          <VerticalAlign>Middle</VerticalAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -2090,7 +2089,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>18.78833cm</Height>
+    <Height>18.31208cm</Height>
     <Style />
   </Body>
   <Width>28.64042cm</Width>
