@@ -205,24 +205,26 @@ namespace PPRP.Domains
         public int PollingUnitNo { get; set; }
         public int PollingUnitCount { get; set; }
         public int RightCount { get; set; }
-        public decimal RightPercent 
-        { 
-            get 
-            {
-                if (RightCount <= 0) return decimal.Zero;
-                return Convert.ToDecimal(ExerciseCount / RightCount * 100);
-            } 
-            set { } 
-        }
 
         public int ExerciseCount { get; set; }
+        public decimal ExercisePercent
+        {
+            get
+            {
+                if (RightCount <= 0) return decimal.Zero;
+                decimal val = Math.Round(Convert.ToDecimal((double)((double)ExerciseCount / (double)RightCount) * (double)100), 2);
+                return val;
+            }
+            set { }
+        }
         public int InvalidCount { get; set; }
         public decimal InvalidPercent
         {
             get
             {
                 if (RightCount <= 0) return decimal.Zero;
-                return Convert.ToDecimal(InvalidCount / RightCount * 100);
+                decimal val = Math.Round(Convert.ToDecimal((double)((double)InvalidCount / (double)RightCount) * (double)100), 2);
+                return val;
             }
             set { }
         }
@@ -232,7 +234,8 @@ namespace PPRP.Domains
             get
             {
                 if (RightCount <= 0) return decimal.Zero;
-                return Convert.ToDecimal(NoVoteCount / RightCount * 100);
+                decimal val = Math.Round(Convert.ToDecimal((double)((double)NoVoteCount / (double)RightCount) * (double)100), 2);
+                return val;
             }
             set { }
         }
