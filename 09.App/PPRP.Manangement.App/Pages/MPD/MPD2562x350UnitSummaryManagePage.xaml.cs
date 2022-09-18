@@ -78,6 +78,14 @@ namespace PPRP.Pages
 
         private void LoadProvinces()
         {
+            // Check province.
+            var province = cbProvince.SelectedItem as MProvince;
+            string provinceName = (null != province) ? province.ProvinceNameTH : null;
+            if (null != provinceName && provinceName.Contains("ทุกจังหวัด"))
+            {
+                provinceName = null;
+            }
+
             cbProvince.ItemsSource = null;
             var provinces = MProvince.Gets().Value;
             if (null != provinces)

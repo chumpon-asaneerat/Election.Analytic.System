@@ -93,6 +93,14 @@ namespace PPRP.Pages
 
         private void RefreshList()
         {
+            // Check province.
+            var province = cbProvince.SelectedItem as MProvince;
+            string provinceName = (null != province) ? province.ProvinceNameTH : null;
+            if (null != provinceName && provinceName.Contains("ทุกจังหวัด"))
+            {
+                provinceName = null;
+            }
+
             lvMPD2562Items.ItemsSource = null;
             var summaries = MPD2562PollingUnitSummary.Gets();
             lvMPD2562Items.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562PollingUnitSummary>();
