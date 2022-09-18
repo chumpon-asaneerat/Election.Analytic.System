@@ -105,7 +105,7 @@ namespace PPRP.Pages
             // Set Display Name (default file name).
             inst.DisplayName = ReportDisplayName;
 
-            inst.Definition.EmbededReportName = "PPRP.Reports.MPD2562VoteSummaryReport.rdlc";
+            inst.Definition.EmbededReportName = "PPRP.Reports.MPD2562x350UnitSummaryReport.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.

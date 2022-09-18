@@ -205,9 +205,41 @@ namespace PPRP.Domains
         public int PollingUnitNo { get; set; }
         public int PollingUnitCount { get; set; }
         public int RightCount { get; set; }
+        public decimal RightPercent 
+        { 
+            get 
+            {
+                if (RightCount <= 0) return decimal.Zero;
+                return Convert.ToDecimal(ExerciseCount / RightCount * 100);
+            } 
+            set { } 
+        }
+
         public int ExerciseCount { get; set; }
         public int InvalidCount { get; set; }
+        public decimal InvalidPercent
+        {
+            get
+            {
+                if (RightCount <= 0) return decimal.Zero;
+                return Convert.ToDecimal(InvalidCount / RightCount * 100);
+            }
+            set { }
+        }
         public int NoVoteCount { get; set; }
+        public decimal NoVotePercent
+        {
+            get
+            {
+                if (RightCount <= 0) return decimal.Zero;
+                return Convert.ToDecimal(NoVoteCount / RightCount * 100);
+            }
+            set { }
+        }
+
+        public string FullName { get; set; }
+        public string PartyName { get; set; }
+        public int VoteCount { get; set; }
 
         #endregion
 
@@ -242,7 +274,7 @@ namespace PPRP.Domains
                 string query = string.Empty;
                 query += @"
                     SELECT * 
-                      FROM MPD2562x350UnitSummary
+                      FROM MPD2562x350UnitSummaryView
                      WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
                      ORDER BY ProvinceName, PollingUnitNo
                 ";

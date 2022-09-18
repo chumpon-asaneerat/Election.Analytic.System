@@ -219,6 +219,7 @@
       <DependentUpon>ImportMPD2566PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\PPRP.Domains.MPD2562PrintVoteSummary.datasource" />
+    <None Include="Properties\DataSources\PPRP.Domains.MPD2562x350PrintUnitSummary.datasource" />
     <None Include="SingeltonSample.cs" />
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
@@ -379,6 +380,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\MPD2562VoteSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\MPD2562x350UnitSummaryReport.rdlc" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
