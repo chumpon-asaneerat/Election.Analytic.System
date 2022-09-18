@@ -75,7 +75,7 @@ namespace PPRP.Pages
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                if (null != _provinceMenuItem)
+                if (null != _item)
                 {
                     this.rptViewer.Print(ReportDisplayName);
                 }

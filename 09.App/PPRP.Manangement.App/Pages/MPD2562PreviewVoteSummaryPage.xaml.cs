@@ -36,7 +36,7 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        private MPDPrintVoteSummary _item = null;
+        private List<MPD2562PrintVoteSummary> _items = null;
 
         #endregion
 
@@ -61,8 +61,8 @@ namespace PPRP.Pages
         private void GotoMPD2562VoteSummary()
         {
             // Report Menu Page
-            var page = PPRPApp.Pages.MPD2562VoteSummary;
-            page.Setup(_provinceMenuItem, _PollingItemIndex);
+            var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
+            page.Setup();
             PageContentManager.Instance.Current = page;
         }
 
@@ -73,7 +73,7 @@ namespace PPRP.Pages
             MethodBase med = MethodBase.GetCurrentMethod();
             try
             {
-                if (null != _provinceMenuItem)
+                if (null != _items)
                 {
                     this.rptViewer.Print(ReportDisplayName);
                 }
@@ -111,10 +111,13 @@ namespace PPRP.Pages
             // clear reprot datasource.
             inst.DataSources.Clear();
 
-            List<MPDPrintVoteSummary> items = new List<MPDPrintVoteSummary>();
-            if (null != _item)
+            List<MPD2562PrintVoteSummary> items = new List<MPD2562PrintVoteSummary>();
+            if (null != _items)
             {
-                items.Add(_item); // Add new because is blank.
+                foreach (var item in _items)
+                {
+                    items.Add(item); // Add new because is blank.
+                }
             }
 
             // assign new data source
@@ -138,16 +141,14 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup(ProvinceMenuItem menuItem, int pollingItemIndex, MPDPrintVoteSummary item)
+        public void Setup(List<MPD2562PrintVoteSummary> items)
         {
-            _provinceMenuItem = menuItem;
-            _PollingItemIndex = pollingItemIndex;
-            if (null == _provinceMenuItem)
+            _items = items;
+
+            if (null == _items)
             {
                 // something invalid?.
             }
-
-            _item = item;
             var model = GetReportModel();
             if (null == model ||
                 null == model.DataSources || model.DataSources.Count <= 0 ||
