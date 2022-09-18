@@ -25,35 +25,84 @@
                         Click="cmdGotoThailandPage_Click" />
                 <Grid />
             </DockPanel>
-            <TextBlock Width="20" DockPanel.Dock="Right" 
-                       Background="Transparent"/>
-            <Grid DockPanel.Dock="Right"
-                  Background="Transparent">
+            <TextBlock Width="20"
+                       DockPanel.Dock="Right"
+                       Background="Transparent" />
+            <Grid DockPanel.Dock="Right" Background="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ListBox x:Name="lstProvinces"
-                         Grid.Row="1"
-                         Width="300"
-                         Height="Auto"
-                         BorderThickness="0"
-                         Background="Transparent"
-                         HorizontalContentAlignment="Stretch"
-                         ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
-                         Style="{StaticResource SingleSelectListBox}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Button x:Name="cmdProvince"
-                                    Content="{Binding DisplayText}"
-                                    Margin="5, 0"
-                                    Width="Auto"
-                                    Style="{StaticResource InlineButton}"
-                                    Click="cmdProvince_Click" />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <Border Grid.Row="1"
+                        CornerRadius="6"
+                        Background="{StaticResource BlueLightBrush2}"
+                        BorderBrush="DimGray"
+                        BorderThickness="1"
+                        Opacity="0.8"
+                        ClipToBounds="True">
+                    <StackPanel Margin="20">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="5"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="{Binding DisplayText}"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{StaticResource THSarabun}"
+                                       Foreground="{StaticResource BlueHeavyBrush2}"
+                                       FontWeight="Bold"
+                                       FontSize="{StaticResource FontSize48}" />
+                            <TextBlock Text="{Binding PakUnitText}"
+                                       VerticalAlignment="Center"
+                                       FontFamily="{StaticResource THSarabun}"
+                                       Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize48}" />
+                        </StackPanel>
+                        <ListBox x:Name="lstProvinces"
+                                 Grid.Row="1"
+                                 Width="350"
+                                 Height="Auto"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 HorizontalContentAlignment="Stretch"
+                                 ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
+                                 Style="{StaticResource SingleSelectListBox}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Hyperlink x:Name="cmdProvince"
+                                                   Click="cmdProvince_Click"
+                                                   Cursor="Hand">
+                                            <Hyperlink.Style>
+                                                <Style TargetType="{x:Type Hyperlink}">
+                                                    <Setter Property="TextDecorations" Value="None" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="TextDecorations">
+                                                                <Setter.Value>
+                                                                    <TextDecorationCollection>
+                                                                        <TextDecoration Location="Underline">
+                                                                            <TextDecoration.Pen>
+                                                                                <Pen Brush="{StaticResource BlueHeavyBrush2}" Thickness="2" />
+                                                                            </TextDecoration.Pen>
+                                                                        </TextDecoration>
+                                                                    </TextDecorationCollection>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Hyperlink.Style>
+                                            <TextBlock Text="{Binding DisplayText}"
+                                                       FontFamily="{StaticResource THSarabun}"
+                                                       FontSize="{StaticResource FontSize30}"
+                                                       Foreground="{StaticResource BlackBlush}" />
+                                        </Hyperlink>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Border>
             </Grid>
             <Grid />
         </DockPanel>

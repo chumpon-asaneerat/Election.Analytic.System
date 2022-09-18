@@ -52,13 +52,6 @@
                                     </TextBlock>
                                     <TextBlock Width="10" />
                                 </StackPanel>
-                                <!--
-                                <Button x:Name="cmdPak"
-                                        Grid.Column="0"
-                                        Content="{Binding DisplayText}"
-                                        Style="{StaticResource InlineButton}"
-                                        Click="cmdPak_Click" />
-                                -->
                             </Grid>
                         </Expander.Header>
                         <ListBox ItemsSource="{Binding Provinces}"
@@ -102,19 +95,6 @@
                                         </TextBlock>
                                         <TextBlock Width="10" />
                                     </StackPanel>
-                                    <!--
-                                    <Button x:Name="cmdProvince"
-                                            Margin="1"
-                                            Width="Auto"
-                                            Style="{StaticResource InlineButton2}"
-                                            Click="cmdProvince_Click">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Width="10" />
-                                            <TextBlock Text="{Binding DisplayText}" />
-                                            <TextBlock Width="10" />
-                                        </StackPanel>
-                                    </Button>
-                                    -->
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
