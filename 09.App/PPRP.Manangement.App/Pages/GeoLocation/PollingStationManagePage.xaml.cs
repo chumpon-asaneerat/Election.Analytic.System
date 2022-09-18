@@ -100,14 +100,14 @@ namespace PPRP.Pages
         {
             // Check region.
             var reion = cbRegion.SelectedItem as MRegion;
-            string regionName = (null != reion) ? reion.RegionName : null;
-            if (null != regionName && regionName.Contains("ทุกภาค"))
+            string regionId = (null != reion) ? reion.RegionId : null;
+            if (null != regionId && regionId.Contains("ทุกภาค"))
             {
-                regionName = null;
+                regionId = null;
             }
 
             cbProvince.ItemsSource = null;
-            var provinces = MProvince.Gets(regionName: regionName).Value;
+            var provinces = MProvince.Gets(regionId: regionId).Value;
             if (null != provinces)
             {
                 provinces.Insert(0, new MProvince { ProvinceNameTH = "ทุกจังหวัด" });
