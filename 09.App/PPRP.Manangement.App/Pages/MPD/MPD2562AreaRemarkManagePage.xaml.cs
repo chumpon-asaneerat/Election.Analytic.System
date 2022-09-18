@@ -47,6 +47,15 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region ComboBox Handlers
+
+        private void cbProvince_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshList();
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void GotoMainMenuPage()
