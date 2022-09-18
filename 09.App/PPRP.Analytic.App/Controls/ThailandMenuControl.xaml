@@ -19,11 +19,46 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="30" />
                                 </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                    <TextBlock Width="10" />
+                                    <TextBlock>
+                                        <Hyperlink x:Name="cmdPak"
+                                                   Click="cmdPak_Click"
+                                                   Cursor="Hand">
+                                            <Hyperlink.Style>
+                                                <Style TargetType="{x:Type Hyperlink}">
+                                                    <Setter Property="TextDecorations" Value="None" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="TextDecorations">
+                                                                <Setter.Value>
+                                                                    <TextDecorationCollection>
+                                                                        <TextDecoration Location="Underline">
+                                                                            <TextDecoration.Pen>
+                                                                                <Pen Brush="{StaticResource BlueHeavyBrush2}" Thickness="2" />
+                                                                            </TextDecoration.Pen>
+                                                                        </TextDecoration>
+                                                                    </TextDecorationCollection>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Hyperlink.Style>
+                                            <TextBlock Text="{Binding DisplayText}"
+                                                       FontSize="{StaticResource FontSize30}"
+                                                       Foreground="{StaticResource BlueHeavyBrush2}" />
+                                        </Hyperlink>
+                                    </TextBlock>
+                                    <TextBlock Width="10" />
+                                </StackPanel>
+                                <!--
                                 <Button x:Name="cmdPak"
                                         Grid.Column="0"
                                         Content="{Binding DisplayText}"
                                         Style="{StaticResource InlineButton}"
                                         Click="cmdPak_Click" />
+                                -->
                             </Grid>
                         </Expander.Header>
                         <ListBox ItemsSource="{Binding Provinces}"
@@ -60,7 +95,7 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Hyperlink.Style>
-                                                <TextBlock Text="{Binding ProvinceText}" 
+                                                <TextBlock Text="{Binding ProvinceText}"
                                                            FontSize="{StaticResource FontSize24}"
                                                            Foreground="{StaticResource BlueHeavyBrush2}" />
                                             </Hyperlink>

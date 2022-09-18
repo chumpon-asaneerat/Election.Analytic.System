@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Documents;
 using System.Reflection;
 
 using NLib;
@@ -44,13 +45,13 @@ namespace PPRP.Controls
 
         private void cmdPak_Click(object sender, RoutedEventArgs e)
         {
-            var item = (sender as Button).DataContext as AreaMenuItem;
+            var item = (sender as Hyperlink).DataContext as AreaMenuItem;
             if (null != _ClickCallBack) _ClickCallBack(item);
         }
 
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
-            var item = (sender as Button).DataContext as AreaMenuItem;
+            var item = (sender as Hyperlink).DataContext as AreaMenuItem;
             if (null != _ClickCallBack) _ClickCallBack(item);
         }
 
