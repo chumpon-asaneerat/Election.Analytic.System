@@ -92,7 +92,7 @@
                                 Height="30"
                                 Content="กลับสู่หน้าจอหลัก"
                                 Click="cmdHome_Click" />
-                        <!--  BACK  -->
+                        <!--  PRINT  -->
                         <Button x:Name="cmdPrint"
                                 DockPanel.Dock="Right"
                                 Style="{StaticResource InlineButton}"

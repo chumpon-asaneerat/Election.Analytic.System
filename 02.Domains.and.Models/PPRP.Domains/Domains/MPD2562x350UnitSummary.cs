@@ -194,4 +194,80 @@ namespace PPRP.Domains
     }
 
     #endregion
+
+    #region MPD2562x350PrintUnitSummary
+
+    public class MPD2562x350PrintUnitSummary
+    {
+        #region Public Properties
+
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public int PollingUnitCount { get; set; }
+        public int RightCount { get; set; }
+        public int ExerciseCount { get; set; }
+        public int InvalidCount { get; set; }
+        public int NoVoteCount { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static NDbResult<List<MPD2562x350PrintUnitSummary>> Gets(string provinceName = null)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sProvinceName = provinceName;
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
+            {
+                sProvinceName = null;
+            }
+
+            NDbResult<List<MPD2562x350PrintUnitSummary>> rets = new NDbResult<List<MPD2562x350PrintUnitSummary>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM MPD2562x350UnitSummary
+                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                     ORDER BY ProvinceName, PollingUnitNo
+                ";
+
+                rets.Value = cnn.Query<MPD2562x350PrintUnitSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPD2562x350PrintUnitSummary>();
+            }
+
+            return rets;
+        }
+
+        #endregion
+    }
+
+    #endregion
 }
