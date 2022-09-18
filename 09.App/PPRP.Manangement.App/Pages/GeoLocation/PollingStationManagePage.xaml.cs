@@ -76,6 +76,21 @@ namespace PPRP.Pages
             RefreshList();
         }
 
+        private void LoadProvinces()
+        {
+            cbProvince.ItemsSource = null;
+            var provinces = MProvince.Gets().Value;
+            if (null != provinces)
+            {
+                provinces.Insert(0, new MProvince { ProvinceNameTH = "ทุกจังหวัด" });
+            }
+            cbProvince.ItemsSource = (null != provinces) ? provinces : new List<MProvince>();
+            if (null != provinces)
+            {
+                cbProvince.SelectedIndex = 0;
+            }
+        }
+
         private void RefreshList()
         {
             lvGeoLocations.ItemsSource = null;
