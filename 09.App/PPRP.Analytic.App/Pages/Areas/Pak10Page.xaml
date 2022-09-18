@@ -9,7 +9,7 @@
              Background="#2E75B7">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak10.jpg" Stretch="Uniform" />
+            <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Pak10.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <DockPanel LastChildFill="True">
             <DockPanel DockPanel.Dock="Left"

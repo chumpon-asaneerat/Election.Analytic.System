@@ -123,7 +123,9 @@
                                        FontSize="{StaticResource FontSize24}"
                                        VerticalAlignment="Center"
                                        TextWrapping="Wrap">
+                                <!--
                                 <Run Text="สังกัดย่อย : " />
+                                -->
                                 <Run Text="{Binding SubGroup}" />
                             </TextBlock>
                             <TextBlock Height="10" />

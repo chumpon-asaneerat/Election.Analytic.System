@@ -15,7 +15,7 @@
                 Background="{StaticResource BlueHeavyBrush}">
             <Grid>
                 <Grid.Background>
-                    <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Thailand.jpg" Stretch="Uniform" />
+                    <ImageBrush ImageSource="/PPRP.Analytic.App;component/Images/Maps/Thailand.jpg" Stretch="UniformToFill" />
                 </Grid.Background>
             </Grid>
         </Border>
