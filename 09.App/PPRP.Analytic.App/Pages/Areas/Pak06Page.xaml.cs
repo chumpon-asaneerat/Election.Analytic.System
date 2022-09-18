@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Reflection;
@@ -62,7 +63,7 @@ namespace PPRP.Pages
 
         private void cmdProvince_Click(object sender, RoutedEventArgs e)
         {
-            var province = (sender as Button).DataContext as ProvinceMenuItem;
+            var province = (sender as Hyperlink).DataContext as ProvinceMenuItem;
             GotoVoteSummaryPage(province);
         }
 
@@ -104,6 +105,7 @@ namespace PPRP.Pages
                 med.Info("No of Provinces : {0}", Provinces.Count);
             }
 
+            this.DataContext = Current;
             lstProvinces.ItemsSource = Provinces;
         }
 
