@@ -97,7 +97,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Width="180"
-                                                       Text="{Binding RightCount}"
+                                                       Text="{Binding RightCount, StringFormat={}{0:n0}}"
                                                        TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -106,7 +106,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Width="180"
-                                                       Text="{Binding ExerciseCount}"
+                                                       Text="{Binding ExerciseCount, StringFormat={}{0:n0}}"
                                                        TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -115,7 +115,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Width="180"
-                                                       Text="{Binding InvalidCount}"
+                                                       Text="{Binding InvalidCount, StringFormat={}{0:n0}}"
                                                        TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
@@ -124,7 +124,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Width="180"
-                                                       Text="{Binding NoVoteCount}"
+                                                       Text="{Binding NoVoteCount, StringFormat={}{0:n0}}"
                                                        TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

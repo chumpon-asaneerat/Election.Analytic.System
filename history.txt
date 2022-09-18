@@ -28,8 +28,10 @@ Election.Analytic.System - PPRP  #442
 Election.Analytic.System - PPRP  #441
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #440
-- 
+- Update projects
+  - Implements MPD2562VoteSummaryReport #10.
 
 [commited]
 Election.Analytic.System - PPRP  #439
