@@ -110,7 +110,7 @@ namespace PPRP.Pages
             }
 
             lvMPD2562x350Units.ItemsSource = null;
-            var summaries = MPD2562x350UnitSummary.Gets();
+            var summaries = MPD2562x350UnitSummary.Gets(provinceName);
             lvMPD2562x350Units.ItemsSource = (null != summaries) ? summaries.Value : new List<MPD2562x350UnitSummary>();
         }
 

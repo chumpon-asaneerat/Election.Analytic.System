@@ -37,9 +37,15 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPD2562x350UnitSummary>> Gets()
+        public static NDbResult<List<MPD2562x350UnitSummary>> Gets(string provinceName = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sProvinceName = provinceName;
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
+            {
+                sProvinceName = null;
+            }
 
             NDbResult<List<MPD2562x350UnitSummary>> rets = new NDbResult<List<MPD2562x350UnitSummary>>();
 
@@ -61,9 +67,11 @@ namespace PPRP.Domains
                 query += @"
                     SELECT * 
                       FROM MPD2562x350UnitSummary
+                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                     ORDER BY ProvinceName, PollingUnitNo
                 ";
 
-                rets.Value = cnn.Query<MPD2562x350UnitSummary>(query).ToList();
+                rets.Value = cnn.Query<MPD2562x350UnitSummary>(query, new { ProvinceName = sProvinceName }).ToList();
             }
             catch (Exception ex)
             {
