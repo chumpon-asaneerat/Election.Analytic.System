@@ -6,24 +6,24 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.5in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.5in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.6in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.2in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.9in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.38in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -34,11 +34,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Province Name</Value>
-                              <Style />
+                              <Value>จังหวัด</Value>
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -47,6 +52,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -64,11 +70,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Polling Unit No</Value>
-                              <Style />
+                              <Value>เขต</Value>
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -77,6 +88,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -94,11 +106,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Full Name</Value>
-                              <Style />
+                              <Value>ชื่อผู้สมัคร</Value>
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -107,6 +124,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -124,11 +142,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Party Name</Value>
-                              <Style />
+                              <Value>พรรค</Value>
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -137,6 +160,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -154,11 +178,16 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Vote Count</Value>
-                              <Style />
+                              <Value>ผลคะแนน</Value>
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -167,6 +196,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -178,7 +208,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.38in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -190,7 +220,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ProvinceName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -202,6 +235,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -220,10 +254,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PollingUnitNo.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PollingUnitNo</rd:DefaultName>
@@ -232,6 +271,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -250,10 +290,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!FullName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>FullName</rd:DefaultName>
@@ -262,6 +307,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -280,10 +326,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!PartyName.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>PartyName</rd:DefaultName>
@@ -292,6 +343,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -310,10 +362,16 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!VoteCount.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontFamily>th Sarabun New</FontFamily>
+                                <FontSize>16pt</FontSize>
+                                <Format>#,#.##;(#,#.##)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>VoteCount</rd:DefaultName>
@@ -322,6 +380,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -354,26 +413,69 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>main</DataSetName>
-        <Top>0.67167in</Top>
-        <Left>0.63in</Left>
-        <Height>0.5in</Height>
-        <Width>5in</Width>
+        <Top>0.48417in</Top>
+        <Left>0.075in</Left>
+        <Height>0.76in</Height>
+        <Width>7.7in</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox29">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ข้อมูลสถิติผลคะแนนการเลือกตั้งปี 2562</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>th Sarabun New</FontFamily>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>CornflowerBlue</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox20</rd:DefaultName>
+        <Top>0.16302cm</Top>
+        <Left>0.1905cm</Left>
+        <Height>0.94396cm</Height>
+        <Width>19.558cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Top</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>3.62479cm</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>19.90196cm</Width>
   <Page>
-    <LeftMargin>1in</LeftMargin>
-    <RightMargin>1in</RightMargin>
-    <TopMargin>1in</TopMargin>
-    <BottomMargin>1in</BottomMargin>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>21.59cm</PageWidth>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -436,6 +538,6 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>72601971-f673-47c8-9a94-5cabb0acaf26</rd:ReportID>
 </Report>
