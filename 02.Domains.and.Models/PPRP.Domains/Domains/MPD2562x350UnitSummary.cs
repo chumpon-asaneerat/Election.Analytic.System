@@ -222,8 +222,8 @@ namespace PPRP.Domains
         {
             get
             {
-                if (RightCount <= 0) return decimal.Zero;
-                decimal val = Math.Round(Convert.ToDecimal((double)((double)InvalidCount / (double)RightCount) * (double)100), 2);
+                if (ExerciseCount <= 0) return decimal.Zero;
+                decimal val = Math.Round(Convert.ToDecimal((double)((double)InvalidCount / (double)ExerciseCount) * (double)100), 2);
                 return val;
             }
             set { }
@@ -233,8 +233,8 @@ namespace PPRP.Domains
         {
             get
             {
-                if (RightCount <= 0) return decimal.Zero;
-                decimal val = Math.Round(Convert.ToDecimal((double)((double)NoVoteCount / (double)RightCount) * (double)100), 2);
+                if (ExerciseCount <= 0) return decimal.Zero;
+                decimal val = Math.Round(Convert.ToDecimal((double)((double)NoVoteCount / (double)ExerciseCount) * (double)100), 2);
                 return val;
             }
             set { }

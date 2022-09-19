@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #488
 Election.Analytic.System - PPRP  #487
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #486
-- 
+- Update projects
+  - Fixed miss calc in report
 
 [commited]
 Election.Analytic.System - PPRP  #485
