@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public class MParty
+    public class MParty : NInpc
     {
         #region Internal Variables
 
@@ -39,7 +39,27 @@ namespace PPRP.Domains
         {
             get 
             {
-                _img = ByteUtils.GetImageSource(Data);
+                if (null == _img && !_ImageLoading)
+                {
+                    _ImageLoading = true;
+
+                    Defaults.RunInBackground(() =>
+                    {
+                        ImageSource imgSrc;
+                        if (null == Data)
+                        {
+                            imgSrc = Defaults.Person;
+                        }
+                        else
+                        {
+                            imgSrc = ByteUtils.GetImageSource(Data);
+                        }
+                        _img = imgSrc;
+
+                        _ImageLoading = false;
+                        Raise(() => Image);
+                    });
+                }
                 return _img;
             }
             set { }
