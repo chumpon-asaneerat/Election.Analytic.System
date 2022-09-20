@@ -533,6 +533,43 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static int GetTotalVotes(string provinceId, int pollingUnitNo)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            int ret = 0;
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                return ret;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT SUM(A.VoteCount) AS TotalVotes
+                     FROM MPD2562VoteSummary A
+                        , MProvince B 
+                     WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
+                    AND B.ProvinceId = @ProvinceId
+                    AND A.PollingUnitNo = @PollingUnitNo
+                ";
+
+                ret = cnn.ExecuteScalar<int>(query,
+                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo });
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return ret;
+        }
+
         #endregion
     }
 

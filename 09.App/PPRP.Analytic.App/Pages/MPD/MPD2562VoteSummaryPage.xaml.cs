@@ -253,8 +253,6 @@ namespace PPRP.Pages
 
             var top6 = MPD2562PersonalVoteSummary.Gets(6,
                 _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
-            var top30 = MPD2562PersonalVoteSummary.Gets(30,
-                _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
 
             int sum6 = 0;
             if (null != top6 && top6.Count > 0)
@@ -271,16 +269,9 @@ namespace PPRP.Pages
                 txtSummaryNoInfo.Visibility = Visibility.Visible;
             }
 
-            int sum30 = 0;
-            if (null != top30 && top30.Count > 0)
-            {
-                foreach (var item in top30)
-                {
-                    sum30 += item.VoteCount;
-                }
-            }
+            int sumAll = MPD2562PersonalVoteSummary.GetTotalVotes(_pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo);
 
-            int diff = sum30 - sum6; // sum from 7-100
+            int diff = sumAll - sum6; // sum from 7-last
             txtTotalVotes.Text = diff.ToString("n0");
 
             lstSummary.ItemsSource = top6;
