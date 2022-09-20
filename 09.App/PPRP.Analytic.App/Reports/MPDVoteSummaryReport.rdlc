@@ -1196,7 +1196,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=IIF(IsNothing(First(Fields!ProvinceName.Value, "main")),"","ผลการเลือกตั้งปี 2562 จังหวัด "+First(Fields!ProvinceName.Value, "main"))
+                <Value>=IIF(IsNothing(First(Fields!ProvinceName.Value, "main")),"ผลการเลือกตั้งปี 2562","ผลการเลือกตั้งปี 2562 จังหวัด "+First(Fields!ProvinceName.Value, "main"))
 +IIF(IsNothing(First(Fields!PollingUnitNo.Value, "main")),""," เขต "+First(Fields!PollingUnitNo.Value.ToString(), "main"))</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
