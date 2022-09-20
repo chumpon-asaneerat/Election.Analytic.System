@@ -82,7 +82,9 @@
                                                     BorderThickness="1"
                                                     Margin="5"
                                                     ClipToBounds="True">
-                                                <Image Source="{Binding Image}"
+                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                       RenderOptions.EdgeMode="Aliased"
+                                                       Source="{Binding Image}"
                                                        Width="75"
                                                        Height=" 75" />
                                             </Border>
