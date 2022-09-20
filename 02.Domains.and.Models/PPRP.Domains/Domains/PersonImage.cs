@@ -29,7 +29,7 @@ namespace PPRP.Domains
         {
             get
             {
-                _img = ByteUtils.GetImageSource(Data, 260);
+                _img = ByteUtils.GetImageSource(Data, 300);
                 return _img;
             }
             set { }
