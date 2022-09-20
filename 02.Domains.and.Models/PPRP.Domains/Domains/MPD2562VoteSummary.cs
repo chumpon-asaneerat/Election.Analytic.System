@@ -479,6 +479,64 @@ namespace PPRP.Domains
             try
             {
                 string query = string.Empty;
+                query += @"
+                    ;WITH PartyImg
+                    AS
+                    (
+                        SELECT P.PartyId
+                             , P.PartyName
+                             , C.Data AS LogoData
+                          FROM MParty P
+                             , MContent C
+                         WHERE P.ContentId = C.ContentId
+                    )
+                    , PersonImg
+                    AS
+                    (
+                        SELECT P.FullName
+                             , P.Data AS PersonImageData
+                          FROM PersonImage P
+                    )
+                    , ProvinceA
+                    AS
+                    (
+                        SELECT ProvinceId
+                             , ProvinceNameTH
+                          FROM MProvince
+                    )
+                    , Top6VoteSum62
+                    AS
+                    (
+                        SELECT D.ProvinceId
+                             , D.ProvinceNameTH
+                             , A.PollingUnitNo
+                             , A.FullName
+                             , A.PartyName
+                             , B.PartyId
+                             , B.LogoData
+                             , C.PersonImageData
+                             , A.VoteNo
+                             , A.VoteCount
+                          FROM MPD2562VoteSummary A
+                             , PartyImg B
+                             , PersonImg C
+                             , ProvinceA D
+                         WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(D.ProvinceNameTH)))
+                           AND UPPER(LTRIM(RTRIM(B.PartyName))) = UPPER(LTRIM(RTRIM(A.PartyName)))
+                           AND (     C.FullName = A.FullName
+                                  OR UPPER(LTRIM(RTRIM(C.FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(A.FullName)))
+                                  OR UPPER(LTRIM(RTRIM(A.FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(C.FullName)))
+                               )
+                    )
+                    ";
+                query += "SELECT TOP  " + top.ToString() + " *";
+                query += @" 
+                      FROM Top6VoteSum62
+                     WHERE ProvinceId = @ProvinceId
+                       AND PollingUnitNo = @PollingUnitNo
+                     ORDER BY VoteCount DESC
+                ";
+                /*
                 query += "SELECT TOP " + top.ToString() + " ";
                 query += @"
                          B.ProvinceId
@@ -512,6 +570,7 @@ namespace PPRP.Domains
                     AND A.PollingUnitNo = @PollingUnitNo
                   ORDER BY A.VoteCount DESC
                 ";
+                */
 
                 var items = cnn.Query<MPD2562PersonalVoteSummary>(query,
                     new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
