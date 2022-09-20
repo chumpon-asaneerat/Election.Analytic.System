@@ -23,9 +23,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>0.05083in</Left>
+        <Left>0.12896in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -386,9 +386,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>1.91402in</Left>
+        <Left>1.99215in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -528,9 +528,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>3.79875in</Left>
+        <Left>3.87688in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -560,9 +560,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>5.69375in</Left>
+        <Left>5.77187in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>19</ZIndex>
         <Style>
           <Border>
@@ -592,9 +592,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>7.58125in</Left>
+        <Left>7.65937in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -624,9 +624,9 @@
         <MIMEType>image/jpeg</MIMEType>
         <Sizing>Fit</Sizing>
         <Top>1.07167in</Top>
-        <Left>9.48458in</Left>
+        <Left>9.56271in</Left>
         <Height>2.25in</Height>
-        <Width>1.65625in</Width>
+        <Width>1.5in</Width>
         <ZIndex>23</ZIndex>
         <Style>
           <Border>
@@ -644,7 +644,7 @@
             <Top>0.46875in</Top>
             <Left>0.0625in</Left>
             <Height>1.97177in</Height>
-            <Width>1.59375in</Width>
+            <Width>1.51563in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1196,7 +1196,8 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>ผลการเลือกตั้งปี 2562</Value>
+                <Value>=IIF(IsNothing(First(Fields!ProvinceName.Value, "main")),"","ผลการเลือกตั้งปี 2562 จังหวัด "+First(Fields!ProvinceName.Value, "main"))
++IIF(IsNothing(First(Fields!PollingUnitNo.Value, "main")),""," เขต "+First(Fields!PollingUnitNo.Value.ToString(), "main"))</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>th Sarabun New</FontFamily>
@@ -2081,108 +2082,6 @@
             <Style>None</Style>
           </Border>
           <VerticalAlign>Middle</VerticalAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="CandidateFullName2">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!ProvinceName.Value, "main")</Value>
-                <Style>
-                  <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>16pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>CandidateFullName</rd:DefaultName>
-        <Top>0.05in</Top>
-        <Left>6.91212in</Left>
-        <Height>0.31644in</Height>
-        <Width>1.44664in</Width>
-        <ZIndex>51</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <VerticalAlign>Top</VerticalAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="CandidateFullName3">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=First(Fields!PollingUnitNo.Value, "main")</Value>
-                <Style>
-                  <FontFamily>TH Sarabun New</FontFamily>
-                  <FontSize>16pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>CandidateFullName</rd:DefaultName>
-        <Top>0.0375in</Top>
-        <Left>8.96039in</Left>
-        <Height>0.31644in</Height>
-        <Width>0.90497in</Width>
-        <ZIndex>52</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <VerticalAlign>Top</VerticalAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox4">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>เขต</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.24553cm</Top>
-        <Left>21.62387cm</Left>
-        <Height>0.65347cm</Height>
-        <Width>0.95914cm</Width>
-        <ZIndex>53</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
