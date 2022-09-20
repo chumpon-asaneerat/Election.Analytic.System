@@ -238,6 +238,16 @@ namespace PPRP.Pages
 
         private void LoadSummary(PollingUnitMenuItem pollingUnit)
         {
+            if (null != _pullingUnitItem && null != pollingUnit)
+            {
+                if (_pullingUnitItem.ProvinceId == pollingUnit.ProvinceId &&
+                    _pullingUnitItem.PollingUnitNo == pollingUnit.PollingUnitNo)
+                {
+                    // same item.
+                    return;
+                }
+            }
+
             txtPollingUnitInfo.Text = "-";
             txtTotalVotes.Text = "-";
             txtPollingUnitCount.Text = "-";
