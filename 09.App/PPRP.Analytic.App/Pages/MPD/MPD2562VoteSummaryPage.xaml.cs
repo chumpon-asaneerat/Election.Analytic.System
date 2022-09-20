@@ -341,6 +341,10 @@ namespace PPRP.Pages
             MPDPrintVoteSummary item = new MPDPrintVoteSummary();
             if (null != _generalSummary)
             {
+                // Province Name/PollingUnitNo
+                item.ProvinceName = _generalSummary.ProvinceName;
+                item.PollingUnitNo = _generalSummary.PollingUnitNo;
+
                 if (null != _generalSummary.Top6 && _generalSummary.Top6.Count > 0)
                 {
                     // Person 1
@@ -413,11 +417,20 @@ namespace PPRP.Pages
                         item.CandidateSubGroup = candidate.SubGroup;
                         item.CandidateRemark = candidate.Remark;
 
-                        var prevYearItem = MPD2562VoteSummary.Get(candidate.FullName).Value;
-
+                        var prevYearInfo = MPD2562VoteSummary.GetPrevYearInfoByFullName(candidate.FullName).Value;
                         item.CandidatePrevYear = "2562"; // Hardcode Thai Year
-                        if (null != prevYearItem)
-                        item.CandidatePrevVote = prevYearItem.VoteCount.ToString("n0");
+                        if (null != prevYearInfo)
+                        {
+                            item.CandidatePrevVote = prevYearInfo.VoteCount.ToString("n0");
+                            item.CandidatePrevStatus = (prevYearInfo.RowNo == 1) ? 
+                                "ผู้ชนะการเลือกตั้ง" : "ได้คะแนนเป็นลำดับที่ " + prevYearInfo.RowNo.ToString("n0");
+                        }
+                        else
+                        {
+                            item.CandidatePrevVote = "-";
+                            item.CandidatePrevStatus = "-";
+                        }
+
                     }
 
                     // General

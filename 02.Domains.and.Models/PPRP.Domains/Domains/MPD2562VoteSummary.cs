@@ -25,6 +25,7 @@ namespace PPRP.Domains
     {
         #region Public Properties
 
+        public int RowNo { get; set; }
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
         public string FullName { get; set; }
@@ -59,8 +60,16 @@ namespace PPRP.Domains
             {
                 string query = string.Empty;
                 query += @"
-                    SELECT * 
-                      FROM MPD2562VoteSummary
+                    ;WITH VoteSum62
+                    AS
+                    -- Define the Vote Summary by Province and PollingUnit query.
+                    (
+                        SELECT ROW_NUMBER() OVER(ORDER BY VoteCount DESC) AS RowNo
+                             , * 
+                          FROM MPD2562VoteSummary
+                    )
+                    SELECT * FROM VoteSum62 
+                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
                 ";
 
                 rets.Value = cnn.Query<MPD2562VoteSummary>(query).ToList();
@@ -110,9 +119,16 @@ namespace PPRP.Domains
             {
                 string query = string.Empty;
                 query += @"
-                    SELECT * 
-                      FROM MPD2562VoteSummary
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                    ;WITH VoteSum62
+                    AS
+                    -- Define the Vote Summary by Province and PollingUnit query.
+                    (
+                        SELECT ROW_NUMBER() OVER(ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC) AS RowNo
+                             , * 
+                          FROM MPD2562VoteSummary
+                         WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
+                    )
+                    SELECT * FROM VoteSum62 
                      ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
                 ";
 
@@ -135,7 +151,7 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static NDbResult<MPD2562VoteSummary> Get(string fullName)
+        public static NDbResult<MPD2562VoteSummary> GetPrevYearInfoByFullName(string fullName)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -163,13 +179,32 @@ namespace PPRP.Domains
             {
                 string query = string.Empty;
                 query += @"
-                    SELECT * 
-                      FROM MPD2562VoteSummary
-                     WHERE UPPER(LTRIM(RTRIM(FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(COALESCE(@FullName, FullName)))) + '%' 
-                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
+                    ;WITH VoteSum62_A
+                    AS
+                    (
+                        SELECT ProvinceName, PollingUnitNo 
+                          FROM MPD2562VoteSummary 
+                         WHERE UPPER(LTRIM(RTRIM(FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(COALESCE(@FullName1, FullName)))) + '%' 
+                    ),
+                    VoteSum62_B
+                    AS
+                    -- Find the Vote Summary by Province and PollingUnit query.
+                    (
+                        SELECT ROW_NUMBER() OVER(ORDER BY A.VoteCount DESC) AS RowNo
+                             , A.* 
+                          FROM MPD2562VoteSummary A JOIN VoteSum62_A B
+                           ON (
+                                   UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceName)))
+                               AND A.PollingUnitNo = B.PollingUnitNo
+                              )
+                    )
+                    SELECT * FROM VoteSum62_B
+                     WHERE UPPER(LTRIM(RTRIM(FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(COALESCE(@FullName2, FullName)))) + '%' 
+                    ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
                 ";
 
-                rets.Value = cnn.Query<MPD2562VoteSummary>(query, new { FullName = sFullName }).FirstOrDefault();
+                rets.Value = cnn.Query<MPD2562VoteSummary>(query, 
+                    new { FullName1 = sFullName, FullName2 = sFullName }).FirstOrDefault();
             }
             catch (Exception ex)
             {
