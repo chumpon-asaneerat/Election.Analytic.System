@@ -329,7 +329,7 @@
                                                         Height="230"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Center">
-                                                    <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                    <Image RenderOptions.BitmapScalingMode="HighQuality"
                                                            RenderOptions.EdgeMode="Aliased"
                                                            Source="{Binding PersonImage}"
                                                            Width="190"
@@ -373,7 +373,7 @@
                                                     Height="100"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                <Image RenderOptions.BitmapScalingMode="HighQuality"
                                                        RenderOptions.EdgeMode="Aliased"
                                                        Source="{Binding PartyLogo}"
                                                        Width="100"
@@ -386,7 +386,7 @@
                                                     Height="340"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                <Image RenderOptions.BitmapScalingMode="HighQuality"
                                                        RenderOptions.EdgeMode="Aliased"
                                                        Source="{Binding PersonImage}"
                                                        Width="260"
