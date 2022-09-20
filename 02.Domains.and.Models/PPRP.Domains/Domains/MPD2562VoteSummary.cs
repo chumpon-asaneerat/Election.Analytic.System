@@ -513,8 +513,9 @@ namespace PPRP.Domains
                   ORDER BY A.VoteCount DESC
                 ";
 
-                rets.Value = cnn.Query<MPD2562PersonalVoteSummary>(query,
+                var items = cnn.Query<MPD2562PersonalVoteSummary>(query,
                     new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
+                rets.Value = items;
             }
             catch (Exception ex)
             {
