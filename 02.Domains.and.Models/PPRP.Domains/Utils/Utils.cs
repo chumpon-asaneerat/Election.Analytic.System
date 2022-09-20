@@ -61,7 +61,7 @@ namespace PPRP
             return buffers;
         }
 
-        public static ImageSource GetImageSource(byte[] buffers, int decodePixelWidth = 0)
+        public static ImageSource GetImageSource(byte[] buffers /*, int decodePixelWidth = 0 */)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -88,10 +88,7 @@ namespace PPRP
                     image.BeginInit();
 
                     image.CacheOption = BitmapCacheOption.OnLoad;
-                    if (decodePixelWidth > 0)
-                    {
-                        image.DecodePixelWidth = decodePixelWidth;
-                    }
+                    //image.DecodePixelWidth = (decodePixelWidth > 0) ? decodePixelWidth : 0;
 
                     image.StreamSource = stream;
 
@@ -111,7 +108,7 @@ namespace PPRP
             return ret;
         }
 
-        public static ImageSource GetImageSource(Uri resourceUri, int decodePixelWidth = 0)
+        public static ImageSource GetImageSource(Uri resourceUri /*, int decodePixelWidth = 0 */)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -127,10 +124,7 @@ namespace PPRP
                 image.BeginInit();
 
                 image.CacheOption = BitmapCacheOption.OnLoad;
-                if (decodePixelWidth > 0)
-                {
-                    image.DecodePixelWidth = decodePixelWidth;
-                }
+                //image.DecodePixelWidth = (decodePixelWidth > 0) ? decodePixelWidth : 0;
 
                 image.UriSource = resourceUri;
 

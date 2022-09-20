@@ -187,7 +187,7 @@ namespace PPRP.Domains
                     }
                     else
                     {
-                        imgSrc = ByteUtils.GetImageSource(PersonImageData, 300);
+                        imgSrc = ByteUtils.GetImageSource(PersonImageData);
                     }
 
                     _PersonImage = imgSrc;

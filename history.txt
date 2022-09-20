@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #514
 Election.Analytic.System - PPRP  #513
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #512
-- 
+- Update projects
+  - Update Speed Image render #6.
 
 [commited]
 Election.Analytic.System - PPRP  #511

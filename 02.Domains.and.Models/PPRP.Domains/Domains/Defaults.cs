@@ -33,7 +33,7 @@ namespace PPRP.Domains
                     {
                         _PersonImageLoading = true;
                         var uri = new Uri("pack://application:,,,/PPRP.Domains;component/Images/Default/person.jpg", UriKind.Absolute);
-                        _PersonImage = ByteUtils.GetImageSource(uri, 300);
+                        _PersonImage = ByteUtils.GetImageSource(uri);
                         _PersonImageLoading = false;
                     }
 
