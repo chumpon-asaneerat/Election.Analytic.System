@@ -7,8 +7,9 @@ Election.Analytic.System - PPRP  #499
 Election.Analytic.System - PPRP  #498
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #497
-- 
+- sync code from Kik (update report layout).
 
 [commited]
 Election.Analytic.System - PPRP  #496
