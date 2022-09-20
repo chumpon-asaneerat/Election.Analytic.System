@@ -20,7 +20,15 @@ namespace PPRP.Domains
 {
     public class MParty
     {
+        #region Internal Variables
+
+        private bool _ImageLoading = false;
         private ImageSource _img = null;
+
+        #endregion
+
+        #region Public Properties
+
         public int PartyId { get; set; }
 
         public string PartyName { get; set; }
@@ -35,8 +43,11 @@ namespace PPRP.Domains
                 return _img;
             }
             set { }
-        } 
+        }
 
+        #endregion
+
+        #region Static Methods
 
         public static NDbResult<List<MParty>> Gets()
         {
@@ -110,5 +121,7 @@ namespace PPRP.Domains
 
             return;
         }
+
+        #endregion
     }
 }

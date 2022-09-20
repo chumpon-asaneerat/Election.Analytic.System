@@ -18,9 +18,16 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public class PersonImage
+    public class PersonImage : NInpc
     {
+        #region Internal Variables
+
+        private bool _ImageLoading = false;
         private ImageSource _img = null;
+
+        #endregion
+
+        #region Public Properties
 
         public string FullName { get; set; }
         public byte[] Data { get; set; }
@@ -29,11 +36,35 @@ namespace PPRP.Domains
         {
             get
             {
-                _img = ByteUtils.GetImageSource(Data);
+                if (null == _img && !_ImageLoading)
+                {
+                    _ImageLoading = true;
+
+                    Defaults.RunInBackground(() =>
+                    {
+                        ImageSource imgSrc;
+                        if (null == Data)
+                        {
+                            imgSrc = Defaults.Person;
+                        }
+                        else
+                        {
+                            imgSrc = ByteUtils.GetImageSource(Data);
+                        }
+                        _img = imgSrc;
+
+                        _ImageLoading = false;
+                        Raise(() => Image);
+                    });
+                }
                 return _img;
             }
             set { }
         }
+
+        #endregion
+
+        #region Static Methods
 
         public static NDbResult<List<PersonImage>> Gets()
         {
@@ -106,5 +137,7 @@ namespace PPRP.Domains
 
             return;
         }
+
+        #endregion
     }
 }
