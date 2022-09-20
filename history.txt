@@ -22,8 +22,9 @@ Election.Analytic.System - PPRP  #504
 Election.Analytic.System - PPRP  #503
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #502
-- 
+- Update Excel files.
 
 [commited]
 Election.Analytic.System - PPRP  #501
