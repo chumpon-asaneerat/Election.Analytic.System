@@ -7,8 +7,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Reflection;
-
+using System.Reflection.Emit;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 using NLib;
 
@@ -18,6 +19,27 @@ namespace PPRP.Domains
 {
     public class Defaults
     {
+        public static Dispatcher Dispatcher
+        {
+            get 
+            {
+                if (null != System.Windows.Application.Current)
+                    return System.Windows.Application.Current.Dispatcher;
+                else return null;
+            }
+        }
+
+        public static void RunInBackground(Action action)
+        {
+            if (null != action)
+            {
+                if (null != Dispatcher)
+                {
+                    Dispatcher.BeginInvoke((Action)(() => { action(); }), DispatcherPriority.Background);
+                }
+            }
+        }
+
         private static bool _PersonImageLoading = false;
         private static ImageSource _PersonImage = null;
         private static bool _PersonBufferLoading = false;

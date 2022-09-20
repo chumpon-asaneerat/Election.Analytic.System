@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 
 using System.Windows.Media;
+using System.Windows.Threading;
 
 using NLib;
 
@@ -394,19 +395,23 @@ namespace PPRP.Domains
                 if (null == _PersonImage && !_PersonImageLoading)
                 {
                     _PersonImageLoading = true;
-                    ImageSource imgSrc;
-                    if (null == _PersonImageData)
-                    {
-                        imgSrc = Defaults.Person;
-                    }
-                    else
-                    {
-                        imgSrc = ByteUtils.GetImageSource(PersonImageData);
-                    }
 
-                    _PersonImage = imgSrc;
-                    _PersonImageLoading = false;
-                    Raise(() => PersonImage);
+                    Defaults.RunInBackground(() =>
+                    {
+                        ImageSource imgSrc;
+                        if (null == _PersonImageData)
+                        {
+                            imgSrc = Defaults.Person;
+                        }
+                        else
+                        {
+                            imgSrc = ByteUtils.GetImageSource(PersonImageData);
+                        }
+                        _PersonImage = imgSrc;
+
+                        _PersonImageLoading = false;
+                        Raise(() => PersonImage);
+                    });
                 }
 
                 return _PersonImage;
@@ -436,9 +441,13 @@ namespace PPRP.Domains
                 if (null == _PartyLogo && null != _LogoData && !_PartyLogoLoading)
                 {
                     _PartyLogoLoading = true;
-                    _PartyLogo = ByteUtils.GetImageSource(LogoData);
-                    _PartyLogoLoading = false;
-                    Raise(() => PartyLogo);
+
+                    Defaults.RunInBackground(() =>
+                    {
+                        _PartyLogo = ByteUtils.GetImageSource(LogoData);
+                        _PartyLogoLoading = false;
+                        Raise(() => PartyLogo);
+                    });
                 }
                 return _PartyLogo;
             }
