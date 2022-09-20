@@ -287,8 +287,8 @@
                                         <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource BASEHorizontalListBoxItemContainer}">
                                             <!--  EXAMPLE USAGES  -->
                                             <!--
-                                        <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
-                                        <EventSetter Event="MouseUp" Handler="lstCandidates_ListBoxItem_MouseUp" />
+                                            <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
+                                            <EventSetter Event="MouseUp" Handler="lstCandidates_ListBoxItem_MouseUp" />
                                             -->
                                             <EventSetter Event="MouseDoubleClick" Handler="lstCandidates_ListBoxItem_MouseDoubleClick" />
                                         </Style>
@@ -305,14 +305,14 @@
                                                     <TextBlock Height="2" />
                                                     <!--  PREV PARTY NAME  -->
                                                     <!--
-                                                <TextBlock DockPanel.Dock="Top"
-                                                       Foreground="{StaticResource BlueMediumBrush}"
-                                                       FontSize="28"
-                                                       Height="60"
-                                                       VerticalAlignment="Center"
-                                                       TextAlignment="Center"
-                                                       TextWrapping="Wrap"
-                                                       Text="{Binding PrevPartyName}" />
+                                                    <TextBlock DockPanel.Dock="Top"
+                                                           Foreground="{StaticResource BlueMediumBrush}"
+                                                           FontSize="28"
+                                                           Height="60"
+                                                           VerticalAlignment="Center"
+                                                           TextAlignment="Center"
+                                                           TextWrapping="Wrap"
+                                                           Text="{Binding PrevPartyName}" />
                                                     -->
                                                     <TextBlock Height="2" />
                                                     <!--  FULL NAME  -->
@@ -329,7 +329,9 @@
                                                         Height="230"
                                                         VerticalAlignment="Center"
                                                         HorizontalAlignment="Center">
-                                                    <Image Source="{Binding PersonImage}"
+                                                    <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                           RenderOptions.EdgeMode="Aliased"
+                                                           Source="{Binding PersonImage}"
                                                            Width="190"
                                                            Height="220"
                                                            Stretch="Uniform" />
@@ -371,7 +373,9 @@
                                                     Height="100"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                                <Image Source="{Binding PartyLogo}"
+                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                       RenderOptions.EdgeMode="Aliased"
+                                                       Source="{Binding PartyLogo}"
                                                        Width="100"
                                                        Height="100"
                                                        Stretch="Uniform" />
@@ -382,7 +386,9 @@
                                                     Height="340"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
-                                                <Image Source="{Binding PersonImage}"
+                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                                       RenderOptions.EdgeMode="Aliased"
+                                                       Source="{Binding PersonImage}"
                                                        Width="260"
                                                        Height="340"
                                                        Stretch="Uniform" />
