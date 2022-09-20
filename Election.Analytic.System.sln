@@ -71,7 +71,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excels", "Excels", "{F4520D
 		Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx = Imports\Excels\ข้อมูลผลคะแนนทั่วไปแบบแบ่งเขตปี 2562.xlsx
 		Imports\Excels\ข้อมูลผู้ใช้สิทธิปี 2562 350 เขต.xlsx = Imports\Excels\ข้อมูลผู้ใช้สิทธิปี 2562 350 เขต.xlsx
 		Imports\Excels\ข้อมูลพื้นที่ 2562 (เพิ่มเติม).xlsx = Imports\Excels\ข้อมูลพื้นที่ 2562 (เพิ่มเติม).xlsx
-		Imports\Excels\ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต 2562.xlsx = Imports\Excels\ข้อมูลหน่วยเลือกตั้งแบบแบ่งเขต 2562.xlsx
 		Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx = Imports\Excels\รายชื่อว่าที่ผู้สมัครปี 2566 v3.7.xlsx
 	EndProjectSection
 EndProject
