@@ -401,7 +401,7 @@ namespace PPRP.Domains
                     }
                     else
                     {
-                        imgSrc = ByteUtils.GetImageSource(PersonImageData);
+                        imgSrc = ByteUtils.GetImageSource(PersonImageData, 260);
                     }
 
                     _PersonImage = imgSrc;
@@ -436,7 +436,7 @@ namespace PPRP.Domains
                 if (null == _PartyLogo && null != _LogoData && !_PartyLogoLoading)
                 {
                     _PartyLogoLoading = true;
-                    _PartyLogo = ByteUtils.GetImageSource(LogoData);
+                    _PartyLogo = ByteUtils.GetImageSource(LogoData, 100);
                     _PartyLogoLoading = false;
                     Raise(() => PartyLogo);
                 }
