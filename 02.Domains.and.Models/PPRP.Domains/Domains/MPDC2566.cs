@@ -180,19 +180,23 @@ namespace PPRP.Domains
                 if (null == _PersonImage && !_PersonImageLoading)
                 {
                     _PersonImageLoading = true;
-                    ImageSource imgSrc;
-                    if (null == _PersonImageData)
-                    {
-                        imgSrc = Defaults.Person;
-                    }
-                    else
-                    {
-                        imgSrc = ByteUtils.GetImageSource(PersonImageData);
-                    }
 
-                    _PersonImage = imgSrc;
-                    _PersonImageLoading = false;
-                    Raise(() => PersonImage);
+                    Defaults.RunInBackground(() =>
+                    {
+                        ImageSource imgSrc;
+                        if (null == _PersonImageData)
+                        {
+                            imgSrc = Defaults.Person;
+                        }
+                        else
+                        {
+                            imgSrc = ByteUtils.GetImageSource(PersonImageData);
+                        }
+
+                        _PersonImage = imgSrc;
+                        _PersonImageLoading = false;
+                        Raise(() => PersonImage);
+                    });
                 }
 
                 return _PersonImage;

@@ -35,7 +35,6 @@ namespace PPRP.Domains
             set { }
         }
 
-
         public static NDbResult<List<PersonImage>> Gets()
         {
             MethodBase med = MethodBase.GetCurrentMethod();

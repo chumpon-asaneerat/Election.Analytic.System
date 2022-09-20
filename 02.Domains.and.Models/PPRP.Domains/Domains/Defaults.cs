@@ -54,9 +54,13 @@ namespace PPRP.Domains
                     lock (typeof(Defaults))
                     {
                         _PersonImageLoading = true;
-                        var uri = new Uri("pack://application:,,,/PPRP.Domains;component/Images/Default/person.jpg", UriKind.Absolute);
-                        _PersonImage = ByteUtils.GetImageSource(uri);
-                        _PersonImageLoading = false;
+
+                        RunInBackground(() =>
+                        {
+                            var uri = new Uri("pack://application:,,,/PPRP.Domains;component/Images/Default/person.jpg", UriKind.Absolute);
+                            _PersonImage = ByteUtils.GetImageSource(uri);
+                            _PersonImageLoading = false;
+                        });
                     }
 
                 }
