@@ -10,8 +10,9 @@ Election.Analytic.System - PPRP  #498
 Election.Analytic.System - PPRP  #497
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #496
-- 
+- Rebuild all projects.
 
 [commited]
 Election.Analytic.System - PPRP  #495
