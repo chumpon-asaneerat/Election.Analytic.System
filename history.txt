@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #494
 Election.Analytic.System - PPRP  #493
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #492
-- 
+- Update projects
+  - Update MPD Summary Report #3.
 
 [commited]
 Election.Analytic.System - PPRP  #491
