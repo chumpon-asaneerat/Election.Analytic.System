@@ -38,6 +38,9 @@ namespace PPRP.Pages
 
         public class GeneralSummary
         {
+            public string ProvinceName { get; set; }
+            public int PollingUnitNo { get; set; }
+
             public List<MPD2562PersonalVoteSummary> Top6 { get; set; }
             public int PollingUnitCount { get; set; }
             public int RightCount { get; set; }
@@ -297,6 +300,10 @@ namespace PPRP.Pages
 
             // Create cache summary for print.
             _generalSummary = new GeneralSummary();
+            
+            _generalSummary.ProvinceName = pollingUnit.ProvinceNameTH;
+            _generalSummary.PollingUnitNo = pollingUnit.PollingUnitNo;
+
             _generalSummary.Top6 = top6;
             _generalSummary.CandidateNo1 = (null != candidates && candidates.Count > 0) ? candidates[0] : null;
             _generalSummary.VoteCount7toLast = diff;
@@ -406,8 +413,11 @@ namespace PPRP.Pages
                         item.CandidateSubGroup = candidate.SubGroup;
                         item.CandidateRemark = candidate.Remark;
 
+                        var prevYearItem = MPD2562VoteSummary.Get(candidate.FullName).Value;
+
                         item.CandidatePrevYear = "2562"; // Hardcode Thai Year
-                        item.CandidatePrevVote = "-";
+                        if (null != prevYearItem)
+                        item.CandidatePrevVote = prevYearItem.VoteCount.ToString("n0");
                     }
 
                     // General

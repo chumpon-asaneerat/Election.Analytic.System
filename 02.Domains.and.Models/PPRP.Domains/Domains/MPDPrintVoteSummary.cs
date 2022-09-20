@@ -10,6 +10,13 @@ namespace PPRP.Domains
 
     public class MPDPrintVoteSummary
     {
+        #region Province/PollingUnitNo
+
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+
+        #endregion
+
         #region Person 1
 
         public byte[] Logo1 { get; set; }
@@ -76,6 +83,7 @@ namespace PPRP.Domains
         public string CandidateFullName { get; set; }
         public string CandidateSubGroup { get; set; }
         public string CandidatePrevYear { get; set; }
+        public string CandidatePrevStatus { get; set; }
         public string CandidatePrevVote { get; set; }
         public string CandidateRemark { get; set; }
 

@@ -1,8 +1,10 @@
 ﻿Election.Analytic.System - PPRP  #490
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #489
-- 
+- Update projects
+  - Update MPD Summary Report #1.
 
 [commited]
 Election.Analytic.System - PPRP  #488

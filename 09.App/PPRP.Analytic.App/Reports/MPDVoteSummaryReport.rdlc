@@ -2255,9 +2255,17 @@
           <DataField>PollingUnitCount</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="PollingUnitNo">
+          <DataField>PollingUnitNo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="PrevVoteYear">
           <DataField>PrevVoteYear</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ProvinceName">
+          <DataField>ProvinceName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RightCount">
           <DataField>RightCount</DataField>

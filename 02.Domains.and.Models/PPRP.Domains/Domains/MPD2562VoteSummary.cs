@@ -135,6 +135,59 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static NDbResult<MPD2562VoteSummary> Get(string fullName)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                sFullName = null;
+            }
+
+            NDbResult<MPD2562VoteSummary> rets = new NDbResult<MPD2562VoteSummary>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            try
+            {
+                string query = string.Empty;
+                query += @"
+                    SELECT * 
+                      FROM MPD2562VoteSummary
+                     WHERE UPPER(LTRIM(RTRIM(FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(COALESCE(@FullName, FullName)))) + '%' 
+                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
+                ";
+
+                rets.Value = cnn.Query<MPD2562VoteSummary>(query, new { FullName = sFullName }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = null;
+            }
+
+            return rets;
+        }
+
         public static void Save(MPD2562VoteSummary value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
