@@ -13,8 +13,9 @@ Election.Analytic.System - PPRP  #527
 Election.Analytic.System - PPRP  #526
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #525
-- 
+- Fixed bug MPD2562VoteSummaryPage mouse click on text not tick event
 
 [commited]
 Election.Analytic.System - PPRP  #524
