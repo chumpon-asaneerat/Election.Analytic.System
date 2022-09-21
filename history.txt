@@ -10,8 +10,9 @@ Election.Analytic.System - PPRP  #528
 Election.Analytic.System - PPRP  #527
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #526
-- 
+- Change max width of MPDC2562AreaRemarkWindow 
 
 [commited]
 Election.Analytic.System - PPRP  #525
