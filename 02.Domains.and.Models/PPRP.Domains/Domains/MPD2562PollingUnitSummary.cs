@@ -58,17 +58,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM MPD2562PollingUnitSummary
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                     ORDER BY ProvinceName, PollingUnitNo
-                ";
-
-                rets.Value = cnn.Query<MPD2562PollingUnitSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPD2562PollingUnitSummary>("GetMPD2562PollingUnitSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562PollingUnitSummary>();
             }
             catch (Exception ex)
             {
@@ -105,25 +102,19 @@ namespace PPRP.Domains
                 return ret;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", provinceName);
+            p.Add("@PollingUnitNo", pollingUnitNo);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM MPD2562PollingUnitSummary
-                     WHERE ProvinceName = @ProvinceName
-                       AND PollingUnitNo = @PollingUnitNo
-                ";
-
-                ret.Value = cnn.Query<MPD2562PollingUnitSummary>(query, 
-                    new { provinceName, pollingUnitNo }).FirstOrDefault();
+                var item = cnn.Query<MPD2562PollingUnitSummary>("GetMPD2562PollingUnitSummary", p,
+                    commandType: CommandType.StoredProcedure).FirstOrDefault();
+                ret.Value = item;
             }
             catch (Exception ex)
             {
                 med.Err(ex);
-                // Set error number/message
-                ret.ErrNum = 9999;
-                ret.ErrMsg = ex.Message;
             }
 
             return ret;

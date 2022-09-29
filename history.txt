@@ -22,13 +22,17 @@ Election.Analytic.System - PPRP  #534
 Election.Analytic.System - PPRP  #533
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #532
-- 
+- Update projects
+  - MPD2562PollingUnitSummary
+    - Update Gets static method.
+    - Update Get static method.
 
 [commited]
 Election.Analytic.System - PPRP  #531
 - Update projects
-  - MPD2562PollingUnitSummary
+  - PersonImage
     - Update ImportPersonImage static method.
     - Add Save static method.
 
