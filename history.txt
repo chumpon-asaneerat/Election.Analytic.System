@@ -7,8 +7,14 @@ Election.Analytic.System - PPRP  #539
 Election.Analytic.System - PPRP  #538
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #537
-- 
+- Update projects
+  - PollingStation
+    - Rename ImportPollingStation to Import
+    - Add Save static method.
+  - ImportPollingStationWindow
+    - Update code call Import.
 
 [commited]
 Election.Analytic.System - PPRP  #536

@@ -228,7 +228,7 @@ namespace PPRP.Windows
 
                 foreach (var item in items)
                 {
-                    PollingStation.ImportPullingStation(item);
+                    PollingStation.Import(item);
                     prog.Increment();
                 }
                 // Close progress dialog.
