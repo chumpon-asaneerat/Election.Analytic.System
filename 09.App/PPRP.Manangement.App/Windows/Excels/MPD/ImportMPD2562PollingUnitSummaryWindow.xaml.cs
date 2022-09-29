@@ -217,7 +217,7 @@ namespace PPRP.Windows
 
                 foreach (var item in items)
                 {
-                    MPD2562PollingUnitSummary.Save(item);
+                    MPD2562PollingUnitSummary.Import(item);
                     prog.Increment();
                 }
                 // Close progress dialog.
