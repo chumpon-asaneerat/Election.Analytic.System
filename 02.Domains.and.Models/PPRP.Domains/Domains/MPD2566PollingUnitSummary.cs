@@ -138,6 +138,7 @@ namespace PPRP.Domains
             p.Add("@ProvinceName", value.ProvinceName);
             p.Add("@PollingUnitNo", value.PollingUnitNo);
             p.Add("@PollingUnitCount", value.PollingUnitCount);
+            p.Add("@AreaRemark", value.AreaRemark);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
@@ -179,6 +180,7 @@ namespace PPRP.Domains
             p.Add("@ProvinceName", value.ProvinceName);
             p.Add("@PollingUnitNo", value.PollingUnitNo);
             p.Add("@PollingUnitCount", value.PollingUnitCount);
+            p.Add("@AreaRemark", value.AreaRemark);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);

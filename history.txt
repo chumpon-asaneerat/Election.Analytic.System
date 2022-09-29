@@ -10,11 +10,19 @@ Election.Analytic.System - PPRP  #538
 Election.Analytic.System - PPRP  #537
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #536
-- 
+- Update projects
+  - MPD2562PollingUnitSummary
+    - Update Save, Import static method.
+  - MPD2566PollingUnitSummary
+    - Update Save, Import static method.
 
+[commited]
 Election.Analytic.System - PPRP  #535
-- 
+- Update projects
+  - MPD2566PollingUnitSummary
+    - Update Import static method.
 
 [commited]
 Election.Analytic.System - PPRP  #534
