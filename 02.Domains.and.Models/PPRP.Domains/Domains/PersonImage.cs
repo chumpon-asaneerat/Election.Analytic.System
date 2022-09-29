@@ -109,7 +109,7 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void ImportPersonImage(string fullName, byte[] data)
+        public static void Save(string fullName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -129,6 +129,35 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SavePersonImage", p, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
+
+        public static void ImportPersonImage(string fullName, byte[] data)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@FullName", fullName);
+            p.Add("@Data", data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
+
+            try
+            {
+                cnn.Execute("ImportPersonImage", p, commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {
