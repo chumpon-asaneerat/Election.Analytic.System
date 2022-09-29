@@ -4,8 +4,11 @@
 Election.Analytic.System - PPRP  #539
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #538
-- 
+- Update projects
+  - PollingStation
+    - Update Gets static method (call SP).
 
 [commited]
 Election.Analytic.System - PPRP  #537

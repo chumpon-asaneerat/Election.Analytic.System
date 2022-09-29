@@ -64,22 +64,15 @@ namespace PPRP.Domains
                 sProvinceNameTH = null;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@RegionName", sRegionName);
+            p.Add("@ProvinceNameTH", sProvinceNameTH);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM PollingStationView 
-                     WHERE UPPER(LTRIM(RTRIM(RegionName))) = UPPER(LTRIM(RTRIM(COALESCE(@RegionName, RegionName))))
-                       AND UPPER(LTRIM(RTRIM(ProvinceNameTH))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceNameTH, ProvinceNameTH))))
-                     ORDER BY RegionId 
-                            , ProvinceNameTH 
-                            , DistrictNameTH 
-                            , SubdistrictNameTH 
-                ";
-
-                rets.Value = cnn.Query<PollingStation>(query, 
-                    new { RegionName = sRegionName, ProvinceNameTH = sProvinceNameTH }).ToList();
+                var items = cnn.Query<PollingStation>("GetPollingStations", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<PollingStation>();
             }
             catch (Exception ex)
             {
