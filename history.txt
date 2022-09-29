@@ -19,8 +19,12 @@ Election.Analytic.System - PPRP  #535
 Election.Analytic.System - PPRP  #534
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #533
-- 
+- Update projects
+  - MPD2566PollingUnitSummary
+    - Update Gets static method.
+    - Update Get static method.
 
 [commited]
 Election.Analytic.System - PPRP  #532
