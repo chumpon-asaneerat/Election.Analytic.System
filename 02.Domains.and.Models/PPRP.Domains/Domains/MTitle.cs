@@ -89,12 +89,11 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static NDbResult<MTitle> Save(MTitle value)
+        public static NDbResult Save(MTitle value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
-            NDbResult<MTitle> ret = new NDbResult<MTitle>();
-            ret.Value = value;
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)

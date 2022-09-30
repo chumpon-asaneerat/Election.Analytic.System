@@ -92,25 +92,78 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void ImportADM1(MProvince value)
+        public static NDbResult Save(MProvince value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceId", value.ProvinceId);
+            p.Add("@RegionId", value.RegionId);
+            p.Add("@ProvinceNameTH", value.ProvinceNameTH);
+            p.Add("@ProvinceNameEN", value.ProvinceNameEN);
+            p.Add("@ADM1Code", value.ADM1Code);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("SaveMProvince", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
+            }
+            return ret;
+        }
+
+        public static NDbResult ImportADM1(MProvince value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
             }
 
             if (null == value)
             {
                 string msg = "Value is null.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -125,13 +178,19 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SaveMProvinceADM1", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
-            return;
+            return ret;
         }
 
         #endregion

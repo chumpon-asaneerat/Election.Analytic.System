@@ -19,8 +19,12 @@ Election.Analytic.System - PPRP  #555
 Election.Analytic.System - PPRP  #554
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #553
-- 
+- Update projects
+  - MProvince class
+    - Update ImportADM1 method -> get error from db.
+    - Add Save method.
 
 [commited]
 Election.Analytic.System - PPRP  #552
