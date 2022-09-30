@@ -220,7 +220,7 @@ namespace PPRP.Windows
 
                 foreach (var item in items)
                 {
-                    MPD2562x350UnitSummary.Save(item);
+                    MPD2562x350UnitSummary.Import(item);
                     prog.Increment();
                 }
                 // Close progress dialog.

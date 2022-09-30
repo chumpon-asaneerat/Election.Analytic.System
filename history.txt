@@ -28,8 +28,11 @@ Election.Analytic.System - PPRP  #552
 Election.Analytic.System - PPRP  #551
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #550
-- 
+- Update projects
+  - ImportMPD2562x350UnitSummaryWindow class
+    - Update code call Import instead of Save method.
 
 [commited]
 Election.Analytic.System - PPRP  #549
