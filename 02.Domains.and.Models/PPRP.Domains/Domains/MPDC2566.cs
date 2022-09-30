@@ -89,17 +89,22 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void Save(MPDC2566 value)
+        public static NDbResult Save(MPDC2566 value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -118,21 +123,68 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SaveMPDC2566", p, commandType: CommandType.StoredProcedure);
-
                 // Set error number/message
-                int errNum = p.Get<int>("@errNum");
-                string errMsg = p.Get<string>("@errMsg");
-                if (errNum != 0)
-                {
-                    Console.WriteLine(errMsg);
-                }
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
-            return;
+            return ret;
+        }
+
+        public static NDbResult Import(MPDC2566 value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", value.ProvinceName);
+            p.Add("@PollingUnitNo", value.PollingUnitNo);
+            p.Add("@CandidateNo", value.CandidateNo);
+            p.Add("@FullName", value.FullName);
+            p.Add("@PrevPartyName", value.PrevPartyName);
+            p.Add("@EducationLevel", value.EducationLevel);
+            p.Add("@SubGroup", value.SubGroup);
+            p.Add("@Remark", value.Remark);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("ImportMPDC2566", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
+            }
+
+            return ret;
         }
 
         #endregion

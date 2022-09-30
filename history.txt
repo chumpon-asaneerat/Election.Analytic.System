@@ -22,8 +22,14 @@ Election.Analytic.System - PPRP  #554
 Election.Analytic.System - PPRP  #553
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #552
-- 
+- Update projects
+  - MPDC2566 class
+    - Update Save method -> get error from db.
+    - Add Import method -> get error from db.
+  - ImportMPDC2566Window class
+    - Update code call Import instead of Save method.
 
 [commited]
 Election.Analytic.System - PPRP  #551

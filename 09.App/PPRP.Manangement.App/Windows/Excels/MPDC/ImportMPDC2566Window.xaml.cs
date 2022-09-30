@@ -222,7 +222,7 @@ namespace PPRP.Windows
 
                 foreach (var item in items)
                 {
-                    MPDC2566.Save(item);
+                    MPDC2566.Import(item);
                     prog.Increment();
                 }
                 // Close progress dialog.
