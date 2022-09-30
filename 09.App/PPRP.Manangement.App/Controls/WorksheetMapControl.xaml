@@ -25,6 +25,7 @@
             <Button x:Name="cmdLoadExcelData" DockPanel.Dock="Right" 
                     Margin="3"
                     Width="150"
+                    Style="{StaticResource InlineButton}"
                     Content="อ่านข้อมูลตัวอย่าง"
                     Click="cmdLoadExcelData_Click"/>
             <Grid />

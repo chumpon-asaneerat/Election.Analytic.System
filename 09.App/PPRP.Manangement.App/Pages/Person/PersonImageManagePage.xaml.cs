@@ -33,6 +33,12 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        private string sFullNameFilter = string.Empty;
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdHome_Click(object sender, RoutedEventArgs e)
@@ -70,7 +76,7 @@ namespace PPRP.Pages
         private void RefreshList()
         {
             lvPersons.ItemsSource = null;
-            var persons = PersonImage.Gets(null, 1, 10);
+            var persons = PersonImage.Gets(sFullNameFilter, 1, 10);
             lvPersons.ItemsSource = (null != persons) ? persons.Value : new List<PersonImage>();
         }
 
@@ -80,6 +86,7 @@ namespace PPRP.Pages
 
         public void Setup()
         {
+            sFullNameFilter = string.Empty;
             RefreshList();
         }
 

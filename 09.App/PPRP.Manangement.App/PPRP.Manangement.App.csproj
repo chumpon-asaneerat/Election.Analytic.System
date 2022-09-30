@@ -128,6 +128,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\PagingControl.xaml.cs">
+      <DependentUpon>PagingControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WorksheetMapControl.xaml.cs">
       <DependentUpon>WorksheetMapControl.xaml</DependentUpon>
     </Compile>
@@ -222,6 +225,10 @@
     <None Include="Properties\DataSources\PPRP.Domains.MPD2562PrintVoteSummary.datasource" />
     <None Include="Properties\DataSources\PPRP.Domains.MPD2562x350PrintUnitSummary.datasource" />
     <None Include="SingeltonSample.cs" />
+    <Page Include="Controls\PagingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\WorksheetMapControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
