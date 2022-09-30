@@ -185,7 +185,7 @@ namespace PPRP.Windows
 
                 foreach (var party in _parties)
                 {
-                    MParty.ImportPartyImage(party.PartyName, party.Data);
+                    MParty.Import(party.PartyName, party.Data);
                     prog.Increment();
                 }
                 // Close progress dialog.
