@@ -13,8 +13,12 @@ Election.Analytic.System - PPRP  #547
 Election.Analytic.System - PPRP  #546
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #545
-- 
+- Update projects
+  - MParty class
+    - Rename ImportPartyImage to Import method.
+    - Update Import method -> get error from db.
 
 [commited]
 Election.Analytic.System - PPRP  #544

@@ -135,17 +135,22 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void ImportPartyImage(string partyName, byte[] data)
+        public static NDbResult Import(string partyName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -158,16 +163,16 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("ImportPartyImage", p, commandType: CommandType.StoredProcedure);
-
-                //rets.ErrNum = p.Get<int>("@errNum");
-                //rets.ErrMsg = p.Get<string>("@errMsg");
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
             }
 
-            return;
+            return ret;
         }
 
         #endregion
