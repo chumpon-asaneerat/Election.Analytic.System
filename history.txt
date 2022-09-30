@@ -4,8 +4,11 @@
 Election.Analytic.System - PPRP  #559
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #558
-- 
+- Update projects
+  - MSubdistrict class
+    - Update ImportADM3 method -> call SP ImportMSubdistrictADM3.
 
 [commited]
 Election.Analytic.System - PPRP  #557
