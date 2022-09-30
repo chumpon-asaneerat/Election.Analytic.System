@@ -39,60 +39,7 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPD2562VoteSummary>>  Gets()
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
-
-            NDbResult<List<MPD2562VoteSummary>> rets = new NDbResult<List<MPD2562VoteSummary>>();
-
-            IDbConnection cnn = DbServer.Instance.Db;
-            if (null == cnn || !DbServer.Instance.Connected)
-            {
-                string msg = "Connection is null or cannot connect to database server.";
-                med.Err(msg);
-                // Set error number/message
-                rets.ErrNum = 8000;
-                rets.ErrMsg = msg;
-
-                return rets;
-            }
-
-            try
-            {
-                string query = string.Empty;
-                query += @"
-                    ;WITH VoteSum62
-                    AS
-                    -- Define the Vote Summary by Province and PollingUnit query.
-                    (
-                        SELECT ROW_NUMBER() OVER(ORDER BY VoteCount DESC) AS RowNo
-                             , * 
-                          FROM MPD2562VoteSummary
-                    )
-                    SELECT * FROM VoteSum62 
-                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
-                ";
-
-                rets.Value = cnn.Query<MPD2562VoteSummary>(query).ToList();
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-                // Set error number/message
-                rets.ErrNum = 9999;
-                rets.ErrMsg = ex.Message;
-            }
-
-            if (null == rets.Value)
-            {
-                // create empty list.
-                rets.Value = new List<MPD2562VoteSummary>();
-            }
-
-            return rets;
-        }
-
-        public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName)
+        public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -116,24 +63,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    ;WITH VoteSum62
-                    AS
-                    -- Define the Vote Summary by Province and PollingUnit query.
-                    (
-                        SELECT ROW_NUMBER() OVER(ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC) AS RowNo
-                             , * 
-                          FROM MPD2562VoteSummary
-                         WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                    )
-                    SELECT * FROM VoteSum62 
-                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
-                ";
-
-                rets.Value = cnn.Query<MPD2562VoteSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPD2562VoteSummary>("GetMPD2562VoteSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562VoteSummary>();
             }
             catch (Exception ex)
             {
