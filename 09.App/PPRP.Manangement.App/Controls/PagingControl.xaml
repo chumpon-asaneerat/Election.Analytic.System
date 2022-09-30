@@ -22,6 +22,7 @@
                 Style="{StaticResource InlineButton}"
                 Click="cmdPrev_Click" />
         <TextBlock x:Name="txtCurrentPage"
+                   Foreground="{StaticResource WhiteBrush}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextAlignment="Center"

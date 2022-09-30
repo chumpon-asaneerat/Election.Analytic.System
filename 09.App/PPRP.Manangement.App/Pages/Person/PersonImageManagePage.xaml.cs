@@ -36,6 +36,9 @@ namespace PPRP.Pages
         #region Internal Variables
 
         private string sFullNameFilter = string.Empty;
+        private int iPageNo = 1;
+        private int iMaxPage = 1;
+        private int iRowsPerPage = 10;
 
         #endregion
 
@@ -49,6 +52,16 @@ namespace PPRP.Pages
         private void cmdImport_Click(object sender, RoutedEventArgs e)
         {
             Import();
+        }
+
+        #endregion
+
+        #region Paging Handlers
+
+        private void nav_PagingChanged(object sender, EventArgs e)
+        {
+            iPageNo = nav.PageNo;
+            RefreshList();
         }
 
         #endregion
@@ -76,8 +89,13 @@ namespace PPRP.Pages
         private void RefreshList()
         {
             lvPersons.ItemsSource = null;
-            var persons = PersonImage.Gets(sFullNameFilter, 1, 10);
+            var persons = PersonImage.Gets(sFullNameFilter, iPageNo, iRowsPerPage);
             lvPersons.ItemsSource = (null != persons) ? persons.Value : new List<PersonImage>();
+
+            iPageNo = (null != persons) ? iPageNo = persons.PageNo : 1;
+            iMaxPage = (null != persons) ? iPageNo = persons.MaxPage : 1;
+
+            nav.Setup(iPageNo, iMaxPage);
         }
 
         #endregion
@@ -87,6 +105,9 @@ namespace PPRP.Pages
         public void Setup()
         {
             sFullNameFilter = string.Empty;
+            iPageNo = 1;
+            iMaxPage = 1;
+
             RefreshList();
         }
 
