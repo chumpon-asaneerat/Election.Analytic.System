@@ -70,7 +70,7 @@ namespace PPRP.Pages
         private void RefreshList()
         {
             lvPersons.ItemsSource = null;
-            var persons = PersonImage.Gets();
+            var persons = PersonImage.Gets(null, 1, 10);
             lvPersons.ItemsSource = (null != persons) ? persons.Value : new List<PersonImage>();
         }
 

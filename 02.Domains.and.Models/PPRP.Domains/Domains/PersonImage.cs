@@ -94,8 +94,8 @@ namespace PPRP.Domains
             var p = new DynamicParameters();
             p.Add("@FullName", sFullName);
 
-            p.Add("@pageNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("@rowsPerPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@rowsPerPage", value: rowPerPage, dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@totalRecords", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@maxPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
