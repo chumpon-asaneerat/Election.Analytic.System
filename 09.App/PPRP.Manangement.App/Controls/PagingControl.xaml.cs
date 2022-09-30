@@ -3,6 +3,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using NLib;
 
 #endregion
 
@@ -31,6 +32,7 @@ namespace PPRP.Controls
         {
             PageNo = 1;
             UpdateUI();
+            RaisePagingChanged();
         }
 
         private void cmdPrev_Click(object sender, RoutedEventArgs e)
@@ -38,6 +40,7 @@ namespace PPRP.Controls
             --PageNo;
             if (PageNo < 1) PageNo = 1;
             UpdateUI();
+            RaisePagingChanged();
         }
 
         private void cmdNext_Click(object sender, RoutedEventArgs e)
@@ -45,12 +48,14 @@ namespace PPRP.Controls
             ++PageNo;
             if (PageNo > MaxPage) PageNo = MaxPage;
             UpdateUI();
+            RaisePagingChanged();
         }
 
         private void cmdLast_Click(object sender, RoutedEventArgs e)
         {
             this.PageNo = MaxPage;
             UpdateUI();
+            RaisePagingChanged();
         }
 
         #endregion
@@ -63,6 +68,11 @@ namespace PPRP.Controls
             cmdPrev.IsEnabled = (PageNo <= 1);
             cmdNext.IsEnabled = (PageNo >= MaxPage);
             cmdLast.IsEnabled = (PageNo >= MaxPage);
+        }
+
+        private void RaisePagingChanged()
+        {
+            PagingChanged.Call(this, EventArgs.Empty);
         }
 
         #endregion
