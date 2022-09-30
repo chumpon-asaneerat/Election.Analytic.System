@@ -262,6 +262,7 @@ namespace PPRP.Domains
     {
         #region Public Properties
 
+        public int RowNo { get; set; }
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
         public string FullName { get; set; }
@@ -274,7 +275,7 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPD2562PrintVoteSummary>> Gets(string provinceName)
+        public static NDbResult<List<MPD2562PrintVoteSummary>> Gets(string provinceName = null)
         {
             string sProvinceName = provinceName;
             if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
@@ -298,17 +299,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM MPD2562VoteSummary
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                     ORDER BY ProvinceName, PollingUnitNo, VoteCount DESC
-                ";
-
-                rets.Value = cnn.Query<MPD2562PrintVoteSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPD2562PrintVoteSummary>("GetMPD2562VoteSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562PrintVoteSummary>();
             }
             catch (Exception ex)
             {
@@ -443,12 +441,6 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        /*
-        public static NDbResult<List<MPD2562PersonalVoteSummary>> Gets(string provinceId, int pollingUnitNo)
-        {
-            return Gets(6, provinceId, pollingUnitNo);
-        }
-        */
         public static NDbResult<List<MPD2562PersonalVoteSummary>> Gets(int top, string provinceId, int pollingUnitNo)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
@@ -527,42 +519,6 @@ namespace PPRP.Domains
                        AND PollingUnitNo = @PollingUnitNo
                      ORDER BY VoteCount DESC
                 ";
-                /*
-                query += "SELECT TOP " + top.ToString() + " ";
-                query += @"
-                         B.ProvinceId
-                       , B.ProvinceNameTH
-                       , A.PollingUnitNo
-                       , A.FullName
-                       , IMG.Data AS PersonImageData
-                       , C.PartyId
-                       , A.PartyName
-                       , C.Data AS LogoData
-                       , A.VoteNo
-                       , A.VoteCount
-                   FROM MPD2562VoteSummary A
-                            LEFT OUTER JOIN (SELECT P.PartyId
-                                                  , P.PartyName  
-                                                  , CT.Data
-                                               FROM MParty P LEFT OUTER JOIN MContent CT 
-                                                 ON P.ContentId = CT.ContentId) C 
-                                         ON (
-                                              UPPER(LTRIM(RTRIM(A.PartyName))) = UPPER(LTRIM(RTRIM(C.PartyName)))
-                                            )
-                            LEFT OUTER JOIN PersonImage IMG 
-                                         ON (   
-                                                 (IMG.FullName = A.FullName)
-                                              OR (IMG.FullName LIKE '%' + A.FullName + '%')
-                                              OR (A.FullName LIKE '%' + IMG.FullName + '%')
-                                            )
-                      , MProvince B 
-                  WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
-                    AND B.ProvinceId = @ProvinceId
-                    AND A.PollingUnitNo = @PollingUnitNo
-                  ORDER BY A.VoteCount DESC
-                ";
-                */
-
                 var items = cnn.Query<MPD2562PersonalVoteSummary>(query,
                     new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
                 rets.Value = items;

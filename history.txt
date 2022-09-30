@@ -22,8 +22,11 @@ Election.Analytic.System - PPRP  #544
 Election.Analytic.System - PPRP  #543
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #542
-- 
+- Update projects
+  - MPD2562PrintVoteSummary class
+    - Update Gets static method -> call SP GetMPD2562VoteSummaries.
 
 [commited]
 Election.Analytic.System - PPRP  #541
