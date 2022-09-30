@@ -144,7 +144,7 @@ namespace PPRP.Domains
 
             try
             {
-                cnn.Execute("SaveMDistrictADM2", p, commandType: CommandType.StoredProcedure);
+                cnn.Execute("ImportMDistrictADM2", p, commandType: CommandType.StoredProcedure);
                 // Set error number/message
                 ret.ErrNum = p.Get<int>("@errNum");
                 ret.ErrMsg = p.Get<string>("@errMsg");

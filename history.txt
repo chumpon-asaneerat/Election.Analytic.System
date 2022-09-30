@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #557
 Election.Analytic.System - PPRP  #556
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #555
-- 
+- Update projects
+  - MDistrict class
+    - Update ImportADM2 method -> call SP ImportMDistrictADM2.
 
 [commited]
 Election.Analytic.System - PPRP  #554
