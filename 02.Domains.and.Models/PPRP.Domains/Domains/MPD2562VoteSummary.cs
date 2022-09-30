@@ -269,6 +269,51 @@ namespace PPRP.Domains
             return;
         }
 
+        public static void Import(MPD2562VoteSummary value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", value.ProvinceName);
+            p.Add("@PollingUnitNo", value.PollingUnitNo);
+            p.Add("@FullName", value.FullName);
+            p.Add("@VoteNo", value.VoteNo);
+            p.Add("@PartyName", value.PartyName);
+            p.Add("@VoteCount", value.VoteCount);
+            p.Add("@RevoteNo", value.RevoteNo);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("ImportMPD2562VoteSummary", p, commandType: CommandType.StoredProcedure);
+
+                // Set error number/message
+                int errNum = p.Get<int>("@errNum");
+                string errMsg = p.Get<string>("@errMsg");
+                if (errNum != 0)
+                {
+                    Console.WriteLine(errMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
+
         #endregion
     }
 

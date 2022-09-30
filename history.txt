@@ -28,8 +28,14 @@ Election.Analytic.System - PPRP  #542
 Election.Analytic.System - PPRP  #541
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #540
-- 
+- Update projects
+  - MPD2562VoteSummary class
+    - Add Import static method.
+    - Update Save static method.
+  - ImportMPD2562VoteSummaryWindow class
+    - Update code used Import instread of Save.
 
 [commited]
 Election.Analytic.System - PPRP  #539
