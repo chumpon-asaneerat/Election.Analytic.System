@@ -25,8 +25,12 @@ Election.Analytic.System - PPRP  #553
 Election.Analytic.System - PPRP  #552
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #551
-- 
+- Update projects
+  - MPD2566PollingUnitSummary class
+    - Update Save method -> get error from db.
+    - Update Import method -> get error from db.
 
 [commited]
 Election.Analytic.System - PPRP  #550
