@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #566
 Election.Analytic.System - PPRP  #565
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #564
-- 
+- Update projects
+  - PersonImage class
+    - Update Gets static method #2.
 
 [commited]
 Election.Analytic.System - PPRP  #563
