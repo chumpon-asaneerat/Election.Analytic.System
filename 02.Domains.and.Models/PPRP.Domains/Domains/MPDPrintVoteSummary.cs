@@ -1,8 +1,12 @@
-﻿using System;
+﻿#region Using
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+#endregion
 
 namespace PPRP.Domains
 {
@@ -10,6 +14,8 @@ namespace PPRP.Domains
 
     public class MPDPrintVoteSummary
     {
+        #region Public Properties
+
         #region Province/PollingUnitNo
 
         public string ProvinceName { get; set; }
@@ -98,6 +104,8 @@ namespace PPRP.Domains
         public decimal ExercisePercent { get; set; }
         public int DifferenceVoteFromNo2 { get; set; }
         public int VoteCount7toLast { get; set; }
+
+        #endregion
 
         #endregion
     }

@@ -87,6 +87,19 @@ namespace PPRP.Domains
                 return rets;
             }
 
+
+            //var p = new DynamicParameters();
+            //p.Add("@partyName", partyName);
+            //p.Add("@Data", data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
+
+            //p.Add("@pageNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            //p.Add("@rowsPerPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            //p.Add("@totalRecords", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            //p.Add("@maxPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            //p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            //p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
             try
             {
                 string query = string.Empty;
@@ -95,6 +108,15 @@ namespace PPRP.Domains
                 query += "WHERE A.ContentId = B.ContentId";
 
                 rets.Value = cnn.Query<MParty>(query).ToList();
+
+                // Get Paging parameters
+                //rets.PageNo = p.Get<int>("@pageNum");
+                //rets.RowsPerPage = p.Get<int>("@rowsPerPage");
+                //rets.TotalRecords = p.Get<int>("@totalRecords");
+                //rets.MaxPage = p.Get<int>("@maxPage");
+                // Set error number/message
+                //rets.ErrNum = p.Get<int>("@errNum");
+                //rets.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
@@ -130,9 +152,15 @@ namespace PPRP.Domains
             p.Add("@partyName", partyName);
             p.Add("@Data", data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
 
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
             try
             {
                 cnn.Execute("ImportPartyImage", p, commandType: CommandType.StoredProcedure);
+
+                //rets.ErrNum = p.Get<int>("@errNum");
+                //rets.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {

@@ -66,9 +66,16 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<PersonImage>> Gets()
+        public static NDbResult<List<PersonImage>> Gets(string fullName,
+            int pageNo = 1, int rowPerPage = 10)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                sFullName = null;
+            }
 
             NDbResult<List<PersonImage>> rets = new NDbResult<List<PersonImage>>();
 
@@ -84,13 +91,31 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@FullName", sFullName);
+
+            p.Add("@pageNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@rowsPerPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@totalRecords", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@maxPage", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
             try
             {
-                string query = string.Empty;
-                query += "SELECT TOP 100 * ";
-                query += " FROM PersonImage ";
+                var items = cnn.Query<PersonImage>("GetPersonImages", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : null;
 
-                rets.Value = cnn.Query<PersonImage>(query).ToList();
+                // Get Paging parameters
+                rets.PageNo = p.Get<int>("@pageNum");
+                rets.RowsPerPage = p.Get<int>("@rowsPerPage");
+                rets.TotalRecords = p.Get<int>("@totalRecords");
+                rets.MaxPage = p.Get<int>("@maxPage");
+                // Set error number/message
+                rets.ErrNum = p.Get<int>("@errNum");
+                rets.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {

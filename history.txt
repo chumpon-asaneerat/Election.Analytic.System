@@ -16,8 +16,19 @@ Election.Analytic.System - PPRP  #546
 Election.Analytic.System - PPRP  #545
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #544
-- 
+- Update projects
+  - Add NDbResult class
+    - Add properties for paging.
+  - NDbResult<T> class
+    - Move properties to NDbResult class.
+  - MContent class
+    - Update Save method -> get error from db.
+  - MDistrict class
+    - Update ImportADM2 method -> get error from db.
+  - MParty class
+    - Prepare Gets method.
 
 [commited]
 Election.Analytic.System - PPRP  #543

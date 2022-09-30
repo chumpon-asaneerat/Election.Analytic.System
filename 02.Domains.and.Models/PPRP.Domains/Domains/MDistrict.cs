@@ -102,25 +102,33 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void ImportADM2(MDistrict value)
+        public static NDbResult ImportADM2(MDistrict value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             if (null == value)
             {
                 string msg = "Value is null.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -137,13 +145,19 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SaveMDistrictADM2", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
-            return;
+            return ret;
         }
 
         #endregion
