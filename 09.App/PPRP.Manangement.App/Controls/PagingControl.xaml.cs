@@ -64,10 +64,10 @@ namespace PPRP.Controls
 
         private void UpdateUI()
         {
-            cmdFirst.IsEnabled = (PageNo <= 1);
-            cmdPrev.IsEnabled = (PageNo <= 1);
-            cmdNext.IsEnabled = (PageNo >= MaxPage);
-            cmdLast.IsEnabled = (PageNo >= MaxPage);
+            cmdFirst.IsEnabled = (PageNo > 1);
+            cmdPrev.IsEnabled = (PageNo > 1);
+            cmdNext.IsEnabled = (PageNo < MaxPage);
+            cmdLast.IsEnabled = (PageNo < MaxPage);
         }
 
         private void RaisePagingChanged()

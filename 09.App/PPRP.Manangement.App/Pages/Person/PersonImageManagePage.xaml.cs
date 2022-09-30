@@ -92,8 +92,8 @@ namespace PPRP.Pages
             var persons = PersonImage.Gets(sFullNameFilter, iPageNo, iRowsPerPage);
             lvPersons.ItemsSource = (null != persons) ? persons.Value : new List<PersonImage>();
 
-            iPageNo = (null != persons) ? iPageNo = persons.PageNo : 1;
-            iMaxPage = (null != persons) ? iPageNo = persons.MaxPage : 1;
+            iPageNo = (null != persons) ? persons.PageNo : 1;
+            iMaxPage = (null != persons) ? persons.MaxPage : 1;
 
             nav.Setup(iPageNo, iMaxPage);
         }
