@@ -19,8 +19,14 @@ Election.Analytic.System - PPRP  #545
 Election.Analytic.System - PPRP  #544
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #543
-- 
+- Update projects
+  - MPD2562VoteSummary class
+    - Change GetPrevYearInfoByFullName static method to Get static method.
+    - Update Get static method -> call SP GetMPD2562VoteSummaryByFullName.
+  - MPD2562VoteSummaryPage class
+    - Update code call MPD2562VoteSummary->Get (in GotoPrintPreview method)
 
 [commited]
 Election.Analytic.System - PPRP  #542

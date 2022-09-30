@@ -418,7 +418,7 @@ namespace PPRP.Pages
                         item.CandidateSubGroup = candidate.SubGroup;
                         item.CandidateRemark = candidate.Remark;
 
-                        var prevYearInfo = MPD2562VoteSummary.GetPrevYearInfoByFullName(candidate.FullName).Value;
+                        var prevYearInfo = MPD2562VoteSummary.Get(candidate.FullName).Value;
                         item.CandidatePrevYear = "2562"; // Hardcode Thai Year
                         if (null != prevYearInfo)
                         {
