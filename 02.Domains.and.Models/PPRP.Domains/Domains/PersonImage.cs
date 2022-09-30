@@ -163,7 +163,7 @@ namespace PPRP.Domains
             return;
         }
 
-        public static void ImportPersonImage(string fullName, byte[] data)
+        public static void Import(string fullName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 

@@ -185,7 +185,7 @@ namespace PPRP.Windows
 
                 foreach (var person in _persons)
                 {
-                    PersonImage.ImportPersonImage(person.PersonName, person.Data);
+                    PersonImage.Import(person.PersonName, person.Data);
                     prog.Increment();
                 }
                 // Close progress dialog.

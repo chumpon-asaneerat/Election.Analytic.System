@@ -22,8 +22,13 @@ Election.Analytic.System - PPRP  #564
 Election.Analytic.System - PPRP  #563
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #562
-- 
+- Update projects
+  - PersonImage class
+    - Rename ImportPersonImage to Import method.
+  - ImportPersonImageWindow class
+    - Update code to call Import method.
 
 [commited]
 Election.Analytic.System - PPRP  #561
