@@ -170,6 +170,9 @@ namespace PPRP.Domains
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
             return ret;
