@@ -16,8 +16,11 @@ Election.Analytic.System - PPRP  #556
 Election.Analytic.System - PPRP  #555
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #554
-- 
+- Update projects
+  - MProvince class
+    - Update ImportADM1 method -> call SP ImportMProvinceADM1.
 
 [commited]
 Election.Analytic.System - PPRP  #553

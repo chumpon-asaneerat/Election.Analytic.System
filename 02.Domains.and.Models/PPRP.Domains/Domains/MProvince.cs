@@ -177,7 +177,7 @@ namespace PPRP.Domains
 
             try
             {
-                cnn.Execute("SaveMProvinceADM1", p, commandType: CommandType.StoredProcedure);
+                cnn.Execute("ImportMProvinceADM1", p, commandType: CommandType.StoredProcedure);
                 // Set error number/message
                 ret.ErrNum = p.Get<int>("@errNum");
                 ret.ErrMsg = p.Get<string>("@errMsg");
