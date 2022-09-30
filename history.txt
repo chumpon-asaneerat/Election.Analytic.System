@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #558
 Election.Analytic.System - PPRP  #557
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #556
-- 
+- Update projects
+  - MDistrict class
+    - Add Save method.
 
 [commited]
 Election.Analytic.System - PPRP  #555

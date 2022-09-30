@@ -102,6 +102,52 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static NDbResult Save(MDistrict value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@DistrictId", value.DistrictId);
+            p.Add("@RegionId", value.RegionId);
+            p.Add("@ProvinceId", value.ProvinceId);
+            p.Add("@DistrictNameTH", value.DistrictNameTH);
+            p.Add("@DistrictNameEN", value.DistrictNameEN);
+            p.Add("@ADM2Code", value.ADM2Code);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("SaveMDistrict", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
+            }
+            return ret;
+        }
+
         public static NDbResult ImportADM2(MDistrict value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
