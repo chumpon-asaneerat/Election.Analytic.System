@@ -1,8 +1,11 @@
 ﻿Election.Analytic.System - PPRP  #560
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #559
-- 
+- Update projects
+  - MSubdistrict class
+    - Add Save static method.
 
 [commited]
 Election.Analytic.System - PPRP  #558
