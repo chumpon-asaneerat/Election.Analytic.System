@@ -443,69 +443,16 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceId", provinceId);
+            p.Add("@PollingUnitNo", pollingUnitNo);
+            p.Add("@Top", top);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    ;WITH PartyImg
-                    AS
-                    (
-                        SELECT P.PartyId
-                             , P.PartyName
-                             , C.Data AS LogoData
-                          FROM MParty P
-                             , MContent C
-                         WHERE P.ContentId = C.ContentId
-                    )
-                    , PersonImg
-                    AS
-                    (
-                        SELECT P.FullName
-                             , P.Data AS PersonImageData
-                          FROM PersonImage P
-                    )
-                    , ProvinceA
-                    AS
-                    (
-                        SELECT ProvinceId
-                             , ProvinceNameTH
-                          FROM MProvince
-                    )
-                    , Top6VoteSum62
-                    AS
-                    (
-                        SELECT D.ProvinceId
-                             , D.ProvinceNameTH
-                             , A.PollingUnitNo
-                             , A.FullName
-                             , A.PartyName
-                             , B.PartyId
-                             , B.LogoData
-                             , C.PersonImageData
-                             , A.VoteNo
-                             , A.VoteCount
-                          FROM MPD2562VoteSummary A
-                             , PartyImg B
-                             , PersonImg C
-                             , ProvinceA D
-                         WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(D.ProvinceNameTH)))
-                           AND UPPER(LTRIM(RTRIM(B.PartyName))) = UPPER(LTRIM(RTRIM(A.PartyName)))
-                           AND (     C.FullName = A.FullName
-                                  OR UPPER(LTRIM(RTRIM(C.FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(A.FullName)))
-                                  OR UPPER(LTRIM(RTRIM(A.FullName))) LIKE '%' + UPPER(LTRIM(RTRIM(C.FullName)))
-                               )
-                    )
-                    ";
-                query += "SELECT TOP  " + top.ToString() + " *";
-                query += @" 
-                      FROM Top6VoteSum62
-                     WHERE ProvinceId = @ProvinceId
-                       AND PollingUnitNo = @PollingUnitNo
-                     ORDER BY VoteCount DESC
-                ";
-                var items = cnn.Query<MPD2562PersonalVoteSummary>(query,
-                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
-                rets.Value = items;
+                var items = cnn.Query<MPD2562PersonalVoteSummary>("GetMPD2562TopVoteSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562PersonalVoteSummary>();
             }
             catch (Exception ex)
             {
@@ -538,20 +485,14 @@ namespace PPRP.Domains
                 return ret;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceId", provinceId);
+            p.Add("@PollingUnitNo", pollingUnitNo);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT SUM(A.VoteCount) AS TotalVotes
-                     FROM MPD2562VoteSummary A
-                        , MProvince B 
-                     WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
-                    AND B.ProvinceId = @ProvinceId
-                    AND A.PollingUnitNo = @PollingUnitNo
-                ";
-
-                ret = cnn.ExecuteScalar<int>(query,
-                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo });
+                ret = cnn.ExecuteScalar<int>("GetMPD2562TotalVotes", p,
+                    commandType: CommandType.StoredProcedure);
             }
             catch (Exception ex)
             {
