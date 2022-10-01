@@ -54,6 +54,54 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
+
+        private void cmdEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvParties.SelectedItem as MParty;
+            Edit(item);
+        }
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvParties.SelectedItem as MParty;
+            Delete(item);
+        }
+
+        #endregion
+
+        #region TextBox Handlers
+
+        private void txtPartyNameFilter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                e.Handled = true; // mark as handled
+                // search
+                Search();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                e.Handled = true; // mark as handled
+                // reset filter and search
+                txtPartyNameFilter.Text = string.Empty;
+                Search();
+            }
+        }
+
+        #endregion
+
+        #region Paging Handlers
+
+        private void nav_PagingChanged(object sender, EventArgs e)
+        {
+            iPageNo = nav.PageNo;
+            RefreshList();
+        }
+
         #endregion
 
         #region Private Methods
@@ -76,6 +124,29 @@ namespace PPRP.Pages
             RefreshList();
         }
 
+        private void Search()
+        {
+            if (sPartyNameFilter.Trim() != txtPartyNameFilter.Text.Trim())
+            {
+                sPartyNameFilter = txtPartyNameFilter.Text.Trim();
+                RefreshList();
+            }
+        }
+
+        private void Edit(MParty item)
+        {
+            if (null == item)
+                return;
+            Console.WriteLine("Edit");
+        }
+
+        private void Delete(MParty item)
+        {
+            if (null == item)
+                return;
+            Console.WriteLine("Delete");
+        }
+
         private void RefreshList()
         {
             lvParties.ItemsSource = null;
@@ -91,7 +162,7 @@ namespace PPRP.Pages
             iPageNo = (null != parties) ? parties.PageNo : 1;
             iMaxPage = (null != parties) ? parties.MaxPage : 1;
 
-            //nav.Setup(iPageNo, iMaxPage);
+            nav.Setup(iPageNo, iMaxPage);
         }
 
         #endregion

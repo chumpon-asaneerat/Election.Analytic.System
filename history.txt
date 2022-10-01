@@ -1,8 +1,10 @@
 ﻿Election.Analytic.System - PPRP  #590
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #589
-- 
+- Update projects
+  - Implements Party Manage UI #2.
 
 [commited]
 Election.Analytic.System - PPRP  #588
