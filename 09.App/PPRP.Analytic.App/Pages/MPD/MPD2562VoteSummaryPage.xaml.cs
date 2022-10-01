@@ -287,7 +287,7 @@ namespace PPRP.Pages
             lstSummary.ItemsSource = top6;
 
             // get candidates.
-            var candidates = MPDC2566Summary.Gets(_pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
+            var candidates = MPDC2566Summary.Gets(4, _pullingUnitItem.ProvinceId, _pullingUnitItem.PollingUnitNo).Value;
             lstCandidates.ItemsSource = candidates;
 
             if (null == candidates || candidates.Count <= 0)

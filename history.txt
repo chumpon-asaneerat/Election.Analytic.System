@@ -22,8 +22,11 @@ Election.Analytic.System - PPRP  #584
 Election.Analytic.System - PPRP  #583
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #582
-- 
+- Update projects
+  - MPDC2566Summary class
+    - Update Gets static method -> call SP GetMPDC2566Summaries.
 
 [commited]
 Election.Analytic.System - PPRP  #581

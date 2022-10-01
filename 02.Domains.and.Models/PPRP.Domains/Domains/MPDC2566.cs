@@ -257,7 +257,7 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPDC2566Summary>> Gets(string provinceId, int pollingUnitNo)
+        public static NDbResult<List<MPDC2566Summary>> Gets(int top, string provinceId, int pollingUnitNo)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -275,47 +275,16 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceId", provinceId);
+            p.Add("@PollingUnitNo", pollingUnitNo);
+            p.Add("@Top", top);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT TOP 4
-                          B.ProvinceId
-                        , B.ProvinceNameTH AS ProvinceName
-                        , A.PollingUnitNo
-                        , A.FullName
-                        , IMG.Data AS PersonImageData
-                        , C.PartyId
-                        , A.PrevPartyName
-                        , C.Data AS LogoData
-                        , A.CandidateNo
-                        , A.EducationLevel
-                        , A.SubGroup
-                        , A.Remark
-                     FROM MPDC2566 A
-                            LEFT OUTER JOIN (SELECT P.PartyId
-                                                  , P.PartyName  
-                                                  , CT.Data
-                                                FROM MParty P LEFT OUTER JOIN MContent CT 
-                                                    ON P.ContentId = CT.ContentId) C 
-                                            ON (
-                                                UPPER(LTRIM(RTRIM(A.PrevPartyName))) = UPPER(LTRIM(RTRIM(C.PartyName)))
-                                            )
-                            LEFT OUTER JOIN PersonImage IMG 
-                                            ON (   
-                                                    (IMG.FullName = A.FullName)
-                                                OR (IMG.FullName LIKE '%' + A.FullName + '%')
-                                                OR (A.FullName LIKE '%' + IMG.FullName + '%')
-                                            )
-                        , MProvince B 
-                    WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceNameTH)))
-                    AND B.ProvinceId = @ProvinceId
-                    AND A.PollingUnitNo = @PollingUnitNo
-                    ORDER BY A.CandidateNo
-                ";
-
-                rets.Value = cnn.Query<MPDC2566Summary>(query,
-                    new { ProvinceId = provinceId, PollingUnitNo = pollingUnitNo }).ToList();
+                var items = cnn.Query<MPDC2566Summary>("GetMPDC2566Summaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPDC2566Summary>();
             }
             catch (Exception ex)
             {
