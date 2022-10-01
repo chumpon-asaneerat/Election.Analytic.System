@@ -19,8 +19,12 @@ Election.Analytic.System - PPRP  #585
 Election.Analytic.System - PPRP  #584
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #583
-- 
+- Update projects
+  - PollingStation class
+    - Update Save static method -> get error from db.
+    - Update Import static method -> get error from db.
 
 [commited]
 Election.Analytic.System - PPRP  #582

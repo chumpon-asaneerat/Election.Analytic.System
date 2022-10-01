@@ -91,17 +91,22 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void Save(PollingStation value)
+        public static NDbResult Save(PollingStation value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -131,34 +136,37 @@ namespace PPRP.Domains
             try
             {
                 cnn.Execute("SavePollingStation", p, commandType: CommandType.StoredProcedure);
-
                 // Set error number/message
-                int errNum = p.Get<int>("@errNum");
-                string errMsg = p.Get<string>("@errMsg");
-                if (errNum != 0)
-                {
-                    Console.WriteLine(errMsg);
-                }
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
-            return;
+            return ret;
         }
 
-        public static void Import(PollingStation value)
+        public static NDbResult Import(PollingStation value)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
 
             IDbConnection cnn = DbServer.Instance.Db;
             if (null == cnn || !DbServer.Instance.Connected)
             {
                 string msg = "Connection is null or cannot connect to database server.";
                 med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
 
-                return;
+                return ret;
             }
 
             var p = new DynamicParameters();
@@ -178,31 +186,22 @@ namespace PPRP.Domains
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
 
-
-            if (value.ProvinceId == "67" && 
-                value.PollingUnitNo > 1)
-            {
-                Console.WriteLine("detected");
-            }
-
             try
             {
                 cnn.Execute("ImportPollingStation", p, commandType: CommandType.StoredProcedure);
-
                 // Set error number/message
-                int errNum = p.Get<int>("@errNum");
-                string errMsg = p.Get<string>("@errMsg");
-                if (errNum != 0)
-                {
-                    Console.WriteLine(errMsg);
-                }
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
                 med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
             }
 
-            return;
+            return ret;
         }
 
         #endregion
