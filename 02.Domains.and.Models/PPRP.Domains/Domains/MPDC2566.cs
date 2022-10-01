@@ -60,17 +60,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT *
-                        FROM MPDC2566
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                     ORDER BY ProvinceName, PollingUnitNo
-                ";
-
-                rets.Value = cnn.Query<MPDC2566>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPDC2566>("GetMPDC2566s", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPDC2566>();
             }
             catch (Exception ex)
             {
