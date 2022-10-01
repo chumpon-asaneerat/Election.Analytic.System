@@ -127,13 +127,13 @@
                                         Width="170"
                                         ClipToBounds="True">
                                     <DockPanel LastChildFill="True" Margin="2">
-                                        <Button x:Name="cmdEdit" 
+                                        <Button x:Name="cmdEdit"
                                                 DockPanel.Dock="Bottom"
-                                                Margin="2,1" 
+                                                Margin="2,1"
                                                 Height="25"
-                                                Content="แก้ไข" 
+                                                Content="แก้ไข"
                                                 Style="{StaticResource InlineButton}"
-                                                Click="cmdEdit_Click"/>
+                                                Click="cmdEdit_Click" />
                                         <Grid DockPanel.Dock="Bottom"
                                               Height="48"
                                               VerticalAlignment="Center"
