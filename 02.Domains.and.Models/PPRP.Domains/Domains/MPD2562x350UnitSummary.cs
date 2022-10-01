@@ -308,17 +308,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM MPD2562x350UnitSummaryView
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                     ORDER BY ProvinceName, PollingUnitNo
-                ";
-
-                rets.Value = cnn.Query<MPD2562x350PrintUnitSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPD2562x350PrintUnitSummary>("GetMPD2562x350UnitFullSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562x350PrintUnitSummary>();
             }
             catch (Exception ex)
             {
