@@ -136,6 +136,12 @@ namespace PPRP.Pages
             var persons = PersonImage.Gets(sFullNameFilter, iPageNo, iRowsPerPage);
             lvPersons.ItemsSource = (null != persons) ? persons.Value : new List<PersonImage>();
 
+            if (null != persons)
+            {
+                lvPersons.SelectedIndex = 0;
+                lvPersons.ScrollIntoView(lvPersons.SelectedItem);
+            }
+
             iPageNo = (null != persons) ? persons.PageNo : 1;
             iMaxPage = (null != persons) ? persons.MaxPage : 1;
 
