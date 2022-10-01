@@ -4,8 +4,12 @@
 Election.Analytic.System - PPRP  #579
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #578
-- 
+- Update projects
+  - MPD2562x350UnitSummary class
+    - Update Gets static method -> call SP GetMPD2562x350UnitSummaries.
+    - Update Get static method -> call SP GetMPD2562x350UnitSummary.
 
 [commited]
 Election.Analytic.System - PPRP  #577

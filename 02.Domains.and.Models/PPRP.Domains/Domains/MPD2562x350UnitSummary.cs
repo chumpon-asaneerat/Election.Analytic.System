@@ -61,17 +61,14 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT * 
-                      FROM MPD2562x350UnitSummary
-                     WHERE UPPER(LTRIM(RTRIM(ProvinceName))) = UPPER(LTRIM(RTRIM(COALESCE(@ProvinceName, ProvinceName))))
-                     ORDER BY ProvinceName, PollingUnitNo
-                ";
-
-                rets.Value = cnn.Query<MPD2562x350UnitSummary>(query, new { ProvinceName = sProvinceName }).ToList();
+                var items = cnn.Query<MPD2562x350UnitSummary>("GetMPD2562x350UnitSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPD2562x350UnitSummary>();
             }
             catch (Exception ex)
             {
@@ -108,26 +105,15 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", provinceName);
+            p.Add("@PollingUnitNo", pollingUnitNo);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT A.ProvinceName
-                         , A.PollingUnitNo 
-                         , A.RightCount
-                         , A.ExerciseCount
-                         , A.InvalidCount 
-                         , A.NoVoteCount 
-                         , B.PollingUnitCount
-                      FROM MPD2562x350UnitSummary A, MPD2562PollingUnitSummary B
-                     WHERE UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(B.ProvinceName)))
-                       AND B.PollingUnitNo = A.PollingUnitNo
-                       AND UPPER(LTRIM(RTRIM(A.ProvinceName))) = UPPER(LTRIM(RTRIM(@ProvinceName)))
-                       AND A.PollingUnitNo = @PollingUnitNo
-                ";
-
-                rets.Value = cnn.Query<MPD2562x350UnitSummary>(query, 
-                    new { ProvinceName = provinceName, PollingUnitNo = pollingUnitNo }).ToList().FirstOrDefault();
+                var items = cnn.Query<MPD2562x350UnitSummary>("GetMPD2562x350UnitSummary", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.FirstOrDefault() : null;
             }
             catch (Exception ex)
             {
