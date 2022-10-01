@@ -73,10 +73,14 @@ namespace PPRP.Pages
         {
             if (e.Key == System.Windows.Input.Key.Enter)
             {
+                e.Handled = true; // mark as handled
+                // search
                 Search();
             }
             else if (e.Key == System.Windows.Input.Key.Escape)
             {
+                e.Handled = true; // mark as handled
+                // reset filter and search
                 txtFullNameFilter.Text = string.Empty;
                 Search();
             }
