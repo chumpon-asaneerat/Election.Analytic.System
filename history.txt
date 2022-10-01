@@ -4,8 +4,12 @@
 Election.Analytic.System - PPRP  #589
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #588
-- 
+- Update projects
+  - MParty class
+    - Update Gets static method -> call SP GetMParties.
+  - Implements Party Manage UI #1.
 
 [commited]
 Election.Analytic.System - PPRP  #587

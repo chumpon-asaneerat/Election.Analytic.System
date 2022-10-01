@@ -69,7 +69,8 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MParty>> Gets()
+        public static NDbResult<List<MParty>> Gets(string partyName,
+            int pageNo = 1, int rowPerPage = 10)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -88,35 +89,31 @@ namespace PPRP.Domains
             }
 
 
-            //var p = new DynamicParameters();
-            //p.Add("@partyName", partyName);
-            //p.Add("@Data", data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
+            var p = new DynamicParameters();
+            p.Add("@PartyName", partyName);
 
-            //p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
-            //p.Add("@rowsPerPage", value: rowPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
-            //p.Add("@totalRecords", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-            //p.Add("@maxPage", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@rowsPerPage", value: rowPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@totalRecords", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@maxPage", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-            //p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
-            //p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
 
             try
             {
-                string query = string.Empty;
-                query += "SELECT TOP 100 A.*, B.Data ";
-                query += " FROM MParty A, MContent B ";
-                query += "WHERE A.ContentId = B.ContentId";
-
-                rets.Value = cnn.Query<MParty>(query).ToList();
+                var items = cnn.Query<MParty>("GetMParties", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : null;
 
                 // Get Paging parameters
-                //rets.PageNo = p.Get<int>("@pageNum");
-                //rets.RowsPerPage = p.Get<int>("@rowsPerPage");
-                //rets.TotalRecords = p.Get<int>("@totalRecords");
-                //rets.MaxPage = p.Get<int>("@maxPage");
+                rets.PageNo = p.Get<int>("@pageNum");
+                rets.RowsPerPage = p.Get<int>("@rowsPerPage");
+                rets.TotalRecords = p.Get<int>("@totalRecords");
+                rets.MaxPage = p.Get<int>("@maxPage");
                 // Set error number/message
-                //rets.ErrNum = p.Get<int>("@errNum");
-                //rets.ErrMsg = p.Get<string>("@errMsg");
+                rets.ErrNum = p.Get<int>("@errNum");
+                rets.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
