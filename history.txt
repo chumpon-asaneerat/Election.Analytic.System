@@ -7,8 +7,11 @@ Election.Analytic.System - PPRP  #589
 Election.Analytic.System - PPRP  #588
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #587
-- 
+- Update projects
+  - MPDC2566PreviewWindow class
+    - Update code to allow resize window.
 
 [commited]
 Election.Analytic.System - PPRP  #586
