@@ -10,8 +10,11 @@ Election.Analytic.System - PPRP  #588
 Election.Analytic.System - PPRP  #587
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #586
-- 
+- Update projects
+  - PollingUnitMenuItem class
+    - Update Gets static method -> call SP GetPollingUnitMenuItems.
 
 [commited]
 Election.Analytic.System - PPRP  #585

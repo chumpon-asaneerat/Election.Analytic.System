@@ -341,17 +341,15 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@RegionId", regionId);
+            p.Add("@ProvinceId", provinceId);
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT *
-                      FROM MPDPollingUnitSummary
-                     WHERE RegionId = @RegionId
-                       AND ProvinceId = @ProvinceId
-                ";
-
-                rets.Value = cnn.Query<PollingUnitMenuItem>(query, new { RegionId = regionId, ProvinceId = provinceId }).ToList();
+                var items = cnn.Query<PollingUnitMenuItem>("GetPollingUnitMenuItems", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<PollingUnitMenuItem>();
             }
             catch (Exception ex)
             {
