@@ -54,6 +54,34 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
+
+        private void cmdEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvPersons.SelectedItem as PersonImage;
+            Edit(item);
+        }
+
+        #endregion
+
+        #region TextBox Handlers
+
+        private void txtFullNameFilter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Search();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                txtFullNameFilter.Text = string.Empty;
+                Search();
+            }
+        }
+
         #endregion
 
         #region Paging Handlers
@@ -84,6 +112,22 @@ namespace PPRP.Pages
                 return;
             }
             RefreshList();
+        }
+
+        private void Search()
+        {
+            if (sFullNameFilter.Trim() != txtFullNameFilter.Text.Trim())
+            {
+                sFullNameFilter = txtFullNameFilter.Text.Trim();
+                RefreshList();
+            }
+        }
+
+        private void Edit(PersonImage item)
+        {
+            if (null == item)
+                return;
+            Console.WriteLine("Edit");
         }
 
         private void RefreshList()
