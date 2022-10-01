@@ -13,8 +13,11 @@ Election.Analytic.System - PPRP  #587
 Election.Analytic.System - PPRP  #586
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #585
-- 
+- Update projects
+  - ProvinceMenuItem class
+    - Update Gets static method -> call SP GetProvinceMenuItems.
 
 [commited]
 Election.Analytic.System - PPRP  #584

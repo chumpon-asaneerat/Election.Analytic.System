@@ -233,22 +233,9 @@ namespace PPRP.Domains
 
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT A.RegionId
-                         , A.ProvinceId
-                         , A.ProvinceNameTH
-                         , COUNT(A.PollingUnitNo) AS UnitCount
-                      FROM MPDPollingUnitSummary A 
-                     WHERE A.RegionId = @RegionId
-                       AND A.RegionId IS NOT NULL
-                     GROUP BY A.RegionId
-                            , A.ProvinceId
-                            , A.ProvinceNameTH
-                     ORDER BY A.RegionId, A.ProvinceNameTH
-                ";
-
-                rets.Value = cnn.Query<ProvinceMenuItem>(query, new { RegionId = regionId }).ToList();
+                var items = cnn.Query<ProvinceMenuItem>("GetProvinceMenuItems", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<ProvinceMenuItem>();
             }
             catch (Exception ex)
             {
