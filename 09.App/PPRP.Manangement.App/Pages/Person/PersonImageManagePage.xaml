@@ -123,11 +123,12 @@
                                         BorderThickness="1"
                                         CornerRadius="3"
                                         Margin="2"
-                                        Height="270"
+                                        Height="285"
                                         Width="170"
                                         ClipToBounds="True">
                                     <DockPanel LastChildFill="True" Margin="2">
-                                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom"
+                                        <StackPanel Orientation="Horizontal"
+                                                    DockPanel.Dock="Bottom"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
                                             <Button x:Name="cmdEdit"
@@ -160,43 +161,12 @@
                                                RenderOptions.EdgeMode="Aliased"
                                                Source="{Binding Image}"
                                                Width="Auto"
-                                               Height="260" />
+                                               Height="270" />
                                     </DockPanel>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <!--
-                    <ListView x:Name="lvPersons" Style="{StaticResource SingleSelectListView}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="รูป" Width="150">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Border BorderBrush="Silver"
-                                                    BorderThickness="1"
-                                                    Margin="5"
-                                                    ClipToBounds="True">
-                                                <Image RenderOptions.BitmapScalingMode="LowQuality"
-                                                       RenderOptions.EdgeMode="Aliased"
-                                                       Source="{Binding Image}"
-                                                       Width="75"
-                                                       Height=" 75" />
-                                            </Border>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="ชื่อผู้สมัคร/ว่าที่ผู้สมัคร" Width="250">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding FullName}" TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    -->
                 </DockPanel>
             </DockPanel>
         </Grid>

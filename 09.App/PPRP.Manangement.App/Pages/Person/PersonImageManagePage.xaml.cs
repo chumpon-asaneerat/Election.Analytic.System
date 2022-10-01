@@ -38,7 +38,7 @@ namespace PPRP.Pages
         private string sFullNameFilter = string.Empty;
         private int iPageNo = 1;
         private int iMaxPage = 1;
-        private int iRowsPerPage = 30;
+        private int iRowsPerPage = 40;
 
         #endregion
 
@@ -63,6 +63,12 @@ namespace PPRP.Pages
         {
             var item = lvPersons.SelectedItem as PersonImage;
             Edit(item);
+        }
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvPersons.SelectedItem as PersonImage;
+            Delete(item);
         }
 
         #endregion
@@ -134,6 +140,13 @@ namespace PPRP.Pages
             Console.WriteLine("Edit");
         }
 
+        private void Delete(PersonImage item)
+        {
+            if (null == item)
+                return;
+            Console.WriteLine("Delete");
+        }
+
         private void RefreshList()
         {
             lvPersons.ItemsSource = null;
@@ -166,10 +179,5 @@ namespace PPRP.Pages
         }
 
         #endregion
-
-        private void cmdDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
