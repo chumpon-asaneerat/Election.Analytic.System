@@ -18,6 +18,8 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
+    #region AreaMenuItem
+
     public class AreaMenuItem
     {
         public const string PAK = "PAK";
@@ -29,6 +31,10 @@ namespace PPRP.Domains
         public virtual string PakUnitText { get; set; }
         public virtual string ProvinceText { get; set; }
     }
+
+    #endregion
+
+    #region PakMenuItem
 
     public class PakMenuItem : AreaMenuItem
     {
@@ -128,16 +134,13 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+
             try
             {
-                string query = string.Empty;
-                query += @"
-                    SELECT RegionId, RegionName
-                      FROM MRegion 
-                  ORDER BY RegionId
-                ";
-
-                rets.Value = cnn.Query<PakMenuItem>(query).ToList();
+                var items = cnn.Query<PakMenuItem>("GetRegionMenuItems", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<PakMenuItem>();
             }
             catch (Exception ex)
             {
@@ -158,6 +161,10 @@ namespace PPRP.Domains
 
         #endregion
     }
+
+    #endregion
+
+    #region ProvinceMenuItem
 
     public class ProvinceMenuItem : AreaMenuItem
     {
@@ -221,25 +228,12 @@ namespace PPRP.Domains
                 return rets;
             }
 
+            var p = new DynamicParameters();
+            p.Add("@RegionId", regionId);
+
             try
             {
                 string query = string.Empty;
-                /*
-                query += @"
-                    SELECT A.RegionId
-                         , A.ProvinceId
-                         , A.ProvinceNameTH
-                         , COUNT(B.PollingUnitNo) AS UnitCount
-                      FROM MProvince A 
-                           LEFT JOIN (SELECT DISTINCT ProvinceId, PollingUnitNo FROM PollingStation) B ON 
-                             A.ProvinceId = B.ProvinceId
-                     WHERE A.RegionId = @RegionId
-                     GROUP BY A.RegionId
-                            , A.ProvinceId
-                            , A.ProvinceNameTH
-                     ORDER BY A.RegionId, A.ProvinceNameTH
-                ";
-                */
                 query += @"
                     SELECT A.RegionId
                          , A.ProvinceId
@@ -275,6 +269,10 @@ namespace PPRP.Domains
 
         #endregion
     }
+
+    #endregion
+
+    #region PollingUnitMenuItem
 
     public class PollingUnitMenuItem : AreaMenuItem
     {
@@ -387,4 +385,6 @@ namespace PPRP.Domains
 
         #endregion
     }
+
+    #endregion
 }
