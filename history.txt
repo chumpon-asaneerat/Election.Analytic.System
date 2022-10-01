@@ -13,8 +13,10 @@ Election.Analytic.System - PPRP  #577
 Election.Analytic.System - PPRP  #576
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #575
-- 
+- Update projects
+  - Implements Paging Control #10.
 
 [commited]
 Election.Analytic.System - PPRP  #574

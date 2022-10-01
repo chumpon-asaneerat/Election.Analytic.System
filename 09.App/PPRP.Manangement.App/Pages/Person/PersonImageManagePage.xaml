@@ -127,13 +127,24 @@
                                         Width="170"
                                         ClipToBounds="True">
                                     <DockPanel LastChildFill="True" Margin="2">
-                                        <Button x:Name="cmdEdit"
-                                                DockPanel.Dock="Bottom"
-                                                Margin="2,1"
-                                                Height="25"
-                                                Content="แก้ไข"
-                                                Style="{StaticResource InlineButton}"
-                                                Click="cmdEdit_Click" />
+                                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                            <Button x:Name="cmdEdit"
+                                                    Margin="2,1"
+                                                    Width="75"
+                                                    Height="25"
+                                                    Content="แก้ไข"
+                                                    Style="{StaticResource InlineButton}"
+                                                    Click="cmdEdit_Click" />
+                                            <Button x:Name="cmdDelete"
+                                                    Margin="2,1"
+                                                    Width="75"
+                                                    Height="25"
+                                                    Content="ลบ"
+                                                    Style="{StaticResource InlineButton}"
+                                                    Click="cmdDelete_Click" />
+                                        </StackPanel>
                                         <Grid DockPanel.Dock="Bottom"
                                               Height="48"
                                               VerticalAlignment="Center"

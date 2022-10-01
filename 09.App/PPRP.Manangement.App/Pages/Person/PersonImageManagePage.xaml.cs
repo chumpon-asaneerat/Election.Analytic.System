@@ -166,5 +166,10 @@ namespace PPRP.Pages
         }
 
         #endregion
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
