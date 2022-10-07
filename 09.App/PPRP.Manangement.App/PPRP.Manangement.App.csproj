@@ -222,6 +222,9 @@
     <Compile Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2566PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MPDC\MPDC2566EditorWindow.xaml.cs">
+      <DependentUpon>MPDC2566EditorWindow.xaml</DependentUpon>
+    </Compile>
     <None Include="Properties\DataSources\PPRP.Domains.MPD2562PrintVoteSummary.datasource" />
     <None Include="Properties\DataSources\PPRP.Domains.MPD2562x350PrintUnitSummary.datasource" />
     <None Include="SingeltonSample.cs" />
@@ -362,6 +365,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MPDC\MPDC2566EditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
