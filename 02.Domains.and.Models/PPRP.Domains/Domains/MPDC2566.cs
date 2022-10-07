@@ -36,7 +36,8 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPDC2566>> Gets(string provinceName = null)
+        public static NDbResult<List<MPDC2566>> Gets(string provinceName = null,
+            int pageNo = 1, int pollingUnitPerPage = 4)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -63,11 +64,28 @@ namespace PPRP.Domains
             var p = new DynamicParameters();
             p.Add("@ProvinceName", sProvinceName);
 
+            p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@pollingUnitPerPage", value: pollingUnitPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@totalRecords", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@maxPage", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
             try
             {
                 var items = cnn.Query<MPDC2566>("GetMPDC2566s", p,
                     commandType: CommandType.StoredProcedure);
                 rets.Value = (null != items) ? items.ToList() : new List<MPDC2566>();
+
+                // Get Paging parameters
+                rets.PageNo = p.Get<int>("@pageNum");
+                rets.RowsPerPage = p.Get<int>("@pollingUnitPerPage");
+                rets.TotalRecords = p.Get<int>("@totalRecords");
+                rets.MaxPage = p.Get<int>("@maxPage");
+                // Set error number/message
+                rets.ErrNum = p.Get<int>("@errNum");
+                rets.ErrMsg = p.Get<string>("@errMsg");
             }
             catch (Exception ex)
             {
