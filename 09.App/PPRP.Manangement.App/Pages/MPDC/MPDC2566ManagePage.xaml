@@ -106,7 +106,10 @@
                             <ctrl:PagingControl x:Name="nav" PagingChanged="nav_PagingChanged" />
                         </StackPanel>
                     </Grid>
-                    <ListView x:Name="lvMPDC2566" Style="{StaticResource SingleSelectListView}">
+                    <ListView x:Name="lvMPDC2566"
+                              Style="{StaticResource SingleSelectListView}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <!--
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="จังหวัด">
@@ -183,6 +186,83 @@
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
+                        -->
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Silver"
+                                        BorderThickness="1"
+                                        CornerRadius="3"
+                                        Margin="2"
+                                        Height="285"
+                                        Width="170"
+                                        ClipToBounds="True">
+                                    <DockPanel LastChildFill="True" Margin="2">
+                                        <StackPanel Orientation="Horizontal"
+                                                    DockPanel.Dock="Bottom"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center">
+                                            <Button x:Name="cmdEdit"
+                                                    Margin="2,1"
+                                                    Width="75"
+                                                    Height="25"
+                                                    Content="แก้ไข"
+                                                    Style="{StaticResource InlineButton}" />
+                                            <Button x:Name="cmdDelete"
+                                                    Margin="2,1"
+                                                    Width="75"
+                                                    Height="25"
+                                                    Content="ลบ"
+                                                    Style="{StaticResource InlineButton}" />
+                                        </StackPanel>
+                                        <Grid DockPanel.Dock="Bottom"
+                                              Height="48"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding FullName}"
+                                                       Height="Auto"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       TextAlignment="Center"
+                                                       TextWrapping="Wrap" />
+                                        </Grid>
+                                        <Image RenderOptions.BitmapScalingMode="LowQuality"
+                                               RenderOptions.EdgeMode="Aliased"
+                                               Source="{Binding Image}"
+                                               Width="Auto"
+                                               Height="270" />
+                                    </DockPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="True">
+                                                        <Expander.Header>
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Name}"
+                                                                           FontSize="{StaticResource FontSize18}"
+                                                                           Foreground="{StaticResource BlackBlush}" />
+                                                            </StackPanel>
+                                                        </Expander.Header>
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
                     </ListView>
                 </DockPanel>
             </DockPanel>

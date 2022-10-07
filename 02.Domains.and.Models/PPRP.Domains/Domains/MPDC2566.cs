@@ -76,6 +76,12 @@ namespace PPRP.Domains
         public int CandidateNoOri { get; set; }
         public string FullNameOri { get; set; }
 
+        public string GroupName 
+        { 
+            get { return string.Format("{0} เขต {1}", ProvinceName, PollingUnitNo); }
+            set { }
+        }
+
         #endregion
 
         #region Static Methods

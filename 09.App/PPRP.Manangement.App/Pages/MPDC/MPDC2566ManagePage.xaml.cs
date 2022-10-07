@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
@@ -126,6 +127,10 @@ namespace PPRP.Pages
             lvMPDC2566.ItemsSource = null;
             var candidates = MPDC2566.Gets(provinceName, iPageNo, iRowsPerPage);
             lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvMPDC2566.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("GroupName");
+            view.GroupDescriptions.Add(groupDescription);
 
             if (null != candidates)
             {
