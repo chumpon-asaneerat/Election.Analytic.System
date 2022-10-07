@@ -33,6 +33,15 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        //private string sFullNameFilter = string.Empty;
+        private int iPageNo = 1;
+        private int iMaxPage = 1;
+        private int iRowsPerPage = 40;
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdHome_Click(object sender, RoutedEventArgs e)
@@ -51,6 +60,19 @@ namespace PPRP.Pages
 
         private void cbProvince_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            iPageNo = 1;
+            iMaxPage = 1;
+
+            RefreshList();
+        }
+
+        #endregion
+
+        #region Paging Handlers
+
+        private void nav_PagingChanged(object sender, EventArgs e)
+        {
+            iPageNo = nav.PageNo;
             RefreshList();
         }
 
@@ -102,8 +124,19 @@ namespace PPRP.Pages
             }
 
             lvMPDC2566.ItemsSource = null;
-            var candidates = MPDC2566.Gets(provinceName);
+            var candidates = MPDC2566.Gets(provinceName, iPageNo, iRowsPerPage);
             lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
+
+            if (null != candidates)
+            {
+                lvMPDC2566.SelectedIndex = 0;
+                lvMPDC2566.ScrollIntoView(lvMPDC2566.SelectedItem);
+            }
+
+            iPageNo = (null != candidates) ? candidates.PageNo : 1;
+            iMaxPage = (null != candidates) ? candidates.MaxPage : 1;
+
+            nav.Setup(iPageNo, iMaxPage);
         }
 
         #endregion

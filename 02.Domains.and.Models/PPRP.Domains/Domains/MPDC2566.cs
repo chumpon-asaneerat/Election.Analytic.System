@@ -32,6 +32,8 @@ namespace PPRP.Domains
         public string SubGroup { get; set; }
         public string Remark { get; set; }
 
+        public byte[] Data { get; set; }
+
         #endregion
 
         #region Static Methods
@@ -81,7 +83,7 @@ namespace PPRP.Domains
                 // Get Paging parameters
                 rets.PageNo = p.Get<int>("@pageNum");
                 rets.RowsPerPage = p.Get<int>("@pollingUnitPerPage");
-                rets.TotalRecords = p.Get<int>("@totalRecords");
+                //rets.TotalRecords = p.Get<int>("@totalRecords");
                 rets.MaxPage = p.Get<int>("@maxPage");
                 // Set error number/message
                 rets.ErrNum = p.Get<int>("@errNum");
