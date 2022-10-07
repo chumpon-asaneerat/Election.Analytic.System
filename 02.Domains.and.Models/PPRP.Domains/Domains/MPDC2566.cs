@@ -71,6 +71,11 @@ namespace PPRP.Domains
             set { }
         }
 
+        public string ProvinceNameOri { get; set; }
+        public int PollingUnitNoOri { get; set; }
+        public int CandidateNoOri { get; set; }
+        public string FullNameOri { get; set; }
+
         #endregion
 
         #region Static Methods
