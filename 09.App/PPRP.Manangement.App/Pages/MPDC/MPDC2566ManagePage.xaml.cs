@@ -38,7 +38,7 @@ namespace PPRP.Pages
         //private string sFullNameFilter = string.Empty;
         private int iPageNo = 1;
         private int iMaxPage = 1;
-        private int iRowsPerPage = 40;
+        private int iRowsPerPage = 4;
 
         #endregion
 
