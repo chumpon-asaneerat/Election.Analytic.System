@@ -19,8 +19,15 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
-    public class MPDC2566
+    public class MPDC2566 : NInpc
     {
+        #region Internal Variables
+
+        private bool _ImageLoading = false;
+        private ImageSource _img = null;
+
+        #endregion
+
         #region Public Properties
 
         public string ProvinceName { get; set; }
@@ -33,6 +40,36 @@ namespace PPRP.Domains
         public string Remark { get; set; }
 
         public byte[] Data { get; set; }
+
+        public ImageSource Image
+        {
+            get
+            {
+                if (null == _img && !_ImageLoading)
+                {
+                    _ImageLoading = true;
+
+                    Defaults.RunInBackground(() =>
+                    {
+                        ImageSource imgSrc;
+                        if (null == Data)
+                        {
+                            imgSrc = Defaults.Person;
+                        }
+                        else
+                        {
+                            imgSrc = ByteUtils.GetImageSource(Data);
+                        }
+                        _img = imgSrc;
+
+                        _ImageLoading = false;
+                        Raise(() => Image);
+                    });
+                }
+                return _img;
+            }
+            set { }
+        }
 
         #endregion
 
