@@ -39,6 +39,7 @@ namespace PPRP.Domains
         public string SubGroup { get; set; }
         public string Remark { get; set; }
 
+        public string ImageFullName { get; set; }
         public byte[] Data { get; set; }
 
         public ImageSource Image
@@ -181,6 +182,14 @@ namespace PPRP.Domains
             p.Add("@EducationLevel", value.EducationLevel);
             p.Add("@SubGroup", value.SubGroup);
             p.Add("@Remark", value.Remark);
+
+            p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
+            p.Add("@ProvinceNameOri", value.ProvinceNameOri);
+            p.Add("@PollingUnitNoOri", value.PollingUnitNoOri);
+            p.Add("@CandidateNoOri", value.CandidateNoOri);
+            p.Add("@FullNameOri", value.FullNameOri);
+            p.Add("@ImageFullNameOri", value.ImageFullName);
+
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
