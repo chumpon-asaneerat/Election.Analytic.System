@@ -61,13 +61,17 @@ namespace PPRP.Pages
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvParties.SelectedItem as MParty;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as MParty;
             Edit(item);
         }
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvParties.SelectedItem as MParty;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as MParty;
             Delete(item);
         }
 
@@ -144,7 +148,12 @@ namespace PPRP.Pages
         {
             if (null == item)
                 return;
-            Console.WriteLine("Delete");
+            string msg = string.Format("ต้องการลบข้อมูล '{0}' ?", item.PartyName);
+            if (MessageBox.Show(msg, "ยืนยันการลบข้อมูล", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                MParty.Delete(item);
+                RefreshList();
+            }
         }
 
         private void RefreshList()

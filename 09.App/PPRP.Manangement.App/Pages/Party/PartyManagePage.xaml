@@ -137,6 +137,7 @@
                                                     Height="25"
                                                     Content="แก้ไข"
                                                     Style="{StaticResource InlineButton}"
+                                                    Visibility="Collapsed"
                                                     Click="cmdEdit_Click" />
                                             <Button x:Name="cmdDelete"
                                                     Margin="2,1"
