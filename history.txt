@@ -16,8 +16,9 @@ Election.Analytic.System - PPRP  #616
 Election.Analytic.System - PPRP  #615
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #614
-- 
+- Rebuild all projects
 
 [commited]
 Election.Analytic.System - PPRP  #613
