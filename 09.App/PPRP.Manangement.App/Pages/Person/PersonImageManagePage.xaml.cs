@@ -66,13 +66,17 @@ namespace PPRP.Pages
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvPersons.SelectedItem as PersonImage;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as PersonImage;
             Edit(item);
         }
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvPersons.SelectedItem as PersonImage;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as PersonImage;
             Delete(item);
         }
 
