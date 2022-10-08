@@ -108,85 +108,10 @@
                     </Grid>
                     <ListView x:Name="lvMPDC2566"
                               Style="{StaticResource SingleSelectListView}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                        <!--
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="จังหวัด">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="150"
-                                                       Text="{Binding ProvinceName}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="เขต">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="100"
-                                                       Text="{Binding PollingUnitNo}"
-                                                       TextAlignment="Center" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="ลำดับที่">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="50"
-                                                       Text="{Binding CandidateNo}"
-                                                       TextAlignment="Center" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="ชื่อผู้สมัคร">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="250"
-                                                       Text="{Binding FullName}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="พรรคต้นสังกัดเดิม">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="150"
-                                                       Text="{Binding PrevPartyName}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="ระดับการศึกษา">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="150"
-                                                       Text="{Binding EducationLevel}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="-">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="150"
-                                                       Text="{Binding SubGroup}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="หมายเหตุ">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Width="250"
-                                                       Text="{Binding Remark}"
-                                                       TextAlignment="Left" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                        -->
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              VirtualizingPanel.IsVirtualizing="True"
+                              VirtualizingPanel.VirtualizationMode="Recycling"
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal" />
@@ -199,13 +124,15 @@
                                         CornerRadius="3"
                                         Margin="2"
                                         Height="285"
-                                        Width="170"
+                                        Width="450"
                                         ClipToBounds="True">
                                     <DockPanel LastChildFill="True" Margin="2">
+                                        <!--  EDIT/DELETE  -->
                                         <StackPanel Orientation="Horizontal"
                                                     DockPanel.Dock="Bottom"
                                                     VerticalAlignment="Center"
                                                     HorizontalAlignment="Center">
+                                            <TextBlock Width="8" />
                                             <Button x:Name="cmdEdit"
                                                     Margin="2,1"
                                                     Width="75"
@@ -219,22 +146,72 @@
                                                     Content="ลบ"
                                                     Style="{StaticResource InlineButton}" />
                                         </StackPanel>
-                                        <Grid DockPanel.Dock="Bottom"
-                                              Height="48"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-                                            <TextBlock Text="{Binding FullName}"
-                                                       Height="Auto"
-                                                       VerticalAlignment="Center"
-                                                       HorizontalAlignment="Center"
-                                                       TextAlignment="Center"
-                                                       TextWrapping="Wrap" />
-                                        </Grid>
-                                        <Image RenderOptions.BitmapScalingMode="LowQuality"
-                                               RenderOptions.EdgeMode="Aliased"
-                                               Source="{Binding Image}"
-                                               Width="Auto"
-                                               Height="270" />
+                                        <!--  IMAGE  -->
+                                        <Border CornerRadius="3"
+                                                BorderBrush="Silver"
+                                                BorderThickness="1">
+                                            <Image Margin="2"
+                                                   RenderOptions.BitmapScalingMode="LowQuality"
+                                                   RenderOptions.EdgeMode="Aliased"
+                                                   Source="{Binding Image}"
+                                                   Height="270" />
+                                        </Border>
+                                        <!--  INFO  -->
+                                        <DockPanel LastChildFill="True" Margin="2">
+                                            <StackPanel Orientation="Vertical"
+                                                        DockPanel.Dock="Top"
+                                                        Margin="2">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="ลำดับที่: " />
+                                                    <TextBlock Text="{Binding CandidateNo}"
+                                                               Height="Auto"
+                                                               VerticalAlignment="Center"
+                                                               HorizontalAlignment="Left"
+                                                               TextAlignment="Left"
+                                                               TextWrapping="Wrap" />
+                                                </StackPanel>
+                                                <Grid Height="5" />
+                                                <TextBlock Text="{Binding FullName}"
+                                                           Height="Auto"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Left"
+                                                           TextAlignment="Left"
+                                                           TextWrapping="Wrap" />
+                                                <Grid Height="5" />
+                                                <TextBlock Text="พรรคต้นสังกัดเดิม: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                                                <TextBlock Text="{Binding PrevPartyName}"
+                                                           Height="Auto"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Left"
+                                                           TextAlignment="Left"
+                                                           TextWrapping="Wrap" />
+                                                <Grid Height="5" />
+                                                <TextBlock Text="ระดับการศึกษา: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                                                <TextBlock Text="{Binding EducationLevel}"
+                                                           Height="Auto"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Left"
+                                                           TextAlignment="Left"
+                                                           TextWrapping="Wrap" />
+                                                <Grid Height="5" />
+                                                <TextBlock Height="Auto"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Left"
+                                                           TextAlignment="Left"
+                                                           TextWrapping="Wrap">
+                                                    <Run Text="* " />
+                                                    <Run Text="{Binding SubGroup}" />
+                                                </TextBlock>
+                                                <TextBlock Text="หมายเหตุ: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                                                <TextBlock Text="{Binding Remark}"
+                                                           Height="Auto"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Left"
+                                                           TextAlignment="Left"
+                                                           TextWrapping="Wrap" />
+                                                <Grid Height="5" />
+                                            </StackPanel>
+                                        </DockPanel>
                                     </DockPanel>
                                 </Border>
                             </DataTemplate>
