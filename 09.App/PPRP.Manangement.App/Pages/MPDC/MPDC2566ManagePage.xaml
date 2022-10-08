@@ -138,13 +138,15 @@
                                                     Width="75"
                                                     Height="25"
                                                     Content="แก้ไข"
-                                                    Style="{StaticResource InlineButton}" />
+                                                    Style="{StaticResource InlineButton}" 
+                                                    Click="cmdEdit_Click"/>
                                             <Button x:Name="cmdDelete"
                                                     Margin="2,1"
                                                     Width="75"
                                                     Height="25"
                                                     Content="ลบ"
-                                                    Style="{StaticResource InlineButton}" />
+                                                    Style="{StaticResource InlineButton}" 
+                                                    Click="cmdDelete_Click"/>
                                         </StackPanel>
                                         <!--  IMAGE  -->
                                         <Border CornerRadius="3"

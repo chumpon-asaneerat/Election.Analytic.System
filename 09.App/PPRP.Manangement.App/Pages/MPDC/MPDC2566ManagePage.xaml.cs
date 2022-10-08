@@ -55,6 +55,18 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvMPDC2566.SelectedItem as MPDC2566;
+            Edit(item);
+        }
+
+        private void cmdDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var item = lvMPDC2566.SelectedItem as MPDC2566;
+            Delete(item);
+        }
+
         #endregion
 
         #region ComboBox Handlers
@@ -97,6 +109,25 @@ namespace PPRP.Pages
                 return;
             }
             LoadProvinces();
+        }
+
+        private void Edit(MPDC2566 item)
+        {
+            if (null == item)
+                return;
+            Console.WriteLine("Edit");
+        }
+
+        private void Delete(MPDC2566 item)
+        {
+            if (null == item)
+                return;
+            string msg = string.Format("ต้องการลบข้อมูล '{0}' ?", item.FullName);
+            if (MessageBox.Show(msg, "ยืนยันการลบข้อมูล", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                MPDC2566.Delete(item);
+                RefreshList();
+            }
         }
 
         private void LoadProvinces()

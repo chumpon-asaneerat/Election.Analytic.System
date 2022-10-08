@@ -144,7 +144,12 @@ namespace PPRP.Pages
         {
             if (null == item)
                 return;
-            Console.WriteLine("Delete");
+            string msg = string.Format("ต้องการลบข้อมูล '{0}' ?", item.FullName);
+            if (MessageBox.Show(msg, "ยืนยันการลบข้อมูล", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                //PersonImage.Delete(item);
+                RefreshList();
+            }
         }
 
         private void RefreshList()
