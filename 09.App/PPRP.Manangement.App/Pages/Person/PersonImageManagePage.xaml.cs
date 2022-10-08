@@ -59,6 +59,11 @@ namespace PPRP.Pages
             Search();
         }
 
+        private void cmdAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            AddNew();
+        }
+
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             var item = lvPersons.SelectedItem as PersonImage;
@@ -131,6 +136,11 @@ namespace PPRP.Pages
                 sFullNameFilter = txtFullNameFilter.Text.Trim();
                 RefreshList();
             }
+        }
+
+        private void AddNew()
+        {
+
         }
 
         private void Edit(PersonImage item)

@@ -55,6 +55,11 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdAddNew_Click(object sender, RoutedEventArgs e)
+        {
+            AddNew();
+        }
+
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
             var item = lvMPDC2566.SelectedItem as MPDC2566;
@@ -111,11 +116,23 @@ namespace PPRP.Pages
             LoadProvinces();
         }
 
+        private void AddNew()
+        {
+            MPDC2566 item = new MPDC2566();
+            var editor = PPRPApp.Windows.MPDC2566Editor;
+            editor.Setup(item, true);
+            editor.ShowDialog();
+            RefreshList();
+        }
+
         private void Edit(MPDC2566 item)
         {
             if (null == item)
                 return;
-            Console.WriteLine("Edit");
+            var editor = PPRPApp.Windows.MPDC2566Editor;
+            editor.Setup(item, false);
+            editor.ShowDialog();
+            RefreshList();
         }
 
         private void Delete(MPDC2566 item)

@@ -75,6 +75,15 @@
                     <DockPanel LastChildFill="True"
                                DockPanel.Dock="Bottom"
                                Height="40">
+                        <!--  Add New  -->
+                        <Button x:Name="cmdAddNew"
+                                DockPanel.Dock="Left"
+                                Style="{StaticResource InlineButton}"
+                                Margin="5,0"
+                                Width="150"
+                                Height="30"
+                                Content="เพิ่มข้อมูล"
+                                Click="cmdAddNew_Click" />
                         <!--  IMPORT  -->
                         <Button x:Name="cmdImport"
                                 DockPanel.Dock="Left"

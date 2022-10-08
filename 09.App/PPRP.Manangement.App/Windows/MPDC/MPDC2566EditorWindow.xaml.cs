@@ -40,10 +40,16 @@ namespace PPRP.Windows
         #region Internal Variables
 
         private bool _isNew = false;
+        private MPDC2566 _item = null;
 
         #endregion
 
         #region Private Methods
+
+        private void LoadProvinces()
+        {
+
+        }
 
         private void Save()
         {
@@ -61,9 +67,14 @@ namespace PPRP.Windows
 
         #region Public Methods
 
-        public void Setup(bool isNew = false)
+        public void Setup(MPDC2566 item, bool isNew = false)
         {
+            _item = item;
             _isNew = isNew;
+            if (null != _item)
+            {
+                this.DataContext = _item;
+            }
         }
 
         #endregion

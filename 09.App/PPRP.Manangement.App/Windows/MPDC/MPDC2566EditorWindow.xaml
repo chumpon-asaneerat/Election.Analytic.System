@@ -5,8 +5,8 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="ข้อมูลว่าที่ผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566"
-        Height="600"
-        Width="1000"
+        Height="500"
+        Width="920"
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
         ResizeMode="NoResize"
@@ -16,6 +16,7 @@
     <Window.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลว่าที่ผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566</sys:String>
+        <sys:Double x:Key="LabelWidth">120</sys:Double>
     </Window.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -52,96 +53,144 @@
                        Grid.Row="3"
                        Grid.RowSpan="1"
                        Background="{StaticResource WhiteBrush}"
-                       LastChildFill="True">
+                       LastChildFill="True"
+                       Margin="5">
+                <!-- BUTTONS -->
+                <DockPanel LastChildFill="True"
+                           DockPanel.Dock="Bottom"
+                           Height="50">
+                    <Grid />
+                </DockPanel>
                 <!--  PERSON PICTURE  -->
                 <Border Margin="3"
-                            DockPanel.Dock="Left"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                            BorderBrush="{StaticResource BlueLightBrush2}"
-                            BorderThickness="1"
-                            CornerRadius="3">
-                    <Image Source="{Binding PersonImage}"
-                               Margin="2"
-                               Width="300"
-                               Height="345"
-                               Stretch="Uniform" />
+                        DockPanel.Dock="Left"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        BorderBrush="{StaticResource BlueLightBrush2}"
+                        BorderThickness="1"
+                        CornerRadius="3">
+                    <Image Source="{Binding Image}"
+                           Margin="2"
+                           Width="300"
+                           Height="345"
+                           Stretch="Uniform" />
                 </Border>
                 <TextBlock DockPanel.Dock="Left" Width="20" />
                 <!--  CANDIDATE INFO  -->
                 <DockPanel LastChildFill="True">
-                    <StackPanel Orientation="Vertical"
-                                    DockPanel.Dock="Top"
-                                    Margin="5">
+                    <StackPanel Orientation="Vertical" Margin="5">
                         <TextBlock Height="5" />
                         <!--  PROVINCE NAME/PollingNo  -->
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       FontWeight="Bold">
-                                <Run Text="จังหวัด " />
-                                <Run Text="{Binding ProvinceName}" />
-                                <Run Text=" เขต " />
-                                <Run Text="{Binding PollingUnitNo}" />
-                        </TextBlock>
-                        <TextBlock Height="5" />
-                        <!--  FULL NAME  -->
-                        <TextBlock x:Name="txtCandidateNo"
-                                       Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}">
-                                <Run Text="ว่าที่ผู้สมัครอันดับที่ " />
-                                <Run Text="{Binding CandidateNo}" />
-                        </TextBlock>
-                        <TextBlock Height="5" />
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       VerticalAlignment="Center"
-                                       TextWrapping="Wrap"
-                                       Text="{Binding FullName}" />
-                        <TextBlock Height="5" />
-                        <!--  AGE  -->
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       VerticalAlignment="Center"
-                                       TextWrapping="Wrap">
-                                <Run Text="อายุ : " />
-                                <Run Text="-" />
-                        </TextBlock>
-                        <!--  PREV PARTY NAME  -->
-                        <TextBlock Height="5" />
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       VerticalAlignment="Center"
-                                       TextWrapping="Wrap">
-                                <Run Text="ต้นสังกัดเดิม : " />
-                                <Run Text="{Binding PrevPartyName}" />
-                        </TextBlock>
-                        <TextBlock Height="5" />
-                        <!--  SUB GROUP  -->
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       VerticalAlignment="Center"
-                                       TextWrapping="Wrap">
-                                <!--
-                                <Run Text="สังกัดย่อย : " />
-                                -->
-                                <Run Text="{Binding SubGroup}" />
-                        </TextBlock>
-                        <TextBlock Height="10" />
-                        <!--  REMARK  -->
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
                                        FontWeight="Bold"
-                                       FontSize="{StaticResource FontSize24}"
                                        VerticalAlignment="Center"
-                                       TextWrapping="Wrap"
-                                       Text="บันทึกเพิ่มเติม : " />
+                                       Text="จังหวัด: "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <ComboBox x:Name="cbProvinces"
+                                      VerticalAlignment="Center"
+                                      FontSize="{StaticResource FontSize18}"
+                                      Width="200"
+                                      DisplayMemberPath="ProvinceName" />
+                            <TextBlock Width="5" />
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Text=" เขต: " />
+                            <TextBox x:Name="txtPollingUnitNo"
+                                     Text="{Binding PollingUnitNo}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     Width="50"
+                                     TextAlignment="Center" />
+                            <TextBlock Width="5" />
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Text="อันดับที่: " />
+                            <TextBox x:Name="txtCandidateNo"
+                                     Text="{Binding CandidateNo}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     Width="50"
+                                     TextAlignment="Center" />
+                        </StackPanel>
                         <TextBlock Height="5" />
-                        <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize24}"
-                                       Height="Auto"
-                                       VerticalAlignment="Top"
-                                       TextWrapping="Wrap"
-                                       Text="{Binding Remark}" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Text="ชื่อ-สกุล: "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <TextBox x:Name="txtFullName"
+                                     Text="{Binding FullName}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     Width="420"
+                                     TextAlignment="Left" />
+                        </StackPanel>
                         <TextBlock Height="5" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Text="ต้นสังกัดเดิม: "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <TextBox x:Name="txtPrevPartyName"
+                                     Text="{Binding PrevPartyName}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     Width="420"
+                                     TextAlignment="Left" />
+                        </StackPanel>
+                        <TextBlock Height="5" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       Text="** "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <TextBox x:Name="txtSubGroup"
+                                     Text="{Binding SubGroup}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     Width="420"
+                                     TextAlignment="Left" />
+                        </StackPanel>
+                        <TextBlock Height="5" />
+                        <!--  REMARK  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center"
+                                       TextAlignment="Right"
+                                       Text="บันทึกเพิ่มเติม: "
+                                       Width="{StaticResource LabelWidth}" />
+                        </StackPanel>
+                        <TextBlock Height="5" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="txtRemark"
+                                     FontSize="{StaticResource FontSize18}"
+                                     Text="{Binding Remark}"
+                                     Width="540"
+                                     Height="190"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     HorizontalScrollBarVisibility="Auto"
+                                     VerticalScrollBarVisibility="Auto"
+                                     TextAlignment="Left" />
+                        </StackPanel>
                     </StackPanel>
                     <Grid />
                 </DockPanel>
