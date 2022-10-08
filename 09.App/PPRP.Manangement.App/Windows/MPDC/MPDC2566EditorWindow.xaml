@@ -55,7 +55,7 @@
                        Background="{StaticResource WhiteBrush}"
                        LastChildFill="True"
                        Margin="5">
-                <!-- BUTTONS -->
+                <!--  BUTTONS  -->
                 <DockPanel LastChildFill="True"
                            DockPanel.Dock="Bottom"
                            Height="50">
@@ -84,38 +84,42 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text="จังหวัด: "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <ComboBox x:Name="cbProvinces"
                                       VerticalAlignment="Center"
+                                      VerticalContentAlignment="Center"
                                       FontSize="{StaticResource FontSize18}"
                                       Width="200"
-                                      DisplayMemberPath="ProvinceName" />
+                                      DisplayMemberPath="ProvinceNameTH"
+                                      SelectedValuePath="ProvinceNameTH"
+                                      SelectedValue="{Binding ProvinceName}" />
                             <TextBlock Width="5" />
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text=" เขต: " />
                             <TextBox x:Name="txtPollingUnitNo"
                                      Text="{Binding PollingUnitNo}"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
                                      Width="50"
                                      TextAlignment="Center" />
                             <TextBlock Width="5" />
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text="อันดับที่: " />
                             <TextBox x:Name="txtCandidateNo"
                                      Text="{Binding CandidateNo}"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
                                      Width="50"
                                      TextAlignment="Center" />
                         </StackPanel>
@@ -123,15 +127,16 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text="ชื่อ-สกุล: "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <TextBox x:Name="txtFullName"
                                      Text="{Binding FullName}"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
                                      Width="420"
                                      TextAlignment="Left" />
                         </StackPanel>
@@ -139,15 +144,16 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text="ต้นสังกัดเดิม: "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <TextBox x:Name="txtPrevPartyName"
                                      Text="{Binding PrevPartyName}"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
                                      Width="420"
                                      TextAlignment="Left" />
                         </StackPanel>
@@ -155,15 +161,16 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        Text="** "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <TextBox x:Name="txtSubGroup"
                                      Text="{Binding SubGroup}"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
                                      Width="420"
                                      TextAlignment="Left" />
                         </StackPanel>
@@ -172,7 +179,6 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
-                                       FontWeight="Bold"
                                        VerticalAlignment="Center"
                                        TextAlignment="Right"
                                        Text="บันทึกเพิ่มเติม: "
@@ -181,6 +187,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBox x:Name="txtRemark"
+                                     FontFamily="{StaticResource THSarabun}"
                                      FontSize="{StaticResource FontSize18}"
                                      Text="{Binding Remark}"
                                      Width="540"

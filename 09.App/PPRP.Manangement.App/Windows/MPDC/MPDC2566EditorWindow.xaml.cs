@@ -48,7 +48,9 @@ namespace PPRP.Windows
 
         private void LoadProvinces()
         {
-
+            cbProvinces.ItemsSource = null;
+            var provinces = MProvince.Gets().Value;
+            cbProvinces.ItemsSource = (null != provinces) ? provinces : new List<MProvince>();
         }
 
         private void Save()
@@ -69,6 +71,7 @@ namespace PPRP.Windows
 
         public void Setup(MPDC2566 item, bool isNew = false)
         {
+            LoadProvinces();
             _item = item;
             _isNew = isNew;
             if (null != _item)
