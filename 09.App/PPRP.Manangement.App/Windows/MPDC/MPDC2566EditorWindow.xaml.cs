@@ -44,6 +44,24 @@ namespace PPRP.Windows
 
         #endregion
 
+        #region Button Handlers
+
+        private void cmdChangeImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (null == _item)
+                return;
+        }
+
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (null == _item)
+                return;
+            MPDC2566.Save(_item);
+            DialogResult = true;
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void LoadProvinces()
