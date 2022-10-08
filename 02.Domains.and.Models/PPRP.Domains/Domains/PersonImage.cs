@@ -134,35 +134,6 @@ namespace PPRP.Domains
             return rets;
         }
 
-        public static void Save(string fullName, byte[] data)
-        {
-            MethodBase med = MethodBase.GetCurrentMethod();
-
-            IDbConnection cnn = DbServer.Instance.Db;
-            if (null == cnn || !DbServer.Instance.Connected)
-            {
-                string msg = "Connection is null or cannot connect to database server.";
-                med.Err(msg);
-
-                return;
-            }
-
-            var p = new DynamicParameters();
-            p.Add("@FullName", fullName);
-            p.Add("@Data", data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
-
-            try
-            {
-                cnn.Execute("SavePersonImage", p, commandType: CommandType.StoredProcedure);
-            }
-            catch (Exception ex)
-            {
-                med.Err(ex);
-            }
-
-            return;
-        }
-
         public static void Import(string fullName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
@@ -190,6 +161,77 @@ namespace PPRP.Domains
             }
 
             return;
+        }
+
+        public static void Save(PersonImage value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+
+                return;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@FullName", value.FullName);
+            p.Add("@Data", value.Data, dbType: DbType.Binary, direction: ParameterDirection.Input, size: -1);
+
+            try
+            {
+                cnn.Execute("SavePersonImage", p, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+            }
+
+            return;
+        }
+
+        public static NDbResult Delete(PersonImage value)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            NDbResult ret = new NDbResult();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                ret.ErrNum = 8000;
+                ret.ErrMsg = msg;
+
+                return ret;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@FullName", value.FullName);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                cnn.Execute("DeletePersonImage", p, commandType: CommandType.StoredProcedure);
+                // Set error number/message
+                ret.ErrNum = p.Get<int>("@errNum");
+                ret.ErrMsg = p.Get<string>("@errMsg");
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                ret.ErrNum = 9999;
+                ret.ErrMsg = ex.Message;
+            }
+
+            return ret;
         }
 
         #endregion
