@@ -184,7 +184,7 @@
                                      FontSize="{StaticResource FontSize18}"
                                      Text="{Binding Remark}"
                                      Width="540"
-                                     Height="190"
+                                     Height="185"
                                      AcceptsReturn="True"
                                      TextWrapping="Wrap"
                                      HorizontalScrollBarVisibility="Auto"

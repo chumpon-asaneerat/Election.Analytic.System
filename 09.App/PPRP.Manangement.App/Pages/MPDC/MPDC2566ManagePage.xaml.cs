@@ -62,13 +62,17 @@ namespace PPRP.Pages
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvMPDC2566.SelectedItem as MPDC2566;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as MPDC2566;
             Edit(item);
         }
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            var item = lvMPDC2566.SelectedItem as MPDC2566;
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as MPDC2566;
             Delete(item);
         }
 
