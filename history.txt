@@ -22,8 +22,10 @@ Election.Analytic.System - PPRP  #614
 Election.Analytic.System - PPRP  #613
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #612
-- 
+- Update projects
+  - Implements MPDC2566 Manage UI #20.
 
 [commited]
 Election.Analytic.System - PPRP  #611

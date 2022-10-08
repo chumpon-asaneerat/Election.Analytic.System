@@ -85,6 +85,18 @@ namespace PPRP.Domains
 
         #endregion
 
+        #region Public Methods
+
+        public void LoadImageFile(string fileName)
+        {
+            this.Data = ByteUtils.GetFileBuffer(fileName);
+            Raise(() => Data);
+            _img = null;
+            Raise(() => Image);
+        }
+
+        #endregion
+
         #region Static Methods
 
         public static NDbResult<List<MPDC2566>> Gets(string provinceName = null,

@@ -136,10 +136,10 @@ namespace PPRP.Windows
                 DirectoryInfo di = new DirectoryInfo(targetPath);
 
                 string searchPattern = "*.*";
-                var exts = new string[] { "*.png", "*.jpg" };
+                var exts = new string[] { /*"*.png",*/ "*.jpg" };
 
                 ICollection<string> files = di.GetFiles(searchPattern, SearchOption.AllDirectories)
-                    .Where(f => f.Extension == ".gif" || f.Extension == ".jpg")
+                    .Where(f => /*f.Extension == ".png" ||*/ f.Extension == ".jpg")
                     .Select(x => x.FullName)
                     .ToList();
 

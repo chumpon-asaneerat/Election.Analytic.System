@@ -9,6 +9,7 @@ using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Forms;
 
 using NLib;
 using NLib.Reflection;
@@ -50,6 +51,7 @@ namespace PPRP.Windows
         {
             if (null == _item)
                 return;
+            ChooseImageFile();
         }
 
         private void cmdSave_Click(object sender, RoutedEventArgs e)
@@ -63,6 +65,34 @@ namespace PPRP.Windows
         #endregion
 
         #region Private Methods
+
+        private void ChooseImageFile()
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string targetPath = string.Empty;
+
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Title = "กรูณาเลือกรูป";
+            if (fd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                targetPath = fd.FileName;
+            }
+            fd = null;
+
+            if (string.IsNullOrEmpty(targetPath))
+                return;
+
+            try
+            {
+                _item.LoadImageFile(targetPath);
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                System.Windows.MessageBox.Show("Error access file: " + targetPath, "PPRP");
+            }
+        }
 
         private void LoadProvinces()
         {
