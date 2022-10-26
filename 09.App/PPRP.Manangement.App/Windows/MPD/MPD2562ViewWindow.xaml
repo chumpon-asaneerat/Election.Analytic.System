@@ -16,7 +16,7 @@
     <Window.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562</sys:String>
-        <sys:Double x:Key="LabelWidth">120</sys:Double>
+        <sys:Double x:Key="LabelWidth">150</sys:Double>
     </Window.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -65,8 +65,8 @@
                             Margin="5,0"
                             Width="150"
                             Height="30"
-                            Content="ตกลง" 
-                            Click="cmdOK_Click"/>
+                            Content="ตกลง"
+                            Click="cmdOK_Click" />
                     <Grid />
                 </DockPanel>
                 <!--  PERSON PICTURE  -->
@@ -167,6 +167,22 @@
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
                                        VerticalAlignment="Center"
+                                       Text="ได้คะแนนเป็นลำดับที่: "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <TextBlock x:Name="txtRankNo"
+                                       Text="{Binding RankNo}"
+                                       FontFamily="{StaticResource THSarabun}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       VerticalAlignment="Center"
+                                       Width="420"
+                                       TextAlignment="Left" />
+                        </StackPanel>
+                        <TextBlock Height="5" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       VerticalAlignment="Center"
                                        Text="คะแนน: "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
@@ -178,7 +194,6 @@
                                        Width="420"
                                        TextAlignment="Left" />
                         </StackPanel>
-                        <TextBlock Height="5" />
                     </StackPanel>
                     <Grid />
                 </DockPanel>

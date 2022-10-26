@@ -160,6 +160,15 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
+                                <GridViewColumn Header="ได้คะแนนเป็นลำดับที่">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Width="200"
+                                                       Text="{Binding RankNo}"
+                                                       TextAlignment="Right" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="รายละเอียด">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
