@@ -102,6 +102,15 @@
                                 Height="30"
                                 Content="กลับสู่หน้าจอหลัก"
                                 Click="cmdHome_Click" />
+                        <!--  PRINT  -->
+                        <Button x:Name="cmdPrint"
+                                DockPanel.Dock="Right"
+                                Style="{StaticResource InlineButton}"
+                                Margin="5,0"
+                                Width="150"
+                                Height="30"
+                                Content="พิมพ์"
+                                Click="cmdPrint_Click"/>
                         <Grid />
                     </DockPanel>
                     <!--  PAGING BAR  -->

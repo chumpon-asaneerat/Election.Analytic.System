@@ -55,6 +55,11 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Print();
+        }
+
         private void cmdAddNew_Click(object sender, RoutedEventArgs e)
         {
             AddNew();
@@ -118,6 +123,27 @@ namespace PPRP.Pages
                 return;
             }
             LoadProvinces();
+        }
+
+        private void Print()
+        {
+            // Check province.
+            var province = cbProvince.SelectedItem as MProvince;
+            string provinceName = (null != province) ? province.ProvinceNameTH : null;
+            if (null != provinceName && provinceName.Contains("ทุกจังหวัด"))
+            {
+                provinceName = null;
+            }
+
+            var items = MPD2562x350PrintUnitSummary.Gets(provinceName).Value;
+            if (null == items)
+            {
+                // Show Dialog.
+                return;
+            }
+            var page = PPRPApp.Pages.MPDC2566PreviewSummaryPage;
+            page.Setup(null);
+            PageContentManager.Instance.Current = page;
         }
 
         private void AddNew()

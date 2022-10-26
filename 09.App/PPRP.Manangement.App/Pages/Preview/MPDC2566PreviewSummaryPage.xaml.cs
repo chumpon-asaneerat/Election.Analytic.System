@@ -60,8 +60,8 @@ namespace PPRP.Pages
 
         private void GotoMPDC2566Summary()
         {
-            // Report Menu Page
-            var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
+            // Back to Manage Page
+            var page = PPRPApp.Pages.MPDC2566Manage;
             page.Setup(false);
             PageContentManager.Instance.Current = page;
         }

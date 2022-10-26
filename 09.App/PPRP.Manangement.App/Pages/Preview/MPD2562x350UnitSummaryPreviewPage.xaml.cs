@@ -60,7 +60,7 @@ namespace PPRP.Pages
 
         private void GotoMPD2562x350UnitSummary()
         {
-            // Report Menu Page
+            // Back to Manage Page
             var page = PPRPApp.Pages.MPD2562x350UnitSummaryManage;
             page.Setup(false);
             PageContentManager.Instance.Current = page;
