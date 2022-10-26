@@ -27,6 +27,7 @@ namespace PPRP.Domains
         #region Public Properties
 
         public int RowNo { get; set; }
+        public int RankNo { get; set; }
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
         public string FullName { get; set; }
@@ -247,6 +248,7 @@ namespace PPRP.Domains
         #region Public Properties
 
         public int RowNo { get; set; }
+        public int RankNo { get; set; }
         public string ProvinceName { get; set; }
         public int PollingUnitNo { get; set; }
         public string FullName { get; set; }
