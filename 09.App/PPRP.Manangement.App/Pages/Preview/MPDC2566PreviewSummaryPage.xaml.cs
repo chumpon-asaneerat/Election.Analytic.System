@@ -36,7 +36,7 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        private List<MPD2562PrintVoteSummary> _items = null;
+        private List<MPDC2566PrintSummary> _items = null;
 
         #endregion
 
@@ -111,7 +111,7 @@ namespace PPRP.Pages
             // clear reprot datasource.
             inst.DataSources.Clear();
 
-            List<MPD2562PrintVoteSummary> items = new List<MPD2562PrintVoteSummary>();
+            List<MPDC2566PrintSummary> items = new List<MPDC2566PrintSummary>();
             if (null != _items)
             {
                 foreach (var item in _items)
@@ -141,7 +141,7 @@ namespace PPRP.Pages
 
         #region Public Methods
 
-        public void Setup(List<MPD2562PrintVoteSummary> items)
+        public void Setup(List<MPDC2566PrintSummary> items)
         {
             _items = items;
 

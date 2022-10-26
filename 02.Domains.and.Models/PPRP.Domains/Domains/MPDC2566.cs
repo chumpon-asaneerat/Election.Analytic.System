@@ -19,6 +19,8 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
+    #region MPDC2566
+
     public class MPDC2566 : NInpc
     {
         #region Internal Variables
@@ -321,6 +323,10 @@ namespace PPRP.Domains
         #endregion
     }
 
+    #endregion
+
+    #region MPDC2566Summary
+
     public class MPDC2566Summary : NInpc
     {
         #region Internal Variables
@@ -439,4 +445,80 @@ namespace PPRP.Domains
 
         #endregion
     }
+
+    #endregion
+
+    #region MPDC2566PrintSummary
+
+    public class MPDC2566PrintSummary
+    {
+        #region Public Properties
+
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public int CandidateNo { get; set; }
+        public string FullName { get; set; }
+        public string PrevPartyName { get; set; }
+        public string EducationLevel { get; set; }
+        public string Remark { get; set; }
+        public string SubGroup { get; set; }
+
+        #endregion
+
+        #region Static Methods
+
+        public static NDbResult<List<MPDC2566PrintSummary>> Gets(string provinceName = null)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sProvinceName = provinceName;
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
+            {
+                sProvinceName = null;
+            }
+
+            NDbResult<List<MPDC2566PrintSummary>> rets = new NDbResult<List<MPDC2566PrintSummary>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+
+            try
+            {
+                var items = cnn.Query<MPDC2566PrintSummary>("GetMPDC2566FullSummaries", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPDC2566PrintSummary>();
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPDC2566PrintSummary>();
+            }
+
+            return rets;
+        }
+
+        #endregion
+    }
+
+    #endregion
 }
