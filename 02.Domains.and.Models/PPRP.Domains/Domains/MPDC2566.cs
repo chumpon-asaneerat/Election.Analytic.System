@@ -134,7 +134,7 @@ namespace PPRP.Domains
 
             var p = new DynamicParameters();
             p.Add("@ProvinceName", sProvinceName);
-            //p.Add("@FullName", sFullName);
+            p.Add("@FullName", sFullName);
 
             p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
             p.Add("@pollingUnitPerPage", value: pollingUnitPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
@@ -474,7 +474,7 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPDC2566PrintSummary>> Gets(string provinceName = null)
+        public static NDbResult<List<MPDC2566PrintSummary>> Gets(string provinceName = null, string fullName = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -482,6 +482,12 @@ namespace PPRP.Domains
             if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
             {
                 sProvinceName = null;
+            }
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(sFullName))
+            {
+                sFullName = null;
             }
 
             NDbResult<List<MPDC2566PrintSummary>> rets = new NDbResult<List<MPDC2566PrintSummary>>();
@@ -500,6 +506,7 @@ namespace PPRP.Domains
 
             var p = new DynamicParameters();
             p.Add("@ProvinceName", sProvinceName);
+            p.Add("@FullName", sFullName);
 
             try
             {

@@ -179,15 +179,14 @@ namespace PPRP.Pages
         private void Print()
         {
             // Check province.
-            /*
             var province = cbProvince.SelectedItem as MProvince;
             string provinceName = (null != province) ? province.ProvinceNameTH : null;
             if (null != provinceName && provinceName.Contains("ทุกจังหวัด"))
             {
                 provinceName = null;
             }
-            */
-            var items = MPDC2566PrintSummary.Gets(null).Value;
+
+            var items = MPDC2566PrintSummary.Gets(provinceName, sFullNameFilter).Value;
             if (null == items)
             {
                 // Show Dialog.
