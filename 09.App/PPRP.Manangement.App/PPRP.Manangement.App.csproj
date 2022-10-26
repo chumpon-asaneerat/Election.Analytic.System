@@ -225,6 +225,9 @@
     <Compile Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml.cs">
       <DependentUpon>ImportMPD2566PollingUnitSummaryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MPD\MPD2562ViewWindow.xaml.cs">
+      <DependentUpon>MPD2562ViewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MPDC\MPDC2566EditorWindow.xaml.cs">
       <DependentUpon>MPDC2566EditorWindow.xaml</DependentUpon>
     </Compile>
@@ -373,6 +376,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Excels\MPD\ImportMPD2566PollingUnitSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MPD\MPD2562ViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
