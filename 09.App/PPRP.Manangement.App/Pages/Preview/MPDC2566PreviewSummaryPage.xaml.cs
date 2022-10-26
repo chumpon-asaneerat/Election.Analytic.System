@@ -18,16 +18,16 @@ using System.Reflection;
 namespace PPRP.Pages
 {
     /// <summary>
-    /// Interaction logic for MPD2562PreviewVoteSummaryPage.xaml
+    /// Interaction logic for MODC2566PreviewSummaryPage.xaml
     /// </summary>
-    public partial class MPD2562PreviewVoteSummaryPage : UserControl
+    public partial class MPDC2566PreviewSummaryPage : UserControl
     {
         #region Constructor
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public MPD2562PreviewVoteSummaryPage()
+        public MPDC2566PreviewSummaryPage()
         {
             InitializeComponent();
         }
@@ -49,7 +49,7 @@ namespace PPRP.Pages
 
         private void cmdCancel_Click(object sender, RoutedEventArgs e)
         {
-            GotoMPD2562VoteSummary();
+            GotoMPDC2566Summary();
         }
 
         #endregion
@@ -58,7 +58,7 @@ namespace PPRP.Pages
 
         #region Navigate Methods
 
-        private void GotoMPD2562VoteSummary()
+        private void GotoMPDC2566Summary()
         {
             // Report Menu Page
             var page = PPRPApp.Pages.MPD2562VoteSummaryManage;
@@ -85,7 +85,7 @@ namespace PPRP.Pages
 
             cmdPrint.Visibility = Visibility.Visible;
 
-            GotoMPD2562VoteSummary();
+            GotoMPDC2566Summary();
         }
 
         #endregion
@@ -94,7 +94,7 @@ namespace PPRP.Pages
 
         private string ReportDisplayName
         {
-            get { return "MPD2562VoteSummary." + DateTime.Now.ToThaiDateTimeString("ddMMyyyyHHmmssfff"); }
+            get { return "MPDC2566Summary." + DateTime.Now.ToThaiDateTimeString("ddMMyyyyHHmmssfff"); }
         }
 
         private RdlcReportModel GetReportModel()
@@ -105,7 +105,7 @@ namespace PPRP.Pages
             // Set Display Name (default file name).
             inst.DisplayName = ReportDisplayName;
 
-            inst.Definition.EmbededReportName = "PPRP.Reports.MPD2562VoteSummaryReport.rdlc";
+            inst.Definition.EmbededReportName = "PPRP.Reports.MPDC2566SummaryReport.rdlc";
             inst.Definition.RdlcInstance = RdlcReportUtils.GetEmbededReport(assembly,
                 inst.Definition.EmbededReportName);
             // clear reprot datasource.

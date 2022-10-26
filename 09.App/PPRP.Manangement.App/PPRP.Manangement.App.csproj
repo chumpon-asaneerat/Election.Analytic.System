@@ -140,6 +140,9 @@
     <Compile Include="Pages\GeoLocation\MDistrictManagePage.xaml.cs">
       <DependentUpon>MDistrictManagePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Preview\MPDC2566PreviewSummaryPage.xaml.cs">
+      <DependentUpon>MPDC2566PreviewSummaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Preview\MPD2562x350UnitSummaryPreviewPage.xaml.cs">
       <DependentUpon>MPD2562x350UnitSummaryPreviewPage.xaml</DependentUpon>
     </Compile>
@@ -257,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Preview\MPDC2566PreviewSummaryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -396,6 +403,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\MPD2562VoteSummaryReport.rdlc" />
     <EmbeddedResource Include="Reports\MPD2562x350UnitSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\MPDC2566SummaryReport.rdlc" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
