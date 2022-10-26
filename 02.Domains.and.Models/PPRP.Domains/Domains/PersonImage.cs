@@ -134,6 +134,56 @@ namespace PPRP.Domains
             return rets;
         }
 
+        public static NDbResult<List<PersonImage>> Search(string fullName)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                sFullName = null;
+            }
+
+            NDbResult<List<PersonImage>> rets = new NDbResult<List<PersonImage>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@FullName", sFullName);
+
+            try
+            {
+                var items = cnn.Query<PersonImage>("SearchPersonImage", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : null;
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<PersonImage>();
+            }
+
+            return rets;
+        }
+
         public static void Import(string fullName, byte[] data)
         {
             MethodBase med = MethodBase.GetCurrentMethod();

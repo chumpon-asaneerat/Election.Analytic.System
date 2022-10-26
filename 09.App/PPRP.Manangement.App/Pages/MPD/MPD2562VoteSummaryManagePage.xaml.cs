@@ -50,6 +50,14 @@ namespace PPRP.Pages
             Print();
         }
 
+        private void cmdView_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if (null == btn) return;
+            var item = btn.DataContext as MPD2562VoteSummary;
+            ViewDetail(item);
+        }
+
         #endregion
 
         #region ComboBox Handlers
@@ -100,6 +108,16 @@ namespace PPRP.Pages
             var page = PPRPApp.Pages.MPD2562PreviewVoteSummary;
             page.Setup(items);
             PageContentManager.Instance.Current = page;
+        }
+
+        private void ViewDetail(MPD2562VoteSummary item)
+        {
+            var win = PPRPApp.Windows.MPD2562Viewer;
+            win.Setup(item);
+            if (win.ShowDialog() == false)
+            {
+                return;
+            }
         }
 
         private void LoadProvinces()

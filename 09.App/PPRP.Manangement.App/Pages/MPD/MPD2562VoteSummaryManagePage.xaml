@@ -160,6 +160,17 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
+                                <GridViewColumn Header="รายละเอียด">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="cmdView"
+                                                    Content="รายละเอียด"
+                                                    Style="{StaticResource InlineButton}"
+                                                    Width="150"
+                                                    Click="cmdView_Click" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

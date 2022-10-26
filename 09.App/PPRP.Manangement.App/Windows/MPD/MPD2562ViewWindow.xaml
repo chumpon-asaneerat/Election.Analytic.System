@@ -65,7 +65,8 @@
                             Margin="5,0"
                             Width="150"
                             Height="30"
-                            Content="ตกลง" />
+                            Content="ตกลง" 
+                            Click="cmdOK_Click"/>
                     <Grid />
                 </DockPanel>
                 <!--  PERSON PICTURE  -->
@@ -76,7 +77,7 @@
                         BorderBrush="{StaticResource BlueLightBrush2}"
                         BorderThickness="1"
                         CornerRadius="3">
-                    <Image Source="{Binding Image}"
+                    <Image x:Name="imgPreson"
                            Margin="2"
                            Width="300"
                            Height="345"

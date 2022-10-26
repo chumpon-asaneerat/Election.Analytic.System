@@ -40,7 +40,15 @@ namespace PPRP.Windows
 
         #region Internal Variables
 
-        private MPD2562VoteSummary _item;
+        private MPD2562VoteSummary _item = null;
+
+        #endregion
+
+        #region Button Handlers
+        private void cmdOK_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
 
         #endregion
 
@@ -48,9 +56,34 @@ namespace PPRP.Windows
 
         public void Setup(MPD2562VoteSummary item)
         {
+            _item = item;
+            this.DataContext = _item;
+
             if (null != _item)
             {
-                this.DataContext = _item;
+                // set load person image.
+                Defaults.RunInBackground(() =>
+                {
+                    var person = PersonImage.Search(item.FullName).Value.FirstOrDefault();
+
+                    if (null != person)
+                    {
+                        var imgSrc = ByteUtils.GetImageSource(person.Data);
+                        imgPreson.Source = imgSrc;
+                    }
+                    else
+                    {
+                        imgPreson.Source = Defaults.Person;
+                    }
+                });
+            }
+            else
+            {
+                // set default image.
+                Defaults.RunInBackground(() => {
+                    imgPreson.Source = Defaults.Person;
+                });
+                
             }
         }
 
