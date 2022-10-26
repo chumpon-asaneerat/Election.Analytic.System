@@ -33,6 +33,13 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region Internal Variables
+
+        private string sFullNameFilter = string.Empty;
+        private string sPartyNameFilter = string.Empty;
+
+        #endregion
+
         #region Button Handlers
 
         private void cmdHome_Click(object sender, RoutedEventArgs e)
@@ -69,6 +76,44 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region TextBox Handlers
+
+        private void txtPartyNameFilter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                e.Handled = true; // mark as handled
+                // search
+                Search();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                e.Handled = true; // mark as handled
+                // reset filter and search
+                txtPartyNameFilter.Text = string.Empty;
+                Search();
+            }
+        }
+
+        private void txtFullNameFilter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                e.Handled = true; // mark as handled
+                // search
+                Search();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                e.Handled = true; // mark as handled
+                // reset filter and search
+                txtFullNameFilter.Text = string.Empty;
+                Search();
+            }
+        }
+
+        #endregion
+
         #region Private Methods
 
         private void GotoMainMenuPage()
@@ -87,6 +132,20 @@ namespace PPRP.Pages
                 return;
             }
             LoadProvinces();
+        }
+
+        private void Search()
+        {
+            if (sPartyNameFilter.Trim() != txtPartyNameFilter.Text.Trim())
+            {
+                sPartyNameFilter = txtPartyNameFilter.Text.Trim();
+                RefreshList();
+            }
+            if (sFullNameFilter.Trim() != txtFullNameFilter.Text.Trim())
+            {
+                sFullNameFilter = txtFullNameFilter.Text.Trim();
+                RefreshList();
+            }
         }
 
         private void Print()
@@ -146,7 +205,7 @@ namespace PPRP.Pages
             }
 
             lvMPD2562Summaries.ItemsSource = null;
-            var summaries = MPD2562VoteSummary.Gets(provinceName).Value;
+            var summaries = MPD2562VoteSummary.Gets(provinceName, sPartyNameFilter, sFullNameFilter).Value;
             lvMPD2562Summaries.ItemsSource = (null != summaries) ? summaries : new List<MPD2562VoteSummary>();
         }
 
@@ -158,6 +217,8 @@ namespace PPRP.Pages
         {
             if (reload)
             {
+                sPartyNameFilter = string.Empty;
+                sFullNameFilter = string.Empty;
                 LoadProvinces();
             }
         }

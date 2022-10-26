@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="450"
-             d:DesignWidth="800"
+             d:DesignWidth="1000"
              mc:Ignorable="d">
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
@@ -61,6 +61,7 @@
                         <TextBlock Width="10" DockPanel.Dock="Left" />
                         <ComboBox x:Name="cbProvince"
                                   Width="300"
+                                  DockPanel.Dock="Left"
                                   FontFamily="{StaticResource THSarabunNew}"
                                   FontSize="{StaticResource FontSize18}"
                                   Margin="3"
@@ -68,6 +69,35 @@
                                   IsSynchronizedWithCurrentItem="False"
                                   DisplayMemberPath="ProvinceNameTH"
                                   SelectionChanged="cbProvince_SelectionChanged" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <TextBlock Text="ขื่อพรรค"
+                                   DockPanel.Dock="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Width="100"
+                                   Foreground="WhiteSmoke" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <TextBox x:Name="txtPartyNameFilter"
+                                 Width="300"
+                                 FontFamily="{StaticResource THSarabun}"
+                                 FontSize="{StaticResource FontSize18}"
+                                 Margin="3"
+                                 VerticalContentAlignment="Center"
+                                 KeyDown="txtPartyNameFilter_KeyDown" />
+                        <TextBlock Text="ชื่อ-สกุล"
+                                   DockPanel.Dock="Left"
+                                   VerticalAlignment="Center"
+                                   TextAlignment="Right"
+                                   Width="100"
+                                   Foreground="WhiteSmoke" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <TextBox x:Name="txtFullNameFilter"
+                                 Width="300"
+                                 FontFamily="{StaticResource THSarabun}"
+                                 FontSize="{StaticResource FontSize18}"
+                                 Margin="3"
+                                 VerticalContentAlignment="Center"
+                                 KeyDown="txtFullNameFilter_KeyDown" />
                         <Grid />
                     </DockPanel>
                     <!--  BUTTONS BAR  -->

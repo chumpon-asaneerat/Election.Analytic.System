@@ -40,7 +40,8 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName = null)
+        public static NDbResult<List<MPD2562VoteSummary>> Gets(string provinceName = null,
+            string partyName = null, string fullName = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
@@ -48,6 +49,18 @@ namespace PPRP.Domains
             if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
             {
                 sProvinceName = null;
+            }
+
+            string sPartyName = partyName;
+            if (string.IsNullOrWhiteSpace(sPartyName))
+            {
+                sPartyName = null;
+            }
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(sFullName))
+            {
+                sFullName = null;
             }
 
             NDbResult<List<MPD2562VoteSummary>> rets = new NDbResult<List<MPD2562VoteSummary>>();
@@ -66,6 +79,8 @@ namespace PPRP.Domains
 
             var p = new DynamicParameters();
             p.Add("@ProvinceName", sProvinceName);
+            //p.Add("@PartyName", sPartyName);
+            //p.Add("@FullName", sFullName);
 
             try
             {

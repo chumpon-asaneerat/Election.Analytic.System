@@ -36,7 +36,8 @@ namespace PPRP.Pages
 
         #region Internal Variables
 
-        //private string sFullNameFilter = string.Empty;
+        private string sFullNameFilter = string.Empty;
+
         private int iPageNo = 1;
         private int iMaxPage = 1;
         private int iRowsPerPage = 4;
@@ -100,6 +101,27 @@ namespace PPRP.Pages
 
         #endregion
 
+        #region TextBox Handlers
+
+        private void txtFullNameFilter_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                e.Handled = true; // mark as handled
+                // search
+                Search();
+            }
+            else if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                e.Handled = true; // mark as handled
+                // reset filter and search
+                //txtFullNameFilter.Text = string.Empty;
+                Search();
+            }
+        }
+
+        #endregion
+
         #region Paging Handlers
 
         private void nav_PagingChanged(object sender, EventArgs e)
@@ -137,6 +159,15 @@ namespace PPRP.Pages
             {
                 // Show Dialog.
                 return;
+            }
+        }
+
+        private void Search()
+        {
+            if (sFullNameFilter.Trim() != txtFullNameFilter.Text.Trim())
+            {
+                sFullNameFilter = txtFullNameFilter.Text.Trim();
+                RefreshList();
             }
         }
 
@@ -219,7 +250,7 @@ namespace PPRP.Pages
             }
 
             lvMPDC2566.ItemsSource = null;
-            var candidates = MPDC2566.Gets(provinceName, iPageNo, iRowsPerPage);
+            var candidates = MPDC2566.Gets(provinceName, sFullNameFilter, iPageNo, iRowsPerPage);
             lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvMPDC2566.ItemsSource);
@@ -246,6 +277,7 @@ namespace PPRP.Pages
         {
             if (reload)
             {
+                sFullNameFilter = string.Empty;
                 LoadProvinces();
             }
         }
