@@ -51,6 +51,11 @@ namespace PPRP.Pages
             GotoMainMenuPage();
         }
 
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
+
         private void cmdImport_Click(object sender, RoutedEventArgs e)
         {
             Import();

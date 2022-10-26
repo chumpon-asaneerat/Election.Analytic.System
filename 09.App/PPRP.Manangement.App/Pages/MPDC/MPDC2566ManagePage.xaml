@@ -84,6 +84,16 @@
                                  Margin="3"
                                  VerticalContentAlignment="Center"
                                  KeyDown="txtFullNameFilter_KeyDown" />
+                        <TextBlock Width="10" DockPanel.Dock="Left" />
+                        <!--  SEARCH  -->
+                        <Button x:Name="cmdSearch"
+                                DockPanel.Dock="Left"
+                                Style="{StaticResource InlineButton}"
+                                Margin="5,0"
+                                Width="150"
+                                Height="30"
+                                Content="ค้นหา"
+                                Click="cmdSearch_Click" />
                         <Grid />
                     </DockPanel>
                     <!--  BUTTONS BAR  -->
@@ -133,7 +143,7 @@
                                 Margin="5,0"
                                 Width="150"
                                 Height="30"
-                                Content="พิมพ์ (ทุกจังหวัด)"
+                                Content="พิมพ์ (ทั้งหมด)"
                                 Click="cmdPrint_Click"/>
                         <Grid />
                     </DockPanel>

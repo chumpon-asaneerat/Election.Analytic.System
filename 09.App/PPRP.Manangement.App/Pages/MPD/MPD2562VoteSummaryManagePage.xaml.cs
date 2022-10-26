@@ -47,6 +47,11 @@ namespace PPRP.Pages
             GotoMainMenuPage();
         }
 
+        private void cmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            Search();
+        }
+
         private void cmdImport_Click(object sender, RoutedEventArgs e)
         {
             Import();
@@ -158,7 +163,7 @@ namespace PPRP.Pages
                 provinceName = null;
             }
 
-            var items = MPD2562PrintVoteSummary.Gets(provinceName).Value;
+            var items = MPD2562PrintVoteSummary.Gets(provinceName, sPartyNameFilter, sFullNameFilter).Value;
             if (null == items)
             {
                 // Show Dialog.

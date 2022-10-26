@@ -67,7 +67,7 @@
                                  Margin="3"
                                  VerticalContentAlignment="Center"
                                  KeyDown="txtPartyNameFilter_KeyDown" />
-                        <!--  IMPORT  -->
+                        <!--  SEARCH  -->
                         <Button x:Name="cmdSearch"
                                 DockPanel.Dock="Left"
                                 Style="{StaticResource InlineButton}"
