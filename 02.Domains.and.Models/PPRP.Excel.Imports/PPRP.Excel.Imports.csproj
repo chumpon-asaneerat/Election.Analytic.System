@@ -71,6 +71,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exports\Excel\NExcelExport.cs" />
     <Compile Include="Imports\Excel\NExcelImport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="SingeltonSample.cs" />

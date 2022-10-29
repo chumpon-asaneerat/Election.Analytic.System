@@ -12,6 +12,7 @@ using NLib;
 using NLib.Services;
 
 using PPRP.Domains;
+using PPRP.Exports.Excel;
 
 #endregion
 
@@ -164,6 +165,27 @@ namespace PPRP.Pages
             {
                 // Show Dialog.
                 return;
+            }
+            NExcelExport export = new NExcelExport();
+            if (export.ShowDialog("รายชื่อว่าที่ผู้สมัครปี 2566.xlsx"))
+            {
+                // map column and property
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "จังหวัด", PropertyName = "ProvinceName" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "เขต", PropertyName = "PollingUnitNo" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ลำดับที่", PropertyName = "CandidateNo" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ชื่อผู้สมัคร", PropertyName = "FullName" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "สังกัดพรรคเดิม", PropertyName = "PervPartyName" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "วุฒิการศึกษา", PropertyName = "EducationLvl" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "กลุ่มย่อย", PropertyName = "SubGroup" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "หมายเหตุ", PropertyName = "Remark" });
+                if (export.Save(items, "รายชื่อว่าที่ผู้สมัครปี 2566"))
+                {
+                    MessageBox.Show("ส่งออกข้อมูลสำเร็จ", "ผลการส่งออกข้อมูล");
+                }
+                else
+                {
+                    MessageBox.Show("ส่งออกข้อมูลไม่สำเร็จ", "ผลการส่งออกข้อมูล");
+                }
             }
         }
 
