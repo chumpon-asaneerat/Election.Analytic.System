@@ -262,6 +262,7 @@ namespace PPRP.Pages
             var candidates = MPDC2566PullingUnit.Gets(provinceName, sFullNameFilter, iPageNo, iRowsPerPage);
 
             lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566PullingUnit>();
+            sv.ScrollToHome(); // scroll to home position
 
             iPageNo = (null != candidates) ? candidates.PageNo : 1;
             iMaxPage = (null != candidates) ? candidates.MaxPage : 1;
