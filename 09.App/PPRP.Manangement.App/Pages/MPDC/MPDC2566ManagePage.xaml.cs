@@ -101,7 +101,7 @@ namespace PPRP.Pages
             iPageNo = 1;
             iMaxPage = 1;
 
-            RefreshList();
+            RefreshList(true);
         }
 
         #endregion
@@ -132,7 +132,7 @@ namespace PPRP.Pages
         private void nav_PagingChanged(object sender, EventArgs e)
         {
             iPageNo = nav.PageNo;
-            RefreshList();
+            RefreshList(false);
         }
 
         #endregion
@@ -172,7 +172,7 @@ namespace PPRP.Pages
             if (sFullNameFilter.Trim() != txtFullNameFilter.Text.Trim())
             {
                 sFullNameFilter = txtFullNameFilter.Text.Trim();
-                RefreshList();
+                RefreshList(true);
             }
         }
 
@@ -203,7 +203,7 @@ namespace PPRP.Pages
             var editor = PPRPApp.Windows.MPDC2566Editor;
             editor.Setup(item, true);
             editor.ShowDialog();
-            RefreshList();
+            RefreshList(true);
         }
 
         private void Edit(MPDC2566 item)
@@ -213,7 +213,7 @@ namespace PPRP.Pages
             var editor = PPRPApp.Windows.MPDC2566Editor;
             editor.Setup(item, false);
             editor.ShowDialog();
-            RefreshList();
+            RefreshList(true);
         }
 
         private void Delete(MPDC2566 item)
@@ -224,7 +224,7 @@ namespace PPRP.Pages
             if (MessageBox.Show(msg, "ยืนยันการลบข้อมูล", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 MPDC2566.Delete(item);
-                RefreshList();
+                RefreshList(true);
             }
         }
 
@@ -243,8 +243,13 @@ namespace PPRP.Pages
             }
         }
 
-        private void RefreshList()
+        private void RefreshList(bool refresh)
         {
+            if (refresh)
+            {
+                iPageNo = 1;
+            }
+
             // Check province.
             var province = cbProvince.SelectedItem as MProvince;
             string provinceName = (null != province) ? province.ProvinceNameTH : null;
@@ -254,18 +259,9 @@ namespace PPRP.Pages
             }
 
             lvMPDC2566.ItemsSource = null;
-            var candidates = MPDC2566.Gets(provinceName, sFullNameFilter, iPageNo, iRowsPerPage);
-            lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566>();
+            var candidates = MPDC2566PullingUnit.Gets(provinceName, sFullNameFilter, iPageNo, iRowsPerPage);
 
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvMPDC2566.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("GroupName");
-            view.GroupDescriptions.Add(groupDescription);
-
-            if (null != candidates && null != candidates.Value)
-            {
-                lvMPDC2566.SelectedIndex = 0;
-                lvMPDC2566.ScrollIntoView(lvMPDC2566.SelectedItem);
-            }
+            lvMPDC2566.ItemsSource = (null != candidates) ? candidates.Value : new List<MPDC2566PullingUnit>();
 
             iPageNo = (null != candidates) ? candidates.PageNo : 1;
             iMaxPage = (null != candidates) ? candidates.MaxPage : 1;

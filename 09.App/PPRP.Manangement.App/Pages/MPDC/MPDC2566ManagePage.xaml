@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลว่าที่ผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566</sys:String>
-
+        <!-- DATA TEMPLATE  -->
         <DataTemplate x:Key="CandidateInfo">
             <Border BorderBrush="Silver"
                     BorderThickness="1"
@@ -259,86 +259,50 @@
                         </StackPanel>
                     </Grid>
 
-                    <!--
-                    <ItemsControl x:Name="lvMPDC2566"
-                                  HorizontalContentAlignment="Stretch"
-                                  Background="White">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Expander Style="{StaticResource ExpanderRightToggleStyle}" IsExpanded="True">
-                                    <Expander.Header>
-                                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="30" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel Orientation="Horizontal" Grid.Column="0">
-                                                <TextBlock Width="5" />
-                                                <TextBlock Text="{Binding ProvinceName}"
-                                                           FontSize="{StaticResource FontSize18}"
-                                                           Foreground="{StaticResource BlackBlush}" />
-                                                <TextBlock Text=" - " />
-                                                <TextBlock Text="{Binding PullingUnitNo}"
-                                                           FontSize="{StaticResource FontSize18}"
-                                                           Foreground="{StaticResource BlackBlush}" />
-                                                <TextBlock Width="5" />
-                                            </StackPanel>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl x:Name="lvMPDC2566"
+                                      HorizontalContentAlignment="Stretch"
+                                      VirtualizingPanel.IsVirtualizing="True"
+                                      VirtualizingPanel.VirtualizationMode="Recycling"
+                                      Background="White">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Expander Style="{StaticResource ExpanderRightToggleStyle}" IsExpanded="True">
+                                        <Expander.Header>
+                                            <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="30" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                    <TextBlock Width="5" />
+                                                    <TextBlock Text="{Binding ProvinceName}"
+                                                               FontSize="{StaticResource FontSize18}"
+                                                               Foreground="{StaticResource BlackBlush}" />
+                                                    <TextBlock Text=" - " />
+                                                    <TextBlock Text="{Binding PollingUnitNo}"
+                                                               FontSize="{StaticResource FontSize18}"
+                                                               Foreground="{StaticResource BlackBlush}" />
+                                                    <TextBlock Width="5" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Expander.Header>
+                                        <Grid HorizontalAlignment="Stretch" Margin="10,5">
+                                            <ListBox ItemsSource="{Binding Items}"
+                                                     Margin="5,2"
+                                                     HorizontalContentAlignment="Stretch"
+                                                     ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
+                                                     Style="{StaticResource SingleSelectWrapListBox}"
+                                                     BorderThickness="0"
+                                                     ItemTemplate="{StaticResource CandidateInfo}"
+                                                     Height="Auto"
+                                                     Width="Auto" />
                                         </Grid>
-                                    </Expander.Header>
-                                    <Grid HorizontalAlignment="Stretch"
-                                          Margin="10, 5">
-                                        <TextBlock Text="Test"
-                                                   FontSize="{StaticResource FontSize18}"
-                                                   Foreground="Black" />
-                                    </Grid>
-                                </Expander>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                    -->
-
-
-
-
-                    <!--  LIST VIEW  -->
-                    <ListView x:Name="lvMPDC2566"
-                              Style="{StaticResource SingleSelectListView}"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                              VirtualizingPanel.IsVirtualizing="True"
-                              VirtualizingPanel.VirtualizationMode="Recycling"
-                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
-                              ItemTemplate="{StaticResource CandidateInfo}">
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.ContainerStyle>
-                                    <Style TargetType="{x:Type GroupItem}">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate>
-                                                    <Expander IsExpanded="True">
-                                                        <Expander.Header>
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="{Binding Name}"
-                                                                           FontSize="{StaticResource FontSize18}"
-                                                                           Foreground="{StaticResource BlackBlush}" />
-                                                            </StackPanel>
-                                                        </Expander.Header>
-                                                        <ItemsPresenter />
-                                                    </Expander>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </GroupStyle.ContainerStyle>
-                            </GroupStyle>
-                        </ListView.GroupStyle>
-                    </ListView>
-
+                                    </Expander>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </DockPanel>
             </DockPanel>
         </Grid>

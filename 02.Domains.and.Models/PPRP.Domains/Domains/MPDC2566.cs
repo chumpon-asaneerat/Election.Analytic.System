@@ -19,6 +19,129 @@ using Newtonsoft.Json;
 
 namespace PPRP.Domains
 {
+    #region MPDC2566PullingUnit
+
+    public class MPDC2566PullingUnit : NInpc
+    {
+        #region Internal Variables
+
+        private bool _loaded = false;
+        private  List<MPDC2566> _items = null;
+
+        #endregion
+
+        #region Public Properties
+
+        public string ProvinceName { get; set; }
+        public int PollingUnitNo { get; set; }
+        public int TotalCandidates { get; set; }
+        public string FullNameFilter { get; set; }
+        public string GroupName
+        {
+            get { return string.Format("{0} เขต {1}", ProvinceName, PollingUnitNo); }
+            set { }
+        }
+        public List<MPDC2566> Items
+        {
+            get 
+            { 
+                if (!_loaded)
+                {
+                    if (TotalCandidates > 0)
+                    {
+                        _items = MPDC2566.Gets(ProvinceName, PollingUnitNo, FullNameFilter).Value;
+                    }
+                    _loaded = true;
+
+                }
+                return _items;
+            }
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        public static NDbResult<List<MPDC2566PullingUnit>> Gets(string provinceName = null, string fullName = null,
+            int pageNo = 1, int pollingUnitPerPage = 4)
+        {
+            MethodBase med = MethodBase.GetCurrentMethod();
+
+            string sProvinceName = provinceName;
+            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
+            {
+                sProvinceName = null;
+            }
+
+            string sFullName = fullName;
+            if (string.IsNullOrWhiteSpace(sFullName))
+            {
+                sFullName = null;
+            }
+
+            NDbResult<List<MPDC2566PullingUnit>> rets = new NDbResult<List<MPDC2566PullingUnit>>();
+
+            IDbConnection cnn = DbServer.Instance.Db;
+            if (null == cnn || !DbServer.Instance.Connected)
+            {
+                string msg = "Connection is null or cannot connect to database server.";
+                med.Err(msg);
+                // Set error number/message
+                rets.ErrNum = 8000;
+                rets.ErrMsg = msg;
+
+                return rets;
+            }
+
+            var p = new DynamicParameters();
+            p.Add("@ProvinceName", sProvinceName);
+            p.Add("@FullName", sFullName);
+
+            p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@pollingUnitPerPage", value: pollingUnitPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
+            p.Add("@totalRecords", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@maxPage", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
+            p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
+
+            try
+            {
+                var items = cnn.Query<MPDC2566PullingUnit>("GetMPDC2566PullingUnitsPaging", p,
+                    commandType: CommandType.StoredProcedure);
+                rets.Value = (null != items) ? items.ToList() : new List<MPDC2566PullingUnit>();
+
+                // Get Paging parameters
+                rets.PageNo = p.Get<int>("@pageNum");
+                rets.RowsPerPage = p.Get<int>("@pollingUnitPerPage");
+                //rets.TotalRecords = p.Get<int>("@totalRecords");
+                rets.MaxPage = p.Get<int>("@maxPage");
+                // Set error number/message
+                rets.ErrNum = p.Get<int>("@errNum");
+                rets.ErrMsg = p.Get<string>("@errMsg");
+            }
+            catch (Exception ex)
+            {
+                med.Err(ex);
+                // Set error number/message
+                rets.ErrNum = 9999;
+                rets.ErrMsg = ex.Message;
+            }
+
+            if (null == rets.Value)
+            {
+                // create empty list.
+                rets.Value = new List<MPDC2566PullingUnit>();
+            }
+
+            return rets;
+        }
+
+        #endregion
+    }
+
+    #endregion
+
     #region MPDC2566
 
     public class MPDC2566 : NInpc
@@ -101,16 +224,11 @@ namespace PPRP.Domains
 
         #region Static Methods
 
-        public static NDbResult<List<MPDC2566>> Gets(string provinceName = null, string fullName = null,
-            int pageNo = 1, int pollingUnitPerPage = 4)
+        public static NDbResult<List<MPDC2566>> Gets(string provinceName, int pollingUnitNo, string fullName = null)
         {
             MethodBase med = MethodBase.GetCurrentMethod();
 
             string sProvinceName = provinceName;
-            if (string.IsNullOrWhiteSpace(sProvinceName) || sProvinceName.Contains("ทุกจังหวัด"))
-            {
-                sProvinceName = null;
-            }
 
             string sFullName = fullName;
             if (string.IsNullOrWhiteSpace(sFullName))
@@ -134,12 +252,8 @@ namespace PPRP.Domains
 
             var p = new DynamicParameters();
             p.Add("@ProvinceName", sProvinceName);
+            p.Add("@PollingUnitNo", pollingUnitNo);
             p.Add("@FullName", sFullName);
-
-            p.Add("@pageNum", value: pageNo, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
-            p.Add("@pollingUnitPerPage", value: pollingUnitPerPage, dbType: DbType.Int32, direction: ParameterDirection.InputOutput);
-            p.Add("@totalRecords", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-            p.Add("@maxPage", value: 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             p.Add("@errNum", dbType: DbType.Int32, direction: ParameterDirection.Output);
             p.Add("@errMsg", dbType: DbType.String, direction: ParameterDirection.Output, size: -1);
@@ -150,11 +264,6 @@ namespace PPRP.Domains
                     commandType: CommandType.StoredProcedure);
                 rets.Value = (null != items) ? items.ToList() : new List<MPDC2566>();
 
-                // Get Paging parameters
-                rets.PageNo = p.Get<int>("@pageNum");
-                rets.RowsPerPage = p.Get<int>("@pollingUnitPerPage");
-                //rets.TotalRecords = p.Get<int>("@totalRecords");
-                rets.MaxPage = p.Get<int>("@maxPage");
                 // Set error number/message
                 rets.ErrNum = p.Get<int>("@errNum");
                 rets.ErrMsg = p.Get<string>("@errMsg");
