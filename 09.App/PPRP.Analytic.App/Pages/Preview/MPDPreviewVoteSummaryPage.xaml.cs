@@ -173,6 +173,10 @@ namespace PPRP.Pages
                 {
                     med.Err(ex);
                 }
+                finally
+                {
+                    this.rptViewer.RefreshReport();
+                }
             }
         }
 
