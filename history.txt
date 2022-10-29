@@ -7,8 +7,9 @@ Election.Analytic.System - PPRP  #639
 Election.Analytic.System - PPRP  #638
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #637
-- 
+- Implements User system #1.
 
 [commited]
 Election.Analytic.System - PPRP  #636
