@@ -258,8 +258,8 @@
                             <ctrl:PagingControl x:Name="nav" PagingChanged="nav_PagingChanged" />
                         </StackPanel>
                     </Grid>
-
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <!--  ITEMS  -->
+                    <ScrollViewer x:Name="sv" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                         <ItemsControl x:Name="lvMPDC2566"
                                       HorizontalContentAlignment="Stretch"
                                       VirtualizingPanel.IsVirtualizing="True"
