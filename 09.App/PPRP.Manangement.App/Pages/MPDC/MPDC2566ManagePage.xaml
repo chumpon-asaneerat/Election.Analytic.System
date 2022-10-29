@@ -259,7 +259,9 @@
                         </StackPanel>
                     </Grid>
                     <!--  ITEMS  -->
-                    <ScrollViewer x:Name="sv" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer x:Name="sv"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
                         <ItemsControl x:Name="lvMPDC2566"
                                       HorizontalContentAlignment="Stretch"
                                       VirtualizingPanel.IsVirtualizing="True"
@@ -288,15 +290,48 @@
                                             </Grid>
                                         </Expander.Header>
                                         <Grid HorizontalAlignment="Stretch" Margin="10,5">
+                                            <Grid Height="285"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch">
+                                                <TextBlock Text="ไม่พบข้อมูล"
+                                                           FontSize="{StaticResource FontSize36}"
+                                                           Foreground="Silver"
+                                                           FontFamily="{StaticResource THSarabun}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           TextAlignment="Center">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="Visibility" Value="Hidden" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Path=TotalCandidates}" Value="0">
+                                                                    <Setter Property="Visibility" Value="Visible" />
+                                                                    <Setter Property="Foreground" Value="DarkCyan" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </Grid>
                                             <ListBox ItemsSource="{Binding Items}"
                                                      Margin="5,2"
                                                      HorizontalContentAlignment="Stretch"
                                                      ItemContainerStyle="{StaticResource BASEListBoxItemContainer}"
-                                                     Style="{StaticResource SingleSelectWrapListBox}"
                                                      BorderThickness="0"
                                                      ItemTemplate="{StaticResource CandidateInfo}"
                                                      Height="Auto"
-                                                     Width="Auto" />
+                                                     Width="Auto">
+                                                <ListBox.Style>
+                                                    <Style TargetType="ListBox" BasedOn="{StaticResource SingleSelectWrapListBox}">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Path=TotalCandidates}" Value="0">
+                                                                <Setter Property="Visibility" Value="Hidden" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ListBox.Style>
+                                            </ListBox>
                                         </Grid>
                                     </Expander>
                                 </DataTemplate>

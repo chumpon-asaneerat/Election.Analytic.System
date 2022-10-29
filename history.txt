@@ -19,8 +19,9 @@ Election.Analytic.System - PPRP  #635
 Election.Analytic.System - PPRP  #634
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #633
-- 
+- Implements MPDC2566 print #17.
 
 [commited]
 Election.Analytic.System - PPRP  #632
