@@ -11,6 +11,106 @@
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลว่าที่ผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566</sys:String>
+
+        <DataTemplate x:Key="CandidateInfo">
+            <Border BorderBrush="Silver"
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Margin="2"
+                    Height="285"
+                    Width="450"
+                    ClipToBounds="True">
+                <DockPanel LastChildFill="True" Margin="2">
+                    <!--  EDIT/DELETE  -->
+                    <StackPanel Orientation="Horizontal"
+                                DockPanel.Dock="Bottom"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+                        <TextBlock Width="8" />
+                        <Button x:Name="cmdEdit"
+                                Margin="2,1"
+                                Width="75"
+                                Height="25"
+                                Content="แก้ไข"
+                                Style="{StaticResource InlineButton}"
+                                Click="cmdEdit_Click" />
+                        <Button x:Name="cmdDelete"
+                                Margin="2,1"
+                                Width="75"
+                                Height="25"
+                                Content="ลบ"
+                                Style="{StaticResource InlineButton}"
+                                Click="cmdDelete_Click" />
+                    </StackPanel>
+                    <!--  IMAGES  -->
+                    <Border CornerRadius="3"
+                            BorderBrush="Silver"
+                            BorderThickness="1">
+                        <Image Margin="2"
+                               RenderOptions.BitmapScalingMode="LowQuality"
+                               RenderOptions.EdgeMode="Aliased"
+                               Source="{Binding Image}"
+                               Height="270" />
+                    </Border>
+                    <!--  INFO  -->
+                    <DockPanel LastChildFill="True" Margin="2">
+                        <StackPanel Orientation="Vertical"
+                                    DockPanel.Dock="Top"
+                                    Margin="2">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="ลำดับที่: " />
+                                <TextBlock Text="{Binding CandidateNo}"
+                                           Height="Auto"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           TextAlignment="Left"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                            <Grid Height="5" />
+                            <TextBlock Text="{Binding FullName}"
+                                       Height="Auto"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       TextAlignment="Left"
+                                       TextWrapping="Wrap" />
+                            <Grid Height="5" />
+                            <TextBlock Text="พรรคต้นสังกัดเดิม: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                            <TextBlock Text="{Binding PrevPartyName}"
+                                       Height="Auto"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       TextAlignment="Left"
+                                       TextWrapping="Wrap" />
+                            <Grid Height="5" />
+                            <TextBlock Text="ระดับการศึกษา: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                            <TextBlock Text="{Binding EducationLevel}"
+                                       Height="Auto"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       TextAlignment="Left"
+                                       TextWrapping="Wrap" />
+                            <Grid Height="5" />
+                            <TextBlock Height="Auto"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       TextAlignment="Left"
+                                       TextWrapping="Wrap">
+                                <Run Text="* " />
+                                <Run Text="{Binding SubGroup}" />
+                            </TextBlock>
+                            <TextBlock Text="หมายเหตุ: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                            <TextBlock Text="{Binding Remark}"
+                                       Height="Auto"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       TextAlignment="Left"
+                                       TextWrapping="Wrap" />
+                            <Grid Height="5" />
+                        </StackPanel>
+                    </DockPanel>
+                </DockPanel>
+            </Border>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -144,7 +244,7 @@
                                 Width="150"
                                 Height="30"
                                 Content="พิมพ์"
-                                Click="cmdPrint_Click"/>
+                                Click="cmdPrint_Click" />
                         <Grid />
                     </DockPanel>
                     <!--  PAGING BAR  -->
@@ -158,118 +258,61 @@
                             <ctrl:PagingControl x:Name="nav" PagingChanged="nav_PagingChanged" />
                         </StackPanel>
                     </Grid>
+
+                    <!--
+                    <ItemsControl x:Name="lvMPDC2566"
+                                  HorizontalContentAlignment="Stretch"
+                                  Background="White">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Expander Style="{StaticResource ExpanderRightToggleStyle}" IsExpanded="True">
+                                    <Expander.Header>
+                                        <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                <TextBlock Width="5" />
+                                                <TextBlock Text="{Binding ProvinceName}"
+                                                           FontSize="{StaticResource FontSize18}"
+                                                           Foreground="{StaticResource BlackBlush}" />
+                                                <TextBlock Text=" - " />
+                                                <TextBlock Text="{Binding PullingUnitNo}"
+                                                           FontSize="{StaticResource FontSize18}"
+                                                           Foreground="{StaticResource BlackBlush}" />
+                                                <TextBlock Width="5" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Expander.Header>
+                                    <Grid HorizontalAlignment="Stretch"
+                                          Margin="10, 5">
+                                        <TextBlock Text="Test"
+                                                   FontSize="{StaticResource FontSize18}"
+                                                   Foreground="Black" />
+                                    </Grid>
+                                </Expander>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    -->
+
+
+
+
+                    <!--  LIST VIEW  -->
                     <ListView x:Name="lvMPDC2566"
                               Style="{StaticResource SingleSelectListView}"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               VirtualizingPanel.IsVirtualizing="True"
                               VirtualizingPanel.VirtualizationMode="Recycling"
-                              VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                              VirtualizingPanel.IsVirtualizingWhenGrouping="True"
+                              ItemTemplate="{StaticResource CandidateInfo}">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="Silver"
-                                        BorderThickness="1"
-                                        CornerRadius="3"
-                                        Margin="2"
-                                        Height="285"
-                                        Width="450"
-                                        ClipToBounds="True">
-                                    <DockPanel LastChildFill="True" Margin="2">
-                                        <!--  EDIT/DELETE  -->
-                                        <StackPanel Orientation="Horizontal"
-                                                    DockPanel.Dock="Bottom"
-                                                    VerticalAlignment="Center"
-                                                    HorizontalAlignment="Center">
-                                            <TextBlock Width="8" />
-                                            <Button x:Name="cmdEdit"
-                                                    Margin="2,1"
-                                                    Width="75"
-                                                    Height="25"
-                                                    Content="แก้ไข"
-                                                    Style="{StaticResource InlineButton}" 
-                                                    Click="cmdEdit_Click"/>
-                                            <Button x:Name="cmdDelete"
-                                                    Margin="2,1"
-                                                    Width="75"
-                                                    Height="25"
-                                                    Content="ลบ"
-                                                    Style="{StaticResource InlineButton}" 
-                                                    Click="cmdDelete_Click"/>
-                                        </StackPanel>
-                                        <!--  IMAGE  -->
-                                        <Border CornerRadius="3"
-                                                BorderBrush="Silver"
-                                                BorderThickness="1">
-                                            <Image Margin="2"
-                                                   RenderOptions.BitmapScalingMode="LowQuality"
-                                                   RenderOptions.EdgeMode="Aliased"
-                                                   Source="{Binding Image}"
-                                                   Height="270" />
-                                        </Border>
-                                        <!--  INFO  -->
-                                        <DockPanel LastChildFill="True" Margin="2">
-                                            <StackPanel Orientation="Vertical"
-                                                        DockPanel.Dock="Top"
-                                                        Margin="2">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Text="ลำดับที่: " />
-                                                    <TextBlock Text="{Binding CandidateNo}"
-                                                               Height="Auto"
-                                                               VerticalAlignment="Center"
-                                                               HorizontalAlignment="Left"
-                                                               TextAlignment="Left"
-                                                               TextWrapping="Wrap" />
-                                                </StackPanel>
-                                                <Grid Height="5" />
-                                                <TextBlock Text="{Binding FullName}"
-                                                           Height="Auto"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           TextAlignment="Left"
-                                                           TextWrapping="Wrap" />
-                                                <Grid Height="5" />
-                                                <TextBlock Text="พรรคต้นสังกัดเดิม: " Foreground="{StaticResource BlueHeavyBrush2}" />
-                                                <TextBlock Text="{Binding PrevPartyName}"
-                                                           Height="Auto"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           TextAlignment="Left"
-                                                           TextWrapping="Wrap" />
-                                                <Grid Height="5" />
-                                                <TextBlock Text="ระดับการศึกษา: " Foreground="{StaticResource BlueHeavyBrush2}" />
-                                                <TextBlock Text="{Binding EducationLevel}"
-                                                           Height="Auto"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           TextAlignment="Left"
-                                                           TextWrapping="Wrap" />
-                                                <Grid Height="5" />
-                                                <TextBlock Height="Auto"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           TextAlignment="Left"
-                                                           TextWrapping="Wrap">
-                                                    <Run Text="* " />
-                                                    <Run Text="{Binding SubGroup}" />
-                                                </TextBlock>
-                                                <TextBlock Text="หมายเหตุ: " Foreground="{StaticResource BlueHeavyBrush2}" />
-                                                <TextBlock Text="{Binding Remark}"
-                                                           Height="Auto"
-                                                           VerticalAlignment="Center"
-                                                           HorizontalAlignment="Left"
-                                                           TextAlignment="Left"
-                                                           TextWrapping="Wrap" />
-                                                <Grid Height="5" />
-                                            </StackPanel>
-                                        </DockPanel>
-                                    </DockPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
                         <ListView.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -295,6 +338,7 @@
                             </GroupStyle>
                         </ListView.GroupStyle>
                     </ListView>
+
                 </DockPanel>
             </DockPanel>
         </Grid>

@@ -261,7 +261,7 @@ namespace PPRP.Pages
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("GroupName");
             view.GroupDescriptions.Add(groupDescription);
 
-            if (null != candidates)
+            if (null != candidates && null != candidates.Value)
             {
                 lvMPDC2566.SelectedIndex = 0;
                 lvMPDC2566.ScrollIntoView(lvMPDC2566.SelectedItem);
