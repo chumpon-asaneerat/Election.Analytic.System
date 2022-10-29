@@ -306,7 +306,6 @@
                                                             <Style.Triggers>
                                                                 <DataTrigger Binding="{Binding Path=TotalCandidates}" Value="0">
                                                                     <Setter Property="Visibility" Value="Visible" />
-                                                                    <Setter Property="Foreground" Value="DarkCyan" />
                                                                 </DataTrigger>
                                                             </Style.Triggers>
                                                         </Style>
