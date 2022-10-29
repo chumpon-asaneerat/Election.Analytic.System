@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลว่าที่ผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2566</sys:String>
-        <!-- DATA TEMPLATE  -->
+        <!--  DATA TEMPLATE  -->
         <DataTemplate x:Key="CandidateInfo">
             <Border BorderBrush="Silver"
                     BorderThickness="1"
