@@ -91,25 +91,25 @@
                         <!--  PROVINCE NAME/PollingNo  -->
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Text="จังหวัด: "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <TextBlock x:Name="txtProvinceName"
                                        VerticalAlignment="Center"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        Width="200"
                                        Text="{Binding ProvinceName}" />
                             <TextBlock Width="5" />
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Text=" เขต: " />
                             <TextBlock x:Name="txtPollingUnitNo"
                                        Text="{Binding PollingUnitNo}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Width="50"
                                        TextAlignment="Center" />
@@ -117,7 +117,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        TextAlignment="Right"
                                        VerticalAlignment="Center"
                                        Text="เลขที่ผู้สมัคร: "
@@ -125,7 +125,7 @@
                             <TextBlock x:Name="txtVoteNo"
                                        Text="{Binding VoteNo}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Width="420"
                                        TextAlignment="Left" />
@@ -133,7 +133,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Text="ชื่อ-สกุล: "
                                        TextAlignment="Right"
@@ -141,7 +141,7 @@
                             <TextBlock x:Name="txtFullName"
                                        Text="{Binding FullName}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Width="420"
                                        TextAlignment="Left" />
@@ -149,7 +149,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Text="พรรค: "
                                        TextAlignment="Right"
@@ -157,7 +157,7 @@
                             <TextBlock x:Name="txtPartyName"
                                        Text="{Binding PartyName}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Width="420"
                                        TextAlignment="Left" />
@@ -165,7 +165,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Text="ได้คะแนนเป็นลำดับที่: "
                                        TextAlignment="Right"
@@ -173,7 +173,7 @@
                             <TextBlock x:Name="txtRankNo"
                                        Text="{Binding RankNo}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
                                        Width="420"
                                        TextAlignment="Left" />
@@ -181,7 +181,7 @@
                         <TextBlock Height="5" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="{StaticResource BlackBlush}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize48}"
                                        VerticalAlignment="Center"
                                        Text="คะแนน: "
                                        TextAlignment="Right"
@@ -189,7 +189,7 @@
                             <TextBlock x:Name="txtVoteCount"
                                        Text="{Binding VoteCount , StringFormat={}{0:n0}}"
                                        FontFamily="{StaticResource THSarabun}"
-                                       FontSize="{StaticResource FontSize18}"
+                                       FontSize="{StaticResource FontSize48}"
                                        VerticalAlignment="Center"
                                        Width="420"
                                        TextAlignment="Left" />
