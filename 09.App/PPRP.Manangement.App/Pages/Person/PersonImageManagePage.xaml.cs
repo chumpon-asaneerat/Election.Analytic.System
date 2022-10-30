@@ -29,6 +29,7 @@ namespace PPRP.Pages
         public PersonImageManagePage()
         {
             InitializeComponent();
+            cmdAddNew.Visibility = Visibility.Collapsed;
         }
 
         #endregion
