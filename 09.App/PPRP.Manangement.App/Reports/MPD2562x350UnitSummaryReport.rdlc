@@ -526,7 +526,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -563,7 +563,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -600,7 +600,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0.##</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -637,7 +637,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -659,6 +659,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -674,7 +675,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0.##</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -711,7 +712,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -748,7 +749,7 @@
                               <Style>
                                 <FontFamily>th Sarabun New</FontFamily>
                                 <FontSize>14pt</FontSize>
-                                <Format>#,#.##;(#,#.##)</Format>
+                                <Format>#,0.##</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
