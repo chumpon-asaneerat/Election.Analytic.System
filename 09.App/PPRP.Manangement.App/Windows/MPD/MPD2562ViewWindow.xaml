@@ -16,7 +16,7 @@
     <Window.Resources>
         <!--  PAGE TITLE  -->
         <sys:String x:Key="PageTitle">ข้อมูลผู้สมัครสมาชิกสภาผู้แทน แบบแบ่งเขต ปี 2562</sys:String>
-        <sys:Double x:Key="LabelWidth">150</sys:Double>
+        <sys:Double x:Key="LabelWidth">250</sys:Double>
     </Window.Resources>
     <Grid Background="{StaticResource PageBG}">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -83,7 +83,7 @@
                            Height="345"
                            Stretch="Uniform" />
                 </Border>
-                <TextBlock DockPanel.Dock="Left" Width="20" />
+                <TextBlock DockPanel.Dock="Left" Width="10" />
                 <!--  VOTE INFO  -->
                 <DockPanel LastChildFill="True">
                     <StackPanel Orientation="Vertical" Margin="5">
@@ -111,7 +111,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="50"
+                                       Width="40"
                                        TextAlignment="Center" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -127,7 +127,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="420"
+                                       Width="310"
                                        TextAlignment="Left" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -143,7 +143,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="420"
+                                       Width="310"
                                        TextAlignment="Left" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -159,7 +159,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="420"
+                                       Width="310"
                                        TextAlignment="Left" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -175,7 +175,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="420"
+                                       Width="310"
                                        TextAlignment="Left" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -191,7 +191,7 @@
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize48}"
                                        VerticalAlignment="Center"
-                                       Width="420"
+                                       Width="310"
                                        TextAlignment="Left" />
                         </StackPanel>
                     </StackPanel>
