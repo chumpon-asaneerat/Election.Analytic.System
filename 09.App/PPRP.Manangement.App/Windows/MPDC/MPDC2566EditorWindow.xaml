@@ -178,6 +178,23 @@
                             <TextBlock Foreground="{StaticResource BlackBlush}"
                                        FontSize="{StaticResource FontSize18}"
                                        VerticalAlignment="Center"
+                                       Text="วุฒิการศึกษา: "
+                                       TextAlignment="Right"
+                                       Width="{StaticResource LabelWidth}" />
+                            <TextBox x:Name="txtEducationLevel"
+                                     Text="{Binding EducationLevel}"
+                                     FontFamily="{StaticResource THSarabun}"
+                                     FontSize="{StaticResource FontSize18}"
+                                     VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     Width="420"
+                                     TextAlignment="Left" />
+                        </StackPanel>
+                        <TextBlock Height="5" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="{StaticResource BlackBlush}"
+                                       FontSize="{StaticResource FontSize18}"
+                                       VerticalAlignment="Center"
                                        Text="** "
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />

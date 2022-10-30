@@ -82,7 +82,7 @@
                                        TextAlignment="Left"
                                        TextWrapping="Wrap" />
                             <Grid Height="5" />
-                            <TextBlock Text="ระดับการศึกษา: " Foreground="{StaticResource BlueHeavyBrush2}" />
+                            <TextBlock Text="วุฒิการศึกษา: " Foreground="{StaticResource BlueHeavyBrush2}" />
                             <TextBlock Text="{Binding EducationLevel}"
                                        Height="Auto"
                                        VerticalAlignment="Center"

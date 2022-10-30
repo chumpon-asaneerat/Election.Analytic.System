@@ -113,7 +113,7 @@ namespace PPRP.Exports.Excel
             {
                 return ret;
             }
-
+            // ปรับ เพิ่ม Export Excel
             using (var package = new ExcelPackage(FileName))
             {
                 try
@@ -130,8 +130,13 @@ namespace PPRP.Exports.Excel
                             {
                                 if (iRo1 == 1)
                                 {
-                                    // first row is column
                                     sheet.Cells[iRo1, iCol].Value = map.ColumnName;
+                                    sheet.Cells[2, iCol].Value = DynamicAccess<T>.Get(item, map.PropertyName); ;
+                                }
+                                else if (iRo1 == 2)
+                                {
+                                    iRo1 = 3;
+                                    sheet.Cells[iRo1, iCol].Value = DynamicAccess<T>.Get(item, map.PropertyName);
                                 }
                                 else
                                 {
@@ -142,6 +147,8 @@ namespace PPRP.Exports.Excel
                             });
                             iRo1++;
                         });
+
+
                         // save to file.
                         package.SaveAs(this.FileName);
                         ret = true;

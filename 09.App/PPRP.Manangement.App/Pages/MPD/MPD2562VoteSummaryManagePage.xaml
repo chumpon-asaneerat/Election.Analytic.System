@@ -195,7 +195,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBlock Width="150"
-                                                       Text="{Binding VoteCount}"
+                                                       Text="{Binding VoteCount , StringFormat={}{0:n0}}"
                                                        TextAlignment="Right" />
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

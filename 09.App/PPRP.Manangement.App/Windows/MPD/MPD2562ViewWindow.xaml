@@ -187,7 +187,7 @@
                                        TextAlignment="Right"
                                        Width="{StaticResource LabelWidth}" />
                             <TextBlock x:Name="txtVoteCount"
-                                       Text="{Binding VoteCount}"
+                                       Text="{Binding VoteCount , StringFormat={}{0:n0}}"
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize18}"
                                        VerticalAlignment="Center"
