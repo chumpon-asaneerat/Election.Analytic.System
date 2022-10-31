@@ -95,7 +95,7 @@
                                        VerticalAlignment="Center"
                                        Text="จังหวัด: "
                                        TextAlignment="Left"
-                                       Width="{StaticResource LabelWidth}" />
+                                       Width="90" />
                             <TextBlock x:Name="txtProvinceName"
                                        VerticalAlignment="Center"
                                        TextAlignment="Left"
@@ -123,7 +123,7 @@
                                        TextAlignment="Left"
                                        VerticalAlignment="Center"
                                        Text="หมายเลข: "
-                                       Width="{StaticResource LabelWidth}" />
+                                       Width="120" />
                             <TextBlock x:Name="txtVoteNo"
                                        Text="{Binding VoteNo}"
                                        FontFamily="{StaticResource THSarabun}"
@@ -149,13 +149,13 @@
                                        VerticalAlignment="Center"
                                        Text="พรรค: "
                                        TextAlignment="Left"
-                                       Width="{StaticResource LabelWidth}" />
+                                       Width="75" />
                             <TextBlock x:Name="txtPartyName"
                                        Text="{Binding PartyName}"
                                        FontFamily="{StaticResource THSarabun}"
                                        FontSize="{StaticResource FontSize30}"
                                        VerticalAlignment="Center"
-                                       Width="410"
+                                       Width="485"
                                        TextAlignment="Left" />
                         </StackPanel>
                         <TextBlock Height="5" />
@@ -165,7 +165,7 @@
                                        VerticalAlignment="Center"
                                        Text="ลำดับที่: "
                                        TextAlignment="Left"
-                                       Width="{StaticResource LabelWidth}" />
+                                       Width="95" />
                             <TextBlock x:Name="txtRankNo"
                                        Text="{Binding RankNo}"
                                        FontFamily="{StaticResource THSarabun}"
