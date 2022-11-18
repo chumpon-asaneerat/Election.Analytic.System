@@ -100,10 +100,16 @@ namespace ShapeFileToSqlLite.Services
         {
             Db.CreateTable<ADM0>();
             Db.CreateTable<ADM0Part>();
-            //Db.CreateTable<ADM0Point>();
+            Db.CreateTable<ADM0Point>();
             Db.CreateTable<ADM1>();
+            Db.CreateTable<ADM1Part>();
+            Db.CreateTable<ADM1Point>();
             Db.CreateTable<ADM2>();
+            Db.CreateTable<ADM2Part>();
+            Db.CreateTable<ADM2Point>();
             Db.CreateTable<ADM3>();
+            Db.CreateTable<ADM3Part>();
+            Db.CreateTable<ADM3Point>();
         }
 
         #endregion
