@@ -28,8 +28,9 @@ Election.Analytic.System - PPRP  #652
 Election.Analytic.System - PPRP  #651
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #650
-- 
+- Implements ShapeFileToSQLite #9.
 
 [commited]
 Election.Analytic.System - PPRP  #649
