@@ -47,6 +47,10 @@
     <Reference Include="EPPlus.System.Drawing">
       <HintPath>..\..\..\References\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\References\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite-net">
       <HintPath>..\..\..\References\SQLite-net.dll</HintPath>
     </Reference>
@@ -85,6 +89,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ADM0.cs" />
+    <Compile Include="Models\ADM1.cs" />
+    <Compile Include="Models\ADM2.cs" />
+    <Compile Include="Models\ADM3.cs" />
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Services\MapDbService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\00.NLib\NLib\NLib.csproj">
+      <Project>{41a9d6c0-c833-403f-9bc1-eecdc246a428}</Project>
+      <Name>NLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
