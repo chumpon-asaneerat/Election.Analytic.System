@@ -109,6 +109,7 @@
     <Compile Include="Models\ADM2.cs" />
     <Compile Include="Models\ADM3.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Services\ShapeFileDbImport.cs" />
     <Compile Include="Services\ShapeMapDbService.cs" />
     <Compile Include="ShapeMaps\ShapeFile\Converter\EndianBitConverter.cs" />
     <Compile Include="ShapeMaps\ShapeFile\FileFormat\Header.cs" />

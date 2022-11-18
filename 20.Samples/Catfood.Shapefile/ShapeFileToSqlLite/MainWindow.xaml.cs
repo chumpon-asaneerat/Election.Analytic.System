@@ -49,5 +49,14 @@ namespace ShapeFileToSqlLite
         }
 
         #endregion
+
+        #region Private Methods
+
+        private void Imports()
+        {
+
+        }
+
+        #endregion
     }
 }

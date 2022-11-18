@@ -34,16 +34,6 @@ namespace ShapeFileToSqlLite.Models
     {
         #region Public Properties
 
-        #region Primary Key
-
-        /// <summary>
-        /// Gets or sets Id (Primary Key auto generate).
-        /// </summary>
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-
-        #endregion
-
         #region ADM0
 
         /// <summary>
@@ -66,12 +56,12 @@ namespace ShapeFileToSqlLite.Models
 
         #endregion
 
-        #region ADM2
+        #region ADM2 (ADM2Code Is PrimaryKey)
 
         /// <summary>
         /// Gets or sets ADM2 Code.
         /// </summary>
-        [MaxLength(20)]
+        [PrimaryKey, MaxLength(20)]
         [Indexed]
         public string ADM2Code { get; set; }
         /// <summary>
