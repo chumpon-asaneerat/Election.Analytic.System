@@ -21,7 +21,116 @@ using Newtonsoft.Json.Bson;
 
 namespace ShapeFileToSqlLite.Models
 {
-    class ADM3
+    #region ADM3
+
+    /// <summary>
+    /// The ADM3 Data Model Class.
+    /// </summary>
+    [TypeConverter(typeof(PropertySorterSupportExpandableTypeConverter))]
+    [Serializable]
+    [JsonObject(MemberSerialization.OptOut)]
+    //[Table("ADM3")]
+    public class ADM3 : NTable<ADM3>
     {
+        #region Public Properties
+
+        #region Primary Key
+
+        /// <summary>
+        /// Gets or sets Id (Primary Key auto generate).
+        /// </summary>
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        #endregion
+
+        #region ADM0
+
+        /// <summary>
+        /// Gets or sets ADM0 Code.
+        /// </summary>
+        [MaxLength(20)]
+        [Indexed]
+        public string ADM0Code { get; set; }
+
+        #endregion
+
+        #region ADM1
+
+        /// <summary>
+        /// Gets or sets ADM1 Code.
+        /// </summary>
+        [MaxLength(20)]
+        [Indexed]
+        public string ADM1Code { get; set; }
+
+        #endregion
+
+        #region ADM2
+
+        /// <summary>
+        /// Gets or sets ADM2 Code.
+        /// </summary>
+        [MaxLength(20)]
+        [Indexed]
+        public string ADM2Code { get; set; }
+
+        #endregion
+
+        #region ADM3
+
+        /// <summary>
+        /// Gets or sets ADM3 Code.
+        /// </summary>
+        [MaxLength(20)]
+        [Indexed]
+        public string ADM3Code { get; set; }
+        /// <summary>
+        /// Gets or sets Subdistrict Name EN.
+        /// </summary>
+        [MaxLength(200)]
+        [Indexed]
+        public string SubdistrictNameEN { get; set; }
+        /// <summary>
+        /// Gets or sets Subdistrict Name TH.
+        /// </summary>
+        [MaxLength(200)]
+        [Indexed]
+        public string SubdistrictNameTH { get; set; }
+
+        #endregion
+
+        #region Bounds
+
+        /// <summary>
+        /// Gets Bound Left position.
+        /// </summary>
+        public double BoundLeft { get; set; }
+        /// <summary>
+        /// Gets Bound Top position.
+        /// </summary>
+        public double BoundTop { get; set; }
+        /// <summary>
+        /// Gets Bound Right position.
+        /// </summary>
+        public double BoundRight { get; set; }
+        /// <summary>
+        /// Gets Bound Bottom position.
+        /// </summary>
+        public double BoundBottom { get; set; }
+
+        #endregion
+
+        #region Point
+
+        #endregion
+
+        #endregion
+
+        #region Static Methods
+
+        #endregion
     }
+
+    #endregion
 }

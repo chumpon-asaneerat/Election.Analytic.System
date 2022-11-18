@@ -109,7 +109,7 @@
     <Compile Include="Models\ADM2.cs" />
     <Compile Include="Models\ADM3.cs" />
     <Compile Include="Models\Common.cs" />
-    <Compile Include="Services\MapDbService.cs" />
+    <Compile Include="Services\ShapeMapDbService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
