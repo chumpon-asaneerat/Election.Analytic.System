@@ -90,31 +90,6 @@ namespace ShapeFileToSqlLite.Models
 
         #endregion
 
-        #region Bounds
-
-        /// <summary>
-        /// Gets Bound Left position.
-        /// </summary>
-        public double BoundLeft { get; set; }
-        /// <summary>
-        /// Gets Bound Top position.
-        /// </summary>
-        public double BoundTop { get; set; }
-        /// <summary>
-        /// Gets Bound Right position.
-        /// </summary>
-        public double BoundRight { get; set; }
-        /// <summary>
-        /// Gets Bound Bottom position.
-        /// </summary>
-        public double BoundBottom { get; set; }
-
-        #endregion
-
-        #region Point
-
-        #endregion
-
         #endregion
 
         #region Static Methods

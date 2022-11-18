@@ -75,6 +75,8 @@ namespace ShapeFileToSqlLite.Services
             // Save General Information.
             ADM0.Save(row);
 
+            var recordId = shape.RecordNumber; // shape number
+
             #region Extract and convert shape part's points
 
             // cast shape based on the type
@@ -84,6 +86,14 @@ namespace ShapeFileToSqlLite.Services
                     // a point is just a single x/y point
                     ShapePoint shapePoint = shape as ShapePoint;
                     {
+                        ADM0Part admPart = ADM0Part.Get(row.ADM0Code, recordId).Value();
+                        if (null == admPart) admPart = new ADM0Part();
+                        admPart.ADM0Code = row.ADM0Code;
+                        admPart.RecordId = recordId;
+                        admPart.PointCount = 1;
+
+                        ADM0Part.Save(admPart);
+
                         /*
                         // create new part
                         var jPart = new JsonShapePart();
@@ -106,6 +116,18 @@ namespace ShapeFileToSqlLite.Services
                     {
                         foreach (PointD[] part in shapePolygon.Parts)
                         {
+                            ADM0Part admPart = ADM0Part.Get(row.ADM0Code, recordId).Value();
+                            if (null == admPart) admPart = new ADM0Part();
+                            admPart.ADM0Code = row.ADM0Code;
+                            admPart.RecordId = recordId;
+                            admPart.PointCount = part.Length;
+
+                            ADM0Part.Save(admPart);
+
+                            foreach (PointD point in part)
+                            {
+
+                            }
                             /*
                             // create new part
                             var jPart = new JsonShapePart();
@@ -149,13 +171,10 @@ namespace ShapeFileToSqlLite.Services
             row.ADM0Code = ADM0_PCODE;
             row.ADM1Code = ADM1_PCODE;
             row.ProvinceNameEN = ADM1_EN;
-            // Set Bound Rect
-            row.BoundLeft = boundRect.Left;
-            row.BoundTop = boundRect.Top;
-            row.BoundRight = boundRect.Right;
-            row.BoundBottom = boundRect.Bottom;
             // Save General Information.
             ADM1.Save(row);
+
+            var recordId = shape.RecordNumber; // shape number
         }
 
         private static void ImportADM2(Shape shape, RectangleD boundRect) 
@@ -172,13 +191,10 @@ namespace ShapeFileToSqlLite.Services
             row.ADM1Code = ADM1_PCODE;
             row.ADM2Code = ADM2_PCODE;
             row.DistrictNameEN = ADM2_EN;
-            // Set Bound Rect
-            row.BoundLeft = boundRect.Left;
-            row.BoundTop = boundRect.Top;
-            row.BoundRight = boundRect.Right;
-            row.BoundBottom = boundRect.Bottom;
             // Save General Information.
             ADM2.Save(row);
+
+            var recordId = shape.RecordNumber; // shape number
         }
 
         private static void ImportADM3(Shape shape, RectangleD boundRect) 
@@ -197,13 +213,10 @@ namespace ShapeFileToSqlLite.Services
             row.ADM2Code = ADM2_PCODE;
             row.ADM3Code = ADM3_PCODE;
             row.SubdistrictNameEN = ADM3_EN;
-            // Set Bound Rect
-            row.BoundLeft = boundRect.Left;
-            row.BoundTop = boundRect.Top;
-            row.BoundRight = boundRect.Right;
-            row.BoundBottom = boundRect.Bottom;
             // Save General Information.
             ADM3.Save(row);
+
+            var recordId = shape.RecordNumber; // shape number
         }
     }
 }

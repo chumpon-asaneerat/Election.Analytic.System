@@ -99,6 +99,8 @@ namespace ShapeFileToSqlLite.Services
         private void InitTables()
         {
             Db.CreateTable<ADM0>();
+            Db.CreateTable<ADM0Part>();
+            //Db.CreateTable<ADM0Point>();
             Db.CreateTable<ADM1>();
             Db.CreateTable<ADM2>();
             Db.CreateTable<ADM3>();
@@ -154,6 +156,7 @@ namespace ShapeFileToSqlLite.Services
                         // in each domain class instead omit connection version).
 
                         NTable.Default = Db;
+                        NQuery.Default = Db;
                         InitTables(); // Init Tables.
 
                         OnConnected.Call(this, EventArgs.Empty);
