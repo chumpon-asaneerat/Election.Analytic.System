@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ShapeFileToSqlLite.Models;
+using ShapeFileToSqlLite.Services;
+
 #endregion
 
 namespace ShapeFileToSqlLite
@@ -37,12 +40,12 @@ namespace ShapeFileToSqlLite
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         #endregion
