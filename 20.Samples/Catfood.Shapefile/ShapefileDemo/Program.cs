@@ -31,7 +31,8 @@ namespace ShapefileDemo
                 Console.WriteLine("ShapefileDemo Dumping {0}", args[0]);
                 Console.WriteLine();
 
-                shapefile.Export("./output");
+                //shapefile.Export(@"./output");
+                shapefile.Export(@"D:\Maps");
             }
 
             Console.WriteLine("Done");

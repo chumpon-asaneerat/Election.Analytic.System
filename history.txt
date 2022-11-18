@@ -28,8 +28,9 @@ Election.Analytic.System - PPRP  #642
 Election.Analytic.System - PPRP  #641
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #640
-- 
+- Change json generate map outputs
 
 [commited]
 Election.Analytic.System - PPRP  #639

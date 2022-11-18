@@ -130,6 +130,7 @@ namespace PPRP.Exports.Maps
                 #region Generate file per record
 
                 string path = outputPath;
+
                 if (!string.IsNullOrWhiteSpace(jshape.ADM1_EN))
                 {
                     path = Path.Combine(path, jshape.ADM1_EN);
@@ -142,7 +143,10 @@ namespace PPRP.Exports.Maps
                         }
                     }
                 }
-
+                else
+                {
+                    Console.WriteLine("ADM1EN is Empty");
+                }
                 if (!string.IsNullOrWhiteSpace(jshape.ADM2_EN))
                 {
                     path = Path.Combine(path, jshape.ADM2_EN);
@@ -155,7 +159,11 @@ namespace PPRP.Exports.Maps
                         }
                     }
                 }
-
+                else
+                {
+                    Console.WriteLine("ADM2EN is Empty");
+                }
+                /*
                 if (!string.IsNullOrWhiteSpace(jshape.ADM3_EN))
                 {
                     path = Path.Combine(path, jshape.ADM3_EN);
@@ -168,7 +176,11 @@ namespace PPRP.Exports.Maps
                         }
                     }
                 }
-
+                else
+                {
+                    Console.WriteLine("ADM3EN is Empty");
+                }
+                */
                 string fileName = string.Empty;
                 fileName += jshape.ADM0_EN;
                 fileName += string.IsNullOrWhiteSpace(jshape.ADM1_EN) ? string.Empty : "." + jshape.ADM1_EN;
