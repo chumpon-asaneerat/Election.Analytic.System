@@ -157,9 +157,23 @@ namespace ShapeFileToSqlLite
                 Dispatcher.Invoke(() => { cmdImportADM0.IsEnabled = false; });
                 using (Shapefile shapefile = new Shapefile(fileName))
                 {
-                    ShapeFileDbImport.Import(shapefile);
+                    ShapeFileDbImport.Import(shapefile, (shapeNo, shapeCnt, partNo, partCnt, pointNo, pointMax) =>
+                    {
+                        Dispatcher.Invoke(() => 
+                        {
+                            string msg = string.Format("Shape:{0}/{1}, Part:{2}/{3}, Point:{4}/{5}",
+                                shapeNo, shapeCnt,
+                                partNo, partCnt, 
+                                pointNo, pointMax);
+                            txtADM0ProcessPoint.Text = msg; 
+                        });
+                    });
                 }
-                Dispatcher.Invoke(() =>  { cmdImportADM0.IsEnabled = true; });
+                Dispatcher.Invoke(() =>  
+                { 
+                    cmdImportADM0.IsEnabled = true;
+                    txtADM0ProcessPoint.Text = string.Empty;
+                });
             });
         }
 
@@ -174,9 +188,23 @@ namespace ShapeFileToSqlLite
                 Dispatcher.Invoke(() => { cmdImportADM1.IsEnabled = false; });
                 using (Shapefile shapefile = new Shapefile(fileName))
                 {
-                    ShapeFileDbImport.Import(shapefile);
+                    ShapeFileDbImport.Import(shapefile, (shapeNo, shapeCnt, partNo, partCnt, pointNo, pointMax) =>
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            string msg = string.Format("Shape:{0}/{1}, Part:{2}/{3}, Point:{4}/{5}",
+                                shapeNo, shapeCnt,
+                                partNo, partCnt,
+                                pointNo, pointMax);
+                            txtADM1ProcessPoint.Text = msg; 
+                        });
+                    });
                 }
-                Dispatcher.Invoke(() => { cmdImportADM1.IsEnabled = true; });
+                Dispatcher.Invoke(() => 
+                { 
+                    cmdImportADM1.IsEnabled = true;
+                    txtADM1ProcessPoint.Text = string.Empty;
+                });
             });
         }
 
@@ -191,9 +219,23 @@ namespace ShapeFileToSqlLite
                 Dispatcher.Invoke(() => { cmdImportADM2.IsEnabled = false; });
                 using (Shapefile shapefile = new Shapefile(fileName))
                 {
-                    ShapeFileDbImport.Import(shapefile);
+                    ShapeFileDbImport.Import(shapefile, (shapeNo, shapeCnt, partNo, partCnt, pointNo, pointMax) =>
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            string msg = string.Format("Shape:{0}/{1}, Part:{2}/{3}, Point:{4}/{5}",
+                                shapeNo, shapeCnt,
+                                partNo, partCnt,
+                                pointNo, pointMax);
+                            txtADM2ProcessPoint.Text = msg; 
+                        });
+                    });
                 }
-                Dispatcher.Invoke(() => { cmdImportADM2.IsEnabled = true; });
+                Dispatcher.Invoke(() => 
+                { 
+                    cmdImportADM2.IsEnabled = true;
+                    txtADM2ProcessPoint.Text = string.Empty;
+                });
             });
         }
 
@@ -208,9 +250,23 @@ namespace ShapeFileToSqlLite
                 Dispatcher.Invoke(() => { cmdImportADM3.IsEnabled = false; });
                 using (Shapefile shapefile = new Shapefile(fileName))
                 {
-                    ShapeFileDbImport.Import(shapefile);
+                    ShapeFileDbImport.Import(shapefile, (shapeNo, shapeCnt, partNo, partCnt, pointNo, pointMax) =>
+                    {
+                        Dispatcher.Invoke(() =>
+                        {
+                            string msg = string.Format("Shape:{0}/{1}, Part:{2}/{3}, Point:{4}/{5}",
+                                shapeNo, shapeCnt,
+                                partNo, partCnt,
+                                pointNo, pointMax);
+                            txtADM3ProcessPoint.Text = msg; 
+                        });
+                    });
                 }
-                Dispatcher.Invoke(() => { cmdImportADM3.IsEnabled = true; });
+                Dispatcher.Invoke(() => 
+                { 
+                    cmdImportADM3.IsEnabled = true;
+                    txtADM3ProcessPoint.Text = string.Empty;
+                });
             });
         }
 

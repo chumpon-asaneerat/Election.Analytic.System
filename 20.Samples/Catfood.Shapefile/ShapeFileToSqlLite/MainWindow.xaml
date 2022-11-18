@@ -17,38 +17,42 @@
                     <!--  ADM0 Shape Files  -->
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBlock Text="ADM0 Shape File:" />
-                        <TextBlock x:Name="txtADM0FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <TextBlock x:Name="txtADM0FileName" Width="300" Margin="5, 0" Foreground="Navy"/>
                         <Button x:Name="cmdImportADM0"
                                 Width="100"
                                 Content="Import"
                                 Click="cmdImportADM0_Click" />
+                        <TextBlock x:Name="txtADM0ProcessPoint" Margin="5, 0"/>
                     </StackPanel>
                     <!--  ADM0 Shape Files  -->
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBlock Text="ADM1 Shape File:" />
-                        <TextBlock x:Name="txtADM1FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <TextBlock x:Name="txtADM1FileName" Width="300" Margin="5, 0" Foreground="Navy"/>
                         <Button x:Name="cmdImportADM1"
                                 Width="100"
                                 Content="Import"
                                 Click="cmdImportADM1_Click" />
+                        <TextBlock x:Name="txtADM1ProcessPoint" Margin="5, 0"/>
                     </StackPanel>
                     <!--  ADM2 Shape Files  -->
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBlock Text="ADM2 Shape File:" />
-                        <TextBlock x:Name="txtADM2FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <TextBlock x:Name="txtADM2FileName" Width="300" Margin="5, 0" Foreground="Navy"/>
                         <Button x:Name="cmdImportADM2"
                                 Width="100"
                                 Content="Import"
                                 Click="cmdImportADM2_Click" />
+                        <TextBlock x:Name="txtADM2ProcessPoint" Margin="5, 0"/>
                     </StackPanel>
                     <!--  ADM3 Shape Files  -->
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <TextBlock Text="ADM3 Shape File:" />
-                        <TextBlock x:Name="txtADM3FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <TextBlock x:Name="txtADM3FileName" Width="300" Margin="5, 0" Foreground="Navy"/>
                         <Button x:Name="cmdImportADM3"
                                 Width="100"
                                 Content="Import"
                                 Click="cmdImportADM3_Click" />
+                        <TextBlock x:Name="txtADM3ProcessPoint" Margin="5, 0"/>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
