@@ -4,11 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="ShapeFile to SQL Lite" 
-        Height="450" Width="800"
+        Title="ShapeFile to SQL Lite"
+        Height="450"
+        Width="800"
         Loaded="Window_Loaded"
         Unloaded="Window_Unloaded">
     <Grid>
-        
+        <TabControl>
+            <!--  Import  -->
+            <TabItem Header="Import">
+                <StackPanel Orientation="Vertical">
+                    <!--  ADM0 Shape Files  -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="ADM0 Shape File:" />
+                        <TextBlock x:Name="txtADM0FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <Button x:Name="cmdImportADM0"
+                                Width="100"
+                                Content="Import"
+                                Click="cmdImportADM0_Click" />
+                    </StackPanel>
+                    <!--  ADM0 Shape Files  -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="ADM1 Shape File:" />
+                        <TextBlock x:Name="txtADM1FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <Button x:Name="cmdImportADM1"
+                                Width="100"
+                                Content="Import"
+                                Click="cmdImportADM1_Click" />
+                    </StackPanel>
+                    <!--  ADM2 Shape Files  -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="ADM2 Shape File:" />
+                        <TextBlock x:Name="txtADM2FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <Button x:Name="cmdImportADM2"
+                                Width="100"
+                                Content="Import"
+                                Click="cmdImportADM2_Click" />
+                    </StackPanel>
+                    <!--  ADM3 Shape Files  -->
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="ADM3 Shape File:" />
+                        <TextBlock x:Name="txtADM3FileName" Width="500" Margin="5, 0" Foreground="Navy"/>
+                        <Button x:Name="cmdImportADM3"
+                                Width="100"
+                                Content="Import"
+                                Click="cmdImportADM3_Click" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <!--  View  -->
+            <TabItem Header="View" />
+        </TabControl>
     </Grid>
 </Window>

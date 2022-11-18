@@ -42,17 +42,17 @@ namespace ShapeFileToSqlLite.Models
         [PrimaryKey, MaxLength(20)]
         public string ADM0Code { get; set; }
         /// <summary>
-        /// Gets or sets Country EN.
+        /// Gets or sets Country Name EN.
         /// </summary>
         [MaxLength(200)]
         [Indexed]
-        public string CountryEN { get; set; }
+        public string CountryNameEN { get; set; }
         /// <summary>
-        /// Gets or sets Country TH.
+        /// Gets or sets Country Name TH.
         /// </summary>
         [MaxLength(200)]
         [Indexed]
-        public string CountryTH { get; set; }
+        public string CountryNameTH { get; set; }
 
         #endregion
 

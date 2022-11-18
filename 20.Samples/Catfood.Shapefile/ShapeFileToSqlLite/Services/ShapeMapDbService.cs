@@ -98,7 +98,10 @@ namespace ShapeFileToSqlLite.Services
         #region Private Methods
         private void InitTables()
         {
-
+            Db.CreateTable<ADM0>();
+            Db.CreateTable<ADM1>();
+            Db.CreateTable<ADM2>();
+            Db.CreateTable<ADM3>();
         }
 
         #endregion
