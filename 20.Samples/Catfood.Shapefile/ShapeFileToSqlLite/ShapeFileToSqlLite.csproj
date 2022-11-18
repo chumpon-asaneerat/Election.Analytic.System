@@ -110,6 +110,19 @@
     <Compile Include="Models\ADM3.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Services\ShapeMapDbService.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Converter\EndianBitConverter.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\FileFormat\Header.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\FileFormat\ShapeFactory.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\FileFormat\ShapeFileEnumerator.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapefile.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\Shape.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\ShapeMultiPoint.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\ShapePoint.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\ShapePolygon.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\ShapePolyLine.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Shapes\ShapePolyLineM.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Structs\PointD.cs" />
+    <Compile Include="ShapeMaps\ShapeFile\Structs\RectangleD.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
