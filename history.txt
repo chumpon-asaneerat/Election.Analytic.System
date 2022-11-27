@@ -7,8 +7,10 @@ Election.Analytic.System - PPRP  #659
 Election.Analytic.System - PPRP  #658
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #657
-- 
+- Wpf.Canvas.Sample project
+  - Implements Ramer–Douglas–Peucker algorithm #4 (seem not work shape is distorted and generate more points than source).
 
 [commited]
 Election.Analytic.System - PPRP  #656

@@ -816,18 +816,28 @@ namespace Wpf.Canvas.Sample
             {
                 foreach (var jpart in jshape.Parts)
                 {
+                    int maxPts = jpart.Count;
+                    List<PointD> sourcePts = new List<PointD>(maxPts);
+                    for (int i = 0; i < maxPts; ++i)
+                    {
+                        sourcePts.Add(new PointD(jpart.Points[i, 0], jpart.Points[i, 1]));
+                    }
+
+                    // Reduce points
+                    List<PointD> points = Utility.DouglasPeuckerReduction(sourcePts, 0.001d);
+
                     // Draw figures.
 
                     // Decide if the line segments are stroked or not. For the
                     // PolyLine type it must be stroked.
                     bool isStroked = true;
 
-                    int maxPts = jpart.Count;
+                    maxPts = points.Count;
                     for (int i = 0; i < maxPts; ++i)
                     {
                         System.Windows.Point pt = new System.Windows.Point(
-                            jpart.Points[i, 0],
-                            jpart.Points[i, 1]);
+                            points[i].X,
+                            points[i].Y);
 
                         // Transform from lon/lat to canvas coordinates.
                         pt = this.shapeTransform.Transform(pt);
