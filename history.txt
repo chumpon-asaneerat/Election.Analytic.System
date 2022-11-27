@@ -16,8 +16,10 @@ Election.Analytic.System - PPRP  #656
 Election.Analytic.System - PPRP  #655
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #654
-- 
+- Wpf.Canvas.Sample project
+  - Implements Ramer–Douglas–Peucker algorithm #1
 
 [commited]
 Election.Analytic.System - PPRP  #653

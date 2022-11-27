@@ -46,7 +46,7 @@ namespace Wpf.Canvas.Sample
         #region Internal Variables
 
         private Random rnd = new Random();
-        private NWpfCanvasManager manager = null;
+        //private NWpfCanvasManager manager = null;
         private DispatcherTimer timer = null;
 
         #endregion
@@ -67,7 +67,7 @@ namespace Wpf.Canvas.Sample
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
-            manager = null;
+            //manager = null;
 
             timer.Stop();
             timer.Tick -= Timer_Tick;
@@ -90,7 +90,7 @@ namespace Wpf.Canvas.Sample
 
         private void InitCanvasManager()
         {
-            manager = new NWpfCanvasManager(this.canvas);
+            //manager = new NWpfCanvasManager(this.canvas);
 
             /*
             // 100,000 use 1.946 s
@@ -132,6 +132,32 @@ namespace Wpf.Canvas.Sample
             this.canvas.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayYasothonMaps));
         }
 
+        private void cmdThailand2_Click(object sender, RoutedEventArgs e)
+        {
+            this.canvas2.Children.Clear(); // reset canvas
+            // Reset transformations.
+            this.panTransform.X = 0;
+            this.panTransform.Y = 0;
+            this.zoomTransform.ScaleX = 1;
+            this.zoomTransform.ScaleY = 1;
+            this.shapeTransform = null;
+
+            this.canvas2.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayThailandMap2));
+        }
+
+        private void cmdYasothon2_Click(object sender, RoutedEventArgs e)
+        {
+            this.canvas2.Children.Clear(); // reset canvas
+            // Reset transformations.
+            this.panTransform.X = 0;
+            this.panTransform.Y = 0;
+            this.zoomTransform.ScaleX = 1;
+            this.zoomTransform.ScaleY = 1;
+            this.shapeTransform = null;
+
+            this.canvas2.Dispatcher.BeginInvoke(DispatcherPriority.Render, new DoOperation(this.DisplayYasothonMaps2));
+        }
+
         private delegate void DoOperation();
 
         private JsonShapeFile thailandMap;
@@ -151,7 +177,6 @@ namespace Wpf.Canvas.Sample
             DisplayShape(thailandMap);
             UpdateExecuteTime(StopWatch.Stop());
         }
-
 
         private void DisplayYasothonMaps()
         {
@@ -185,6 +210,59 @@ namespace Wpf.Canvas.Sample
                 return;
             StopWatch.Start();
             DisplayShapes(yasothonMaps);
+            UpdateExecuteTime(StopWatch.Stop());
+        }
+
+        private JsonShapeFile thailandMap2;
+        private List<JsonShapeFile> yasothonMaps2 = new List<JsonShapeFile>();
+
+        private void DisplayThailandMap2()
+        {
+            if (null == thailandMap2)
+            {
+                string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, @"Maps\Thailand.json");
+                thailandMap2 = JsonMapFileManager.Load(fileName);
+            }
+            if (null == thailandMap2)
+                return;
+
+            StopWatch.Start();
+            DisplayShape2(thailandMap2);
+            UpdateExecuteTime(StopWatch.Stop());
+        }
+
+        private void DisplayYasothonMaps2()
+        {
+            if (null == yasothonMaps2) yasothonMaps2 = new List<JsonShapeFile>();
+            if (yasothonMaps2.Count <= 0)
+            {
+                string[] files = new string[]
+                {
+                    @"Maps\Yasothon\Thailand.Yasothon.json",
+                    @"Maps\Yasothon\Kham Khuean Kaeo\Thailand.Yasothon.Kham Khuean Kaeo.json",
+                    @"Maps\Yasothon\Kho Wang\Thailand.Yasothon.Kho Wang.json",
+                    @"Maps\Yasothon\Kut Chum\Thailand.Yasothon.Kut Chum.json",
+                    @"Maps\Yasothon\Loeng Nok Tha\Thailand.Yasothon.Loeng Nok Tha.json",
+                    @"Maps\Yasothon\Maha Chana Chai\Thailand.Yasothon.Maha Chana Chai.json",
+                    @"Maps\Yasothon\Mueang Yasothon\Thailand.Yasothon.Mueang Yasothon.json",
+                    @"Maps\Yasothon\Pa Tio\Thailand.Yasothon.Pa Tio.json",
+                    @"Maps\Yasothon\Sai Mun\Thailand.Yasothon.Sai Mun.json",
+                    @"Maps\Yasothon\Thai Charoen\Thailand.Yasothon.Thai Charoen.json"
+                };
+                foreach (var file in files)
+                {
+                    string fileName = System.IO.Path.Combine(NJson.LocalDataFolder, file);
+                    var map = JsonMapFileManager.Load(fileName);
+                    if (null != map)
+                    {
+                        yasothonMaps2.Add(map);
+                    }
+                }
+            }
+            if (yasothonMaps2.Count <= 0)
+                return;
+            StopWatch.Start();
+            DisplayShapes2(yasothonMaps2);
             UpdateExecuteTime(StopWatch.Stop());
         }
 
@@ -288,7 +366,7 @@ namespace Wpf.Canvas.Sample
         {
             // Set up the transformation for WPF shapes.            
             if (this.shapeTransform == null)
-                this.shapeTransform = this.CreateShapeTransform(manager.Canvas, map);
+                this.shapeTransform = this.CreateShapeTransform(this.canvas, map);
 
             // Add the zoom and pan transforms to the view transform.
             this.viewTransform.Children.Add(this.zoomTransform);
@@ -340,7 +418,7 @@ namespace Wpf.Canvas.Sample
                     // Set up the transformation for WPF shapes.            
                     if (this.shapeTransform == null)
                     {
-                        this.shapeTransform = this.CreateShapeTransform(manager.Canvas, map);
+                        this.shapeTransform = this.CreateShapeTransform(this.canvas, map);
                     }
 
                     // Add the zoom and pan transforms to the view transform.
@@ -545,6 +623,267 @@ namespace Wpf.Canvas.Sample
             return combine;
         }
 
+        private void DisplayShape2(JsonShapeFile map)
+        {
+            // Set up the transformation for WPF shapes.            
+            if (this.shapeTransform == null)
+                this.shapeTransform = this.CreateShapeTransform(this.canvas2, map);
+
+            // Add the zoom and pan transforms to the view transform.
+            this.viewTransform.Children.Add(this.zoomTransform);
+            this.viewTransform.Children.Add(this.panTransform);
+
+            foreach (var jshape in map.Shapes)
+            {
+                /*
+                string text = string.Empty;
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                    text = jshape.ADM3_EN.Trim();
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                    text = jshape.ADM2_EN.Trim();
+                if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                    text = jshape.ADM1_EN.Trim();
+
+                var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+
+                var grid = new Grid();
+                grid.Children.Add(shape); // add shape.
+
+                var textBlock = new TextBlock();
+                textBlock.Text = text;
+                textBlock.VerticalAlignment = VerticalAlignment.Center;
+                textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                textBlock.TextAlignment = TextAlignment.Center;
+                textBlock.Foreground = Brushes.WhiteSmoke;
+                textBlock.Background = Brushes.Silver;
+                textBlock.Height = 20;
+                textBlock.Width = 200;
+
+                grid.Children.Add(textBlock); // add text
+
+                this.canvas2.Children.Add(grid); // add to canvas
+                */
+
+                var shape = CreateWPFShape2("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                this.canvas2.Children.Add(shape); // add to canvas
+            }
+        }
+
+        private void DisplayShapes2(List<JsonShapeFile> maps)
+        {
+            int i = 0;
+            foreach (var map in maps)
+            {
+                if (i == 0)
+                {
+                    // Set up the transformation for WPF shapes.            
+                    if (this.shapeTransform == null)
+                    {
+                        this.shapeTransform = this.CreateShapeTransform(this.canvas2, map);
+                    }
+
+                    // Add the zoom and pan transforms to the view transform.
+                    this.viewTransform.Children.Add(this.zoomTransform);
+                    this.viewTransform.Children.Add(this.panTransform);
+                }
+
+                foreach (var jshape in map.Shapes)
+                {
+                    /*
+                    string text = string.Empty;
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                        text = jshape.ADM3_EN.Trim();
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                        text = jshape.ADM2_EN.Trim();
+                    if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                        text = jshape.ADM1_EN.Trim();
+
+                    var shape = CreateWPFShape("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+
+                    var grid = new Grid();
+                    grid.Children.Add(shape); // add shape.
+
+                    var textBlock = new TextBlock();
+                    textBlock.Text = text;
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
+                    textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+                    textBlock.TextAlignment = TextAlignment.Center;
+                    textBlock.Foreground = Brushes.Yellow;
+
+                    grid.Children.Add(textBlock); // add text
+
+                    this.canvas2.Children.Add(grid); // add to canvas
+                    */
+
+                    var shape = CreateWPFShape2("Shape_" + jshape.RecordNo.ToString("n0"), jshape);
+                    this.canvas2.Children.Add(shape); // add to canvas
+                }
+
+                i++;
+            }
+        }
+
+        private Shape CreateWPFShape2(string shapeName, JsonShape jshape)
+        {
+            Shape ret = null;
+            if (null == jshape) return ret;
+
+            //Geometry geometry = CreatePathGeometry(jshape);
+            Geometry geometry = CreateStreamGeometry2(jshape);
+
+            // Transform the geometry based on current zoom and pan settings.
+            geometry.Transform = this.viewTransform;
+
+            // Create a new WPF Path.
+            System.Windows.Shapes.Path path = new System.Windows.Shapes.Path();
+
+
+            // Assign the geometry to the path and set its name.
+            path.Data = geometry;
+            path.Name = shapeName;
+
+            // Set path properties.
+            path.StrokeThickness = 0.5;
+
+            path.Stroke = Brushes.Gray;
+            path.Fill = new SolidColorBrush(GetRandomColor());
+
+            /*
+            if (record.ShapeType == (int)ShapeType.Polygon)
+            {
+                path.Stroke = this.strokeBrush;
+                path.Fill = this.GetRandomShapeBrush();
+            }
+            else
+            {
+                path.Stroke = Brushes.DimGray;
+            }
+            */
+
+            ret = path;
+
+            // Return the created WPF shape.
+            return ret;
+        }
+
+        private Geometry CreatePathGeometry2(JsonShape jshape)
+        {
+            // Create a new geometry.
+            PathGeometry geometry = new PathGeometry();
+
+            // Add figures to the geometry.
+
+            foreach (var jpart in jshape.Parts)
+            {
+                // Create a new path figure.
+                PathFigure figure = new PathFigure();
+
+                int maxPts = jpart.Count;
+                for (int i = 0; i < maxPts; ++i)
+                {
+                    System.Windows.Point pt = new System.Windows.Point(
+                        jpart.Points[i, 0],
+                        jpart.Points[i, 1]);
+
+                    // Transform from lon/lat to canvas coordinates.
+                    pt = this.shapeTransform.Transform(pt);
+
+                    if (i == 0)
+                        figure.StartPoint = pt;
+                    else
+                        figure.Segments.Add(new LineSegment(pt, true));
+                }
+
+                // Add the new figure to the geometry.
+                geometry.Figures.Add(figure);
+            }
+
+            // Return the created path geometry.
+            return geometry;
+        }
+
+        private Geometry CreateStreamGeometry2(JsonShape jshape)
+        {
+            GeometryGroup combine = new GeometryGroup();
+
+            RectangleD rect = new RectangleD();
+            int iCnt = 0;
+
+            // Create a new stream geometry.
+            StreamGeometry geometry = new StreamGeometry();
+            // Obtain the stream geometry context for drawing each part.
+            using (StreamGeometryContext ctx = geometry.Open())
+            {
+                foreach (var jpart in jshape.Parts)
+                {
+                    // Draw figures.
+
+                    // Decide if the line segments are stroked or not. For the
+                    // PolyLine type it must be stroked.
+                    bool isStroked = true;
+
+                    int maxPts = jpart.Count;
+                    for (int i = 0; i < maxPts; ++i)
+                    {
+                        System.Windows.Point pt = new System.Windows.Point(
+                            jpart.Points[i, 0],
+                            jpart.Points[i, 1]);
+
+                        // Transform from lon/lat to canvas coordinates.
+                        pt = this.shapeTransform.Transform(pt);
+
+                        // Calc Rectancle
+                        rect.Left = Math.Min(rect.Left, pt.X);
+                        rect.Right = Math.Max(rect.Right, pt.X);
+
+                        rect.Top = Math.Min(rect.Top, pt.Y);
+                        rect.Bottom = Math.Max(rect.Bottom, pt.Y);
+
+                        if (i == 0)
+                            ctx.BeginFigure(pt, true, false);
+                        else
+                            ctx.LineTo(pt, isStroked, true);
+
+                        iCnt++; // count all points
+                    }
+                }
+            }
+
+            Console.WriteLine("Total: {0} pts", iCnt);
+            combine.Children.Add(geometry);
+
+            string text = string.Empty;
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM3_EN))
+                text = jshape.ADM3_EN.Trim();
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM2_EN))
+                text = jshape.ADM2_EN.Trim();
+            if (string.IsNullOrWhiteSpace(text) && !string.IsNullOrWhiteSpace(jshape.ADM1_EN))
+                text = jshape.ADM1_EN.Trim();
+
+            // Create the formatted text based on the properties set.
+            FormattedText formattedText = new FormattedText(text,
+                CultureInfo.GetCultureInfo("en-us"),
+                FlowDirection.LeftToRight, new Typeface("Tahoma"),
+                16,
+                Brushes.White,
+                120 / 96);
+
+            var txtWd = formattedText.Width;
+            var txtHt = formattedText.Height;
+            var rectWd = rect.Right - rect.Left;
+            var rectHt = rect.Bottom - rect.Top;
+            var ptX = rect.Left + ((rectWd - txtWd) / 2);
+            var ptY = rect.Top + ((rectHt - txtHt) / 2);
+
+            System.Windows.Point centerPt = new Point(ptX, ptY);
+
+            Geometry textGeometry = formattedText.BuildGeometry(centerPt);
+            combine.Children.Add(textGeometry);
+
+            // Return the created stream geometry.
+            return combine;
+        }
+
         private void UpdateResourceUsage()
         {
             Dispatcher.Invoke(() =>
@@ -579,10 +918,11 @@ namespace Wpf.Canvas.Sample
                 double x2 = Convert.ToDouble(rnd.Next(maxX));
                 double y2 = Convert.ToDouble(rnd.Next(maxY));
                 var brush = new SolidColorBrush(GetRandomColor());
-
+                /*
                 var shape = manager.CreateLineShape(x1, y1, x2, y2, brush, 2);
 
                 shapes.Add(shape);
+                */
             }
 
             return shapes;

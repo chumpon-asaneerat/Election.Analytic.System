@@ -32,7 +32,15 @@
                 CornerRadius="5"
                 Width="Auto"
                 Panel.ZIndex="0">
-            <Canvas x:Name="canvas" Margin="20" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Canvas x:Name="canvas" Grid.Column="0" Margin="20" />
+                <Canvas x:Name="canvas2" Grid.Column="2" Margin="20" />
+            </Grid>
         </Border>
         <!--  INFO BLOCK CPU, MEM  -->
         <Border Grid.Column="2"
@@ -67,6 +75,11 @@
                 <Button x:Name="cmdThailand" Content="Thailand" FontSize="18" Margin="2" Click="cmdThailand_Click"/>
                 <!-- YASOTHON  -->
                 <Button x:Name="cmdYasothon" Content="Yasothon" FontSize="18" Margin="2" Click="cmdYasothon_Click"/>
+
+                <!-- THAILAND  -->
+                <Button x:Name="cmdThailand2" Content="Thailandv2" FontSize="18" Margin="2" Click="cmdThailand2_Click"/>
+                <!-- YASOTHON  -->
+                <Button x:Name="cmdYasothon2" Content="Yasothonv2" FontSize="18" Margin="2" Click="cmdYasothon2_Click"/>
             </StackPanel>
         </Border>
         <!--  INFO BLOCK EXECUTE TIMES  -->
