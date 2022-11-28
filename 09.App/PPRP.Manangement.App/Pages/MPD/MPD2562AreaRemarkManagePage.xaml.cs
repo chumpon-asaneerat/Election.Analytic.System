@@ -100,7 +100,7 @@ namespace PPRP.Pages
                 export.Maps.Add(new NExcelExportColumn { ColumnName = "จำนวนหน่วยเลือกตั้ง", PropertyName = "PollingUnitCount" });
                 export.Maps.Add(new NExcelExportColumn { ColumnName = "ข้อมูลพื้นที่", PropertyName = "AreaRemark" });
 
-                if (export.Save(items, "ข้อมูลพื้นที่ 350 เขต"))
+                if (export.Save(items, "หน่วยเลือกตั้งแบบแบ่งเขต 2562"))
                 {
                     MessageBox.Show("ส่งออกข้อมูลสำเร็จ", "ผลการส่งออกข้อมูล");
                 }
