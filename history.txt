@@ -4,8 +4,10 @@
 Election.Analytic.System - PPRP  #659
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #658
-- 
+- PPRP.Manangement.App project
+  - PollingStationManagePage add export function.
 
 [commited]
 Election.Analytic.System - PPRP  #657

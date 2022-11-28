@@ -11,6 +11,7 @@ using NLib;
 using NLib.Services;
 
 using PPRP.Domains;
+using PPRP.Exports.Excel;
 
 #endregion
 
@@ -43,6 +44,11 @@ namespace PPRP.Pages
         private void cmdImport_Click(object sender, RoutedEventArgs e)
         {
             Import();
+        }
+
+        private void cmdExport_Click(object sender, RoutedEventArgs e)
+        {
+            Export();
         }
 
         #endregion
@@ -79,6 +85,42 @@ namespace PPRP.Pages
                 return;
             }
             LoadRegions();
+        }
+
+        private void Export()
+        {
+            var items = PollingStation.Gets().Value;
+            if (null == items)
+            {
+                // Show Dialog.
+                return;
+            }
+
+            NExcelExport export = new NExcelExport();
+            if (export.ShowDialog("ข้อมูลการเขต Polling Location (2562).xlsx"))
+            {
+                // map column and property
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ภาค", PropertyName = "RegionName" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ภาคทางภูมิศาสตร์", PropertyName = "GeoSubGroup" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "รหัสจังหวัด", PropertyName = "ProvinceId" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "จังหวัด", PropertyName = "ProvinceNameTH" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "รหัสอำเภอ", PropertyName = "DistrictId" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "อำเภอ", PropertyName = "DistrictNameTH" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "รหัสตำบล", PropertyName = "SubdistrictId" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ตำบล", PropertyName = "SubdistrictNameTH" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "เขตเลือกตั้ง", PropertyName = "PollingUnitNo" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "รหัสหน่วยเลือกตั้งย่อย", PropertyName = "PollingSubUnitNo" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "จำนวนหมู่บ้าน", PropertyName = "VillageCount" });
+
+                if (export.Save(items, "Polling"))
+                {
+                    MessageBox.Show("ส่งออกข้อมูลสำเร็จ", "ผลการส่งออกข้อมูล");
+                }
+                else
+                {
+                    MessageBox.Show("ส่งออกข้อมูลไม่สำเร็จ", "ผลการส่งออกข้อมูล");
+                }
+            }
         }
 
         private void LoadRegions()
