@@ -28,8 +28,10 @@ Election.Analytic.System - PPRP  #662
 Election.Analytic.System - PPRP  #661
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #660
-- 
+- PPRP.Manangement.App project
+  - MPD2562PollingUnitSummaryManagePage add export function.
 
 [commited]
 Election.Analytic.System - PPRP  #659
