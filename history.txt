@@ -19,8 +19,9 @@ Election.Analytic.System - PPRP  #665
 Election.Analytic.System - PPRP  #664
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #663
-- 
+- Recompile all projects.
 
 [commited]
 Election.Analytic.System - PPRP  #662
