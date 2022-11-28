@@ -25,8 +25,10 @@ Election.Analytic.System - PPRP  #663
 Election.Analytic.System - PPRP  #662
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #661
-- 
+- PPRP.Manangement.App project
+  - MPD2562AreaRemarkManagePage add export function.
 
 [commited]
 Election.Analytic.System - PPRP  #660

@@ -92,7 +92,7 @@ namespace PPRP.Pages
             }
 
             NExcelExport export = new NExcelExport();
-            if (export.ShowDialog("ข้อมูลการเขตเลือกตั้งปี 2562"))
+            if (export.ShowDialog("ข้อมูลการเขตเลือกตั้งปี 2562.xlsx"))
             {
                 // map column and property
                 export.Maps.Add(new NExcelExportColumn { ColumnName = "จังหวัด", PropertyName = "ProvinceName" });

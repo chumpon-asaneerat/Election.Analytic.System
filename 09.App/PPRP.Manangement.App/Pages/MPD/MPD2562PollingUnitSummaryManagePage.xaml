@@ -83,7 +83,7 @@
                                 Height="30"
                                 Content="นำเข้าข้อมูล"
                                 Click="cmdImport_Click" />
-                        <!--  IMPORT  -->
+                        <!--  EXPORT  -->
                         <Button x:Name="cmdExport"
                                 DockPanel.Dock="Left"
                                 Style="{StaticResource InlineButton}"

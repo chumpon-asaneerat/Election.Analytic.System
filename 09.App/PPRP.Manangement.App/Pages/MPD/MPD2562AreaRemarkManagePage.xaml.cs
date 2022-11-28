@@ -11,6 +11,7 @@ using NLib;
 using NLib.Services;
 
 using PPRP.Domains;
+using PPRP.Exports.Excel;
 
 #endregion
 
@@ -45,6 +46,11 @@ namespace PPRP.Pages
             Import();
         }
 
+        private void cmdExport_Click(object sender, RoutedEventArgs e)
+        {
+            Export();
+        }
+
         #endregion
 
         #region ComboBox Handlers
@@ -74,6 +80,35 @@ namespace PPRP.Pages
                 return;
             }
             LoadProvinces();
+        }
+
+        private void Export()
+        {
+            var items = MPD2562PollingUnitSummary.Gets().Value;
+            if (null == items)
+            {
+                // Show Dialog.
+                return;
+            }
+
+            NExcelExport export = new NExcelExport();
+            if (export.ShowDialog("ข้อมูลการเขตเลือกตั้งปี 2562.xlsx"))
+            {
+                // map column and property
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "จังหวัด", PropertyName = "ProvinceName" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "เขตเลือกตั้ง", PropertyName = "PollingUnitNo" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "จำนวนหน่วยเลือกตั้ง", PropertyName = "PollingUnitCount" });
+                export.Maps.Add(new NExcelExportColumn { ColumnName = "ข้อมูลพื้นที่", PropertyName = "AreaRemark" });
+
+                if (export.Save(items, "ข้อมูลพื้นที่ 350 เขต"))
+                {
+                    MessageBox.Show("ส่งออกข้อมูลสำเร็จ", "ผลการส่งออกข้อมูล");
+                }
+                else
+                {
+                    MessageBox.Show("ส่งออกข้อมูลไม่สำเร็จ", "ผลการส่งออกข้อมูล");
+                }
+            }
         }
 
         private void LoadProvinces()
