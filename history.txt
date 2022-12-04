@@ -10,8 +10,10 @@ Election.Analytic.System - PPRP  #668
 Election.Analytic.System - PPRP  #667
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #666
-- 
+- App projects
+  - Update App.xaml #2.
 
 [commited]
 Election.Analytic.System - PPRP  #665
