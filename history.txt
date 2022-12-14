@@ -7,8 +7,9 @@ Election.Analytic.System - PPRP  #669
 Election.Analytic.System - PPRP  #668
 - 
 
+[commited]
 Election.Analytic.System - PPRP  #667
-- 
+- Remove all images.
 
 [commited]
 Election.Analytic.System - PPRP  #666
